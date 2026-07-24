@@ -1,0 +1,6 @@
+{
+  "name": "Wajba - MENA Meal Planner & Arabic Kitchen",
+  "description": "Authentic Egyptian & Arabic recipe explorer, weekly meal planner with Ramadan mode, smart grocery list, interactive cooking timers, group URL sharing, and bilingual Arabic/English RTL layout.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

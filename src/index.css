@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-arabic: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+    --font-english: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  html[dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+
+  html[dir="ltr"] body {
+    font-family: var(--font-english);
+  }
+}
+
+/* Custom scrollbar for clean UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 140, 100, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 140, 100, 0.45);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Print styling for grocery list */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
