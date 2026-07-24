@@ -83,6 +83,10 @@ export const TopTenLeaderboard: React.FC<TopTenLeaderboardProps> = ({
                 <img
                   src={recipe.image}
                   alt={isArabic ? recipe.titleAr : recipe.titleEn}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                  }}
+                  referrerPolicy="no-referrer"
                   className="w-16 h-16 rounded-xl object-cover cursor-pointer flex-shrink-0 group-hover:scale-105 transition-transform"
                   onClick={() => onSelectRecipe(recipe)}
                 />

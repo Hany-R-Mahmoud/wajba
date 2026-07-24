@@ -70,14 +70,14 @@ export interface DishCardData {
 
 export const DEFAULT_DISHES: DishCardData[] = [
   {
-    id: "koshary",
-    url: "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&q=80&w=800",
-    titleAr: "الكشري المصري الأصيل",
-    titleEn: "Authentic Egyptian Koshary",
+    id: "bashamel",
+    url: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=800",
+    titleAr: "المكرونة البشاميل المصرية",
+    titleEn: "Egyptian Macarona Béchamel",
     regionAr: "مصر 🇪🇬",
     regionEn: "Egypt 🇪🇬",
-    prepTime: 20,
-    cookTime: 40,
+    prepTime: 25,
+    cookTime: 45,
   },
   {
     id: "mansaf",
@@ -322,7 +322,7 @@ export function ThreeDPhotoCarousel({
                   src={activeDish.url}
                   alt={isArabic ? activeDish.titleAr : activeDish.titleEn}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&q=80&w=800";
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800";
                   }}
                   className="w-full h-full object-cover rounded-2xl"
                 />
@@ -376,14 +376,6 @@ export function ThreeDPhotoCarousel({
           isCarouselActive={isCarouselActive}
           isArabic={isArabic}
         />
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#17171c]/90 backdrop-blur-md text-white text-[11px] font-mono border border-white/20 pointer-events-none flex items-center gap-2 shadow-lg z-20">
-          <Sparkles className="w-3.5 h-3.5 text-[#ff7759]" />
-          <span>
-            {isArabic
-              ? "اسحب العجلة لاستعراض الأطباق التراثية ثلاثية الأبعاد ↺"
-              : "Drag or swipe 3D carousel to spin dishes ↺"}
-          </span>
-        </div>
       </div>
     </motion.div>
   );

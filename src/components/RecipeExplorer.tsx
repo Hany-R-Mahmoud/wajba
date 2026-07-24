@@ -78,8 +78,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
           </h1>
           <p className="text-xs sm:text-sm text-stone-200/90 leading-relaxed font-sans">
             {isArabic
-              ? 'مجموعة وصفات تراثية موثوقة من الكشري والفتة إلى الكبسة والمنسف الشامي مع مؤقتات طهي تفاعلية وقائمة تسوق ذكية.'
-              : 'Discover heritage recipes from Egyptian Koshary to Levantine Mansaf & Gulf Kabsa with interactive cooking timers.'}
+              ? 'مجموعة وصفات تراثية موثوقة من المكرونة البشاميل والفتة إلى الكبسة والمنسف الشامي مع مؤقتات طهي تفاعلية وقائمة تسوق ذكية.'
+              : 'Discover heritage recipes from Egyptian Macarona Béchamel to Levantine Mansaf & Gulf Kabsa with interactive cooking timers.'}
           </p>
         </div>
       </div>
@@ -96,7 +96,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={
                 isArabic
-                  ? 'ابحث باسم الوصفة، المكونات (كشري، ثوم، لحم)...'
+                  ? 'ابحث باسم الوصفة، المكونات (بشاميل، ثوم، لحم)...'
                   : 'Search by recipe name or ingredient...'
               }
               className="w-full py-2.5 px-10 rounded-full bg-[#eeece7] dark:bg-stone-800 border border-[#d9d9dd] dark:border-stone-700 text-xs font-mono focus:outline-none focus:border-[#17171c]"
@@ -167,8 +167,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
           </h3>
           <p className="text-xs text-stone-500 max-w-sm mx-auto">
             {isArabic
-              ? 'جرب البحث عن كلمات أخرى مثل كشري، ملوخية، أرز، أو قم بإلغاء الفلاتر.'
-              : 'Try searching for terms like Koshary, Molokhia, or reset your filters.'}
+              ? 'جرب البحث عن كلمات أخرى مثل بشاميل، ملوخية، أرز، أو قم بإلغاء الفلاتر.'
+              : 'Try searching for terms like Béchamel, Molokhia, or reset your filters.'}
           </p>
         </div>
       ) : (

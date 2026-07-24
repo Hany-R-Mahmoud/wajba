@@ -89,6 +89,10 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
           <img
             src={currentImage}
             alt={isArabic ? recipe.titleAr : recipe.titleEn}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+            }}
+            referrerPolicy="no-referrer"
             className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 cursor-pointer"
             onClick={() => setIsLightboxOpen(true)}
           />
@@ -172,7 +176,15 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                       : 'border-white/40 opacity-70 hover:opacity-100 hover:scale-105'
                   }`}
                 >
-                  <img src={imgUrl} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img
+                    src={imgUrl}
+                    alt={`Thumb ${idx + 1}`}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                    }}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               ))}
             </div>
@@ -451,6 +463,10 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
             <img
               src={currentImage}
               alt={isArabic ? recipe.titleAr : recipe.titleEn}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+              }}
+              referrerPolicy="no-referrer"
               className="max-h-full max-w-full object-contain rounded-2xl shadow-2xl"
             />
 
@@ -485,7 +501,15 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                       : 'border-stone-700 opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <img src={imgUrl} alt={`Gallery Thumb ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img
+                    src={imgUrl}
+                    alt={`Gallery Thumb ${idx + 1}`}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                    }}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
                 </button>
               ))}
             </div>

@@ -394,7 +394,15 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       : 'border-transparent opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <img src={preset.url} alt="" className="w-full h-16 object-cover group-hover:scale-105 transition-transform" />
+                  <img
+                    src={preset.url}
+                    alt=""
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                    }}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-16 object-cover group-hover:scale-105 transition-transform"
+                  />
                   <div className="absolute inset-0 bg-stone-900/40 flex items-end p-1">
                     <span className="text-[10px] font-bold text-white leading-tight">
                       {isArabic ? preset.labelAr : preset.labelEn}

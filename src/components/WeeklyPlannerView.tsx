@@ -242,6 +242,10 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
                           <img
                             src={recipe.image}
                             alt={isArabic ? recipe.titleAr : recipe.titleEn}
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                            }}
+                            referrerPolicy="no-referrer"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                           />
                           <div className="absolute bottom-1 right-1 bg-black/60 text-amber-200 text-[10px] px-1.5 py-0.5 rounded-md font-mono">
@@ -310,7 +314,15 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
                   className="flex items-center justify-between p-3 rounded-xl bg-amber-50/50 dark:bg-stone-800/60 hover:bg-amber-100 dark:hover:bg-stone-800 border border-amber-200/60 dark:border-stone-700 cursor-pointer transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <img src={r.image} alt="" className="w-12 h-12 rounded-lg object-cover" />
+                    <img
+                      src={r.image}
+                      alt=""
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                      }}
+                      referrerPolicy="no-referrer"
+                      className="w-12 h-12 rounded-lg object-cover"
+                    />
                     <div>
                       <p className="text-xs font-extrabold text-stone-800 dark:text-stone-100">
                         {isArabic ? r.titleAr : r.titleEn}

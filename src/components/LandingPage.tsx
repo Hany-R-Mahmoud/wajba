@@ -46,13 +46,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* Top Navigation Bar */}
       <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] px-4 sm:px-8 py-3.5 flex items-center justify-between">
         <div className="flex items-center gap-3 sm:gap-4">
-          <div className="w-10 h-10 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] flex items-center justify-center font-bold shadow-xs">
-            <Utensils className="w-5 h-5 text-[#ff7759]" />
+          <div className="w-11 h-11 rounded-xl bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1 shadow-sm">
+            <img src="/favicon.svg" alt="Wajba Logo" className="w-full h-full object-contain" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xl sm:text-2xl font-bold tracking-tighter text-[#17171c] dark:text-white font-mono">
-                WAJBA <span className="text-[#ff7759] font-normal text-xs uppercase tracking-widest">وجبة</span>
+              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#17171c] dark:text-white font-mono flex items-center gap-2">
+                WAJBA <span className="text-[#D86540] font-bold text-xs uppercase tracking-widest bg-[#D86540]/10 px-2 py-0.5 rounded">وجبة</span>
               </span>
             </div>
             <p className="text-[10px] sm:text-[11px] font-mono text-stone-500 dark:text-stone-300 hidden sm:block">
@@ -97,10 +97,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
         {/* HERO SECTION WITH 3D CAROUSEL */}
         <section className="space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#17171c] text-white border border-stone-800 text-xs font-mono font-bold uppercase tracking-widest">
+          <div className="text-center max-w-3xl mx-auto space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#17171c] text-white stroke-stone-800 border border-stone-800 text-xs font-mono font-bold uppercase tracking-widest">
               <Sparkles className="w-4 h-4 text-[#ff7759]" />
-              <span>{isArabic ? 'مخطط الوجبات والتسوق الذكي' : '3D CULINARY EXPERIENTIAL PLATFORM'}</span>
+              <span>{isArabic ? 'مخطط الوجبات والتسوق الذكي' : 'MIDDLE EASTERN CULINARY ARCHITECTURE'}</span>
             </div>
 
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#17171c] dark:text-white leading-tight">
@@ -175,7 +175,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
               <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
-                  ? 'استمتع بوصفات تقليدية موثوقة مثل الكشري المصري، المنسف الشامي، الكبسة الملكية، والفتة الشامية. تحتوي كل وصفة على قصص تراثية، وكتالوج صور متعدد، ومؤقتات طهي تفاعلية تتيح لك تشغيل التنبيهات أثناء إعداد الطعام.'
+                  ? 'استمتع بوصفات تقليدية موثوقة مثل المكرونة البشاميل المصرية، المنسف الشامي، الكبسة الملكية، والفتة المصرية. تحتوي كل وصفة على قصص تراثية، وكتالوج صور متعدد، ومؤقتات طهي تفاعلية تتيح لك تشغيل التنبيهات أثناء إعداد الطعام.'
                   : 'Enjoy rich heritage recipes with multi-photo image catalogs, step-by-step cooking timers, cultural background stories, and family voting systems.'}
               </p>
 
@@ -196,27 +196,30 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <div className="bg-[#f8f7f4] dark:bg-[#212e47] rounded-2xl p-5 border border-[#e2e0d8] dark:border-[#384966] shadow-xl space-y-4">
                 <div className="relative h-56 rounded-xl overflow-hidden bg-stone-900">
                   <img
-                    src="https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&q=80&w=800"
-                    alt="Koshary"
+                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=800"
+                    alt="Macarona Bechamel"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800";
+                    }}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-3 right-3 bg-[#17171c] text-white text-[10px] font-mono px-3 py-1 rounded-full border border-white/20">
-                    {isArabic ? 'مصر 🇪🇬 • الكشري الأصيل' : 'Egypt 🇪🇬 • Koshary'}
+                    {isArabic ? 'مصر 🇪🇬 • مكرونة بشاميل' : 'Egypt 🇪🇬 • Macarona Béchamel'}
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between text-xs font-mono pt-1">
                   <span className="font-bold text-[#17171c] dark:text-white">
-                    {isArabic ? 'الكشري المصري بالدقة والشطة' : 'Authentic Egyptian Koshary'}
+                    {isArabic ? 'المكرونة البشاميل المصرية باللحم المفروم' : 'Egyptian Macarona Béchamel'}
                   </span>
                   <span className="text-[#ff7759] font-bold flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" /> 60 {isArabic ? 'دقيقة' : 'mins'}
+                    <Clock className="w-3.5 h-3.5" /> 70 {isArabic ? 'دقيقة' : 'mins'}
                   </span>
                 </div>
 
                 <div className="p-3 rounded-xl bg-white dark:bg-[#162032] text-[11px] font-mono text-stone-600 dark:text-stone-300 flex items-center justify-between border border-[#e2e0d8] dark:border-[#2b3a54]">
-                  <span>{isArabic ? 'مؤقت صلصة الطماطم والثوم:' : 'Garlic Tomato Sauce Timer:'}</span>
-                  <span className="px-2 py-0.5 rounded-md bg-[#ff7759] text-white font-bold">15:00 ⏱️</span>
+                  <span>{isArabic ? 'مؤقت طبقة البشاميل الذهبية:' : 'Velvet Béchamel Crust Timer:'}</span>
+                  <span className="px-2 py-0.5 rounded-md bg-[#ff7759] text-white font-bold">12:00 ⏱️</span>
                 </div>
               </div>
             </div>
@@ -349,7 +352,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   </div>
                   <div className="p-3 rounded-xl bg-white dark:bg-[#162032] text-center space-y-1 border border-[#e2e0d8] dark:border-[#2b3a54]">
                     <span className="text-[10px] text-stone-500 dark:text-stone-300 block">{isArabic ? 'السبت' : 'Saturday'}</span>
-                    <span className="font-bold text-[#17171c] dark:text-white block">{isArabic ? 'كشري مصري' : 'Koshary'}</span>
+                    <span className="font-bold text-[#17171c] dark:text-white block">{isArabic ? 'مكرونة بشاميل' : 'Macarona Béchamel'}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-white dark:bg-[#162032] text-center space-y-1 border border-[#e2e0d8] dark:border-[#2b3a54]">
                     <span className="text-[10px] text-stone-500 dark:text-stone-300 block">{isArabic ? 'الأحد' : 'Sunday'}</span>
@@ -476,10 +479,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <footer className="w-full bg-[#f0eee8] dark:bg-[#162032] border-t border-[#e2e0d8] dark:border-[#2b3a54] py-6 px-4 text-center text-[11px] font-mono text-stone-500 dark:text-stone-300">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-[#17171c] text-white flex items-center justify-center font-bold text-[10px]">
-              <Utensils className="w-3 h-3 text-[#ff7759]" />
+            <div className="w-8 h-8 rounded-lg bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1">
+              <img src="/favicon.svg" alt="Wajba Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="font-bold text-[#17171c] dark:text-white">WAJBA SYSTEM</span>
+            <span className="font-extrabold text-[#17171c] dark:text-white font-mono">WAJBA SYSTEM <span className="text-[#D86540] text-xs"> وجبة</span></span>
           </div>
           <p>
             {isArabic

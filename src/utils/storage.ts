@@ -34,9 +34,9 @@ export const DEFAULT_WEEKLY_PLAN: WeeklyPlan = {
 // Seed initial meal plan with iconic Egyptian/Arabic dishes so the user gets a vibrant filled experience immediately
 export function getInitialWeeklyPlanWithSeed(): WeeklyPlan {
   const plan: WeeklyPlan = JSON.parse(JSON.stringify(DEFAULT_WEEKLY_PLAN));
-  // Sat: Ful Medames & Ta'ameya breakfast, Koshary lunch
+  // Sat: Ful Medames & Ta'ameya breakfast, Macarona Beamel lunch
   plan.days[0].slots.breakfast = { recipeId: 'egypt-taameya-ful', servings: 4 };
-  plan.days[0].slots.lunch = { recipeId: 'egypt-koshary', servings: 6 };
+  plan.days[0].slots.lunch = { recipeId: 'egypt-macarona-beamel', servings: 6 };
 
   // Sun: Shakshuka breakfast, Macarona Beamel dinner
   plan.days[1].slots.breakfast = { recipeId: 'arabic-shakshuka', servings: 4 };
@@ -82,9 +82,9 @@ export function saveStoredTheme(theme: 'light' | 'dark') {
 export function loadFavorites(): string[] {
   try {
     const saved = localStorage.getItem(STORAGE_KEYS.FAVORITES);
-    return saved ? JSON.parse(saved) : ['egypt-koshary', 'egypt-fatteh', 'egypt-molokhia'];
+    return saved ? JSON.parse(saved) : ['egypt-macarona-beamel', 'egypt-fatteh', 'egypt-molokhia'];
   } catch {
-    return ['egypt-koshary', 'egypt-fatteh'];
+    return ['egypt-macarona-beamel', 'egypt-fatteh'];
   }
 }
 
@@ -215,10 +215,9 @@ export function getInitialMonthlyPlanWithSeed(year: number, month: number): Mont
 
   // Sample recipe IDs to distribute nicely
   const sampleRecipes = [
-    'egypt-koshary',
+    'egypt-macarona-beamel',
     'egypt-fatteh',
     'egypt-molokhia',
-    'egypt-macarona-beamel',
     'arabic-shakshuka',
     'egypt-hawawshi',
     'gulf-kabsa',
@@ -243,9 +242,9 @@ export function getInitialMonthlyPlanWithSeed(year: number, month: number): Mont
     if (dayOfWeek === 5) {
       slots.lunch = { recipeId: d % 2 === 0 ? 'egypt-fatteh' : 'gulf-kabsa', servings: 6 };
     }
-    // Saturday = Koshary or Alexandria Liver
+    // Saturday = Macarona Beamel or Alexandria Liver
     else if (dayOfWeek === 6) {
-      slots.lunch = { recipeId: d % 2 === 0 ? 'egypt-koshary' : 'egypt-alex-liver', servings: 4 };
+      slots.lunch = { recipeId: d % 2 === 0 ? 'egypt-macarona-beamel' : 'egypt-alex-liver', servings: 4 };
     }
     // Sunday = Shakshuka breakfast, Macarona Beamel dinner
     else if (dayOfWeek === 0) {

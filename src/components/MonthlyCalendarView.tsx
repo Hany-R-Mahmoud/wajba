@@ -554,6 +554,10 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                           <img
                             src={recipe.image}
                             alt=""
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                            }}
+                            referrerPolicy="no-referrer"
                             className="w-14 h-14 rounded-xl object-cover"
                           />
                           <div>
@@ -641,7 +645,15 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                   className="flex items-center justify-between p-3 rounded-xl bg-amber-50/60 dark:bg-stone-800/60 hover:bg-amber-100 dark:hover:bg-stone-800 border border-amber-200/60 dark:border-stone-700 cursor-pointer transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <img src={r.image} alt="" className="w-12 h-12 rounded-lg object-cover" />
+                    <img
+                      src={r.image}
+                      alt=""
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                      }}
+                      referrerPolicy="no-referrer"
+                      className="w-12 h-12 rounded-lg object-cover"
+                    />
                     <div>
                       <p className="text-xs font-extrabold text-stone-900 dark:text-stone-100">
                         {isArabic ? r.titleAr : r.titleEn}

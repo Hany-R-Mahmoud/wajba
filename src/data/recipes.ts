@@ -343,12 +343,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'medium',
     isRamadanSpecial: true,
     tags: ['مصري', 'عزائم', 'بشاميل', 'فرن', 'Comfort Legend'],
-    image: 'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=80',
     galleryImages: [
-      'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=1000&q=80',
       'https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=1000&q=80',
-      'https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=1000&q=80'
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80'
     ],
     storyAr: 'انتقلت صلصة البشاميل من المطبخ الأوروبي لتستقر في قلوب المصريين، حيث أضافوا إليها طابعهم الخاص باللحم المعصج المتبل والوجه الذهبي المقرمش.',
     storyEn: 'An Egyptian adaptation of European béchamel, baked to savory perfection with aromatic spices, becoming a indispensable staple of every Egyptian feast.',

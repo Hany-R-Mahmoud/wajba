@@ -67,18 +67,18 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-2">
           {/* Brand Logo & Name */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => onTabChange('recipes')}>
-            <div className="w-9 h-9 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] flex items-center justify-center font-bold shadow-xs">
-              <Utensils className="w-4 h-4" />
+          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => onTabChange('recipes')}>
+            <div className="w-10 h-10 rounded-xl bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center overflow-hidden p-1 shadow-sm group-hover:scale-105 transition-transform">
+              <img src="/favicon.svg" alt="Wajba Logo" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xl font-bold tracking-tighter text-[#17171c] dark:text-white font-mono">
-                  WAJBA <span className="text-[#ff7759] font-normal text-xs uppercase tracking-widest">وجبة</span>
+                <span className="text-xl font-extrabold tracking-tight text-[#17171c] dark:text-white font-mono flex items-center gap-1.5">
+                  WAJBA <span className="text-[#D86540] font-bold text-xs uppercase tracking-widest bg-[#D86540]/10 px-1.5 py-0.5 rounded">وجبة</span>
                 </span>
               </div>
               <p className="text-[10px] font-mono text-stone-500 dark:text-stone-300 hidden sm:block">
-                {isArabic ? 'جدول الوجبات وقائمة التسوق الذكية' : 'Enterprise Meal Planner & Grocery Engine'}
+                {isArabic ? 'جدول الوجبات وقائمة التسوق الذكية' : 'Middle Eastern Culinary Architecture'}
               </p>
             </div>
           </div>
