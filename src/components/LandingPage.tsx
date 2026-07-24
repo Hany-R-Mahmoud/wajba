@@ -19,6 +19,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import ThreeDPhotoCarousel from './ui/3d-carousel';
+import { WajbaLogo } from './WajbaLogo';
 
 interface LandingPageProps {
   language: Language;
@@ -45,21 +46,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
     <div className="min-h-screen bg-[#f8f7f4] dark:bg-[#0c1220] text-[#18181b] dark:text-[#f8fafc] font-sans transition-colors flex flex-col justify-between selection:bg-[#ff7759] selection:text-white">
       {/* Top Navigation Bar */}
       <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] px-4 sm:px-8 py-3.5 flex items-center justify-between">
-        <div className="flex items-center gap-3 sm:gap-4">
-          <div className="w-11 h-11 rounded-xl bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1 shadow-sm">
-            <img src="/favicon.svg" alt="Wajba Logo" className="w-full h-full object-contain" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#17171c] dark:text-white font-mono flex items-center gap-2">
-                WAJBA <span className="text-[#D86540] font-bold text-xs uppercase tracking-widest bg-[#D86540]/10 px-2 py-0.5 rounded">وجبة</span>
-              </span>
-            </div>
-            <p className="text-[10px] sm:text-[11px] font-mono text-stone-500 dark:text-stone-300 hidden sm:block">
-              {isArabic ? 'جدول الوجبات وقائمة التسوق العائلية' : 'Middle Eastern Culinary Architecture'}
-            </p>
-          </div>
-        </div>
+        <WajbaLogo variant="navbar" isArabic={isArabic} onClick={onEnterDashboard} />
 
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Fast Enter Dashboard Button */}
@@ -95,62 +82,70 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* MAIN HERO & SCROLLABLE FEATURE SECTIONS */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-16 sm:space-y-24">
 
-        {/* HERO SECTION WITH 3D CAROUSEL */}
-        <section className="space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#17171c] text-white stroke-stone-800 border border-stone-800 text-xs font-mono font-bold uppercase tracking-widest">
-              <Sparkles className="w-4 h-4 text-[#ff7759]" />
-              <span>{isArabic ? 'مخطط الوجبات والتسوق الذكي' : 'MIDDLE EASTERN CULINARY ARCHITECTURE'}</span>
+        {/* HERO SECTION WITH BRAND CREST & 3D CAROUSEL */}
+        <section className="space-y-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+            {/* Grand Crest Showcase Card */}
+            <div className="lg:col-span-5 order-2 lg:order-1 flex justify-center">
+              <WajbaLogo variant="crest" size="md" isArabic={isArabic} onClick={onEnterDashboard} />
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#17171c] dark:text-white leading-tight">
-              {isArabic ? (
-                <>
-                  خطط لوجبات عائلتك <br />
-                  <span className="text-[#ff7759]">بلمسة تراثية أصيلة</span>
-                </>
-              ) : (
-                <>
-                  Middle Eastern Culinary Planning <br />
-                  <span className="text-[#ff7759]">Crafted with Precision</span>
-                </>
-              )}
-            </h1>
+            {/* Headline & Action Controls */}
+            <div className="lg:col-span-7 order-1 lg:order-2 text-center lg:text-start space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#17171c] text-white border border-stone-800 text-xs font-mono font-bold uppercase tracking-widest">
+                <Sparkles className="w-4 h-4 text-[#D86540]" />
+                <span>{isArabic ? 'منظومة طهي وتخطيط المائدة العربية' : 'MIDDLE EASTERN CULINARY ARCHITECTURE'}</span>
+              </div>
 
-            <p className="text-xs sm:text-sm lg:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed max-w-2xl mx-auto">
-              {isArabic
-                ? 'استكشف أشهر الأطباق العربية والرمضانية، نظم جدولك الأسبوعي، وأنشئ قائمة تسوق مجمّعة تلقائياً مقسمة حسب أقسام السوبرماركت.'
-                : 'Discover traditional MENA dishes, create custom weekly meal calendars, and aggregate your grocery items into organized store aisle checklists.'}
-            </p>
+              <h1 className="text-3xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-[#17171c] dark:text-white leading-tight">
+                {isArabic ? (
+                  <>
+                    خطط لوجبات عائلتك <br />
+                    <span className="text-[#D86540]">بلمسة تراثية أصيلة</span>
+                  </>
+                ) : (
+                  <>
+                    Middle Eastern Culinary Planning <br />
+                    <span className="text-[#D86540]">Crafted with Precision</span>
+                  </>
+                )}
+              </h1>
 
-            <div className="pt-2 flex items-center justify-center gap-3 flex-wrap">
-              <button
-                onClick={onEnterDashboard}
-                className="py-3.5 px-8 rounded-full bg-[#17171c] hover:bg-stone-800 dark:bg-white dark:hover:bg-stone-200 text-white dark:text-[#17171c] font-mono font-bold text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer"
-              >
-                <span>{isArabic ? 'ابدأ التخطيط الآن ➔' : 'Start Meal Planning ➔'}</span>
-              </button>
+              <p className="text-xs sm:text-sm lg:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
+                {isArabic
+                  ? 'استكشف أشهر الأطباق العربية والرمضانية، نظم جدولك الأسبوعي، وأنشئ قائمة تسوق مجمّعة تلقائياً مقسمة حسب أقسام السوبرماركت.'
+                  : 'Discover traditional MENA dishes, create custom weekly meal calendars, and aggregate your grocery items into organized store aisle checklists.'}
+              </p>
 
-              <button
-                onClick={onToggleRamadanMode}
-                className={`py-3.5 px-6 rounded-full font-mono text-xs border transition-all flex items-center gap-2 cursor-pointer ${
-                  isRamadanMode
-                    ? 'bg-[#ff7759] text-white border-[#ff7759]'
-                    : 'bg-[#f0eee8] dark:bg-stone-800 text-[#17171c] dark:text-white border-[#e2e0d8] dark:border-stone-700 hover:border-[#17171c]'
-                }`}
-              >
-                <Moon className={`w-4 h-4 ${isRamadanMode ? 'text-white fill-white' : 'text-stone-500'}`} />
-                <span>
-                  {isRamadanMode
-                    ? (isArabic ? 'وضع رمضان مفرّد 🌙' : 'Ramadan Active 🌙')
-                    : (isArabic ? 'تنشيط وضع رمضان' : 'Ramadan Mode')}
-                </span>
-              </button>
+              <div className="pt-2 flex items-center justify-center lg:justify-start gap-3 flex-wrap">
+                <button
+                  onClick={onEnterDashboard}
+                  className="py-3.5 px-8 rounded-full bg-[#17171c] hover:bg-stone-800 dark:bg-white dark:hover:bg-stone-200 text-white dark:text-[#17171c] font-mono font-bold text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                >
+                  <span>{isArabic ? 'ابدأ التخطيط الآن ➔' : 'Start Meal Planning ➔'}</span>
+                </button>
+
+                <button
+                  onClick={onToggleRamadanMode}
+                  className={`py-3.5 px-6 rounded-full font-mono text-xs border transition-all flex items-center gap-2 cursor-pointer ${
+                    isRamadanMode
+                      ? 'bg-[#D86540] text-white border-[#D86540]'
+                      : 'bg-[#f0eee8] dark:bg-stone-800 text-[#17171c] dark:text-white border-[#e2e0d8] dark:border-stone-700 hover:border-[#17171c]'
+                  }`}
+                >
+                  <Moon className={`w-4 h-4 ${isRamadanMode ? 'text-white fill-white' : 'text-stone-500'}`} />
+                  <span>
+                    {isRamadanMode
+                      ? (isArabic ? 'وضع رمضان مفرّد 🌙' : 'Ramadan Active 🌙')
+                      : (isArabic ? 'تنشيط وضع رمضان' : 'Ramadan Mode')}
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
 
           {/* 3D Photo Carousel Container */}
-          <div className="w-full pt-2">
+          <div className="w-full pt-4">
             <ThreeDPhotoCarousel
               language={language}
               onSelectDish={() => onEnterDashboard()}

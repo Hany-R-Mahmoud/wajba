@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActiveTimer, Language } from '../types';
 import { BookOpen, CalendarDays, ShoppingBag, Trophy, Users, Moon, Sun, Globe, Utensils, Timer } from 'lucide-react';
+import { WajbaLogo } from './WajbaLogo';
 
 interface NavbarProps {
   currentTab: 'recipes' | 'planner' | 'grocery' | 'leaderboard' | 'family';
@@ -67,21 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-2">
           {/* Brand Logo & Name */}
-          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => onTabChange('recipes')}>
-            <div className="w-10 h-10 rounded-xl bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center overflow-hidden p-1 shadow-sm group-hover:scale-105 transition-transform">
-              <img src="/favicon.svg" alt="Wajba Logo" className="w-full h-full object-contain" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-extrabold tracking-tight text-[#17171c] dark:text-white font-mono flex items-center gap-1.5">
-                  WAJBA <span className="text-[#D86540] font-bold text-xs uppercase tracking-widest bg-[#D86540]/10 px-1.5 py-0.5 rounded">وجبة</span>
-                </span>
-              </div>
-              <p className="text-[10px] font-mono text-stone-500 dark:text-stone-300 hidden sm:block">
-                {isArabic ? 'جدول الوجبات وقائمة التسوق الذكية' : 'Middle Eastern Culinary Architecture'}
-              </p>
-            </div>
-          </div>
+          <WajbaLogo variant="navbar" isArabic={isArabic} onClick={() => onTabChange('recipes')} />
 
           {/* Center Navigation Tabs for Desktop */}
           <nav className="hidden md:flex items-center gap-1 bg-[#f0eee8] dark:bg-[#0c1220] p-1.5 rounded-full border border-[#e2e0d8] dark:border-[#2b3a54]">
