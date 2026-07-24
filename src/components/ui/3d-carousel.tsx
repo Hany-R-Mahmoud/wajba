@@ -167,20 +167,22 @@ const Carousel = memo(
   }) => {
     const isScreenSizeSm = useMediaQuery("(max-width: 640px)");
     const faceCount = cards.length;
-    // Generous radius for clear 3D center space and depth perception
-    const radius = isScreenSizeSm ? 250 : 380;
-    const cardWidth = isScreenSizeSm ? 180 : 220;
+    // Radius and card width configured for clear depth without clipping
+    const radius = isScreenSizeSm ? 220 : 340;
+    const cardWidth = isScreenSizeSm ? 175 : 215;
     const rotation = useMotionValue(0);
 
-    // Combine Y rotation with a forward tilt (rotateX) so front cards sit lower than back cards
+    // Balanced 3D forward tilt (-10deg) with -16px translateY so front card bottom is clearly visible above bottom pill
     const transform = useTransform(
       rotation,
-      (value) => `rotateX(-14deg) rotateY(${value}deg)`
+      (value) => `translateY(-16px) rotateX(-10deg) rotateY(${value}deg)`
     );
+
+    const fallbackImage = "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&q=80&w=800";
 
     return (
       <div
-        className="flex h-full w-full items-center justify-center overflow-hidden py-4"
+        className="flex h-full w-full items-center justify-center overflow-hidden pt-4 pb-12"
         style={{
           perspective: isScreenSizeSm ? "1000px" : "1400px",
           transformStyle: "preserve-3d",
@@ -215,33 +217,36 @@ const Carousel = memo(
             return (
               <motion.div
                 key={`key-${dish.id}-${i}`}
-                className="absolute flex flex-col rounded-2xl bg-[#1e293b] dark:bg-[#182232] text-white p-2.5 border border-slate-700/80 shadow-2xl group cursor-pointer hover:border-[#ff7759] hover:shadow-orange-500/20 transition-all duration-300"
+                className="absolute flex flex-col rounded-2xl bg-white dark:bg-[#212e47] text-stone-900 dark:text-white p-2.5 border border-stone-300 dark:border-[#384966] shadow-2xl group cursor-pointer hover:border-[#ff7759] hover:shadow-orange-500/30 transition-all duration-300"
                 style={{
                   width: `${cardWidth}px`,
-                  height: `${isScreenSizeSm ? 260 : 300}px`,
+                  height: `${isScreenSizeSm ? 250 : 285}px`,
                   transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
                   backfaceVisibility: "visible",
                 }}
                 onClick={() => handleClick(dish, i)}
               >
-                {/* Fixed Aspect Image to Prevent Stretching */}
-                <div className="relative w-full h-[160px] sm:h-[190px] rounded-xl overflow-hidden bg-slate-900">
+                {/* Fixed Aspect Image with Error Fallback */}
+                <div className="relative w-full h-[150px] sm:h-[180px] rounded-xl overflow-hidden bg-stone-900 border border-black/10 dark:border-white/10">
                   <img
                     src={dish.url}
                     alt={isArabic ? dish.titleAr : dish.titleEn}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = fallbackImage;
+                    }}
                     className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                   />
-                  <div className="absolute top-2 right-2 bg-[#0f172a]/90 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-mono text-[#ff7759] border border-white/10 font-bold">
+                  <div className="absolute top-2 right-2 bg-[#121216]/95 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-mono text-[#ff7759] border border-white/15 font-bold shadow-md">
                     {isArabic ? dish.regionAr : dish.regionEn}
                   </div>
                 </div>
 
                 {/* Typography & Dish Meta */}
                 <div className="p-2 space-y-1 font-mono text-center flex-1 flex flex-col justify-center">
-                  <h4 className="text-xs sm:text-sm font-bold text-white truncate group-hover:text-[#ff7759] transition-colors">
+                  <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white truncate group-hover:text-[#ff7759] transition-colors">
                     {isArabic ? dish.titleAr : dish.titleEn}
                   </h4>
-                  <div className="flex items-center justify-center gap-2 text-[10px] text-slate-300">
+                  <div className="flex items-center justify-center gap-2 text-[10px] text-stone-600 dark:text-stone-300">
                     <span className="flex items-center gap-1">
                       <Clock className="w-3 h-3 text-[#ff7759]" />
                       {dish.prepTime + dish.cookTime} {isArabic ? "د" : "m"}
@@ -302,7 +307,7 @@ export function ThreeDPhotoCarousel({
             transition={transitionOverlay}
           >
             <div
-              className="relative bg-[#0f172a] text-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-slate-700 shadow-2xl space-y-4"
+              className="relative bg-[#162032] text-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-[#2b3a54] shadow-2xl space-y-4"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -312,22 +317,25 @@ export function ThreeDPhotoCarousel({
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative h-56 sm:h-64 w-full rounded-2xl overflow-hidden bg-slate-900">
+              <div className="relative h-56 sm:h-64 w-full rounded-2xl overflow-hidden bg-stone-900">
                 <img
                   src={activeDish.url}
                   alt={isArabic ? activeDish.titleAr : activeDish.titleEn}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&q=80&w=800";
+                  }}
                   className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
 
               <div className="space-y-2 font-mono">
-                <span className="px-3 py-1 rounded-full bg-slate-800 text-[#ff7759] text-xs font-bold inline-block border border-white/10">
+                <span className="px-3 py-1 rounded-full bg-stone-800 text-[#ff7759] text-xs font-bold inline-block border border-white/10">
                   {isArabic ? activeDish.regionAr : activeDish.regionEn}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-white">
                   {isArabic ? activeDish.titleAr : activeDish.titleEn}
                 </h3>
-                <div className="flex items-center gap-4 text-xs text-slate-300 pt-2 border-t border-slate-800">
+                <div className="flex items-center gap-4 text-xs text-stone-300 pt-2 border-t border-stone-800">
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4 text-[#ff7759]" />
                     {activeDish.prepTime + activeDish.cookTime}{" "}
@@ -361,14 +369,14 @@ export function ThreeDPhotoCarousel({
         )}
       </AnimatePresence>
 
-      <div className="relative h-[400px] sm:h-[460px] lg:h-[500px] w-full overflow-hidden rounded-3xl bg-[#f5f4ef] dark:bg-[#0f172a] border border-[#e2e0d8] dark:border-slate-800 shadow-sm flex items-center justify-center">
+      <div className="relative h-[440px] sm:h-[500px] lg:h-[540px] w-full overflow-hidden rounded-3xl bg-[#f0eee8] dark:bg-[#162032] border border-[#e2e0d8] dark:border-[#2b3a54] shadow-sm flex items-center justify-center">
         <Carousel
           handleClick={handleClick}
           cards={dishes}
           isCarouselActive={isCarouselActive}
           isArabic={isArabic}
         />
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#0f172a]/90 backdrop-blur-md text-white text-[11px] font-mono border border-white/20 pointer-events-none flex items-center gap-2 shadow-lg z-20">
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#17171c]/90 backdrop-blur-md text-white text-[11px] font-mono border border-white/20 pointer-events-none flex items-center gap-2 shadow-lg z-20">
           <Sparkles className="w-3.5 h-3.5 text-[#ff7759]" />
           <span>
             {isArabic

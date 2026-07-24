@@ -37,9 +37,9 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   const totalTime = recipe.prepTimeMinutes + recipe.cookTimeMinutes;
 
   return (
-    <div className="group bg-white dark:bg-stone-900 rounded-3xl border border-[#d9d9dd] dark:border-stone-800 shadow-xs hover:border-[#17171c] dark:hover:border-stone-600 transition-all duration-300 overflow-hidden flex flex-col justify-between">
+    <div className="group bg-white dark:bg-[#162032] rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-xs hover:border-[#17171c] dark:hover:border-[#ff7759] transition-all duration-300 overflow-hidden flex flex-col justify-between">
       {/* Top Image Banner */}
-      <div className="relative h-48 w-full overflow-hidden bg-[#eeece7] dark:bg-stone-800 cursor-pointer" onClick={() => onSelectRecipe(recipe)}>
+      <div className="relative h-48 w-full overflow-hidden bg-[#eeece7] dark:bg-[#0c1220] cursor-pointer" onClick={() => onSelectRecipe(recipe)}>
         <img
           src={recipe.image}
           alt={isArabic ? recipe.titleAr : recipe.titleEn}
@@ -95,7 +95,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         </p>
 
         {/* Info Pills (Time, Difficulty, Ramadan tag) */}
-        <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-[#75758a] dark:text-stone-400 pt-2 border-t border-[#d9d9dd] dark:border-stone-800">
+        <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-[#75758a] dark:text-stone-300 pt-2 border-t border-[#d9d9dd] dark:border-[#2b3a54]">
           <div className="flex items-center gap-1">
             <Clock className="w-3.5 h-3.5 text-[#ff7759]" />
             <span>{totalTime} {isArabic ? 'دقيقة' : 'min'}</span>

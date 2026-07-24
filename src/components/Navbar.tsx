@@ -63,28 +63,28 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#0b1320]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-slate-800 transition-colors">
+    <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-2">
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => onTabChange('recipes')}>
-            <div className="w-9 h-9 rounded-full bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] flex items-center justify-center font-bold shadow-xs">
+            <div className="w-9 h-9 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] flex items-center justify-center font-bold shadow-xs">
               <Utensils className="w-4 h-4" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-xl font-bold tracking-tighter text-[#0f172a] dark:text-white font-mono">
+                <span className="text-xl font-bold tracking-tighter text-[#17171c] dark:text-white font-mono">
                   WAJBA <span className="text-[#ff7759] font-normal text-xs uppercase tracking-widest">وجبة</span>
                 </span>
               </div>
-              <p className="text-[10px] font-mono text-stone-500 dark:text-slate-400 hidden sm:block">
+              <p className="text-[10px] font-mono text-stone-500 dark:text-stone-300 hidden sm:block">
                 {isArabic ? 'جدول الوجبات وقائمة التسوق الذكية' : 'Enterprise Meal Planner & Grocery Engine'}
               </p>
             </div>
           </div>
 
-          {/* Center Navigation Tabs for Desktop - Cohere Soft Stone Container */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#f0eee8] dark:bg-[#162232] p-1.5 rounded-full border border-[#e2e0d8] dark:border-slate-800">
+          {/* Center Navigation Tabs for Desktop */}
+          <nav className="hidden md:flex items-center gap-1 bg-[#f0eee8] dark:bg-[#0c1220] p-1.5 rounded-full border border-[#e2e0d8] dark:border-[#2b3a54]">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentTab === item.id;
@@ -94,8 +94,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => onTabChange(item.id)}
                   className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-mono font-medium transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#0f172a] text-white shadow-xs dark:bg-white dark:text-[#0f172a]'
-                      : 'text-[#0f172a] dark:text-slate-300 hover:text-[#ff7759] dark:hover:text-[#ff7759]'
+                      ? 'bg-[#17171c] text-white shadow-xs dark:bg-white dark:text-[#17171c]'
+                      : 'text-[#17171c] dark:text-stone-300 hover:text-[#ff7759] dark:hover:text-[#ff7759]'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {onOpenLanding && (
               <button
                 onClick={onOpenLanding}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f0eee8] dark:bg-slate-800 text-[#0f172a] dark:text-slate-200 text-xs font-mono border border-[#e2e0d8] dark:border-slate-700 hover:border-[#ff7759] transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-200 text-xs font-mono border border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#ff7759] transition-all cursor-pointer"
                 title={isArabic ? 'عرض صفحة البداية والتعريف' : 'View Landing Guide'}
               >
                 <span>{isArabic ? 'الرئيسية 🏠' : 'Landing 🏠'}</span>
@@ -123,8 +123,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={onToggleRamadanMode}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono border transition-all cursor-pointer ${
                 isRamadanMode
-                  ? 'bg-[#0f172a] text-white border-[#0f172a] dark:bg-white dark:text-[#0f172a]'
-                  : 'bg-[#f0eee8] dark:bg-slate-800 text-[#0f172a] dark:text-slate-300 border-[#e2e0d8] dark:border-slate-700 hover:border-[#0f172a]'
+                  ? 'bg-[#17171c] text-white border-[#17171c] dark:bg-white dark:text-[#17171c]'
+                  : 'bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-300 border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#17171c]'
               }`}
               title={isArabic ? 'تبديل وضع شهر رمضان المبارك' : 'Toggle Ramadan Planning Mode'}
             >

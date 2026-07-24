@@ -300,7 +300,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Bar */}
-      <div className="bg-white dark:bg-stone-900 p-5 rounded-3xl border border-amber-200/80 dark:border-stone-800 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-[#162032] p-5 rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-sm space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Month Title & Controls */}
           <div className="flex items-center gap-3">
@@ -410,7 +410,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
       </div>
 
       {/* Calendar Grid Container */}
-      <div className="bg-white dark:bg-stone-900 rounded-3xl border border-amber-200/80 dark:border-stone-800 shadow-sm overflow-hidden p-3 sm:p-4">
+      <div className="bg-white dark:bg-[#162032] rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-sm overflow-hidden p-3 sm:p-4">
         {/* Weekday Titles Header */}
         <div className="grid grid-cols-7 gap-1.5 sm:gap-2 mb-2 text-center">
           {(isArabic ? WEEKDAY_NAMES.ar : WEEKDAY_NAMES.en).map((dayName, idx) => (

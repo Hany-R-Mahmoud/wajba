@@ -67,10 +67,10 @@ export const TopTenLeaderboard: React.FC<TopTenLeaderboardProps> = ({
           return (
             <div
               key={recipe.id}
-              className={`group bg-white dark:bg-stone-900 p-4 rounded-2xl border transition-all duration-300 flex flex-col sm:flex-row items-center justify-between gap-4 ${
+              className={`group bg-white dark:bg-[#162032] p-4 rounded-2xl border transition-all duration-300 flex flex-col sm:flex-row items-center justify-between gap-4 ${
                 idx === 0
                   ? 'border-amber-500/80 shadow-md ring-2 ring-amber-500/20 dark:ring-amber-500/10'
-                  : 'border-amber-200/80 dark:border-stone-800 hover:border-amber-400'
+                  : 'border-[#d9d9dd] dark:border-[#2b3a54] hover:border-amber-400'
               }`}
             >
               <div className="flex items-center gap-4 min-w-0 w-full sm:w-auto">

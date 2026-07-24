@@ -67,7 +67,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
   return (
     <div className="space-y-6">
       {/* Hero Welcome Banner - Cohere Dark Style */}
-      <div className="relative rounded-3xl overflow-hidden bg-[#17171c] text-white p-6 sm:p-8 shadow-xs border border-stone-800">
+      <div className="relative rounded-3xl overflow-hidden bg-[#17171c] dark:bg-[#162032] text-white p-6 sm:p-8 shadow-xs border border-stone-800 dark:border-[#2b3a54]">
         <div className="relative z-10 max-w-2xl space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white border border-white/20 text-xs font-mono uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-[#ff7759]" />
@@ -85,7 +85,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
       </div>
 
       {/* Search Bar & Filters */}
-      <div className="bg-white dark:bg-stone-900 p-4 sm:p-5 rounded-3xl border border-[#d9d9dd] dark:border-stone-800 shadow-xs space-y-4">
+      <div className="bg-white dark:bg-[#162032] p-4 sm:p-5 rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-xs space-y-4">
         <div className="flex flex-col sm:flex-row gap-3">
           {/* Search Input */}
           <div className="relative flex-1">

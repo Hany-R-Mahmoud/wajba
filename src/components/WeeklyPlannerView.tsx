@@ -122,7 +122,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Controls Bar */}
-      <div className="bg-white dark:bg-stone-900 p-5 rounded-3xl border border-amber-200/80 dark:border-stone-800 shadow-sm flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#162032] p-5 rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-sm flex flex-wrap items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Calendar className="w-6 h-6 text-amber-700" />
@@ -195,7 +195,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
         {plan.days.map((day) => (
           <div
             key={day.dayId}
-            className="bg-white dark:bg-stone-900 rounded-2xl border border-amber-200/80 dark:border-stone-800 shadow-xs flex flex-col overflow-hidden"
+            className="bg-white dark:bg-[#162032] rounded-2xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-xs flex flex-col overflow-hidden"
           >
             {/* Day Header */}
             <div className="bg-amber-100/70 dark:bg-stone-800/80 px-3 py-2.5 text-center border-b border-amber-200/60 dark:border-stone-700">

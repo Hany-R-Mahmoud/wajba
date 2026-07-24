@@ -106,7 +106,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       {/* Header & Progress Bar */}
-      <div className="bg-white dark:bg-stone-900 p-6 rounded-3xl border border-amber-200/80 dark:border-stone-800 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-[#162032] p-6 rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-sm space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-2xl bg-amber-700 text-white flex items-center justify-center shadow-md">
