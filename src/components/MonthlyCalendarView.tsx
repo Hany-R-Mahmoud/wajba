@@ -26,6 +26,7 @@ interface MonthlyCalendarViewProps {
   onOpenRecipeDetail: (recipe: Recipe) => void;
   onOpenFamilySync: () => void;
   onChangeMonth: (year: number, month: number) => void;
+  onOpenCreateRecipeModal?: () => void;
 }
 
 const MONTH_NAMES = {
@@ -73,6 +74,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
   onOpenRecipeDetail,
   onOpenFamilySync,
   onChangeMonth,
+  onOpenCreateRecipeModal,
 }) => {
   const isArabic = language === 'ar';
 
@@ -614,6 +616,22 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                 ✕
               </button>
             </div>
+
+            {onOpenCreateRecipeModal && (
+              <div>
+                <button
+                  onClick={() => {
+                    setAssignModalSlot(null);
+                    setSelectedDateKey(null);
+                    onOpenCreateRecipeModal();
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>{isArabic ? 'إضافة وجبة خاصة جديدة يدوياً 🍳' : 'Create & Add New Custom Meal 🍳'}</span>
+                </button>
+              </div>
+            )}
 
             <div className="overflow-y-auto space-y-2 flex-1 pr-1">
               {recipes.map((r) => (

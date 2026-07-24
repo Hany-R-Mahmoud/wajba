@@ -16,6 +16,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مصري', 'شعبي', 'نباتي', 'وجبة مشبعة', 'Ramadan Favorite'],
     image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'يعود تاريخ الكشري المصري إلى أواخر القرن التاسع عشر، وحظي بشعبية عارمة في أحياء القاهرة التاريخية كأكبر طبق مشبع ولذيذ يجمع مكونات بسيطة غنية بالبروتين النباتي.',
     storyEn: 'Originating in late 19th-century Cairo, Koshary became Egypt\'s iconic street dish combining budget-friendly staples into a deeply satisfying, protein-rich feast.',
     ingredients: [
@@ -71,6 +77,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مصري', 'عزومات', 'أعياد', 'لحوم', 'Ramadan Classic'],
     image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تعتبر الفتة المصرية من أقدم الأطباق التراثية التي ارتبطت بالبهجة، حيث تقدم دائماً في أول أيام عيد الأضحى والعزائم الرمضانية الفاخرة.',
     storyEn: 'Egyptian Fatteh is a ancient celebratory tradition served during Eid, Ramadan Iftars, and special family gatherings across Egypt.',
     ingredients: [
@@ -124,6 +136,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مصري', 'خضروات', 'شغف مصري', 'أرز', 'Comfort Food'],
     image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تعد الملوخية طعام الفراعنة والملوك القدماء في مصر، وتشتهر في البيوت المصرية بـ "شهقة الملوخية" عند سكب طشة الثوم والكزبرة الساخنة.',
     storyEn: 'Dating back to ancient Pharaohs, Molokhia is synonymous with Egyptian family meals, famous for the traditional gasp ("Shah\'a") made when pouring the hot garlic ta\'shah.',
     ingredients: [
@@ -172,6 +190,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'easy',
     tags: ['مصري', 'سريع', 'لحوم', 'وجبات شارع', 'Street Food'],
     image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'ابتكر الأسطى "حواوشي" الجزار بالقاهرة في فترة السبعينات هذا الرغيف الشهير الذي غزا شوارع مصر بفضل طعمه المقرمش المتبل الرائع.',
     storyEn: 'Invented by a Cairene butcher named Hawawshi in the 1970s, this seasoned meat-stuffed crispy pita became Egypt\'s most popular street snack.',
     ingredients: [
@@ -219,6 +243,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مصري', 'إفطار', 'سحور', 'نباتي', 'Suhoor Essential'],
     image: 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تتميز الطعمية المصرية عن الفلافل الشامية باعتمدها الحصري على الفول المدشوش بدلاً من الحمص، مما يعطيها قواماً أفرغ وأكثر هشاشة ونكهة مصرية خالصة.',
     storyEn: 'Unlike Levantine chickpea falafel, Egyptian Ta\'ameya uses split fava beans mixed with fresh herbs, yielding an extraordinarily light, airy green interior.',
     ingredients: [
@@ -262,7 +292,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     servings: 4,
     difficulty: 'easy',
     tags: ['مصري', 'إسكندراني', 'سريع جداً', 'حار', 'Street Favorite'],
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'سر الكبدة الإسكندراني الحقيقي هو عدم غسل الكبدة بالماء بل نقعها بالليمون والخل، والطهي السريع على نار شديدة جداً للاحتفاظ بالطراوة والنكهة.',
     storyEn: 'The real Alexandrian secret is flash-searing on roaring high heat for less than 7 minutes with abundant garlic and green chili peppers.',
     ingredients: [
@@ -308,6 +344,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مصري', 'عزائم', 'بشاميل', 'فرن', 'Comfort Legend'],
     image: 'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1621996346565-e3def6164299?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'انتقلت صلصة البشاميل من المطبخ الأوروبي لتستقر في قلوب المصريين، حيث أضافوا إليها طابعهم الخاص باللحم المعصج المتبل والوجه الذهبي المقرمش.',
     storyEn: 'An Egyptian adaptation of European béchamel, baked to savory perfection with aromatic spices, becoming a indispensable staple of every Egyptian feast.',
     ingredients: [
@@ -357,7 +399,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     servings: 4,
     difficulty: 'medium',
     tags: ['مصري', 'إسكندراني', 'أسماك', 'أرز صيادية'],
-    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512152272829-e3139592d56f?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'ابتكر صيادو الإسكندرية والسويس هذا الطبق العريق للاستفادة من البصل المكرمل لإعطاء لون ونكهة عميقة للأرز والسمك الطازج من البحر المتوسط.',
     storyEn: 'Pioneered by Mediterranean fishermen in Alexandria, using deeply caramelized dark onions to create an intense savory broth for fresh catch.',
     ingredients: [
@@ -402,7 +450,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'hard',
     isRamadanSpecial: true,
     tags: ['مصري', 'رمضاني', 'محشي', 'خضروات', 'Ramadan Feast'],
-    image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'يعد المحشي رمز الكرم واللمة العائلية في مصر، وتحتاج خلطة المحشي المصرية إلى ضبط توازان بين الشبت والبقدونس والكزبرة مع التسبيكة المميزة.',
     storyEn: 'Mahshi brings Egyptian families together around big steaming trays, defined by the rich combination of dill, parsley, cilantro, and tomato sauce.',
     ingredients: [
@@ -450,6 +504,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مصري', 'حلويات', 'رمضاني', 'قشطة', 'Royal Dessert'],
     image: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'ترتبط أم علي بتاريخ مصر المملوكي العريق، وأصبحت الحلوى الرمضانية الأولى المفضلة لمذاقها الكريمي الغني الذي يذوب في الفم.',
     storyEn: 'Originating in Mamluk-era Cairo, Om Ali is the quintessential warm dessert for cold winter nights and Ramadan gatherings.',
     ingredients: [
@@ -496,7 +556,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'hard',
     isRamadanSpecial: true,
     tags: ['أردني', 'شامي', 'جميد', 'ضأن', 'Feast Icon'],
-    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'يعبر المنسف عن أسمى قيم الضيافة والكرم في الأردن والشام، ويطبخ بلبن الجميد الجاف المصنوع تقليدياً من حليب الغنم.',
     storyEn: 'Mansaf represents the peak of Jordanian honor and hospitality, uniquely defined by Jameed—sun-dried fermented sheep milk yogurt stone.',
     ingredients: [
@@ -544,6 +610,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['سعودي', 'خليجي', 'كبسة', 'بسمتي', 'Gulf Feast'],
     image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تتنوع بهارات الكبسة الخليجية لتشمل اللومي المجفف والقرفة والهيل والقرنفل، مما يعطي الأرز طعماً وريحة ملكية زكية.',
     storyEn: 'Saudi Kabsa gets its irresistible aroma from black dried lime (Loomi), cardamom pods, cinnamon bark, and cloves.',
     ingredients: [
@@ -591,6 +663,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['عربي', 'إفطار', 'سحور', 'بيض', 'سريع', 'Skillet Classic'],
     image: 'https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تعتبر الشكشوكة من أكثر الأطباق شعبية من المغرب إلى الخليج ومصر، وتتميز بسهولة تحضيرها وطعمها الغني المحبب للجميع.',
     storyEn: 'A universal Mediterranean favorite enjoyed from North Africa to Egypt and the Levant, perfect for breakfast or quick Suhoor meals.',
     ingredients: [
@@ -636,7 +714,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'medium',
     isRamadanSpecial: true,
     tags: ['رمضاني', 'حلويات', 'قطايف', 'قشطة', 'Ramadan Sweet'],
-    image: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تعتبر القطايف أقدم حلوى رمضانية ارتبطت بليالي الفاطميين والمماليك، وتصنع خصيصاً في شهر رمضان المبارك.',
     storyEn: 'Serving Qatayef after Ramadan Iftar has been a tradition since Fatimid Cairo, representing festive joy and family warmth.',
     ingredients: [
@@ -680,6 +764,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'medium',
     tags: ['شامي', 'شاورما', 'لحم', 'سندوتشات', 'Street Icon'],
     image: 'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'سر شاورما الشارع الشامي يكمن في إضافة رشة سماق للبصل ولية الضأن المذابة أثناء تشويح اللحم على نار عالية.',
     storyEn: 'The Levant street secrets: a generous sumac onion salad and flash-searing with a touch of rendered lamb fat.',
     ingredients: [
@@ -724,6 +814,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['يمني', 'خليجي', 'مندي', 'دجاج', 'بسمتي', 'Smoked Feast'],
     image: 'https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'يعود المندي الأصيل إلى حضرموت باليمن، حيث يطهى تقليدياً في تنور حفري تحت الأرض ليمنح الدجاج والأرز طعماً مدخناً وفريداً لا يُنسى.',
     storyEn: 'Originating in Hadramout, Yemen, Mandi is traditionally slow-cooked underground in a tannour pit, locking in rich smoky juices.',
     ingredients: [
@@ -771,6 +867,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مصري', 'طاجن', 'بامية', 'لحم ضأن', 'Comfort Stew'],
     image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تعتبر البامية باللحم الضأن من أقدم وأعرق أطباق المطبخ المصري الريفي، حيث يمنحها الفخار نكهة دافئة لا تضاهى.',
     storyEn: 'A cornerstone of Egyptian countryside cooking, slow-baked in unglazed earthenware clay pots for incredible flavor density.',
     ingredients: [
@@ -817,6 +919,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['فلسطيني', 'شامي', 'مسخن', 'سماق', 'زيت زيتون', 'Heritage Dish'],
     image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'طبق التراث الشامي والاحتفال بموسم عصر الزيتون في فلسطين، حيث يمتزج زيت الزيتون البكر مع البصل المكرمل والسماق الجبلي اليدوي.',
     storyEn: 'A celebration of the olive harvest in Palestine, marrying fresh-pressed olive oil with wild mountain sumac and wood-fired bread.',
     ingredients: [
@@ -865,6 +973,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['مغاربي', 'مغربي', 'كسكسي', 'خضار', 'Couscous Feast'],
     image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'يعتبر الكسكسي طبق الجمعة والأعياد السعيد في دول المغرب العربي، ويحضر بتبخير حبيبات السميد ثلاث مرات فوق المرق المعطر بالرأس الحانوت.',
     storyEn: 'The traditional Friday gathering centerpiece across North Africa, steamed three times over simmering meat broth for ethereal lightness.',
     ingredients: [
@@ -910,7 +1024,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     servings: 5,
     difficulty: 'easy',
     tags: ['مصري', 'باذنجان', 'مسقعة', 'فرن', 'Comfort Food'],
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'المسقعة المصرية طبق مصري أصيل يعشقه الجميع، وتتميز بعصاج اللحم المتبل بصلصة الثوم والخل والخلطة الكمونية.',
     storyEn: 'A beloved Egyptian classic featuring rich layers of pan-fried eggplant soaked in garlic tomato meat sauce.',
     ingredients: [
@@ -956,7 +1076,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'medium',
     isRamadanSpecial: true,
     tags: ['رمضاني', 'حلويات', 'كنافة', 'قشطة', 'Sweet Icon'],
-    image: 'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'ملكة الحلويات العربية الرمضانية، يعود أصلها لمدينة نابلس وتشتهر بلونها الذهبي وقوامها المقرمش المحشو بالقشطة الذائبة.',
     storyEn: 'The crown jewel of Middle Eastern sweet making, famous for its crisp buttery crust and silky warm cream center.',
     ingredients: [
@@ -1003,6 +1129,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['شامي', 'كبة', 'برغل', 'صنوبر', 'Levantine Classic'],
     image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'تعتبر الكبة زين الموائد الشامية في رمضان والعزائم، وتتطلب مهارة عالية في تشكيل الأقراص الرقيقة جداً المحشوة باللحم والمكسرات.',
     storyEn: 'An iconic symbol of Levantine culinary craft, requiring delicate hand skills to shape wafer-thin crispy shells.',
     ingredients: [
@@ -1046,7 +1178,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'easy',
     isRamadanSpecial: true,
     tags: ['رمضاني', 'مقبلات', 'سمبوسك', 'جبن', 'Iftar Appetizer'],
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'لا تخلو سفرة إفطار رمضانية في العالم العربي من مقبلات السمبوسك المقرمشة التي تقدم فور آذان المغرب.',
     storyEn: 'An absolute non-negotiable starter across Arab Iftar tables, celebrated for its flaky golden shell.',
     ingredients: [
@@ -1086,6 +1224,12 @@ export const INITIAL_RECIPES: Recipe[] = [
     isRamadanSpecial: true,
     tags: ['شامي', 'سلطة', 'فتوش', 'تبولة', 'نباتي', 'Fresh Salad'],
     image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'السلطة الأولى على السفرة الرمضانية والشامية، تجمع انتعاش الأعشاب الخضراء مع حموضة السماق ودبس الرمان وقرمشة الخبز.',
     storyEn: 'The most famous refreshing salad of the Levant, bringing zesty pomegranate molasses and crispy pita together.',
     ingredients: [
@@ -1122,7 +1266,13 @@ export const INITIAL_RECIPES: Recipe[] = [
     difficulty: 'hard',
     isRamadanSpecial: true,
     tags: ['مصري', 'ممبار', 'محشي', 'شعبي', 'Street Icon'],
-    image: 'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+    galleryImages: [
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80',
+      'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80'
+    ],
     storyAr: 'يعشق المصريون الممبار المقرمش المحمر بالسمن البلدي، ويعد من أشهر الأطباق الشعبية في أعياد الأضحى والعزائم.',
     storyEn: 'A revered Egyptian street delicacy, boiled in savory herb stock and pan-fried until golden crunchy.',
     ingredients: [

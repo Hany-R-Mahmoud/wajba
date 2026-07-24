@@ -38,6 +38,7 @@ export interface Recipe {
   isRamadanSpecial?: boolean;
   tags: string[];
   image: string;
+  galleryImages?: string[];
   storyAr?: string;
   storyEn?: string;
   ingredients: Ingredient[];

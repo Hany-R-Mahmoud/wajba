@@ -4,8 +4,24 @@
 
 @layer base {
   :root {
-    --font-arabic: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
+    --font-arabic: 'Almarai', 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
     --font-english: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+    /* Unified Cohere Palette: Black, Soft Stone, White & Coral Accent */
+    --cohere-black: #000000;
+    --cohere-primary: #17171c;
+    --cohere-ink: #212121;
+    --cohere-dark-navy: #071829;
+    --cohere-canvas: #ffffff;
+    --cohere-soft-stone: #eeece7;
+    --cohere-hairline: #d9d9dd;
+    --cohere-border-light: #e5e7eb;
+    --cohere-coral: #ff7759;
+    --cohere-action-blue: #1863dc;
+  }
+
+  html {
+    font-family: var(--font-arabic);
   }
 
   html[dir="rtl"] body {
@@ -15,9 +31,14 @@
   html[dir="ltr"] body {
     font-family: var(--font-english);
   }
+
+  body {
+    background-color: var(--cohere-canvas);
+    color: var(--cohere-ink);
+  }
 }
 
-/* Custom scrollbar for clean UI */
+/* Custom scrollbar for Cohere clean UI */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -28,16 +49,16 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(180, 140, 100, 0.25);
+  background: #d9d9dd;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(180, 140, 100, 0.45);
+  background: #93939f;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Print styling for grocery list */
@@ -53,3 +74,4 @@
     display: block !important;
   }
 }
+

@@ -10,6 +10,7 @@ interface WeeklyPlannerViewProps {
   onGoToGrocery: () => void;
   onOpenRecipeDetail: (recipe: Recipe) => void;
   onOpenFamilySync: () => void;
+  onOpenCreateRecipeModal?: () => void;
 }
 
 export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
@@ -20,6 +21,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
   onGoToGrocery,
   onOpenRecipeDetail,
   onOpenFamilySync,
+  onOpenCreateRecipeModal,
 }) => {
   const isArabic = language === 'ar';
 
@@ -271,14 +273,34 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
       {assignModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-sm">
           <div className="relative w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 max-h-[85vh] flex flex-col text-stone-800 dark:text-stone-100">
-            <div className="flex items-center justify-between pb-3 border-b border-amber-200 dark:border-stone-800 mb-4">
-              <h3 className="text-base font-bold">
-                {isArabic ? 'اختر وجبة للجدول:' : 'Select Recipe for Slot:'}
-              </h3>
+            <div className="flex items-center justify-between pb-3 border-b border-amber-200 dark:border-stone-800 mb-3">
+              <div>
+                <h3 className="text-base font-bold text-amber-950 dark:text-amber-200">
+                  {isArabic ? 'اختر وجبة للجدول الأسبوعي:' : 'Select Recipe for Slot:'}
+                </h3>
+                <p className="text-[11px] text-stone-500">
+                  {isArabic ? 'اختر من الوصفات المتاحة أو أضف وجبتك الخاصة' : 'Select from recipes or add a new custom meal'}
+                </p>
+              </div>
               <button onClick={() => setAssignModalOpen(false)} className="p-2 rounded-full hover:bg-amber-100 dark:hover:bg-stone-800">
                 ✕
               </button>
             </div>
+
+            {onOpenCreateRecipeModal && (
+              <div className="mb-3">
+                <button
+                  onClick={() => {
+                    setAssignModalOpen(false);
+                    onOpenCreateRecipeModal();
+                  }}
+                  className="w-full py-2.5 px-4 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>{isArabic ? 'إضافة وجبة خاصة جديدة يدوياً 🍳' : 'Create & Add New Custom Meal 🍳'}</span>
+                </button>
+              </div>
+            )}
 
             <div className="overflow-y-auto space-y-2 flex-1 pr-1">
               {recipes.map((r) => (

@@ -26,6 +26,7 @@ import {
 } from './utils/storage';
 
 import { Navbar } from './components/Navbar';
+import { LandingPage } from './components/LandingPage';
 import { RecipeExplorer } from './components/RecipeExplorer';
 import { WeeklyPlannerView } from './components/WeeklyPlannerView';
 import { MonthlyCalendarView } from './components/MonthlyCalendarView';
@@ -38,6 +39,9 @@ import { CookingTimerBar } from './components/CookingTimerBar';
 import { Calendar, CalendarDays } from 'lucide-react';
 
 export default function App() {
+  // Landing Page vs Dashboard View state
+  const [showLanding, setShowLanding] = useState<boolean>(true);
+
   // 1. Language & Theme Setup
   const [language, setLanguage] = useState<Language>(loadStoredLanguage());
   const [theme, setTheme] = useState<'light' | 'dark'>(loadStoredTheme());
@@ -228,6 +232,25 @@ export default function App() {
     saveGroceryExtras(updated);
   };
 
+  if (showLanding) {
+    return (
+      <LandingPage
+        language={language}
+        onLanguageChange={setLanguage}
+        theme={theme}
+        onThemeToggle={toggleTheme}
+        onEnterDashboard={() => setShowLanding(false)}
+        isRamadanMode={weeklyPlan.isRamadanMode}
+        onToggleRamadanMode={() =>
+          handleUpdateWeeklyPlan({
+            ...weeklyPlan,
+            isRamadanMode: !weeklyPlan.isRamadanMode,
+          })
+        }
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-amber-50/40 text-stone-800 dark:bg-stone-950 dark:text-stone-100 flex flex-col font-sans transition-colors pb-24">
       {/* Top Main Navigation Header */}
@@ -252,6 +275,7 @@ export default function App() {
           })
         }
         activeTimers={activeTimers}
+        onOpenLanding={() => setShowLanding(true)}
       />
 
       {/* Main View Container */}
@@ -321,6 +345,7 @@ export default function App() {
                 onGoToGrocery={() => setCurrentTab('grocery')}
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
+                onOpenCreateRecipeModal={() => setCreateRecipeModalOpen(true)}
               />
             ) : (
               <MonthlyCalendarView
@@ -332,6 +357,7 @@ export default function App() {
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onChangeMonth={handleChangeMonth}
+                onOpenCreateRecipeModal={() => setCreateRecipeModalOpen(true)}
               />
             )}
           </div>
