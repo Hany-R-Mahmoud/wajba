@@ -33,7 +33,7 @@ export function getSeoMetadata(recipe?: Recipe, siteUrl?: string, notFound = fal
     description: recipe?.descriptionEn || DEFAULT_SEO.description,
     path,
     type: recipe ? 'article' : 'website',
-    image: recipe?.image || '/logo.svg',
+    image: '/logo.svg',
     robots: notFound ? 'noindex,follow' : 'index,follow',
     recipe,
   };
@@ -103,7 +103,8 @@ function recipeJsonLd(recipe: Recipe, url: string, image: string) {
 export function updateSeo(recipe?: Recipe, notFound = false) {
   const metadata = getSeoMetadata(recipe, window.location.origin, notFound);
   const canonicalUrl = notFound ? null : new URL(metadata.path, window.location.origin).href;
-  const imageUrl = new URL(metadata.image, window.location.origin).href;
+  const socialImageUrl = new URL(metadata.image, window.location.origin).href;
+  const recipeImageUrl = recipe ? new URL(recipe.image, window.location.origin).href : socialImageUrl;
 
   document.title = metadata.title;
   upsertMeta('name', 'description', metadata.description);
@@ -112,12 +113,12 @@ export function updateSeo(recipe?: Recipe, notFound = false) {
   upsertMeta('property', 'og:description', metadata.description);
   upsertMeta('property', 'og:type', metadata.type);
   upsertMeta('property', 'og:url', canonicalUrl || window.location.href);
-  upsertMeta('property', 'og:image', imageUrl);
-  upsertMeta('property', 'og:image:alt', metadata.title);
+  upsertMeta('property', 'og:image', socialImageUrl);
+  upsertMeta('property', 'og:image:alt', 'Wajba logo');
   upsertMeta('name', 'twitter:card', 'summary_large_image');
   upsertMeta('name', 'twitter:title', metadata.title);
   upsertMeta('name', 'twitter:description', metadata.description);
-  upsertMeta('name', 'twitter:image', imageUrl);
+  upsertMeta('name', 'twitter:image', socialImageUrl);
   upsertCanonical(canonicalUrl);
 
   document.head.querySelectorAll('script[data-wajba-seo-schema]').forEach((element) => element.remove());
@@ -125,7 +126,7 @@ export function updateSeo(recipe?: Recipe, notFound = false) {
     const script = document.createElement('script');
     script.type = 'application/ld+json';
     script.dataset.wajbaSeoSchema = 'true';
-    script.textContent = JSON.stringify(recipeJsonLd(recipe, canonicalUrl, imageUrl));
+    script.textContent = JSON.stringify(recipeJsonLd(recipe, canonicalUrl, recipeImageUrl));
     document.head.appendChild(script);
   }
 }

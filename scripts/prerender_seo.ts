@@ -35,7 +35,7 @@ function replaceTag(source: string, pattern: RegExp, replacement: string): strin
 function routeHtml(template: string, recipe: (typeof INITIAL_RECIPES)[number], baseUrl?: string): string {
   const recipeUrl = `/recipes/${encodeURIComponent(recipe.id)}`;
   const canonical = baseUrl ? `${baseUrl}${recipeUrl}` : undefined;
-  const image = /^https?:\/\//.test(recipe.image) ? recipe.image : baseUrl ? new URL(recipe.image, baseUrl).href : recipe.image;
+  const socialImage = baseUrl ? `${baseUrl}/logo.svg` : '/logo.svg';
   const schema = JSON.stringify(getRecipeJsonLd(recipe, baseUrl)).replace(/</g, '\\u003c');
   let result = template
     .replace('<html lang="ar" dir="rtl">', '<html lang="en" dir="ltr">')
@@ -47,11 +47,11 @@ function routeHtml(template: string, recipe: (typeof INITIAL_RECIPES)[number], b
   result = replaceTag(result, /<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${html(`${recipe.titleEn} | Wajba`)}" />`);
   result = replaceTag(result, /<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${html(recipe.descriptionEn)}" />`);
   result = replaceTag(result, /<meta property="og:type"[^>]*>/, '<meta property="og:type" content="article" />');
-  result = replaceTag(result, /<meta property="og:image"[^>]*>/, `<meta property="og:image" content="${html(image)}" />`);
-  result = replaceTag(result, /<meta property="og:image:alt"[^>]*>/, `<meta property="og:image:alt" content="${html(recipe.titleEn)}" />`);
+  result = replaceTag(result, /<meta property="og:image"[^>]*>/, `<meta property="og:image" content="${html(socialImage)}" />`);
+  result = replaceTag(result, /<meta property="og:image:alt"[^>]*>/, '<meta property="og:image:alt" content="Wajba logo" />');
   result = replaceTag(result, /<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${html(`${recipe.titleEn} | Wajba`)}" />`);
   result = replaceTag(result, /<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${html(recipe.descriptionEn)}" />`);
-  result = replaceTag(result, /<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${html(image)}" />`);
+  result = replaceTag(result, /<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${html(socialImage)}" />`);
   result = replaceTag(result, /<meta name="robots"[^>]*>/, '<meta name="robots" content="index,follow" />');
   result = result.replace(/<link rel="canonical"[^>]*>\n?/g, '');
   result = result.replace(/<meta property="og:url"[^>]*>\n?/g, '');
