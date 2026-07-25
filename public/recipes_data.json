@@ -1,8 +1,8 @@
 {
   "_meta": {
     "title": "Wajba Culinary Architecture - Meals & Recipes Database",
-    "exportedAt": "2026-07-25T04:17:13.420Z",
-    "totalMeals": 25
+    "exportedAt": "2026-07-25T04:52:58.998Z",
+    "totalMeals": 49
   },
   "schema": {
     "description": "Expected structure and typescript interfaces for Wajba recipes.",
@@ -37,61 +37,6 @@
         "medium",
         "hard"
       ]
-    },
-    "newMealTemplate": {
-      "id": "string (unique identifier, e.g. mansaf)",
-      "titleAr": "string (Arabic Title)",
-      "titleEn": "string (English Title)",
-      "descriptionAr": "string (Brief Arabic Description)",
-      "descriptionEn": "string (Brief English Description)",
-      "region": "Region (egypt | levant | gulf | maghreb | general)",
-      "mealType": [
-        "MealSlot[] (e.g. [\"lunch\", \"dinner\", \"iftar\"])"
-      ],
-      "prepTimeMinutes": "number (e.g. 25)",
-      "cookTimeMinutes": "number (e.g. 60)",
-      "servings": "number (e.g. 6)",
-      "difficulty": "Difficulty (easy | medium | hard)",
-      "isRamadanSpecial": "boolean (optional, true/false)",
-      "tags": [
-        "string[] (e.g. [\"أردني\", \"جميد\", \"عزائم\"])"
-      ],
-      "image": "string (Unsplash image URL)",
-      "galleryImages": [
-        "string[] (Optional additional image URLs)"
-      ],
-      "storyAr": "string (Optional cultural heritage story in Arabic)",
-      "storyEn": "string (Optional cultural heritage story in English)",
-      "ingredients": [
-        {
-          "id": "string (unique inside recipe)",
-          "nameAr": "string (e.g. لحم ضأن)",
-          "nameEn": "string (e.g. Lamb Meat)",
-          "amount": "number (e.g. 1.5)",
-          "unitAr": "string (e.g. كجم)",
-          "unitEn": "string (e.g. kg)",
-          "aisle": "IngredientAisle (produce | meat | dairy | pantry | bakery | frozen | other)"
-        }
-      ],
-      "instructionsAr": [
-        "string[] (Step by step instructions in Arabic)"
-      ],
-      "instructionsEn": [
-        "string[] (Step by step instructions in English)"
-      ],
-      "timerSteps": [
-        {
-          "stepIndex": "number (0-indexed step number)",
-          "titleAr": "string (Timer step title in Arabic)",
-          "titleEn": "string (Timer step title in English)",
-          "durationMinutes": "number (Duration in minutes)"
-        }
-      ],
-      "votesCount": {
-        "likes": 120,
-        "dislikes": 2
-      },
-      "rating": 4.9
     }
   },
   "recipes": [
@@ -3051,6 +2996,2779 @@
         "dislikes": 8
       },
       "rating": 4.88
+    },
+    {
+      "id": "egypt-kofta-haty",
+      "titleAr": "كفتة الحاتي المصرية",
+      "titleEn": "Egyptian Kofta Haty",
+      "descriptionAr": "أصابع لحم متبلة بالبصل والبقدونس ومشوية على الفحم على طريقة محلات الكباب المصرية.",
+      "descriptionEn": "Charcoal-grilled minced beef and lamb skewers seasoned with onion, parsley, and warm spices.",
+      "region": "egypt",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 18,
+      "servings": 5,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "مشويات",
+        "كفتة",
+        "عزائم"
+      ],
+      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "ترتبط كفتة الحاتي بمحلات الكباب الشعبية في القاهرة والإسكندرية، حيث تمنحها نار الفحم رائحتها المميزة.",
+      "storyEn": "Kofta Haty is associated with Egypt's neighborhood kebab shops, where charcoal gives the skewers their characteristic smoky aroma.",
+      "ingredients": [
+        {
+          "id": "ekh1",
+          "nameAr": "لحم بقري مفروم",
+          "nameEn": "Minced beef",
+          "amount": 700,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "ekh2",
+          "nameAr": "لحم ضأن مفروم",
+          "nameEn": "Minced lamb",
+          "amount": 200,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "ekh3",
+          "nameAr": "بصل مبشور ومصفى",
+          "nameEn": "Grated, drained onion",
+          "amount": 2,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "ekh4",
+          "nameAr": "بقدونس مفروم",
+          "nameEn": "Chopped parsley",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "ekh5",
+          "nameAr": "بهارات لحم وفلفل أسود",
+          "nameEn": "Meat spice and black pepper",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ekh6",
+          "nameAr": "ملح",
+          "nameEn": "Salt",
+          "amount": 1.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط اللحم مع البصل المصفى والبقدونس والبهارات والملح حتى يتماسك الخليط.",
+        "غط الخليط وبرّده 20 دقيقة، ثم شكله أصابع حول أسياخ معدنية.",
+        "اشوِ الكفتة على فحم متوسط الحرارة مع تدويرها حتى تتحمر وتنضج.",
+        "اتركها دقيقتين ثم قدمها مع الطحينة والخبز البلدي والسلطة."
+      ],
+      "instructionsEn": [
+        "Mix both meats with drained onion, parsley, spices, and salt until cohesive.",
+        "Cover and chill for 20 minutes, then shape firmly around metal skewers.",
+        "Grill over medium charcoal, turning until browned and safely cooked through.",
+        "Rest for two minutes and serve with tahini, baladi bread, and salad."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "تبريد الخليط",
+          "titleEn": "Chill mixture",
+          "durationMinutes": 20
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "شوي الكفتة",
+          "titleEn": "Grill kofta",
+          "durationMinutes": 12
+        }
+      ],
+      "votesCount": {
+        "likes": 180,
+        "dislikes": 4
+      },
+      "rating": 4.88
+    },
+    {
+      "id": "egypt-hamam-mahshi",
+      "titleAr": "حمام محشي بالفريك",
+      "titleEn": "Egyptian Pigeon Stuffed with Freekeh",
+      "descriptionAr": "حمام كامل محشو بالفريك المتبل ومسلوق ثم محمر بالسمن البلدي.",
+      "descriptionEn": "Whole pigeon filled with spiced freekeh, gently simmered, then browned in ghee.",
+      "region": "egypt",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 35,
+      "cookTimeMinutes": 60,
+      "servings": 4,
+      "difficulty": "hard",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "حمام",
+        "فريك",
+        "عزائم"
+      ],
+      "image": "https://images.unsplash.com/photo-1514944288352-fffac99f0bdf?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1514944288352-fffac99f0bdf?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "الحمام المحشي طبق احتفالي قديم في الريف والمدن المصرية ويقدم عادة في الولائم والمناسبات.",
+      "storyEn": "Stuffed pigeon is a long-standing Egyptian celebration dish served at family feasts in both rural and urban communities.",
+      "ingredients": [
+        {
+          "id": "ehm1",
+          "nameAr": "حمام منظف",
+          "nameEn": "Cleaned pigeons",
+          "amount": 4,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "meat"
+        },
+        {
+          "id": "ehm2",
+          "nameAr": "فريك مغسول",
+          "nameEn": "Rinsed freekeh",
+          "amount": 1.5,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ehm3",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Chopped onion",
+          "amount": 1,
+          "unitAr": "حبة",
+          "unitEn": "pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "ehm4",
+          "nameAr": "كبد وقوانص الحمام",
+          "nameEn": "Pigeon liver and giblets",
+          "amount": 150,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "ehm5",
+          "nameAr": "سمن بلدي",
+          "nameEn": "Ghee",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "ehm6",
+          "nameAr": "هيل وورق غار وفلفل",
+          "nameEn": "Cardamom, bay, and pepper",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "شوح البصل والكبد والقوانص في السمن ثم أضف الفريك والبهارات وقليلاً من الماء حتى نصف النضج.",
+        "احش الحمام دون ضغط زائد وأغلق الفتحة بخيط مطبخ.",
+        "اسلق الحمام برفق في ماء متبل بالهيل وورق الغار حتى ينضج.",
+        "جففه وادهنه بالسمن ثم حمّره في الفرن قبل التقديم."
+      ],
+      "instructionsEn": [
+        "Sauté onion, liver, and giblets in ghee; add freekeh, spices, and a little water and cook halfway.",
+        "Loosely stuff each pigeon and secure the opening with kitchen twine.",
+        "Gently simmer in water seasoned with cardamom and bay until cooked through.",
+        "Dry, brush with ghee, and roast briefly until deeply browned."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 2,
+          "titleAr": "سلق الحمام",
+          "titleEn": "Simmer pigeons",
+          "durationMinutes": 40
+        },
+        {
+          "stepIndex": 3,
+          "titleAr": "التحمير",
+          "titleEn": "Brown in oven",
+          "durationMinutes": 12
+        }
+      ],
+      "votesCount": {
+        "likes": 210,
+        "dislikes": 5
+      },
+      "rating": 4.91
+    },
+    {
+      "id": "egypt-roz-meammar",
+      "titleAr": "أرز معمر مصري بالسمن والقشطة",
+      "titleEn": "Egyptian Roz Meammar Casserole",
+      "descriptionAr": "أرز قصير الحبة مخبوز بالحليب والقشطة والسمن البلدي حتى تتكون قشرة ذهبية محمرة.",
+      "descriptionEn": "Short-grain rice baked with milk, cream, and ghee beneath a golden bubbly crust.",
+      "region": "egypt",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 55,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "أرز",
+        "طاجن",
+        "ريفي"
+      ],
+      "image": "https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "يشتهر الأرز المعمر في قرى دلتا النيل ويخبز تقليدياً في طواجن فخار تحتفظ بالحرارة.",
+      "storyEn": "Roz meammar is strongly associated with Nile Delta villages and is traditionally baked in heat-retaining clay casseroles.",
+      "ingredients": [
+        {
+          "id": "erm1",
+          "nameAr": "أرز مصري قصير الحبة",
+          "nameEn": "Egyptian short-grain rice",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "erm2",
+          "nameAr": "حليب كامل الدسم",
+          "nameEn": "Whole milk",
+          "amount": 4,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "dairy"
+        },
+        {
+          "id": "erm3",
+          "nameAr": "قشطة بلدي",
+          "nameEn": "Cream",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "dairy"
+        },
+        {
+          "id": "erm4",
+          "nameAr": "سمن بلدي",
+          "nameEn": "Ghee",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "erm5",
+          "nameAr": "ملح",
+          "nameEn": "Salt",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "erm6",
+          "nameAr": "فلفل أسود",
+          "nameEn": "Black pepper",
+          "amount": 0.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اغسل الأرز وانقعه 15 دقيقة ثم صفه وضعه في طاجن مدهون بالسمن.",
+        "سخن الحليب مع الملح والفلفل دون غليان واسكبه فوق الأرز.",
+        "وزع القشطة والسمن على الوجه واخبز في فرن ساخن حتى يمتص الأرز السائل.",
+        "ارفع الحرارة في الدقائق الأخيرة حتى يصبح الوجه ذهبياً ثم أرحه قبل التقديم."
+      ],
+      "instructionsEn": [
+        "Rinse rice, soak for 15 minutes, drain, and place in a ghee-coated casserole.",
+        "Warm milk with salt and pepper without boiling, then pour it over the rice.",
+        "Dot the top with cream and ghee and bake until the rice absorbs the liquid.",
+        "Increase heat briefly to brown the top, then rest before serving."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "نقع الأرز",
+          "titleEn": "Soak rice",
+          "durationMinutes": 15
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "خبز الأرز",
+          "titleEn": "Bake rice",
+          "durationMinutes": 45
+        }
+      ],
+      "votesCount": {
+        "likes": 195,
+        "dislikes": 3
+      },
+      "rating": 4.87
+    },
+    {
+      "id": "egypt-bessara",
+      "titleAr": "البصارة المصرية بالأعشاب",
+      "titleEn": "Egyptian Bessara Herb Dip",
+      "descriptionAr": "مهروس فول مدشوش أخضر بالأعشاب والثوم يزين بالبصل المقرمش وزيت الزيتون.",
+      "descriptionEn": "A green split-fava purée with herbs and garlic, topped with crisp golden onions.",
+      "region": "egypt",
+      "mealType": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 45,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "نباتي",
+        "فول",
+        "اقتصادي"
+      ],
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "البصارة من أطباق البيوت المصرية الاقتصادية القديمة وتعتمد على الفول المدشوش والأعشاب المتاحة.",
+      "storyEn": "Bessara is an old, economical Egyptian home dish built from split fava beans and abundant fresh herbs.",
+      "ingredients": [
+        {
+          "id": "eb1",
+          "nameAr": "فول مدشوش",
+          "nameEn": "Split fava beans",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "eb2",
+          "nameAr": "بقدونس وشبت وكزبرة",
+          "nameEn": "Parsley, dill, and cilantro",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "produce"
+        },
+        {
+          "id": "eb3",
+          "nameAr": "بصل",
+          "nameEn": "Onions",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "eb4",
+          "nameAr": "ثوم",
+          "nameEn": "Garlic",
+          "amount": 6,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "eb5",
+          "nameAr": "كمون وكزبرة جافة",
+          "nameEn": "Cumin and ground coriander",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "eb6",
+          "nameAr": "زيت نباتي",
+          "nameEn": "Vegetable oil",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اغسل الفول المدشوش واسلقه مع بصلة والثوم والأعشاب حتى يطرى تماماً.",
+        "اخلط المزيج حتى يصبح مهروساً ناعماً ثم أعده إلى نار هادئة وتبله.",
+        "حمّر شرائح البصل في الزيت حتى تصبح مقرمشة واحتفظ بقليل من الزيت.",
+        "قدم البصارة دافئة أو باردة وزينها بالبصل المقرمش."
+      ],
+      "instructionsEn": [
+        "Rinse split favas and simmer with one onion, garlic, and herbs until completely tender.",
+        "Blend smooth, return to low heat, and season with cumin, coriander, and salt.",
+        "Fry sliced remaining onions in oil until crisp and reserve a little flavored oil.",
+        "Serve warm or cool, topped with the crisp onions."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "سلق الفول",
+          "titleEn": "Simmer fava beans",
+          "durationMinutes": 35
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "تحمير البصل",
+          "titleEn": "Crisp onions",
+          "durationMinutes": 10
+        }
+      ],
+      "votesCount": {
+        "likes": 160,
+        "dislikes": 4
+      },
+      "rating": 4.82
+    },
+    {
+      "id": "egypt-feteer-meshaltet",
+      "titleAr": "الفطير المشلتت الفلاحي",
+      "titleEn": "Egyptian Feteer Meshaltet Pastry",
+      "descriptionAr": "فطير ريفي متعدد الطبقات مورق بالسمن البلدي ويقدم مع العسل والجبن القديم.",
+      "descriptionEn": "A flaky, many-layered country pastry enriched with ghee and served with honey or aged cheese.",
+      "region": "egypt",
+      "mealType": [
+        "breakfast",
+        "snack"
+      ],
+      "prepTimeMinutes": 45,
+      "cookTimeMinutes": 25,
+      "servings": 8,
+      "difficulty": "hard",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "فطير",
+        "ريفي",
+        "مخبوزات"
+      ],
+      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "الفطير المشلتت رمز للضيافة الريفية المصرية، وتبنى طبقاته بفرد العجين وطيه مراراً بالسمن.",
+      "storyEn": "Feteer meshaltet is a symbol of rural Egyptian hospitality, with layers built by repeatedly stretching and folding ghee-brushed dough.",
+      "ingredients": [
+        {
+          "id": "efm1",
+          "nameAr": "دقيق خبز",
+          "nameEn": "Bread flour",
+          "amount": 750,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "efm2",
+          "nameAr": "ماء فاتر",
+          "nameEn": "Lukewarm water",
+          "amount": 400,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "other"
+        },
+        {
+          "id": "efm3",
+          "nameAr": "ملح",
+          "nameEn": "Salt",
+          "amount": 1.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "efm4",
+          "nameAr": "سمن بلدي مذاب",
+          "nameEn": "Melted ghee",
+          "amount": 250,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "dairy"
+        },
+        {
+          "id": "efm5",
+          "nameAr": "زيت",
+          "nameEn": "Oil",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "efm6",
+          "nameAr": "عسل للتقديم",
+          "nameEn": "Honey, to serve",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اعجن الدقيق والماء والملح حتى تصبح العجينة ناعمة ثم أرحها 30 دقيقة.",
+        "قسم العجين كرات وادهنها بالزيت، ثم افرد كل كرة رقيقة جداً على سطح مدهون.",
+        "ادهن بالسمن واطوِ العجين على نفسه، وضع الطبقات داخل بعضها لتكوين قرص.",
+        "أرح القرص 15 دقيقة ثم اخبزه في فرن شديد الحرارة حتى ينتفخ ويحمر."
+      ],
+      "instructionsEn": [
+        "Knead flour, water, and salt until smooth, then rest for 30 minutes.",
+        "Divide into oiled balls and stretch each paper-thin on a greased surface.",
+        "Brush with ghee, fold, and nest the folded layers together into one round.",
+        "Rest for 15 minutes, then bake in a very hot oven until puffed and golden."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "راحة العجين",
+          "titleEn": "Rest dough",
+          "durationMinutes": 30
+        },
+        {
+          "stepIndex": 3,
+          "titleAr": "خبز الفطير",
+          "titleEn": "Bake feteer",
+          "durationMinutes": 20
+        }
+      ],
+      "votesCount": {
+        "likes": 230,
+        "dislikes": 5
+      },
+      "rating": 4.92
+    },
+    {
+      "id": "egypt-roz-bel-laban",
+      "titleAr": "أرز باللبن المصري بالمكسرات",
+      "titleEn": "Egyptian Rice Pudding with Pistachios",
+      "descriptionAr": "حلوى كريمية من الأرز والحليب والفانيليا تزين بالفستق والقرفة.",
+      "descriptionEn": "Creamy rice pudding scented with vanilla and finished with crushed pistachios or cinnamon.",
+      "region": "egypt",
+      "mealType": [
+        "dessert",
+        "snack",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 40,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "حلويات",
+        "أرز باللبن",
+        "بارد"
+      ],
+      "image": "https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "الأرز باللبن حلوى منزلية ومحلّية واسعة الانتشار في مصر وتقدم ساخنة أو مبردة.",
+      "storyEn": "Rice pudding is a widely loved Egyptian home and dairy-shop dessert, served either warm or thoroughly chilled.",
+      "ingredients": [
+        {
+          "id": "erbl1",
+          "nameAr": "أرز مصري",
+          "nameEn": "Egyptian short-grain rice",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "erbl2",
+          "nameAr": "حليب كامل الدسم",
+          "nameEn": "Whole milk",
+          "amount": 1.5,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "dairy"
+        },
+        {
+          "id": "erbl3",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "erbl4",
+          "nameAr": "نشا ذرة",
+          "nameEn": "Cornstarch",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "erbl5",
+          "nameAr": "فانيليا",
+          "nameEn": "Vanilla",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "erbl6",
+          "nameAr": "فستق أو قرفة",
+          "nameEn": "Pistachios or cinnamon",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق الأرز في ماء قليل حتى يطرى ويمتص الماء.",
+        "أضف معظم الحليب الساخن والسكر واطهه على نار هادئة مع التقليب.",
+        "ذب النشا في الحليب المتبقي وأضفه مع الفانيليا حتى يثخن القوام.",
+        "وزع في أطباق وزين بالفستق أو القرفة وقدمه دافئاً أو مبرداً."
+      ],
+      "instructionsEn": [
+        "Simmer rice in a small amount of water until tender and the water is absorbed.",
+        "Add most of the warm milk and sugar; cook gently while stirring.",
+        "Dissolve cornstarch in remaining milk and add with vanilla, stirring until thick.",
+        "Portion, garnish with pistachios or cinnamon, and serve warm or chilled."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "سلق الأرز",
+          "titleEn": "Cook rice",
+          "durationMinutes": 15
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "تكثيف المهلبية",
+          "titleEn": "Thicken pudding",
+          "durationMinutes": 6
+        }
+      ],
+      "votesCount": {
+        "likes": 175,
+        "dislikes": 2
+      },
+      "rating": 4.86
+    },
+    {
+      "id": "egypt-basbousa",
+      "titleAr": "البسبوسة المصرية المكرملة",
+      "titleEn": "Egyptian Basbousa Semolina Cake",
+      "descriptionAr": "كيكة سميد طرية بالسمن والزبادي تسقى بشربات الليمون الدافئ وتزين بالمكسرات.",
+      "descriptionEn": "Tender semolina cake enriched with ghee and yogurt and soaked in lemon rose syrup.",
+      "region": "egypt",
+      "mealType": [
+        "dessert",
+        "snack",
+        "iftar"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 35,
+      "servings": 12,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "حلويات",
+        "سميد",
+        "رمضان"
+      ],
+      "image": "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "البسبوسة من أشهر حلويات الصواني في مصر وتظهر بقوة في رمضان والمناسبات العائلية.",
+      "storyEn": "Basbousa is among Egypt's best-known tray bakes and is especially prominent during Ramadan and family gatherings.",
+      "ingredients": [
+        {
+          "id": "eb1",
+          "nameAr": "سميد خشن",
+          "nameEn": "Coarse semolina",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "eb2",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 1.5,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "eb3",
+          "nameAr": "زبادي",
+          "nameEn": "Yogurt",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "dairy"
+        },
+        {
+          "id": "eb4",
+          "nameAr": "سمن مذاب",
+          "nameEn": "Melted ghee",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "dairy"
+        },
+        {
+          "id": "eb5",
+          "nameAr": "جوز هند",
+          "nameEn": "Desiccated coconut",
+          "amount": 0.25,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "eb6",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon juice",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        }
+      ],
+      "instructionsAr": [
+        "اغل كوب سكر مع كوب ماء وعصير الليمون عشر دقائق ثم برد الشربات.",
+        "اخلط السميد مع السكر المتبقي وجوز الهند ثم أضف السمن والزبادي دون إفراط في الخلط.",
+        "افرد الخليط في صينية مدهونة وقطعه معينات ثم اخبزه حتى يصبح ذهبياً.",
+        "اسق البسبوسة الساخنة بالشربات البارد واتركها تتشرب قبل التقديم."
+      ],
+      "instructionsEn": [
+        "Boil one cup sugar with one cup water and lemon for ten minutes; cool the syrup.",
+        "Combine semolina, remaining sugar, and coconut, then fold in ghee and yogurt without overmixing.",
+        "Spread in a greased pan, score into diamonds, and bake until golden.",
+        "Pour cool syrup over the hot cake and let it absorb before serving."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "غلي الشربات",
+          "titleEn": "Boil syrup",
+          "durationMinutes": 10
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "خبز البسبوسة",
+          "titleEn": "Bake basbousa",
+          "durationMinutes": 30
+        }
+      ],
+      "votesCount": {
+        "likes": 290,
+        "dislikes": 6
+      },
+      "rating": 4.91
+    },
+    {
+      "id": "egypt-feseekh",
+      "titleAr": "طبق الفسيخ المصري بالليمون والبصل",
+      "titleEn": "Egyptian Cured Feseekh Platter",
+      "descriptionAr": "سمك بوري مملح تقليدي يقدم منظفاً مع عصير الليمون والخل والبصل الأخضر والطحينة.",
+      "descriptionEn": "Traditional salt-cured grey mullet, carefully cleaned and served with lemon, spring onion, and tahini dip.",
+      "region": "egypt",
+      "mealType": [
+        "lunch"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 0,
+      "servings": 4,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "شم النسيم",
+        "سمك مملح",
+        "تراثي"
+      ],
+      "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "يرتبط الفسيخ ارتباطاً وثيقاً باحتفال شم النسيم المصري منذ آلاف السنين.",
+      "storyEn": "Feseekh is closely tied to Egypt's ancient Sham El-Nessim spring celebration.",
+      "ingredients": [
+        {
+          "id": "ef1",
+          "nameAr": "فسيخ بوري جاهز من مصدر مرخص",
+          "nameEn": "Licensed, ready-cured feseekh mullet",
+          "amount": 800,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "ef2",
+          "nameAr": "ليمون",
+          "nameEn": "Lemons",
+          "amount": 4,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "ef3",
+          "nameAr": "بصل أخضر",
+          "nameEn": "Spring onions",
+          "amount": 2,
+          "unitAr": "حزمة",
+          "unitEn": "bunches",
+          "aisle": "produce"
+        },
+        {
+          "id": "ef4",
+          "nameAr": "طحينة",
+          "nameEn": "Tahini",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ef5",
+          "nameAr": "خل",
+          "nameEn": "Vinegar",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ef6",
+          "nameAr": "خبز بلدي",
+          "nameEn": "Baladi bread",
+          "amount": 4,
+          "unitAr": "رغيف",
+          "unitEn": "loaves",
+          "aisle": "bakery"
+        }
+      ],
+      "instructionsAr": [
+        "استخدم فقط فسيخاً جاهزاً من منشأة مرخصة ولا تحاول تمليح السمك منزلياً.",
+        "انزع الجلد والرأس والأحشاء والعظام بسكين نظيف.",
+        "قطع اللحم وضع عليه عصير الليمون والخل مباشرة قبل التقديم.",
+        "قدمه فوراً مع البصل الأخضر والطحينة والخبز."
+      ],
+      "instructionsEn": [
+        "Use ready-cured feseekh from a licensed producer.",
+        "Remove skin, head, viscera, and bones using clean utensils.",
+        "Cut the flesh and dress with lemon juice and vinegar immediately before serving.",
+        "Serve promptly with spring onion, tahini, and pita bread."
+      ],
+      "timerSteps": [],
+      "votesCount": {
+        "likes": 140,
+        "dislikes": 8
+      },
+      "rating": 4.75
+    },
+    {
+      "id": "lebanon-manakish-zaatar",
+      "titleAr": "مناقيش الزعتر اللبنانية",
+      "titleEn": "Lebanese Za'atar Manakish",
+      "descriptionAr": "أقراص عجين طرية مخبوزة بخليط الزعتر اللبناني والسماق والسمسم وزيت الزيتون البكر.",
+      "descriptionEn": "Soft oven-baked flatbreads topped with fragrant za'atar, sumac, sesame, and extra virgin olive oil.",
+      "region": "levant",
+      "mealType": [
+        "breakfast",
+        "snack"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 10,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "لبناني",
+        "مناقيش",
+        "زعتر",
+        "فطور"
+      ],
+      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "المناقيش من أساسيات أفران الأحياء في لبنان وتؤكل ساخنة في الصباح مطوية مع الخضار.",
+      "storyEn": "Manakish are a staple of Lebanese neighborhood bakeries, commonly eaten hot in the morning and folded around fresh vegetables.",
+      "ingredients": [
+        {
+          "id": "lmz1",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lmz2",
+          "nameAr": "خميرة فورية",
+          "nameEn": "Instant yeast",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lmz3",
+          "nameAr": "ماء فاتر",
+          "nameEn": "Lukewarm water",
+          "amount": 300,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "other"
+        },
+        {
+          "id": "lmz4",
+          "nameAr": "زعتر لبناني",
+          "nameEn": "Lebanese za'atar",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lmz5",
+          "nameAr": "زيت زيتون",
+          "nameEn": "Olive oil",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lmz6",
+          "nameAr": "ملح وسكر",
+          "nameEn": "Salt and sugar",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط الدقيق والخميرة والسكر والملح ثم اعجن بالماء حتى تصبح العجينة ناعمة.",
+        "غط العجين واتركه يختمر حتى يتضاعف، ثم قسمه ست كرات.",
+        "اخلط الزعتر بزيت الزيتون وافرد كل كرة وضع الخليط فوقها مع ترك حافة.",
+        "اخبز على صاج شديد السخونة حتى تنتفخ الحواف وينضج القاع."
+      ],
+      "instructionsEn": [
+        "Mix flour, yeast, sugar, and salt; knead with water until smooth.",
+        "Cover and proof until doubled, then divide into six balls.",
+        "Mix za'atar with olive oil, flatten each ball, and spread topping short of the edge.",
+        "Bake on a very hot tray or stone until edges puff and the base is cooked."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "تخمير العجين",
+          "titleEn": "Proof dough",
+          "durationMinutes": 60
+        },
+        {
+          "stepIndex": 3,
+          "titleAr": "خبز المناقيش",
+          "titleEn": "Bake manakish",
+          "durationMinutes": 8
+        }
+      ],
+      "votesCount": {
+        "likes": 260,
+        "dislikes": 3
+      },
+      "rating": 4.9
+    },
+    {
+      "id": "lebanon-mujadara",
+      "titleAr": "المجدرة اللبنانية بالبصل المكرمل",
+      "titleEn": "Lebanese Mujadara with Crispy Onions",
+      "descriptionAr": "عدس بني وأرز متبلان بالكمون والبهارات ومغطّيان بشرائح البصل المكرمل الداكن.",
+      "descriptionEn": "Brown lentils and rice seasoned with cumin and crowned with deeply caramelized golden brown onions.",
+      "region": "levant",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 45,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "لبناني",
+        "نباتي",
+        "عدس",
+        "اقتصادي"
+      ],
+      "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "المجدرة طبق منزلي نباتي متجذر في بلاد الشام ويعتمد على مكونات المؤونة البسيطة.",
+      "storyEn": "Mujadara is a deeply rooted Levantine meatless home dish based on simple pantry staples.",
+      "ingredients": [
+        {
+          "id": "lm1",
+          "nameAr": "عدس بني",
+          "nameEn": "Brown lentils",
+          "amount": 1.5,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lm2",
+          "nameAr": "أرز طويل الحبة",
+          "nameEn": "Long-grain rice",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lm3",
+          "nameAr": "بصل",
+          "nameEn": "Onions",
+          "amount": 4,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "lm4",
+          "nameAr": "زيت زيتون",
+          "nameEn": "Olive oil",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lm5",
+          "nameAr": "كمون",
+          "nameEn": "Cumin",
+          "amount": 1.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lm6",
+          "nameAr": "ملح وفلفل",
+          "nameEn": "Salt and pepper",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق العدس حتى يقترب من النضج مع الاحتفاظ بماء السلق.",
+        "حمّر شرائح البصل ببطء في زيت الزيتون حتى تصبح داكنة ومكرملة.",
+        "أضف الأرز والعدس والكمون وماء السلق الكافي واطه على نار هادئة.",
+        "اترك المجدرة ترتاح ثم قدمها مع البصل المكرمل واللبن أو السلطة."
+      ],
+      "instructionsEn": [
+        "Simmer lentils until nearly tender, reserving their cooking liquid.",
+        "Slowly fry sliced onions in olive oil until deep brown and caramelized.",
+        "Add rice, lentils, cumin, and enough reserved liquid; cover and cook gently.",
+        "Rest, then serve topped with onions and accompanied by yogurt or salad."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "كرملة البصل",
+          "titleEn": "Caramelize onions",
+          "durationMinutes": 25
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "طهي الأرز والعدس",
+          "titleEn": "Cook rice and lentils",
+          "durationMinutes": 20
+        }
+      ],
+      "votesCount": {
+        "likes": 190,
+        "dislikes": 4
+      },
+      "rating": 4.85
+    },
+    {
+      "id": "lebanon-shish-tawook",
+      "titleAr": "الشيش طاووق اللبناني بالمستكة والتومية",
+      "titleEn": "Lebanese Shish Tawook Skewers",
+      "descriptionAr": "مكعبات دجاج طرية منقوعة باللبن والثوم والليمون والبابريكا ومشوية على أسياخ.",
+      "descriptionEn": "Juicy chicken cubes marinated in yogurt, garlic, lemon, and paprika, grilled to smoky perfection.",
+      "region": "levant",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 15,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "لبناني",
+        "دجاج",
+        "مشويات",
+        "ثوم"
+      ],
+      "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "الشيش طاووق من أشهر المشويات اللبنانية ويقدم غالباً مع الثومية والمخلل والخبز.",
+      "storyEn": "Shish tawook is a mainstay of Lebanese grills, commonly paired with garlic sauce, pickles, and flatbread.",
+      "ingredients": [
+        {
+          "id": "lst1",
+          "nameAr": "صدور دجاج",
+          "nameEn": "Chicken breast",
+          "amount": 900,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "lst2",
+          "nameAr": "لبن زبادي",
+          "nameEn": "Yogurt",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "dairy"
+        },
+        {
+          "id": "lst3",
+          "nameAr": "ثوم مهروس",
+          "nameEn": "Crushed garlic",
+          "amount": 6,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "lst4",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon juice",
+          "amount": 0.25,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "lst5",
+          "nameAr": "معجون طماطم",
+          "nameEn": "Tomato paste",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lst6",
+          "nameAr": "بابريكا وزعتر",
+          "nameEn": "Paprika and oregano",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط اللبن والثوم والليمون ومعجون الطماطم والبهارات.",
+        "أضف مكعبات الدجاج وانقعها في الثلاجة ساعتين على الأقل.",
+        "شك الدجاج في أسياخ واشوه على حرارة متوسطة مع التقليب.",
+        "تأكد من نضج الدجاج تماماً ثم أرحه وقدمه مع الثومية."
+      ],
+      "instructionsEn": [
+        "Combine yogurt, garlic, lemon, tomato paste, and spices.",
+        "Coat chicken cubes and marinate under refrigeration for at least two hours.",
+        "Thread onto skewers and grill over medium heat, turning evenly.",
+        "Verify the chicken is safely cooked through, rest briefly, and serve with toum."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "نقع الدجاج",
+          "titleEn": "Marinate chicken",
+          "durationMinutes": 120
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "شوي الدجاج",
+          "titleEn": "Grill chicken",
+          "durationMinutes": 12
+        }
+      ],
+      "votesCount": {
+        "likes": 280,
+        "dislikes": 5
+      },
+      "rating": 4.91
+    },
+    {
+      "id": "lebanon-batata-harra",
+      "titleAr": "البطاطا الحرة اللبنانية",
+      "titleEn": "Lebanese Spicy Batata Harra",
+      "descriptionAr": "مكعبات بطاطا ذهبية مقرمشة بالثوم والكزبرة الخضراء والفلفل الأحمر الحار والليمون.",
+      "descriptionEn": "Crisp golden potato cubes tossed with sautéed garlic, fresh cilantro, chili, and lemon.",
+      "region": "levant",
+      "mealType": [
+        "snack",
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 30,
+      "servings": 4,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "لبناني",
+        "مقبلات",
+        "بطاطا",
+        "نباتي"
+      ],
+      "image": "https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "البطاطا الحرة طبق مزّة لبناني يجمع القرمشة مع نكهة الثوم والكزبرة والليمون.",
+      "storyEn": "Batata harra is a Lebanese mezze favorite balancing crisp potatoes with garlic, cilantro, chili, and lemon.",
+      "ingredients": [
+        {
+          "id": "lbh1",
+          "nameAr": "بطاطا",
+          "nameEn": "Potatoes",
+          "amount": 900,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "lbh2",
+          "nameAr": "ثوم",
+          "nameEn": "Garlic",
+          "amount": 5,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "lbh3",
+          "nameAr": "كزبرة خضراء",
+          "nameEn": "Fresh cilantro",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "lbh4",
+          "nameAr": "فلفل أحمر حار",
+          "nameEn": "Red chili",
+          "amount": 1,
+          "unitAr": "حبة",
+          "unitEn": "pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "lbh5",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon juice",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        },
+        {
+          "id": "lbh6",
+          "nameAr": "زيت زيتون",
+          "nameEn": "Olive oil",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "قطع البطاطا مكعبات متساوية وجففها جيداً.",
+        "حمصها في الفرن مع الزيت والملح حتى تصبح ذهبية ومقرمشة.",
+        "شوح الثوم والفلفل والكزبرة سريعاً في مقلاة واسعة.",
+        "أضف البطاطا وعصير الليمون وقلبها ثم قدمها فوراً."
+      ],
+      "instructionsEn": [
+        "Cut potatoes into even cubes and dry thoroughly.",
+        "Roast with oil and salt until golden and crisp.",
+        "Briefly sauté garlic, chili, and cilantro in a wide pan.",
+        "Toss in potatoes and lemon juice, then serve immediately."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "تحمير البطاطا",
+          "titleEn": "Roast potatoes",
+          "durationMinutes": 25
+        }
+      ],
+      "votesCount": {
+        "likes": 215,
+        "dislikes": 3
+      },
+      "rating": 4.87
+    },
+    {
+      "id": "palestine-maqluba",
+      "titleAr": "المقلوبة الفلسطينية بالدجاج والباذنجان",
+      "titleEn": "Palestinian Chicken & Eggplant Maqluba",
+      "descriptionAr": "قدر أرز ودجاج وباذنجان وقرنبيط يقلب كاملاً عند التقديم ليظهر كقالب احتفالي مكسو بالمكسرات.",
+      "descriptionEn": "A layered pot of rice, chicken, and fried eggplant inverted into a stunning festive table masterpiece.",
+      "region": "levant",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 35,
+      "cookTimeMinutes": 60,
+      "servings": 7,
+      "difficulty": "hard",
+      "isRamadanSpecial": true,
+      "tags": [
+        "فلسطيني",
+        "مقلوبة",
+        "أرز",
+        "عزائم"
+      ],
+      "image": "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "تنتشر المقلوبة في فلسطين وبلاد الشام، ويشكل قلب القدر لحظة جماعية مميزة على المائدة.",
+      "storyEn": "Maqluba is widespread in Palestine and the Levant, with the dramatic inversion of the pot forming a shared table ritual.",
+      "ingredients": [
+        {
+          "id": "pm1",
+          "nameAr": "دجاج مقطع",
+          "nameEn": "Chicken pieces",
+          "amount": 1.2,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "meat"
+        },
+        {
+          "id": "pm2",
+          "nameAr": "أرز بسمتي",
+          "nameEn": "Basmati rice",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "pm3",
+          "nameAr": "باذنجان",
+          "nameEn": "Eggplants",
+          "amount": 2,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "pm4",
+          "nameAr": "قرنبيط",
+          "nameEn": "Cauliflower",
+          "amount": 1,
+          "unitAr": "حبة صغيرة",
+          "unitEn": "small head",
+          "aisle": "produce"
+        },
+        {
+          "id": "pm5",
+          "nameAr": "مرق دجاج",
+          "nameEn": "Chicken stock",
+          "amount": 5,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "pm6",
+          "nameAr": "بهار مشكل وقرفة",
+          "nameEn": "Seven spice and cinnamon",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق الدجاج نصف سلق في ماء متبل واحتفظ بالمرق.",
+        "حمّر شرائح الباذنجان وزهرات القرنبيط في الفرن أو بقليل من الزيت.",
+        "رتب الدجاج والخضار ثم الأرز المنقوع في قدر عميق واسكب المرق بحذر.",
+        "اطه حتى ينضج الأرز، أرح القدر 15 دقيقة ثم اقلبه على طبق واسع."
+      ],
+      "instructionsEn": [
+        "Partially simmer chicken in seasoned water and reserve the stock.",
+        "Brown eggplant slices and cauliflower florets in the oven or a little oil.",
+        "Layer chicken, vegetables, then soaked rice in a deep pot; carefully add stock.",
+        "Cook until rice is tender, rest 15 minutes, then invert onto a wide platter."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 3,
+          "titleAr": "طهي المقلوبة",
+          "titleEn": "Cook maqluba",
+          "durationMinutes": 35
+        },
+        {
+          "stepIndex": 3,
+          "titleAr": "راحة قبل القلب",
+          "titleEn": "Rest before inverting",
+          "durationMinutes": 15
+        }
+      ],
+      "votesCount": {
+        "likes": 310,
+        "dislikes": 6
+      },
+      "rating": 4.93
+    },
+    {
+      "id": "jordan-zarb",
+      "titleAr": "الزرب الأردني البدوي",
+      "titleEn": "Jordanian Bedouin Zarb Roast",
+      "descriptionAr": "لحم وخضار مطهوة ببطء بنكهة مدخنة زكية؛ هذه النسخة تحاكي طهي الحفرة البدوية.",
+      "descriptionEn": "Slow-roasted tender lamb and root vegetables infused with rich natural smoke.",
+      "region": "levant",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 150,
+      "servings": 8,
+      "difficulty": "hard",
+      "isRamadanSpecial": false,
+      "tags": [
+        "أردني",
+        "بدوي",
+        "لحم",
+        "مدخن"
+      ],
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "يصف مجلس السياحة الأردني الزرب كطبق بدوي من اللحم أو الدجاج يطهى في حفرة مبطنة بالطوب لاكتساب النكهة المدخنة.",
+      "storyEn": "The Jordan Tourism Board describes zarb as a Bedouin meat dish cooked in a brick-lined underground pit for its smoky character.",
+      "ingredients": [
+        {
+          "id": "jz1",
+          "nameAr": "كتف ضأن",
+          "nameEn": "Lamb shoulder",
+          "amount": 2,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "meat"
+        },
+        {
+          "id": "jz2",
+          "nameAr": "بطاطا",
+          "nameEn": "Potatoes",
+          "amount": 700,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "jz3",
+          "nameAr": "جزر",
+          "nameEn": "Carrots",
+          "amount": 400,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "jz4",
+          "nameAr": "بصل",
+          "nameEn": "Onions",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "jz5",
+          "nameAr": "بهار عربي وهيل",
+          "nameEn": "Arabic spice and cardamom",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "jz6",
+          "nameAr": "رقائق خشب تدخين غذائية",
+          "nameEn": "Food-safe smoking wood chips",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "other"
+        }
+      ],
+      "instructionsAr": [
+        "تبّل كتف الضأن بالملح والبهارات واتركه مبرداً ساعة.",
+        "ضع اللحم فوق شبكة داخل قدر شواء أو فرن تدخين منزلي وضع الخضار أسفله.",
+        "اطهه مغطى على حرارة منخفضة حتى يطرى اللحم وتصل حرارته الداخلية إلى درجة آمنة.",
+        "أضف تدخيناً خفيفاً برقائق مخصصة للطعام وفق تعليمات جهازك ثم أرح اللحم وقطعه."
+      ],
+      "instructionsEn": [
+        "Season lamb with salt and spices and refrigerate for one hour.",
+        "Place it on a rack in a covered roaster or home smoker with vegetables below.",
+        "Cook low and slow until tender and a safe internal temperature is reached.",
+        "Apply light smoke using food-safe chips according to your equipment, then rest and carve."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 2,
+          "titleAr": "الطهي البطيء",
+          "titleEn": "Slow cook",
+          "durationMinutes": 135
+        },
+        {
+          "stepIndex": 3,
+          "titleAr": "راحة اللحم",
+          "titleEn": "Rest lamb",
+          "durationMinutes": 15
+        }
+      ],
+      "votesCount": {
+        "likes": 210,
+        "dislikes": 4
+      },
+      "rating": 4.89
+    },
+    {
+      "id": "syria-shishbarak",
+      "titleAr": "الشيش برك الشامي باللبن المطبوخ",
+      "titleEn": "Levantine Shish Barak Yogurt Dumplings",
+      "descriptionAr": "عجائن صغيرة محشوة باللحم المفروم والبهارات، مطهوة في صلصة اللبن الدافئة بالثوم والكزبرة.",
+      "descriptionEn": "Tiny meat-filled dumplings simmered in a silky, warm garlicky cilantro yogurt sauce.",
+      "region": "levant",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 60,
+      "cookTimeMinutes": 35,
+      "servings": 6,
+      "difficulty": "hard",
+      "isRamadanSpecial": true,
+      "tags": [
+        "شامي",
+        "لبن",
+        "عجين",
+        "لحم"
+      ],
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "الشيش برك من أطباق اللبن المطبوخ المعروفة في سوريا ولبنان، ويحتاج تشكيل حباته الصغيرة إلى صبر ولطف.",
+      "storyEn": "Shish barak is a cooked-yogurt dish known in Syria and Lebanon; shaping its tiny dumplings is traditionally patient work.",
+      "ingredients": [
+        {
+          "id": "ss1",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ss2",
+          "nameAr": "لحم مفروم",
+          "nameEn": "Minced meat",
+          "amount": 400,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "ss3",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Chopped onion",
+          "amount": 1,
+          "unitAr": "حبة",
+          "unitEn": "pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "ss4",
+          "nameAr": "لبن زبادي كامل الدسم",
+          "nameEn": "Full-fat yogurt",
+          "amount": 1.5,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "dairy"
+        },
+        {
+          "id": "ss5",
+          "nameAr": "نشا",
+          "nameEn": "Cornstarch",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ss6",
+          "nameAr": "ثوم وكزبرة",
+          "nameEn": "Garlic and cilantro",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        }
+      ],
+      "instructionsAr": [
+        "اعجن الدقيق بالماء والملح واترك العجين يرتاح.",
+        "حمّر اللحم مع البصل، ثم افرد العجين واحشه واطوه على شكل قبعات صغيرة.",
+        "اخبز الحبات عشر دقائق لتتماسك، واخفق اللبن مع النشا على نار هادئة حتى يغلي.",
+        "أضف الحبات إلى اللبن ثم طشة الثوم والكزبرة واتركها تنضج برفق."
+      ],
+      "instructionsEn": [
+        "Knead flour with water and salt, then rest the dough.",
+        "Brown meat with onion; roll dough, fill, and fold into tiny hat shapes.",
+        "Bake dumplings briefly to set; whisk yogurt with cornstarch over low heat to a simmer.",
+        "Add dumplings, then sautéed garlic and cilantro, and cook gently."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 2,
+          "titleAr": "خبز الحبات",
+          "titleEn": "Set dumplings",
+          "durationMinutes": 10
+        },
+        {
+          "stepIndex": 3,
+          "titleAr": "الطهي في اللبن",
+          "titleEn": "Cook in yogurt",
+          "durationMinutes": 15
+        }
+      ],
+      "votesCount": {
+        "likes": 250,
+        "dislikes": 5
+      },
+      "rating": 4.9
+    },
+    {
+      "id": "lebanon-warak-enab",
+      "titleAr": "ورق عنب لبناني بالزيت (يلنجي)",
+      "titleEn": "Lebanese Olive-Oil Stuffed Grape Leaves",
+      "descriptionAr": "ورق عنب محشو بالأرز والطماطم والأعشاب ومطهو بزيت الزيتون والليمون الحامض.",
+      "descriptionEn": "Tender grape leaves rolled with herbaceous tomato rice, slow-braised with lemon juice and extra virgin olive oil.",
+      "region": "levant",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "snack"
+      ],
+      "prepTimeMinutes": 50,
+      "cookTimeMinutes": 55,
+      "servings": 8,
+      "difficulty": "hard",
+      "isRamadanSpecial": false,
+      "tags": [
+        "لبناني",
+        "ورق عنب",
+        "نباتي",
+        "مزة"
+      ],
+      "image": "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "نسخة الزيت من ورق العنب جزء أساسي من المزة اللبنانية وتقدم غالباً باردة أو بدرجة حرارة الغرفة.",
+      "storyEn": "The olive-oil version of stuffed grape leaves is a core Lebanese mezze item, often served cool or at room temperature.",
+      "ingredients": [
+        {
+          "id": "lwe1",
+          "nameAr": "ورق عنب",
+          "nameEn": "Grape leaves",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "lwe2",
+          "nameAr": "أرز قصير الحبة",
+          "nameEn": "Short-grain rice",
+          "amount": 1.5,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lwe3",
+          "nameAr": "طماطم مفرومة",
+          "nameEn": "Chopped tomatoes",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "lwe4",
+          "nameAr": "بقدونس ونعناع",
+          "nameEn": "Parsley and mint",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "produce"
+        },
+        {
+          "id": "lwe5",
+          "nameAr": "زيت زيتون",
+          "nameEn": "Olive oil",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "lwe6",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon juice",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق ورق العنب سريعاً إن كان طازجاً واشطف المحفوظ جيداً.",
+        "اخلط الأرز المنقوع بالطماطم والأعشاب ونصف الزيت والليمون.",
+        "ضع مقداراً صغيراً من الحشوة في كل ورقة ولفها دون شد زائد.",
+        "رص اللفائف بإحكام واسكب الماء وبقية الزيت والليمون ثم اطهها ببطء."
+      ],
+      "instructionsEn": [
+        "Briefly blanch fresh leaves, or thoroughly rinse preserved leaves.",
+        "Mix soaked rice with tomato, herbs, half the oil, and lemon.",
+        "Place a small amount on each leaf and roll without packing too tightly.",
+        "Arrange snugly, add water and remaining oil and lemon, then braise gently."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 3,
+          "titleAr": "طهي ورق العنب",
+          "titleEn": "Braise grape leaves",
+          "durationMinutes": 50
+        }
+      ],
+      "votesCount": {
+        "likes": 270,
+        "dislikes": 4
+      },
+      "rating": 4.92
+    },
+    {
+      "id": "saudi-jareesh",
+      "titleAr": "الجريش السعودي التراثي",
+      "titleEn": "Saudi Heritage Jareesh Bowl",
+      "descriptionAr": "قمح مجروش مطهو ببطء مع اللبن الزبادي والمرق والبصل المكرمل بالسمن.",
+      "descriptionEn": "Cracked wheat slowly simmered with cultured dairy, stock, and ghee-caramelized onions.",
+      "region": "gulf",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 100,
+      "servings": 7,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "سعودي",
+        "نجدي",
+        "قمح",
+        "تراثي"
+      ],
+      "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "الجريش طبق سعودي تراثي يعتمد على القمح المجروش والطهي الهادئ، ويرتبط بموائد نجد والمناسبات.",
+      "storyEn": "Jareesh is a Saudi heritage dish of cracked wheat and slow cooking, closely associated with Najdi tables and gatherings.",
+      "ingredients": [
+        {
+          "id": "sj1",
+          "nameAr": "جريش قمح",
+          "nameEn": "Cracked wheat jareesh",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "sj2",
+          "nameAr": "مرق دجاج",
+          "nameEn": "Chicken stock",
+          "amount": 6,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "sj3",
+          "nameAr": "لبن زبادي",
+          "nameEn": "Yogurt",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "dairy"
+        },
+        {
+          "id": "sj4",
+          "nameAr": "بصل",
+          "nameEn": "Onions",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "sj5",
+          "nameAr": "سمن",
+          "nameEn": "Ghee",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "sj6",
+          "nameAr": "كمون وفلفل أسود",
+          "nameEn": "Cumin and black pepper",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اغسل الجريش وانقعه 30 دقيقة ثم صفه.",
+        "شوح بصلة في السمن وأضف الجريش والمرق واتركه يطهى مغطى على نار هادئة.",
+        "حركه دورياً حتى يتفكك القمح، ثم أضف اللبن تدريجياً واستمر في الطهي.",
+        "كرمل بقية البصل بالسمن والكمون وضعه فوق الجريش عند التقديم."
+      ],
+      "instructionsEn": [
+        "Rinse jareesh, soak for 30 minutes, and drain.",
+        "Sauté one onion in ghee; add wheat and stock and cook covered over low heat.",
+        "Stir periodically until grains break down, then gradually add yogurt and continue cooking.",
+        "Caramelize remaining onions with ghee and cumin and spoon over the jareesh."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "طهي الجريش",
+          "titleEn": "Slow-cook jareesh",
+          "durationMinutes": 70
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "الطهي مع اللبن",
+          "titleEn": "Cook with yogurt",
+          "durationMinutes": 20
+        }
+      ],
+      "votesCount": {
+        "likes": 205,
+        "dislikes": 4
+      },
+      "rating": 4.88
+    },
+    {
+      "id": "saudi-saleeg",
+      "titleAr": "السليق الطائفي بالدجاج المحمر",
+      "titleEn": "Taif-Style Saudi Saleeg with Chicken",
+      "descriptionAr": "أرز أبيض كريمي بالحليب والمرق والهيل والمستكة، يقدم مع دجاج محمر بالسمن وصلصة الدقوس.",
+      "descriptionEn": "Creamy white rice cooked in fragrant broth and milk, served with ghee-browned roasted chicken and tangy daqqous.",
+      "region": "gulf",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 70,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "سعودي",
+        "طائفي",
+        "أرز",
+        "دجاج"
+      ],
+      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "ينسب السليق خصوصاً إلى الطائف والحجاز، ويتميز بقوام أرز أبيض ناعم يوازن الدجاج المتبل.",
+      "storyEn": "Saleeg is especially associated with Taif and the Hejaz, recognized by its soft white rice contrasting with seasoned chicken.",
+      "ingredients": [
+        {
+          "id": "ss1",
+          "nameAr": "دجاجة كاملة",
+          "nameEn": "Whole chicken",
+          "amount": 1.4,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "meat"
+        },
+        {
+          "id": "ss2",
+          "nameAr": "أرز قصير الحبة",
+          "nameEn": "Short-grain rice",
+          "amount": 2.5,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ss3",
+          "nameAr": "حليب",
+          "nameEn": "Milk",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "dairy"
+        },
+        {
+          "id": "ss4",
+          "nameAr": "مرق دجاج",
+          "nameEn": "Chicken stock",
+          "amount": 5,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ss5",
+          "nameAr": "سمن",
+          "nameEn": "Ghee",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "ss6",
+          "nameAr": "هيل ومستكة",
+          "nameEn": "Cardamom and mastic",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق الدجاج مع الهيل والمستكة والبصل حتى ينضج واحتفظ بالمرق.",
+        "حمّر الدجاج في الفرن بعد دهنه بالسمن.",
+        "اطه الأرز في المرق حتى يلين جداً، ثم أضف الحليب الساخن تدريجياً.",
+        "حرك حتى يصبح القوام كريمياً وقدمه فوراً مع الدجاج والدقوس."
+      ],
+      "instructionsEn": [
+        "Simmer chicken with cardamom, mastic, and onion until cooked; reserve stock.",
+        "Brush the chicken with ghee and brown it in the oven.",
+        "Cook rice in stock until very soft, then gradually add hot milk.",
+        "Stir to a creamy texture and serve immediately with chicken and daqqous."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "سلق الدجاج",
+          "titleEn": "Simmer chicken",
+          "durationMinutes": 40
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "طهي الأرز",
+          "titleEn": "Cook saleeg rice",
+          "durationMinutes": 30
+        }
+      ],
+      "votesCount": {
+        "likes": 240,
+        "dislikes": 3
+      },
+      "rating": 4.9
+    },
+    {
+      "id": "uae-thareed",
+      "titleAr": "الثريد الإماراتي باللحم والرقاق",
+      "titleEn": "Emirati Lamb & Regag Thareed",
+      "descriptionAr": "مرق لحم ضأن وخضروات غني يصب فوق خبز الرقاق ليتشرب النكهات العطرية.",
+      "descriptionEn": "A rich spiced lamb and vegetable stew ladled over thin regag flatbread to absorb the savory broth.",
+      "region": "gulf",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 85,
+      "servings": 7,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "إماراتي",
+        "ثريد",
+        "رقاق",
+        "رمضان"
+      ],
+      "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "تصفه هيئة أبوظبي للسياحة كطبق إماراتي مريح بارز في رمضان، ويجمع المرق بالخضار وخبز الرقاق.",
+      "storyEn": "Abu Dhabi's tourism authority highlights thareed as an Emirati comfort dish prominent in Ramadan, combining stew, vegetables, and regag bread.",
+      "ingredients": [
+        {
+          "id": "ut1",
+          "nameAr": "لحم ضأن بالعظم",
+          "nameEn": "Bone-in lamb",
+          "amount": 1.2,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "meat"
+        },
+        {
+          "id": "ut2",
+          "nameAr": "خبز رقاق",
+          "nameEn": "Regag bread",
+          "amount": 6,
+          "unitAr": "رقائق",
+          "unitEn": "sheets",
+          "aisle": "bakery"
+        },
+        {
+          "id": "ut3",
+          "nameAr": "بطاطا وجزر وكوسا",
+          "nameEn": "Potato, carrot, and zucchini",
+          "amount": 1.2,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "produce"
+        },
+        {
+          "id": "ut4",
+          "nameAr": "طماطم",
+          "nameEn": "Tomatoes",
+          "amount": 4,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "ut5",
+          "nameAr": "بصل وثوم",
+          "nameEn": "Onion and garlic",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "ut6",
+          "nameAr": "لومي وبهارات خليجية",
+          "nameEn": "Dried lime and Gulf spices",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "حمّر اللحم مع البصل ثم أضف الثوم والطماطم والبهارات واللومي.",
+        "غط بالماء واترك اللحم ينضج ببطء حتى يقارب الطراوة.",
+        "أضف الخضار بالترتيب حسب وقت نضجها واتركها طرية دون أن تتفتت.",
+        "قطع خبز الرقاق في طبق عميق واسكب فوقه المرق والخضار ثم ضع اللحم."
+      ],
+      "instructionsEn": [
+        "Brown lamb with onion, then add garlic, tomatoes, spices, and dried lime.",
+        "Cover with water and simmer slowly until the lamb is almost tender.",
+        "Add vegetables according to cooking time and cook until tender but intact.",
+        "Tear regag into a deep platter, ladle over broth and vegetables, and top with lamb."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "طهي اللحم",
+          "titleEn": "Simmer lamb",
+          "durationMinutes": 55
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "طهي الخضار",
+          "titleEn": "Cook vegetables",
+          "durationMinutes": 20
+        }
+      ],
+      "votesCount": {
+        "likes": 230,
+        "dislikes": 4
+      },
+      "rating": 4.89
+    },
+    {
+      "id": "uae-luqaimat",
+      "titleAr": "اللقيمات الإماراتية بدبس التمر",
+      "titleEn": "Emirati Luqaimat with Date Syrup",
+      "descriptionAr": "كرات عجين مقلية مقرمشة من الخارج وهشة من الداخل مع دبس التمر والسمسم.",
+      "descriptionEn": "Crisp, airy golden fried dough balls drizzled generously with date syrup and toasted sesame seeds.",
+      "region": "gulf",
+      "mealType": [
+        "dessert",
+        "snack",
+        "iftar"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 20,
+      "servings": 8,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "إماراتي",
+        "لقيمات",
+        "حلويات",
+        "رمضان"
+      ],
+      "image": "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "اللقيمات حلوى إماراتية محبوبة تقدم في رمضان والمناسبات وتعبر عن المشاركة والكرم.",
+      "storyEn": "Luqaimat are a beloved Emirati sweet served during Ramadan and celebrations, associated with sharing and generosity.",
+      "ingredients": [
+        {
+          "id": "ul1",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ul2",
+          "nameAr": "خميرة فورية",
+          "nameEn": "Instant yeast",
+          "amount": 1.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ul3",
+          "nameAr": "نشا",
+          "nameEn": "Cornstarch",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ul4",
+          "nameAr": "هيل وزعفران",
+          "nameEn": "Cardamom and saffron",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ul5",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for frying",
+          "amount": 750,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        },
+        {
+          "id": "ul6",
+          "nameAr": "دبس تمر",
+          "nameEn": "Date syrup",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط الدقيق والنشا والخميرة والهيل والزعفران ثم أضف ماء دافئاً لتكوين عجين لزج.",
+        "غط العجين واتركه يختمر حتى يتضاعف.",
+        "أسقط كرات صغيرة في زيت متوسط السخونة واقلها مع التحريك حتى تتحمر بالتساوي.",
+        "صف اللقيمات واسكب عليها دبس التمر وقدمها فوراً."
+      ],
+      "instructionsEn": [
+        "Mix flour, cornstarch, yeast, cardamom, and saffron; add warm water for a sticky batter.",
+        "Cover and proof until doubled.",
+        "Drop small balls into moderately hot oil and turn until evenly golden.",
+        "Drain, drizzle with date syrup, and serve immediately."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "تخمير العجين",
+          "titleEn": "Proof batter",
+          "durationMinutes": 60
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "قلي اللقيمات",
+          "titleEn": "Fry luqaimat",
+          "durationMinutes": 15
+        }
+      ],
+      "votesCount": {
+        "likes": 295,
+        "dislikes": 5
+      },
+      "rating": 4.93
+    },
+    {
+      "id": "qatar-saloona",
+      "titleAr": "الصالونة القطرية باللحم والخضار",
+      "titleEn": "Qatari Lamb Saloona Stew",
+      "descriptionAr": "يخنة طماطم كثيفة باللحم الضأن والخضار المعطرة بالهيل والقرنفل واللومي الأسود.",
+      "descriptionEn": "A thick tomato-based lamb and vegetable stew scented with cardamom, clove, and dried black lime.",
+      "region": "gulf",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 75,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "قطري",
+        "صالونة",
+        "يخنة",
+        "لومي"
+      ],
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "تدرج هيئة قطر للسياحة الصالونة بين الأطباق التقليدية المحبوبة وتصفها كيخنة طماطم غنية بالتوابل واللومي.",
+      "storyEn": "Qatar Tourism lists saloona among beloved traditional dishes and describes it as a thick tomato stew rich in spice and black lime.",
+      "ingredients": [
+        {
+          "id": "qs1",
+          "nameAr": "لحم ضأن مكعبات",
+          "nameEn": "Cubed lamb",
+          "amount": 900,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "qs2",
+          "nameAr": "طماطم مهروسة",
+          "nameEn": "Crushed tomatoes",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "qs3",
+          "nameAr": "بطاطا وجزر وكوسا",
+          "nameEn": "Potato, carrot, and zucchini",
+          "amount": 900,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "qs4",
+          "nameAr": "بصل وثوم",
+          "nameEn": "Onion and garlic",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "qs5",
+          "nameAr": "لومي أسود",
+          "nameEn": "Black dried lime",
+          "amount": 2,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "pantry"
+        },
+        {
+          "id": "qs6",
+          "nameAr": "هيل وقرنفل وزنجبيل",
+          "nameEn": "Cardamom, clove, and ginger",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "حمّر اللحم مع البصل في قليل من الزيت ثم أضف الثوم والتوابل.",
+        "أضف الطماطم واللومي المثقوب والماء واترك اللحم يطهى ببطء.",
+        "أضف البطاطا والجزر ثم الكوسا قرب النهاية.",
+        "اضبط الملح واترك الصالونة تتكاثف وقدمها مع الأرز أو الخبز."
+      ],
+      "instructionsEn": [
+        "Brown lamb with onion in a little oil, then add garlic and spices.",
+        "Add tomatoes, pierced black limes, and water; simmer the meat gently.",
+        "Add potato and carrot, followed by zucchini near the end.",
+        "Adjust seasoning, reduce to a thick stew, and serve with rice or bread."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 1,
+          "titleAr": "طهي اللحم",
+          "titleEn": "Simmer lamb",
+          "durationMinutes": 45
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "طهي الخضار",
+          "titleEn": "Cook vegetables",
+          "durationMinutes": 20
+        }
+      ],
+      "votesCount": {
+        "likes": 180,
+        "dislikes": 3
+      },
+      "rating": 4.86
+    },
+    {
+      "id": "qatar-balaleet",
+      "titleAr": "البلاليط القطرية بالزعفران والبيض",
+      "titleEn": "Qatari Saffron Balaleet",
+      "descriptionAr": "شعيرية حلوة بالهيل والزعفران وماء الورد تعلوها عجة بيض مالحة بالفرن.",
+      "descriptionEn": "Sweet cardamom-saffron vermicelli crowned with a savory, lightly salted egg omelet.",
+      "region": "gulf",
+      "mealType": [
+        "breakfast",
+        "dessert"
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 25,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "قطري",
+        "بلاليط",
+        "فطور",
+        "زعفران"
+      ],
+      "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "تجمع البلاليط الخليجية بين الحلو والمالح؛ وتصفها هيئة قطر للسياحة كشعيرية مع ماء الورد والهيل والزعفران والبيض.",
+      "storyEn": "Balaleet combines sweet and savory; Qatar Tourism describes vermicelli flavored with rosewater, cardamom, saffron, and turmeric and topped with egg.",
+      "ingredients": [
+        {
+          "id": "qb1",
+          "nameAr": "شعيرية",
+          "nameEn": "Vermicelli",
+          "amount": 400,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "qb2",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "qb3",
+          "nameAr": "بيض",
+          "nameEn": "Eggs",
+          "amount": 5,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "dairy"
+        },
+        {
+          "id": "qb4",
+          "nameAr": "ماء ورد",
+          "nameEn": "Rosewater",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "qb5",
+          "nameAr": "هيل وزعفران وكركم",
+          "nameEn": "Cardamom, saffron, and turmeric",
+          "amount": 1.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "qb6",
+          "nameAr": "سمن",
+          "nameEn": "Ghee",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق الشعيرية حتى تلين جزئياً ثم صفها.",
+        "قلبها بالسمن والسكر والهيل والزعفران وماء الورد حتى تتشرب النكهات.",
+        "اخفق البيض مع الملح واطهه كعجة رقيقة.",
+        "ضع الشعيرية في طبق التقديم وغطها بالعجة."
+      ],
+      "instructionsEn": [
+        "Boil vermicelli until partly tender, then drain.",
+        "Toss with ghee, sugar, cardamom, saffron, and rosewater until fragrant.",
+        "Beat eggs with salt and cook as a thin omelet.",
+        "Pile vermicelli onto a platter and top with the omelet."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "سلق الشعيرية",
+          "titleEn": "Boil vermicelli",
+          "durationMinutes": 6
+        },
+        {
+          "stepIndex": 1,
+          "titleAr": "تشريب النكهات",
+          "titleEn": "Flavor vermicelli",
+          "durationMinutes": 8
+        }
+      ],
+      "votesCount": {
+        "likes": 165,
+        "dislikes": 3
+      },
+      "rating": 4.84
+    },
+    {
+      "id": "oman-shuwa",
+      "titleAr": "الشواء العُماني بالبهارات والتعتيق",
+      "titleEn": "Omani Festive Slow-Roasted Shuwa Lamb",
+      "descriptionAr": "لحم ضأن متبل بالبهارات العمانية ومطهو ببطء حتى يذوب؛ نسخة فرن منزلية ممتازة للطبق الاحتفالي.",
+      "descriptionEn": "Slow-roasted marinated lamb shoulder baked until melt-in-mouth tender with aromatic Omani spices.",
+      "region": "gulf",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 300,
+      "servings": 10,
+      "difficulty": "hard",
+      "isRamadanSpecial": false,
+      "tags": [
+        "عُماني",
+        "شواء",
+        "لحم",
+        "أعياد"
+      ],
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "الشواء العماني طبق مناسبات يطهى تقليدياً لساعات طويلة في تنور أرضي جماعي.",
+      "storyEn": "Omani shuwa is a celebration dish traditionally cooked for many hours in a communal underground oven.",
+      "ingredients": [
+        {
+          "id": "os1",
+          "nameAr": "كتف ضأن",
+          "nameEn": "Lamb shoulder",
+          "amount": 3,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "meat"
+        },
+        {
+          "id": "os2",
+          "nameAr": "خل",
+          "nameEn": "Vinegar",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "os3",
+          "nameAr": "ثوم",
+          "nameEn": "Garlic",
+          "amount": 12,
+          "unitAr": "فص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "os4",
+          "nameAr": "كزبرة وكمون وهيل",
+          "nameEn": "Coriander, cumin, and cardamom",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "os5",
+          "nameAr": "فلفل أحمر وكركم",
+          "nameEn": "Chili and turmeric",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "os6",
+          "nameAr": "أوراق موز أو ورق خبز وقصدير",
+          "nameEn": "Banana leaf or parchment and foil",
+          "amount": 1,
+          "unitAr": "عبوة",
+          "unitEn": "pack",
+          "aisle": "other"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط الخل والثوم والبهارات وادعك بها اللحم ثم انقعه مبرداً طوال الليل.",
+        "لف اللحم بورق موز أو ورق خبز ثم بطبقتين من القصدير وضعه في صينية.",
+        "اخبزه على حرارة منخفضة ساعات عدة حتى يصبح شديد الطراوة ويصل لحرارة آمنة.",
+        "افتح اللفافة بحذر وحمّر السطح سريعاً ثم أرح اللحم قبل التقطيع."
+      ],
+      "instructionsEn": [
+        "Blend vinegar, garlic, and spices; rub over lamb and marinate refrigerated overnight.",
+        "Wrap in banana leaf or parchment, then two foil layers, and place in a roasting pan.",
+        "Bake at low heat for several hours until very tender and safely cooked.",
+        "Open carefully, brown the surface briefly, then rest before carving."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 2,
+          "titleAr": "الطهي البطيء",
+          "titleEn": "Slow roast",
+          "durationMinutes": 270
+        },
+        {
+          "stepIndex": 3,
+          "titleAr": "راحة اللحم",
+          "titleEn": "Rest meat",
+          "durationMinutes": 20
+        }
+      ],
+      "votesCount": {
+        "likes": 210,
+        "dislikes": 4
+      },
+      "rating": 4.88
+    },
+    {
+      "id": "kuwait-mutabbaq-samak",
+      "titleAr": "مطبق سمك كويتي بالأرز البسمتي المعطر",
+      "titleEn": "Kuwaiti Mutabbaq Samak Fish & Rice",
+      "descriptionAr": "سمك متبل ومقلي يقدم فوق أرز بسمتي مع بصل محمر ولومي وبهارات خليجية.",
+      "descriptionEn": "Crisp pan-seared fish served over fragrant basmati rice with browned onions, dried lime, and Gulf spices.",
+      "region": "gulf",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 45,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "كويتي",
+        "سمك",
+        "أرز",
+        "لومي"
+      ],
+      "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80",
+      "galleryImages": [
+        "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80"
+      ],
+      "storyAr": "مطبق السمك من أطباق الساحل الكويتي التي تجمع صيد الخليج بالأرز والبصل واللومي.",
+      "storyEn": "Mutabbaq samak reflects Kuwait's Gulf coast, bringing local fish together with rice, onions, and dried lime.",
+      "ingredients": [
+        {
+          "id": "kms1",
+          "nameAr": "سمك زبيدي أو سمك أبيض",
+          "nameEn": "Pomfret or firm white fish",
+          "amount": 1.5,
+          "unitAr": "كجم",
+          "unitEn": "kg",
+          "aisle": "meat"
+        },
+        {
+          "id": "kms2",
+          "nameAr": "أرز بسمتي",
+          "nameEn": "Basmati rice",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cups",
+          "aisle": "pantry"
+        },
+        {
+          "id": "kms3",
+          "nameAr": "بصل",
+          "nameEn": "Onions",
+          "amount": 4,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "kms4",
+          "nameAr": "لومي",
+          "nameEn": "Dried limes",
+          "amount": 2,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "pantry"
+        },
+        {
+          "id": "kms5",
+          "nameAr": "كركم وكزبرة وكمون",
+          "nameEn": "Turmeric, coriander, and cumin",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "kms6",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "تبّل السمك بالملح والبهارات واتركه 20 دقيقة ثم غلفه بطبقة خفيفة من الدقيق.",
+        "اقله أو اخبزه حتى ينضج ويتحمر ثم احتفظ به دافئاً.",
+        "حمّر البصل وأضف الأرز واللومي والبهارات وماءً مناسباً واطهه مغطى.",
+        "قدم الأرز في طبق واسع وضع السمك فوقه وزينه بالبصل المحمر."
+      ],
+      "instructionsEn": [
+        "Season fish with salt and spices for 20 minutes, then dust lightly with flour.",
+        "Pan-fry or bake until browned and safely cooked; keep warm.",
+        "Brown onions, add rice, dried lime, spices, and measured water, and cook covered.",
+        "Spread rice on a platter, place fish on top, and garnish with browned onion."
+      ],
+      "timerSteps": [
+        {
+          "stepIndex": 0,
+          "titleAr": "تتبيل السمك",
+          "titleEn": "Season fish",
+          "durationMinutes": 20
+        },
+        {
+          "stepIndex": 2,
+          "titleAr": "طهي الأرز",
+          "titleEn": "Cook rice",
+          "durationMinutes": 22
+        }
+      ],
+      "votesCount": {
+        "likes": 195,
+        "dislikes": 3
+      },
+      "rating": 4.87
     }
   ]
 }
