@@ -203,6 +203,13 @@ test('storage fallback reports corrupted JSON without throwing', () => {
   assert.equal(detectStorageIssues(), 'wajba_custom_recipes');
 });
 
+test('storage diagnostics ignore corrupted third-party localStorage values', () => {
+  const storage = new MemoryStorage();
+  storage.setItem('__vercel_toolbar_injector', '{bad json');
+  globalThis.localStorage = storage;
+  assert.equal(detectStorageIssues(), null);
+});
+
 test('backup replacement rolls back when a localStorage write fails once', () => {
   const storage = new MemoryStorage();
   globalThis.localStorage = storage;

@@ -468,10 +468,11 @@ export function clearWajbaUserData() {
 
 export function detectStorageIssues(): string | null {
   const ignoredKeys = new Set([STORAGE_KEYS.LANGUAGE, STORAGE_KEYS.THEME]);
+  const wajbaKeys = new Set(Object.values(STORAGE_KEYS));
 
   for (let index = 0; index < localStorage.length; index += 1) {
     const key = localStorage.key(index);
-    if (!key || ignoredKeys.has(key)) continue;
+    if (!key || ignoredKeys.has(key) || (!wajbaKeys.has(key) && !key.startsWith(MONTHLY_PLAN_PREFIX))) continue;
     const rawValue = localStorage.getItem(key);
     if (rawValue === null) continue;
 
