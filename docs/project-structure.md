@@ -14,6 +14,7 @@ wajba/
   public/                    Static assets and recipe JSON copy
   recipes_data.json          Recipe database artifact/input
   wajba_recipe_generator.py  Recipe generation and validation utility
+  scripts/prerender_seo.ts   Static recipe pages and production crawler files
   index.html                 HTML shell, metadata, fonts, favicon
   package.json               Scripts and dependencies
   bun.lock                   Locked dependency graph
@@ -33,6 +34,7 @@ wajba/
 | `src/components/RecipeDetailModal.tsx` | Details, timers, planner/grocery actions |
 | `src/index.css` | Global styles and theme rules |
 | `metadata.json` | AI Studio/project metadata |
+| `scripts/prerender_seo.ts` | Prerendered recipe HTML, sitemap, robots, and AI summary output |
 
 ## Entry Points
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { ActiveTimer, Language } from '../types';
-import { BookOpen, CalendarDays, ShoppingBag, Trophy, Users, Moon, Sun, Globe, Utensils, Timer } from 'lucide-react';
+import { BookOpen, CalendarDays, ShoppingBag, Trophy, Users, Moon, Sun, Globe, Utensils, Timer, Warehouse, Settings } from 'lucide-react';
 import { WajbaLogo } from './WajbaLogo';
 
 interface NavbarProps {
-  currentTab: 'recipes' | 'planner' | 'grocery' | 'leaderboard' | 'family';
-  onTabChange: (tab: 'recipes' | 'planner' | 'grocery' | 'leaderboard' | 'family') => void;
+  currentTab: 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'family' | 'settings';
+  onTabChange: (tab: 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'family' | 'settings') => void;
   language: Language;
   onLanguageChange: (lang: Language) => void;
   theme: 'light' | 'dark';
@@ -50,6 +50,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       icon: ShoppingBag,
     },
     {
+      id: 'pantry' as const,
+      labelAr: 'مخزن المنزل',
+      labelEn: 'Pantry',
+      icon: Warehouse,
+    },
+    {
       id: 'leaderboard' as const,
       labelAr: 'أفضل ١٠ وجبات',
       labelEn: 'Top 10 Meals',
@@ -60,6 +66,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       labelAr: 'المشاركة العائلية',
       labelEn: 'Family Sync',
       icon: Users,
+    },
+    {
+      id: 'settings' as const,
+      labelAr: 'الإعدادات',
+      labelEn: 'Settings',
+      icon: Settings,
     },
   ];
 

@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Language, Recipe, Region } from '../types';
+import { DIETARY_TAGS, DietaryTag, Language, Recipe, Region } from '../types';
+import { DIETARY_LABELS, filterRecipesByDietaryTag } from '../utils/recipes';
 import { RecipeCard } from './RecipeCard';
 import { Search, Plus, Sparkles, Filter, Star, Flame, Bookmark } from 'lucide-react';
 
@@ -31,10 +32,11 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState<Region | 'all'>('all');
   const [selectedTag, setSelectedTag] = useState<string>('all');
+  const [selectedDietaryTag, setSelectedDietaryTag] = useState<DietaryTag | 'all'>('all');
   const [onlyFavorites, setOnlyFavorites] = useState(false);
 
   const filteredRecipes = useMemo(() => {
-    return recipes.filter((recipe) => {
+    return filterRecipesByDietaryTag(recipes, selectedDietaryTag).filter((recipe) => {
       // Favorites filter
       if (onlyFavorites && !favorites.includes(recipe.id)) return false;
 
@@ -62,7 +64,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
 
       return true;
     });
-  }, [recipes, searchQuery, selectedRegion, selectedTag, onlyFavorites, favorites]);
+  }, [recipes, searchQuery, selectedRegion, selectedTag, selectedDietaryTag, onlyFavorites, favorites]);
+
 
   return (
     <div className="space-y-6">
@@ -154,6 +157,16 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
               <Bookmark className={`w-3.5 h-3.5 ${onlyFavorites ? 'fill-white' : ''}`} />
               <span>{isArabic ? 'المفضلة' : 'Favorites'}</span>
             </button>
+          </div>
+        </div>
+        <div className="border-t border-[#d9d9dd] pt-3 dark:border-stone-800">
+          <div className="mb-2 flex items-center gap-2 text-xs font-mono text-[#75758a]">
+            <span>{isArabic ? 'الخصائص الغذائية:' : 'Dietary:'}</span>
+            <span>{isArabic ? 'معلومات إرشادية؛ تحقق من المكونات.' : 'Informational only; verify ingredients.'}</span>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            <button type="button" aria-pressed={selectedDietaryTag === 'all'} onClick={() => setSelectedDietaryTag('all')} className={`rounded-full px-3 py-1.5 text-xs font-mono ${selectedDietaryTag === 'all' ? 'bg-[#17171c] text-white dark:bg-white dark:text-[#17171c]' : 'bg-[#eeece7] dark:bg-stone-800'}`}>{isArabic ? 'الكل' : 'All'}</button>
+            {DIETARY_TAGS.map((tag) => <button type="button" key={tag} aria-pressed={selectedDietaryTag === tag} onClick={() => setSelectedDietaryTag(tag)} className={`rounded-full px-3 py-1.5 text-xs font-mono ${selectedDietaryTag === tag ? 'bg-[#ff7759] text-white' : 'bg-[#eeece7] dark:bg-stone-800'}`}>{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</button>)}
           </div>
         </div>
       </div>

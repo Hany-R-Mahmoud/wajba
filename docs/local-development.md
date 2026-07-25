@@ -29,11 +29,21 @@ bun run lint
 bun run build
 ```
 
-There is no repository test command.
+The build prerenders public recipe pages into `dist/recipes/<id>/`. Set the real production origin when generating production crawler files:
+
+```bash
+VITE_SITE_URL=https://your-real-domain.example bun run build
+```
+
+Without `VITE_SITE_URL` or `SITE_URL`, the build omits production canonicals, `sitemap.xml`, `robots.txt`, and `llms.txt`.
+
+Deploy `dist/recipes/<id>/index.html` as real public paths and serve `dist/404.html` for missing paths. Do not rewrite every `/recipes/*` request to the home shell before checking for the generated file.
 
 ## Environment
 
 `.env.example` lists `GEMINI_API_KEY` and `APP_URL` for the AI Studio/Cloud Run setup. Current frontend source does not reference either variable; actual deployment requirements are `Unknown / verify`.
+
+`VITE_SITE_URL` is used only for production SEO output: canonical URLs, Open Graph URLs, sitemap, robots, and `llms.txt`.
 
 The Vite config also recognizes `DISABLE_HMR=true` to disable HMR and file watching during local edits.
 

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Language, WeeklyPlan, GroceryItem } from '../types';
 import { X, Users, Share2, Copy, Check, FileSpreadsheet, Download, RefreshCw, Link as LinkIcon } from 'lucide-react';
-import { encodePlanToUrl } from '../utils/storage';
+import { createCurrentWajbaBackup, encodePlanToUrl } from '../utils/storage';
 import { syncPlanWithGoogleSheets, downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
 
 interface FamilySyncModalProps {
@@ -24,7 +24,15 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
   const [copiedLink, setCopiedLink] = useState(false);
   const [sheetsUrl, setSheetsUrl] = useState('');
   const [syncing, setSyncing] = useState(false);
-  const [syncMessage, setSyncMessage] = useState<string | null>(null);
+  const [syncMessage, setSyncMessage] = useState<{ type: 'success' | 'error' | 'info'; text: string } | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const sharedUrl = encodePlanToUrl(plan);
 
@@ -40,27 +48,31 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
     setSyncMessage(null);
     try {
       await syncPlanWithGoogleSheets(sheetsUrl, plan, groceryList);
-      setSyncMessage(isArabic ? 'تمت المزامنة بنجاح مع جدول Google Sheets!' : 'Synced successfully with Google Sheets!');
-    } catch (err: any) {
-      setSyncMessage(err.message || 'Failed to sync');
+      setSyncMessage({ type: 'info', text: isArabic ? 'تم إرسال الطلب. لا يمكن للمتصفح تأكيد استجابة Google Sheets.' : 'Request sent. The browser cannot verify Google Sheets response.' });
+    } catch (error) {
+      setSyncMessage({ type: 'error', text: error instanceof Error ? error.message : (isArabic ? 'فشلت المزامنة.' : 'Sync failed.') });
     } finally {
       setSyncing(false);
     }
   };
 
   const handleDownloadCSV = () => {
-    const csvData = exportPlanAndGroceryToCSV(plan, groceryList, isArabic);
-    downloadCSV('wajba_family_plan.csv', csvData);
+    try {
+      const csvData = exportPlanAndGroceryToCSV(plan, groceryList, isArabic);
+      downloadCSV('wajba_family_plan.csv', csvData);
+    } catch (error) {
+      setSyncMessage({ type: 'error', text: error instanceof Error ? error.message : (isArabic ? 'تعذر تصدير CSV.' : 'CSV export failed.') });
+    }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto" role="presentation">
+      <div role="dialog" aria-modal="true" aria-labelledby="family-sync-title" className="relative w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5">
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-3 border-b border-amber-200 dark:border-stone-800">
           <div className="flex items-center gap-2">
             <Users className="w-5 h-5 text-amber-700" />
-            <h2 className="text-base font-extrabold text-amber-950 dark:text-amber-100">
+            <h2 id="family-sync-title" className="text-base font-extrabold text-amber-950 dark:text-amber-100">
               {isArabic ? 'المشاركة العائلية والمزامنة السحابية' : 'Family Share & Cloud Sync'}
             </h2>
           </div>
@@ -129,7 +141,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
           </div>
 
           {syncMessage && (
-            <p className="text-[11px] font-bold text-emerald-600 pt-1">{syncMessage}</p>
+            <p role={syncMessage.type === 'error' ? 'alert' : 'status'} className={`text-[11px] font-bold pt-1 ${syncMessage.type === 'error' ? 'text-rose-600' : syncMessage.type === 'info' ? 'text-amber-700' : 'text-emerald-600'}`}>{syncMessage.text}</p>
           )}
         </div>
 
@@ -148,18 +160,17 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
           <div className="flex flex-wrap items-center gap-2 pt-1">
             <button
               onClick={() => {
-                const fullBackup = {
-                  weeklyPlan: plan,
-                  groceryList,
-                  exportedAt: new Date().toISOString(),
-                  app: 'Wajba Meal Planner',
-                };
-                const blob = new Blob([JSON.stringify(fullBackup, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `wajba_full_backup_${new Date().toISOString().slice(0, 10)}.json`;
-                a.click();
+                try {
+                  const blob = new Blob([JSON.stringify(createCurrentWajbaBackup(), null, 2)], { type: 'application/json' });
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = `wajba_full_backup_${new Date().toISOString().slice(0, 10)}.json`;
+                  a.click();
+                  URL.revokeObjectURL(url);
+                } catch (error) {
+                  setSyncMessage({ type: 'error', text: error instanceof Error ? error.message : (isArabic ? 'تعذر تصدير النسخة.' : 'Backup export failed.') });
+                }
               }}
               className="px-3.5 py-2 rounded-xl bg-amber-800 hover:bg-amber-900 text-white text-xs font-bold flex items-center gap-1.5"
             >

@@ -12,8 +12,8 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 | `src/App.tsx` | Landing/dashboard state, navigation, shared handlers |
 | `src/components/` | User-facing views and modals |
 | `src/data/recipes.ts` | Bundled runtime recipe catalog |
-| `src/utils/storage.ts` | `localStorage`, seed data, shared-plan URL decoding/encoding |
-| `src/utils/aggregator.ts` | Convert planned recipes into normalized grocery items |
+| `src/utils/storage.ts` | `localStorage`, seed data, shared-plan URL decoding/encoding, pantry and backup state |
+| `src/utils/aggregator.ts` | Convert planned recipes into normalized grocery items and subtract compatible pantry quantities |
 | `src/utils/sheets.ts` | CSV generation/download and optional remote POST |
 
 ## Data / Control Flow
@@ -50,5 +50,7 @@ flowchart TD
 
 - Plans store recipe IDs; changing IDs can orphan saved plans.
 - Browser storage is origin-scoped and has no server backup unless the user exports/syncs data.
+- Pantry stock is explicitly maintained by the user; checking a grocery item never consumes pantry stock.
+- Backup restore validates before replacement and excludes transient active timers.
 - Google Sheets sync uses `fetch` with `no-cors`, so the client cannot inspect the remote response.
 - `recipes_data.json`, `public/recipes_data.json`, generated JSON, and `src/data/recipes.ts` can drift; the runtime currently reads only the TypeScript catalog.

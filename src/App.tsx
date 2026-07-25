@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { ActiveTimer, GroceryItem, Language, MealSlot, MonthlyPlan, Recipe, WeeklyPlan } from './types';
+import { ActiveTimer, GroceryItem, Language, MealSlot, MonthlyPlan, PantryItem, Recipe, WeeklyPlan, WajbaBackup } from './types';
 import { INITIAL_RECIPES } from './data/recipes';
 import { generateGroceryListFromPlan } from './utils/aggregator';
 import {
@@ -9,6 +9,7 @@ import {
   loadGroceryCheckedIds,
   loadGroceryExtras,
   loadMonthlyPlan,
+  loadPantryItems,
   loadStoredLanguage,
   loadStoredTheme,
   loadVotes,
@@ -18,11 +19,16 @@ import {
   saveFavorites,
   saveGroceryCheckedIds,
   saveGroceryExtras,
+  savePantryItems,
   saveMonthlyPlan,
   saveStoredLanguage,
   saveStoredTheme,
   saveVote,
   saveWeeklyPlan,
+  deleteCustomRecipe,
+  replaceWajbaState,
+  clearWajbaUserData,
+  detectStorageIssues,
 } from './utils/storage';
 
 import { Navbar } from './components/Navbar';
@@ -36,6 +42,10 @@ import { RecipeDetailModal } from './components/RecipeDetailModal';
 import { CreateRecipeModal } from './components/CreateRecipeModal';
 import { FamilySyncModal } from './components/FamilySyncModal';
 import { CookingTimerBar } from './components/CookingTimerBar';
+import { PantryView } from './components/PantryView';
+import { SettingsView } from './components/SettingsView';
+import { PublicRecipeNotFound, PublicRecipePage } from './components/PublicRecipePage';
+import { getPublicRecipeRoute, updateSeo } from './utils/seo';
 import { Calendar, CalendarDays } from 'lucide-react';
 
 export default function App() {
@@ -70,6 +80,11 @@ export default function App() {
   const allRecipes = useMemo(() => {
     return [...customRecipes, ...INITIAL_RECIPES];
   }, [customRecipes]);
+  const publicRecipeRoute = useMemo(() => getPublicRecipeRoute(allRecipes), [allRecipes]);
+
+  useEffect(() => {
+    updateSeo(publicRecipeRoute.recipe, publicRecipeRoute.isRecipePath && !publicRecipeRoute.recipe);
+  }, [publicRecipeRoute]);
 
   const [favorites, setFavorites] = useState<string[]>(loadFavorites());
   const [userVotes, setUserVotes] = useState<{ [recipeId: string]: 'like' | 'dislike' }>(loadVotes());
@@ -79,15 +94,20 @@ export default function App() {
 
   const [groceryCheckedIds, setGroceryCheckedIds] = useState<string[]>(loadGroceryCheckedIds());
   const [groceryExtras, setGroceryExtras] = useState<GroceryItem[]>(loadGroceryExtras());
+  const [pantryItems, setPantryItems] = useState<PantryItem[]>(loadPantryItems());
   const [activeTimers, setActiveTimers] = useState<ActiveTimer[]>(loadActiveTimers());
 
   // Navigation Tab State
-  const [currentTab, setCurrentTab] = useState<'recipes' | 'planner' | 'grocery' | 'leaderboard' | 'family'>('recipes');
+  const [currentTab, setCurrentTab] = useState<'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'family' | 'settings'>('recipes');
 
   // Modals
   const [selectedDetailRecipe, setSelectedDetailRecipe] = useState<Recipe | null>(null);
   const [createRecipeModalOpen, setCreateRecipeModalOpen] = useState(false);
   const [familySyncModalOpen, setFamilySyncModalOpen] = useState(false);
+  const [recipeBeingEdited, setRecipeBeingEdited] = useState<Recipe | null>(null);
+  const [lastDeletedRecipe, setLastDeletedRecipe] = useState<Recipe | null>(null);
+  const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error' | 'info'; text: string } | null>(null);
+  const [storageIssue, setStorageIssue] = useState<string | null>(() => detectStorageIssues());
 
   // Derived Grocery List based on current planner mode
   const groceryList = useMemo(() => {
@@ -96,9 +116,10 @@ export default function App() {
       planToUse,
       allRecipes,
       groceryCheckedIds,
-      groceryExtras
+      groceryExtras,
+      pantryItems
     );
-  }, [plannerMode, weeklyPlan, monthlyPlan, allRecipes, groceryCheckedIds, groceryExtras]);
+  }, [plannerMode, weeklyPlan, monthlyPlan, allRecipes, groceryCheckedIds, groceryExtras, pantryItems]);
 
   // Handlers
   const handleToggleFavorite = (recipeId: string) => {
@@ -167,6 +188,48 @@ export default function App() {
   const handleSaveCustomRecipe = (recipe: Recipe) => {
     const updated = saveCustomRecipe(recipe);
     setCustomRecipes(updated);
+    setRecipeBeingEdited(null);
+    setCreateRecipeModalOpen(false);
+    setStatusMessage({ type: 'success', text: language === 'ar' ? 'تم حفظ الوصفة بنجاح.' : 'Recipe saved successfully.' });
+  };
+
+  const handleOpenCreateRecipeModal = () => {
+    setRecipeBeingEdited(null);
+    setCreateRecipeModalOpen(true);
+  };
+
+  const handleDeleteCustomRecipe = (recipe: Recipe) => {
+    const updated = deleteCustomRecipe(recipe.id);
+    setCustomRecipes(updated);
+    setLastDeletedRecipe(recipe);
+    setSelectedDetailRecipe(null);
+    setStatusMessage({ type: 'success', text: language === 'ar' ? 'تم حذف الوصفة. يمكنك التراجع الآن.' : 'Recipe deleted. You can undo now.' });
+  };
+
+  const handleUndoDeleteRecipe = () => {
+    if (!lastDeletedRecipe) return;
+    setCustomRecipes(saveCustomRecipe(lastDeletedRecipe));
+    setLastDeletedRecipe(null);
+    setStatusMessage({ type: 'success', text: language === 'ar' ? 'تمت استعادة الوصفة.' : 'Recipe restored.' });
+  };
+
+  const handleUpdatePantry = (items: PantryItem[]) => {
+    setPantryItems(items);
+    savePantryItems(items);
+  };
+
+  const handleImportBackup = (backup: WajbaBackup) => {
+    try {
+      replaceWajbaState(backup.state);
+      window.location.reload();
+    } catch (error) {
+      setStatusMessage({ type: 'error', text: error instanceof Error ? error.message : (language === 'ar' ? 'تعذر استعادة النسخة.' : 'Backup restore failed.') });
+    }
+  };
+
+  const handleClearUserData = () => {
+    clearWajbaUserData();
+    window.location.reload();
   };
 
   const handleStartTimer = (timer: ActiveTimer) => {
@@ -232,6 +295,14 @@ export default function App() {
     saveGroceryExtras(updated);
   };
 
+  if (publicRecipeRoute.isRecipePath) {
+    return publicRecipeRoute.recipe ? (
+      <PublicRecipePage recipe={publicRecipeRoute.recipe} language={language} />
+    ) : (
+      <PublicRecipeNotFound language={language} />
+    );
+  }
+
   if (showLanding) {
     return (
       <LandingPage
@@ -280,6 +351,12 @@ export default function App() {
 
       {/* Main View Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        {storageIssue && (
+          <div role="alert" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-rose-50 px-4 py-3 text-sm text-rose-900 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-100">
+            <span>{language === 'ar' ? `تعذر قراءة بيانات محلية تالفة: ${storageIssue}. يمكنك تصدير ما يمكن قراءته أو مسح البيانات من الإعدادات.` : `A local data value could not be read: ${storageIssue}. Export readable data or clear local data in Settings.`}</span>
+            <button type="button" onClick={() => { setCurrentTab('settings'); setStorageIssue(null); }} className="rounded-lg border border-current px-3 py-1 text-xs font-bold">{language === 'ar' ? 'فتح الإعدادات' : 'Open Settings'}</button>
+          </div>
+        )}
         {currentTab === 'recipes' && (
           <RecipeExplorer
             recipes={allRecipes}
@@ -290,7 +367,7 @@ export default function App() {
             onVote={handleVote}
             onSelectRecipe={(recipe) => setSelectedDetailRecipe(recipe)}
             onQuickAddToPlanner={(recipe) => setSelectedDetailRecipe(recipe)}
-            onOpenCreateRecipeModal={() => setCreateRecipeModalOpen(true)}
+            onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
           />
         )}
 
@@ -345,7 +422,7 @@ export default function App() {
                 onGoToGrocery={() => setCurrentTab('grocery')}
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
-                onOpenCreateRecipeModal={() => setCreateRecipeModalOpen(true)}
+                onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
               />
             ) : (
               <MonthlyCalendarView
@@ -357,7 +434,7 @@ export default function App() {
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onChangeMonth={handleChangeMonth}
-                onOpenCreateRecipeModal={() => setCreateRecipeModalOpen(true)}
+                onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
               />
             )}
           </div>
@@ -374,6 +451,14 @@ export default function App() {
           />
         )}
 
+        {currentTab === 'pantry' && (
+          <PantryView
+            items={pantryItems}
+            language={language}
+            onUpdateItems={handleUpdatePantry}
+          />
+        )}
+
         {currentTab === 'leaderboard' && (
           <TopTenLeaderboard
             recipes={allRecipes}
@@ -383,7 +468,45 @@ export default function App() {
             onSelectRecipe={(recipe) => setSelectedDetailRecipe(recipe)}
           />
         )}
+
+        {currentTab === 'settings' && (
+          <SettingsView
+            language={language}
+            theme={theme}
+            onLanguageChange={setLanguage}
+            onThemeToggle={toggleTheme}
+            onImportBackup={handleImportBackup}
+            onClearUserData={handleClearUserData}
+          />
+        )}
       </main>
+
+      {statusMessage && (
+        <div
+          role={statusMessage.type === 'error' ? 'alert' : 'status'}
+          className={`fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 z-[60] max-w-md rounded-2xl border px-4 py-3 text-sm shadow-xl ${
+            statusMessage.type === 'error'
+              ? 'border-rose-300 bg-rose-50 text-rose-900 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-100'
+              : 'border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-100'
+          }`}
+        >
+          <div className="flex items-center justify-between gap-3">
+            <span>{statusMessage.text}</span>
+            {lastDeletedRecipe && (
+              <button
+                type="button"
+                onClick={handleUndoDeleteRecipe}
+                className="shrink-0 rounded-lg border border-current px-2.5 py-1 text-xs font-bold"
+              >
+                {language === 'ar' ? 'تراجع' : 'Undo'}
+              </button>
+            )}
+            <button type="button" onClick={() => setStatusMessage(null)} className="text-lg leading-none" aria-label={language === 'ar' ? 'إغلاق' : 'Dismiss'}>
+              ×
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Persistent Floating Cooking Timers Bar */}
       <CookingTimerBar
@@ -401,15 +524,25 @@ export default function App() {
           onStartTimer={handleStartTimer}
           onAddToPlanner={handleAddToPlanner}
           onAddIngredientsToGrocery={handleAddIngredientsToGrocery}
+          onEditRecipe={selectedDetailRecipe.isCustom ? () => {
+            setRecipeBeingEdited(selectedDetailRecipe);
+            setCreateRecipeModalOpen(true);
+            setSelectedDetailRecipe(null);
+          } : undefined}
+          onDeleteRecipe={selectedDetailRecipe.isCustom ? () => handleDeleteCustomRecipe(selectedDetailRecipe) : undefined}
         />
       )}
 
       {/* Create Custom Recipe Modal */}
       {createRecipeModalOpen && (
         <CreateRecipeModal
-          onClose={() => setCreateRecipeModalOpen(false)}
+          onClose={() => {
+            setCreateRecipeModalOpen(false);
+            setRecipeBeingEdited(null);
+          }}
           language={language}
           onSaveRecipe={handleSaveCustomRecipe}
+          initialRecipe={recipeBeingEdited}
         />
       )}
 

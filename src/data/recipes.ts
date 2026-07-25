@@ -1,4 +1,4 @@
-import { Recipe } from '../types';
+import { DietaryTag, Recipe } from '../types';
 
 export const INITIAL_RECIPES: Recipe[] = [
   {
@@ -5732,3 +5732,15 @@ export const INITIAL_RECIPES: Recipe[] = [
     "rating": 4.87
   }
 ];
+
+const VERIFIED_DIETARY_TAGS: Record<string, DietaryTag[]> = {
+  'egypt-koshary': ['vegan', 'dairy-free'],
+  'arabic-shakshuka': ['vegetarian'],
+  'egypt-taameya-ful': ['vegan', 'dairy-free'],
+  'levant-hummus-falafel': ['vegan', 'dairy-free'],
+};
+
+INITIAL_RECIPES.forEach((recipe) => {
+  const tags = VERIFIED_DIETARY_TAGS[recipe.id];
+  if (tags) recipe.dietaryTags = tags;
+});

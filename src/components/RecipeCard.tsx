@@ -1,6 +1,7 @@
 import React from 'react';
 import { Language, Recipe } from '../types';
 import { Clock, ThumbsUp, ThumbsDown, Star, CalendarPlus, Flame } from 'lucide-react';
+import { DIETARY_LABELS } from '../utils/recipes';
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -74,7 +75,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         {/* Title Overlay */}
         <div className="absolute bottom-3 right-3 left-3 text-white">
           <h3 className="text-lg font-bold leading-snug line-clamp-1 drop-shadow-md">
-            {isArabic ? recipe.titleAr : recipe.titleEn}
+            <a
+              href={`/recipes/${encodeURIComponent(recipe.id)}`}
+              onClick={(event) => event.stopPropagation()}
+              className="hover:underline"
+            >
+              {isArabic ? recipe.titleAr : recipe.titleEn}
+            </a>
           </h3>
           <p className="text-xs text-stone-200/90 font-mono line-clamp-1">
             {isArabic ? recipe.titleEn : recipe.titleAr}
@@ -88,6 +95,12 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         <p className="text-xs text-[#616161] dark:text-stone-300 line-clamp-2 leading-relaxed font-sans">
           {isArabic ? recipe.descriptionAr : recipe.descriptionEn}
         </p>
+
+        {recipe.dietaryTags && recipe.dietaryTags.length > 0 && (
+          <div className="flex flex-wrap gap-1.5" aria-label={isArabic ? 'الوسوم الغذائية' : 'Dietary tags'}>
+            {recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}
+          </div>
+        )}
 
         {/* Info Pills (Time, Difficulty, Ramadan tag) */}
         <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-[#75758a] dark:text-stone-300 pt-2 border-t border-[#d9d9dd] dark:border-[#2b3a54]">

@@ -6,7 +6,7 @@ export interface SheetsSyncStatus {
   error?: string;
 }
 
-export function exportPlanAndGroceryToCSV(plan: WeeklyPlan, groceryList: GroceryItem[], isArabic: boolean): string {
+export function exportPlanAndGroceryToCSV(_plan: WeeklyPlan | null, groceryList: GroceryItem[], isArabic: boolean): string {
   const headers = isArabic
     ? ['القسم', 'اسم الصنف', 'الكمية', 'الوحدة', 'الوصفات التابعة']
     : ['Aisle Category', 'Item Name', 'Quantity', 'Unit', 'Recipe Sources'];

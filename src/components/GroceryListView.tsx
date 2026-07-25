@@ -27,9 +27,12 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
   const [extraAmount, setExtraAmount] = useState(1);
   const [extraUnit, setExtraUnit] = useState('حبة');
   const [copiedText, setCopiedText] = useState(false);
+  const [extraError, setExtraError] = useState('');
+  const [actionError, setActionError] = useState('');
 
-  const totalCount = groceryList.length;
-  const checkedCount = groceryList.filter((i) => i.isChecked).length;
+  const shoppingItems = groceryList.filter((item) => !item.isCovered);
+  const totalCount = shoppingItems.length;
+  const checkedCount = shoppingItems.filter((i) => i.isChecked).length;
   const progressPercent = totalCount > 0 ? Math.round((checkedCount / totalCount) * 100) : 0;
 
   // Group items by aisle
@@ -44,7 +47,11 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
 
   const handleAddExtraSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!extraName.trim()) return;
+    if (!extraName.trim() || extraAmount <= 0 || !extraUnit.trim()) {
+      setExtraError(isArabic ? 'أدخل اسم العنصر والكمية والوحدة.' : 'Enter an item name, amount, and unit.');
+      return;
+    }
+    setExtraError('');
 
     const newItem: GroceryItem = {
       id: `extra_${Date.now()}`,
@@ -95,8 +102,12 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
   };
 
   const handleDownloadCSV = () => {
-    const csvStr = exportPlanAndGroceryToCSV({} as any, groceryList, isArabic);
-    downloadCSV('wajba_grocery_list.csv', csvStr);
+    try {
+      const csvStr = exportPlanAndGroceryToCSV(null, groceryList, isArabic);
+      downloadCSV('wajba_grocery_list.csv', csvStr);
+    } catch (error) {
+      setActionError(error instanceof Error ? error.message : (isArabic ? 'تعذر تصدير CSV.' : 'CSV export failed.'));
+    }
   };
 
   const handlePrint = () => {
@@ -220,6 +231,8 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
           {isArabic ? 'إضافة' : 'Add'}
         </button>
       </form>
+      {extraError && <p role="alert" className="text-sm font-bold text-rose-700 dark:text-rose-300">{extraError}</p>}
+      {actionError && <p role="alert" className="text-sm font-bold text-rose-700 dark:text-rose-300">{actionError}</p>}
 
       {/* Aisle Grouped Grocery Sections */}
       {groceryList.length === 0 ? (
@@ -263,7 +276,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                   {items.map((item) => (
                     <div
                       key={item.id}
-                      onClick={() => onToggleCheckItem(item.id)}
+                      onClick={() => { if (!item.isCovered) onToggleCheckItem(item.id); }}
                       className={`flex items-center justify-between p-2.5 rounded-xl transition-all cursor-pointer select-none ${
                         item.isChecked
                           ? 'bg-stone-100/60 dark:bg-stone-800/40 text-stone-400 line-through'
@@ -271,7 +284,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <button className="text-amber-700 dark:text-amber-400">
+                        <button type="button" disabled={item.isCovered} className="text-amber-700 disabled:cursor-default disabled:opacity-70 dark:text-amber-400" aria-label={item.isCovered ? (isArabic ? 'متوفر في المخزن' : 'Covered by pantry') : (isArabic ? 'تبديل حالة الشراء' : 'Toggle purchased')}>
                           {item.isChecked ? (
                             <CheckSquare className="w-5 h-5 text-emerald-600 fill-emerald-100 dark:fill-emerald-950" />
                           ) : (
@@ -287,6 +300,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                               {isArabic ? 'من: ' : 'From: '} {item.recipeSources.join(', ')}
                             </p>
                           )}
+                          {item.isCovered ? <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-300">{isArabic ? 'متوفر بالكامل في المخزن' : 'Fully covered by pantry'}</p> : item.pantryAmount && item.pantryAmount > 0 ? <p className="text-[10px] font-bold text-amber-700 dark:text-amber-300">{isArabic ? `متوفر من المخزن: ${item.pantryAmount}` : `Pantry covers: ${item.pantryAmount}`}</p> : null}
                         </div>
                       </div>
 

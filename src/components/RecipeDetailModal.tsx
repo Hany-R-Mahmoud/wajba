@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActiveTimer, Language, MealSlot, Recipe } from '../types';
-import { X, Clock, Users, Timer, Share2, Check, Plus, Minus, CalendarPlus, ShoppingBag, BookOpen, ThumbsUp } from 'lucide-react';
+import { X, Clock, Users, Timer, Share2, Check, Plus, Minus, CalendarPlus, ShoppingBag, BookOpen, ThumbsUp, Pencil, Trash2 } from 'lucide-react';
 import { REGION_BADGES } from './RecipeCard';
+import { DIETARY_LABELS } from '../utils/recipes';
 
 interface RecipeDetailModalProps {
   recipe: Recipe | null;
@@ -10,6 +11,8 @@ interface RecipeDetailModalProps {
   onStartTimer: (timer: ActiveTimer) => void;
   onAddToPlanner: (recipe: Recipe, slot: MealSlot, dayId: string, servings: number) => void;
   onAddIngredientsToGrocery: (ingredients: Recipe['ingredients'], scale: number) => void;
+  onEditRecipe?: () => void;
+  onDeleteRecipe?: () => void;
 }
 
 export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
@@ -19,18 +22,29 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
   onStartTimer,
   onAddToPlanner,
   onAddIngredientsToGrocery,
+  onEditRecipe,
+  onDeleteRecipe,
 }) => {
-  if (!recipe) return null;
-
-  const isArabic = language === 'ar';
-  const regionInfo = REGION_BADGES[recipe.region] || REGION_BADGES.general;
-
-  const [currentServings, setCurrentServings] = useState<number>(recipe.servings || 4);
+  const [currentServings, setCurrentServings] = useState<number>(recipe?.servings || 4);
   const [copiedLink, setCopiedLink] = useState(false);
   const [addedGrocery, setAddedGrocery] = useState(false);
   const [plannerOpen, setPlannerOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string>('sat');
   const [selectedSlot, setSelectedSlot] = useState<MealSlot>('lunch');
+
+  useEffect(() => {
+    if (!recipe) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, recipe]);
+
+  if (!recipe) return null;
+
+  const isArabic = language === 'ar';
+  const regionInfo = REGION_BADGES[recipe.region] || REGION_BADGES.general;
 
   const scale = currentServings / (recipe.servings || 1);
 
@@ -47,7 +61,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
   };
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
+    navigator.clipboard.writeText(new URL(`/recipes/${encodeURIComponent(recipe.id)}`, window.location.origin).href);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
   };
@@ -64,8 +78,8 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-stone-950/70 backdrop-blur-sm overflow-y-auto animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 my-8 overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-stone-950/70 backdrop-blur-sm overflow-y-auto animate-in fade-in duration-200" role="presentation">
+      <div role="dialog" aria-modal="true" aria-labelledby="recipe-detail-title" className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 my-8 overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Header with Hero Image */}
         <div className="relative h-72 sm:h-80 w-full bg-stone-950 flex-shrink-0 group overflow-hidden">
@@ -95,12 +109,13 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
             <span className={`inline-block mb-1.5 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md ${regionInfo.bg}`}>
               {isArabic ? regionInfo.ar : regionInfo.en}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black leading-tight drop-shadow-md">
+            <h2 id="recipe-detail-title" className="text-2xl sm:text-3xl font-black leading-tight drop-shadow-md">
               {isArabic ? recipe.titleAr : recipe.titleEn}
             </h2>
             <p className="text-xs text-amber-200/90 font-medium">
               {isArabic ? recipe.titleEn : recipe.titleAr}
             </p>
+            {recipe.dietaryTags && recipe.dietaryTags.length > 0 && <div className="mt-2 flex flex-wrap gap-1.5">{recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-emerald-500/80 px-2 py-1 text-[10px] font-bold text-white">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}</div>}
           </div>
         </div>
 
@@ -322,6 +337,8 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
         {/* Modal Action Footer */}
         <div className="p-4 bg-amber-50 dark:bg-stone-900 border-t border-amber-200/60 dark:border-stone-800 flex flex-wrap items-center justify-between gap-3 flex-shrink-0">
           <div className="flex items-center gap-2">
+            {onEditRecipe && <button type="button" onClick={onEditRecipe} className="inline-flex items-center gap-1.5 rounded-xl bg-stone-200 px-3.5 py-2 text-xs font-bold text-stone-800 dark:bg-stone-800 dark:text-stone-200"><Pencil className="h-3.5 w-3.5" />{isArabic ? 'تعديل' : 'Edit'}</button>}
+            {onDeleteRecipe && <button type="button" onClick={() => { if (window.confirm(isArabic ? 'حذف هذه الوصفة؟' : 'Delete this recipe?')) onDeleteRecipe(); }} className="inline-flex items-center gap-1.5 rounded-xl bg-rose-100 px-3.5 py-2 text-xs font-bold text-rose-800 dark:bg-rose-950 dark:text-rose-200"><Trash2 className="h-3.5 w-3.5" />{isArabic ? 'حذف' : 'Delete'}</button>}
             <button
               onClick={handleShareWhatsApp}
               className="px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold flex items-center gap-1.5"

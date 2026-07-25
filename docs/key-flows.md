@@ -11,15 +11,24 @@
 
 1. User assigns recipe IDs and servings in weekly or monthly planner views.
 2. `App` selects the active plan and calls `generateGroceryListFromPlan`.
-3. `src/utils/aggregator.ts` resolves recipe IDs, scales ingredients, merges matching English ingredient names, normalizes units, and appends custom extras.
-4. `GroceryListView` lets the user check or remove items.
+3. `src/utils/aggregator.ts` resolves recipe IDs, scales ingredients, merges matching names, normalizes units, subtracts compatible pantry quantities, and appends custom extras.
+4. `GroceryListView` shows needed, partially covered, and fully covered items; checking an item does not consume pantry stock.
 
 ## Flow: Family Sharing And Export
 
 1. The family-sync modal encodes a weekly plan into a `plan` URL query parameter.
 2. A recipient opening that URL decodes and stores the plan, then the app removes the query parameter from browser history.
-3. The same modal can download CSV or a JSON backup.
+3. The same modal can download CSV or a full JSON backup; Settings can restore a validated backup after confirmation.
 4. Optional Google Apps Script sync sends the weekly plan and grocery list in a POST payload.
+
+Google Apps Script uses `no-cors`; the UI reports that the request was sent but cannot verify remote completion.
+
+## Flow: Local Data Recovery
+
+1. Settings exports preferences, plans, custom recipes, grocery state, votes, favorites, and pantry items.
+2. Import validates the versioned backup shape before changing local storage.
+3. A confirmed import replaces supported durable state and reloads the app.
+4. Clear local data removes user state and allows the seeded experience to initialize again.
 
 ## Flow: Recipe Catalog Maintenance
 

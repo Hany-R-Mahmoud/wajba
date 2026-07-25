@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { CookingTimerStep, Ingredient, IngredientAisle, Language, MealSlot, Recipe, Region } from '../types';
+import React, { useEffect, useState } from 'react';
+import { DIETARY_TAGS, CookingTimerStep, DietaryTag, Ingredient, IngredientAisle, Language, MealSlot, Recipe, Region } from '../types';
 import { X, Plus, Trash2, Save, Sparkles, Clock, Image as ImageIcon, BookOpen, Layers, Check } from 'lucide-react';
 
 interface CreateRecipeModalProps {
   onClose: () => void;
   language: Language;
   onSaveRecipe: (recipe: Recipe) => void;
+  initialRecipe?: Recipe | null;
 }
 
 const PRESET_IMAGES = [
@@ -33,6 +34,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
   onClose,
   language,
   onSaveRecipe,
+  initialRecipe,
 }) => {
   const isArabic = language === 'ar';
 
@@ -48,12 +50,15 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
   const [isRamadanSpecial, setIsRamadanSpecial] = useState(false);
   const [tagsInput, setTagsInput] = useState('وصفة خاصة, عائلية');
+  const [dietaryTags, setDietaryTags] = useState<DietaryTag[]>([]);
   const [imageUrl, setImageUrl] = useState(PRESET_IMAGES[0].url);
   const [extraImage1, setExtraImage1] = useState('');
   const [extraImage2, setExtraImage2] = useState('');
   const [extraImage3, setExtraImage3] = useState('');
   const [storyAr, setStoryAr] = useState('');
   const [storyEn, setStoryEn] = useState('');
+  const [validationError, setValidationError] = useState('');
+  const [isSaving, setIsSaving] = useState(false);
 
   const [ingredients, setIngredients] = useState<Ingredient[]>([
     { id: 'c_1', nameAr: 'أرز بسمتي أو مصري', nameEn: 'Rice', amount: 300, unitAr: 'جرام', unitEn: 'g', aisle: 'pantry' },
@@ -73,6 +78,41 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
   const [timerSteps, setTimerSteps] = useState<CookingTimerStep[]>([
     { stepIndex: 1, titleAr: 'طهي الوجبة بالفرن', titleEn: 'Bake Dish in Oven', durationMinutes: 25 },
   ]);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [onClose]);
+
+  useEffect(() => {
+    if (!initialRecipe) return;
+    setTitleAr(initialRecipe.titleAr);
+    setTitleEn(initialRecipe.titleEn);
+    setDescriptionAr(initialRecipe.descriptionAr);
+    setDescriptionEn(initialRecipe.descriptionEn);
+    setRegion(initialRecipe.region);
+    setMealTypes(initialRecipe.mealType);
+    setPrepTime(initialRecipe.prepTimeMinutes);
+    setCookTime(initialRecipe.cookTimeMinutes);
+    setServings(initialRecipe.servings);
+    setDifficulty(initialRecipe.difficulty);
+    setIsRamadanSpecial(Boolean(initialRecipe.isRamadanSpecial));
+    setTagsInput(initialRecipe.tags.join(', '));
+    setDietaryTags(initialRecipe.dietaryTags ?? []);
+    setImageUrl(initialRecipe.image);
+    setExtraImage1(initialRecipe.galleryImages?.[1] ?? '');
+    setExtraImage2(initialRecipe.galleryImages?.[2] ?? '');
+    setExtraImage3(initialRecipe.galleryImages?.[3] ?? '');
+    setStoryAr(initialRecipe.storyAr ?? '');
+    setStoryEn(initialRecipe.storyEn ?? '');
+    setIngredients(initialRecipe.ingredients);
+    setInstructionsAr(initialRecipe.instructionsAr);
+    setInstructionsEn(initialRecipe.instructionsEn);
+    setTimerSteps(initialRecipe.timerSteps ?? []);
+  }, [initialRecipe]);
 
   const toggleMealType = (slot: MealSlot) => {
     if (mealTypes.includes(slot)) {
@@ -131,7 +171,14 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!titleAr.trim()) return;
+    const validIngredients = ingredients.filter((ing) => ing.nameAr.trim() && ing.nameEn.trim() && Number.isFinite(ing.amount) && ing.amount > 0);
+    if (!titleAr.trim() || !titleEn.trim() || servings <= 0 || validIngredients.length === 0) {
+      setValidationError(isArabic ? 'أدخل العنوانين، وعدد أفراد صحيح، ومكوناً صالحاً واحداً على الأقل.' : 'Enter both titles, a positive serving count, and at least one valid ingredient.');
+      return;
+    }
+    if (isSaving) return;
+    setValidationError('');
+    setIsSaving(true);
 
     const parsedTags = tagsInput
       .split(',')
@@ -139,7 +186,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
       .filter(Boolean);
 
     const newRecipe: Recipe = {
-      id: `custom_${Date.now()}`,
+      id: initialRecipe?.id ?? `custom_${Date.now()}`,
       titleAr: titleAr.trim(),
       titleEn: titleEn.trim() || titleAr.trim(),
       descriptionAr: descriptionAr.trim() || (isArabic ? 'وصفة عائلية ممتازة محبوكة بعناية' : 'Delicious family recipe'),
@@ -161,7 +208,8 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
       ].filter(Boolean),
       storyAr: storyAr.trim() || (isArabic ? 'وصفة عائلية تناقلتها الأجيال بطعم مميز وأصيل.' : 'A cherished family recipe passed down with pride.'),
       storyEn: storyEn.trim() || storyAr.trim() || 'A cherished family recipe passed down with pride.',
-      ingredients: ingredients.filter((ing) => ing.nameAr.trim().length > 0),
+      dietaryTags,
+      ingredients: validIngredients,
       instructionsAr: instructionsAr.filter((inst) => inst.trim().length > 0),
       instructionsEn: instructionsEn.filter((inst) => inst.trim().length > 0),
       timerSteps: timerSteps.filter((ts) => ts.titleAr.trim().length > 0 && ts.durationMinutes > 0),
@@ -170,13 +218,17 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
       isCustom: true,
     };
 
-    onSaveRecipe(newRecipe);
-    onClose();
+    onSaveRecipe({
+      ...newRecipe,
+      votesCount: initialRecipe?.votesCount ?? newRecipe.votesCount,
+      rating: initialRecipe?.rating ?? newRecipe.rating,
+    });
+    setIsSaving(false);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-5 sm:p-7 my-6 max-h-[92vh] overflow-y-auto text-stone-800 dark:text-stone-100">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto" role="presentation">
+      <div role="dialog" aria-modal="true" aria-labelledby="recipe-modal-title" className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-5 sm:p-7 my-6 max-h-[92vh] overflow-y-auto text-stone-800 dark:text-stone-100">
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-amber-200 dark:border-stone-800 mb-5">
           <div className="flex items-center gap-2.5">
@@ -184,8 +236,8 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
               🍲
             </div>
             <div>
-              <h2 className="text-base sm:text-lg font-extrabold text-amber-950 dark:text-amber-200">
-                {isArabic ? 'إضافة وجبة أو وصفة خاصة جديدة' : 'Add New Custom Meal & Recipe'}
+              <h2 id="recipe-modal-title" className="text-base sm:text-lg font-extrabold text-amber-950 dark:text-amber-200">
+                {initialRecipe ? (isArabic ? 'تعديل الوصفة الخاصة' : 'Edit Custom Recipe') : (isArabic ? 'إضافة وجبة أو وصفة خاصة جديدة' : 'Add New Custom Meal & Recipe')}
               </h2>
               <p className="text-[11px] text-stone-500">
                 {isArabic
@@ -209,22 +261,27 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="block mb-1 font-bold">{isArabic ? 'اسم الوجبة بالعربية *' : 'Meal Title (Arabic) *'}</label>
+                <label htmlFor="recipe-title-ar" className="block mb-1 font-bold">{isArabic ? 'اسم الوجبة بالعربية *' : 'Meal Title (Arabic) *'}</label>
                 <input
-                  required
+                  id="recipe-title-ar"
                   type="text"
                   value={titleAr}
                   onChange={(e) => setTitleAr(e.target.value)}
+                  aria-invalid={Boolean(validationError && !titleAr.trim())}
+                  aria-describedby={validationError ? 'recipe-validation-error' : undefined}
                   placeholder={isArabic ? 'مثال: صينية كفتة بالبطاطس' : 'e.g. Kofta with Potatoes'}
                   className="w-full p-2.5 rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-bold text-amber-950 dark:text-amber-100 focus:outline-none focus:ring-2 focus:ring-amber-600"
                 />
               </div>
               <div>
-                <label className="block mb-1 font-bold">{isArabic ? 'الاسم بالإنجليزية (اختياري)' : 'Meal Title (English)'}</label>
+                <label htmlFor="recipe-title-en" className="block mb-1 font-bold">{isArabic ? 'الاسم بالإنجليزية *' : 'Meal Title (English) *'}</label>
                 <input
+                  id="recipe-title-en"
                   type="text"
                   value={titleEn}
                   onChange={(e) => setTitleEn(e.target.value)}
+                  aria-invalid={Boolean(validationError && !titleEn.trim())}
+                  aria-describedby={validationError ? 'recipe-validation-error' : undefined}
                   placeholder="Kofta with Baked Potatoes"
                   className="w-full p-2.5 rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600"
                 />
@@ -372,6 +429,23 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   className="w-full p-2 rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900"
                 />
               </div>
+            </div>
+            <div className="border-t border-amber-200/60 pt-3 dark:border-stone-700/60">
+              <p className="mb-2 font-bold">{isArabic ? 'الوسوم الغذائية الإرشادية:' : 'Informational dietary tags:'}</p>
+              <div className="flex flex-wrap gap-2">
+                {DIETARY_TAGS.map((tag) => {
+                  const labels: Record<DietaryTag, { ar: string; en: string }> = {
+                    vegetarian: { ar: 'نباتي', en: 'Vegetarian' },
+                    vegan: { ar: 'نباتي صرف', en: 'Vegan' },
+                    'gluten-free': { ar: 'خالٍ من الغلوتين', en: 'Gluten-free' },
+                    'dairy-free': { ar: 'خالٍ من الألبان', en: 'Dairy-free' },
+                    'nut-free': { ar: 'خالٍ من المكسرات', en: 'Nut-free' },
+                    spicy: { ar: 'حار', en: 'Spicy' },
+                  };
+                  return <label key={tag} className="flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 dark:bg-stone-900"><input type="checkbox" checked={dietaryTags.includes(tag)} onChange={(event) => setDietaryTags(event.target.checked ? [...dietaryTags, tag] : dietaryTags.filter((candidate) => candidate !== tag))} />{isArabic ? labels[tag].ar : labels[tag].en}</label>;
+                })}
+              </div>
+              <p className="mt-2 text-[11px] text-stone-500">{isArabic ? 'تحقق دائماً من المكونات والحساسيات.' : 'Always verify ingredients and allergens.'}</p>
             </div>
           </div>
 
@@ -696,6 +770,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
 
           {/* Form Actions */}
           <div className="pt-4 border-t border-amber-200 dark:border-stone-800 flex items-center justify-between">
+            {validationError && <p id="recipe-validation-error" role="alert" className="max-w-sm text-rose-700 dark:text-rose-300">{validationError}</p>}
             <button
               type="button"
               onClick={onClose}
@@ -706,10 +781,11 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
 
             <button
               type="submit"
+              disabled={isSaving}
               className="px-7 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-extrabold flex items-center gap-2 shadow-lg shadow-amber-900/20 text-xs"
             >
               <Save className="w-4 h-4" />
-              <span>{isArabic ? 'حفظ الوجبة في المكتبة والجدول 🍳' : 'Save Meal to Treasury 🍳'}</span>
+              <span>{isSaving ? (isArabic ? 'جارٍ الحفظ...' : 'Saving...') : (initialRecipe ? (isArabic ? 'حفظ التعديلات' : 'Save changes') : (isArabic ? 'حفظ الوجبة في المكتبة والجدول' : 'Save Meal to Treasury'))}</span>
             </button>
           </div>
         </form>

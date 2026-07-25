@@ -6,6 +6,17 @@ export type MealSlot = 'breakfast' | 'lunch' | 'dinner' | 'snack' | 'suhoor' | '
 
 export type IngredientAisle = 'produce' | 'meat' | 'dairy' | 'pantry' | 'bakery' | 'frozen' | 'other';
 
+export const DIETARY_TAGS = [
+  'vegetarian',
+  'vegan',
+  'gluten-free',
+  'dairy-free',
+  'nut-free',
+  'spicy',
+] as const;
+
+export type DietaryTag = (typeof DIETARY_TAGS)[number];
+
 export interface Ingredient {
   id: string;
   nameAr: string;
@@ -37,6 +48,7 @@ export interface Recipe {
   difficulty: 'easy' | 'medium' | 'hard';
   isRamadanSpecial?: boolean;
   tags: string[];
+  dietaryTags?: DietaryTag[];
   image: string;
   galleryImages?: string[];
   storyAr?: string;
@@ -102,6 +114,40 @@ export interface GroceryItem {
   isChecked: boolean;
   recipeSources: string[]; // Recipe titles
   isCustomExtra?: boolean;
+  requiredAmount?: number;
+  pantryAmount?: number;
+  isCovered?: boolean;
+}
+
+export interface PantryItem {
+  id: string;
+  nameAr: string;
+  nameEn: string;
+  amount: number;
+  unitAr: string;
+  unitEn: string;
+  aisle: IngredientAisle;
+  updatedAt: string;
+}
+
+export interface WajbaBackupState {
+  language: Language;
+  theme: 'light' | 'dark';
+  favorites: string[];
+  votes: { [recipeId: string]: 'like' | 'dislike' };
+  customRecipes: Recipe[];
+  weeklyPlan: WeeklyPlan;
+  monthlyPlans: MonthlyPlan[];
+  groceryCheckedIds: string[];
+  groceryExtras: GroceryItem[];
+  pantryItems: PantryItem[];
+}
+
+export interface WajbaBackup {
+  version: 1;
+  exportedAt: string;
+  app: 'Wajba';
+  state: WajbaBackupState;
 }
 
 export interface ActiveTimer {

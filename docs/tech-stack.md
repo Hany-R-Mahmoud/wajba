@@ -8,7 +8,7 @@
 | Package manager | Bun (`bun.lock` is tracked) |
 | Build | Vite 6 with React and Tailwind CSS Vite plugins |
 | Type check | TypeScript `tsc --noEmit` via `bun run lint` |
-| Test | No test script or test files found |
+| Test | Node built-in test runner through the existing `tsx` dev dependency |
 | Lint / Format | No dedicated linter or formatter script found |
 
 ## Important Libraries
@@ -28,3 +28,4 @@
 
 - Exact supported Bun and Python versions are `Unknown / verify`.
 - Production hosting, CI, and server-side runtime are `Unknown / verify`.
+- Current scope is local-first: no database, backend, authentication, roles, or server runtime is used.
