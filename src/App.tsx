@@ -48,9 +48,48 @@ import { PublicRecipeNotFound, PublicRecipePage } from './components/PublicRecip
 import { getPublicRecipeRoute, updateSeo } from './utils/seo';
 import { Calendar, CalendarDays } from 'lucide-react';
 
+type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'settings';
+
+const DASHBOARD_PATHS: Record<DashboardTab, string> = {
+  recipes: '/dashboard',
+  planner: '/dashboard/planner',
+  grocery: '/dashboard/grocery',
+  pantry: '/dashboard/pantry',
+  leaderboard: '/dashboard/leaderboard',
+  settings: '/dashboard/settings',
+};
+
+function getDashboardTab(pathname: string): DashboardTab | null {
+  if (pathname === '/dashboard' || pathname === '/dashboard/') return 'recipes';
+  const tab = pathname.match(/^\/dashboard\/(planner|grocery|pantry|leaderboard|settings)\/?$/)?.[1];
+  return (tab as DashboardTab | undefined) ?? null;
+}
+
 export default function App() {
-  // Landing Page vs Dashboard View state
-  const [showLanding, setShowLanding] = useState<boolean>(true);
+  const [pathname, setPathname] = useState(() => window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const dashboardTab = useMemo(() => getDashboardTab(pathname), [pathname]);
+  const isDashboardRoute = pathname === '/dashboard' || pathname.startsWith('/dashboard/');
+  const [currentTab, setCurrentTab] = useState<DashboardTab>(() => getDashboardTab(window.location.pathname) ?? 'recipes');
+
+  useEffect(() => {
+    if (dashboardTab) setCurrentTab(dashboardTab);
+  }, [dashboardTab]);
+
+  const navigateToTab = (tab: DashboardTab) => {
+    const nextPath = DASHBOARD_PATHS[tab];
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, '', nextPath);
+    }
+    setPathname(nextPath);
+    setCurrentTab(tab);
+  };
 
   // 1. Language & Theme Setup
   const [language, setLanguage] = useState<Language>(loadStoredLanguage());
@@ -80,11 +119,11 @@ export default function App() {
   const allRecipes = useMemo(() => {
     return [...customRecipes, ...INITIAL_RECIPES];
   }, [customRecipes]);
-  const publicRecipeRoute = useMemo(() => getPublicRecipeRoute(allRecipes), [allRecipes]);
+  const publicRecipeRoute = useMemo(() => getPublicRecipeRoute(allRecipes, pathname), [allRecipes, pathname]);
 
   useEffect(() => {
-    updateSeo(publicRecipeRoute.recipe, publicRecipeRoute.isRecipePath && !publicRecipeRoute.recipe);
-  }, [publicRecipeRoute]);
+    updateSeo(publicRecipeRoute.recipe, publicRecipeRoute.isRecipePath && !publicRecipeRoute.recipe, isDashboardRoute);
+  }, [isDashboardRoute, publicRecipeRoute]);
 
   const [favorites, setFavorites] = useState<string[]>(loadFavorites());
   const [userVotes, setUserVotes] = useState<{ [recipeId: string]: 'like' | 'dislike' }>(loadVotes());
@@ -96,9 +135,6 @@ export default function App() {
   const [groceryExtras, setGroceryExtras] = useState<GroceryItem[]>(loadGroceryExtras());
   const [pantryItems, setPantryItems] = useState<PantryItem[]>(loadPantryItems());
   const [activeTimers, setActiveTimers] = useState<ActiveTimer[]>(loadActiveTimers());
-
-  // Navigation Tab State
-  const [currentTab, setCurrentTab] = useState<'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'family' | 'settings'>('recipes');
 
   // Modals
   const [selectedDetailRecipe, setSelectedDetailRecipe] = useState<Recipe | null>(null);
@@ -269,7 +305,7 @@ export default function App() {
     setWeeklyPlan(newPlan);
     saveWeeklyPlan(newPlan);
     setSelectedDetailRecipe(null);
-    setCurrentTab('planner');
+    navigateToTab('planner');
   };
 
   const handleAddIngredientsToGrocery = (
@@ -303,21 +339,14 @@ export default function App() {
     );
   }
 
-  if (showLanding) {
+  if (pathname === '/') {
     return (
       <LandingPage
         language={language}
         onLanguageChange={setLanguage}
         theme={theme}
         onThemeToggle={toggleTheme}
-        onEnterDashboard={() => setShowLanding(false)}
-        isRamadanMode={weeklyPlan.isRamadanMode}
-        onToggleRamadanMode={() =>
-          handleUpdateWeeklyPlan({
-            ...weeklyPlan,
-            isRamadanMode: !weeklyPlan.isRamadanMode,
-          })
-        }
+        onEnterDashboard={() => navigateToTab('recipes')}
       />
     );
   }
@@ -331,22 +360,14 @@ export default function App() {
           if (tab === 'family') {
             setFamilySyncModalOpen(true);
           } else {
-            setCurrentTab(tab);
+            navigateToTab(tab);
           }
         }}
         language={language}
         onLanguageChange={setLanguage}
         theme={theme}
         onThemeToggle={toggleTheme}
-        isRamadanMode={weeklyPlan.isRamadanMode}
-        onToggleRamadanMode={() =>
-          handleUpdateWeeklyPlan({
-            ...weeklyPlan,
-            isRamadanMode: !weeklyPlan.isRamadanMode,
-          })
-        }
         activeTimers={activeTimers}
-        onOpenLanding={() => setShowLanding(true)}
       />
 
       {/* Main View Container */}
@@ -354,7 +375,7 @@ export default function App() {
         {storageIssue && (
           <div role="alert" className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-rose-50 px-4 py-3 text-sm text-rose-900 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-100">
             <span>{language === 'ar' ? `تعذر قراءة بيانات محلية تالفة: ${storageIssue}. يمكنك تصدير ما يمكن قراءته أو مسح البيانات من الإعدادات.` : `A local data value could not be read: ${storageIssue}. Export readable data or clear local data in Settings.`}</span>
-            <button type="button" onClick={() => { setCurrentTab('settings'); setStorageIssue(null); }} className="rounded-lg border border-current px-3 py-1 text-xs font-bold">{language === 'ar' ? 'فتح الإعدادات' : 'Open Settings'}</button>
+            <button type="button" onClick={() => { navigateToTab('settings'); setStorageIssue(null); }} className="rounded-lg border border-current px-3 py-1 text-xs font-bold">{language === 'ar' ? 'فتح الإعدادات' : 'Open Settings'}</button>
           </div>
         )}
         {currentTab === 'recipes' && (
@@ -419,7 +440,7 @@ export default function App() {
                 onUpdatePlan={handleUpdateWeeklyPlan}
                 recipes={allRecipes}
                 language={language}
-                onGoToGrocery={() => setCurrentTab('grocery')}
+                onGoToGrocery={() => navigateToTab('grocery')}
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
@@ -430,7 +451,7 @@ export default function App() {
                 onUpdateMonthlyPlan={handleUpdateMonthlyPlan}
                 recipes={allRecipes}
                 language={language}
-                onGoToGrocery={() => setCurrentTab('grocery')}
+                onGoToGrocery={() => navigateToTab('grocery')}
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onChangeMonth={handleChangeMonth}
@@ -475,6 +496,13 @@ export default function App() {
             theme={theme}
             onLanguageChange={setLanguage}
             onThemeToggle={toggleTheme}
+            isRamadanMode={weeklyPlan.isRamadanMode}
+            onToggleRamadanMode={() =>
+              handleUpdateWeeklyPlan({
+                ...weeklyPlan,
+                isRamadanMode: !weeklyPlan.isRamadanMode,
+              })
+            }
             onImportBackup={handleImportBackup}
             onClearUserData={handleClearUserData}
           />

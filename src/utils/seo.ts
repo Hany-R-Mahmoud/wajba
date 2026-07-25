@@ -1,8 +1,13 @@
 import {Recipe} from '../types';
 
 export const DEFAULT_SEO = {
-  title: 'وجبة Wajba - MENA Meal Planner & Arabic Kitchen',
-  description: 'Authentic Egyptian and Arabic recipes, weekly meal planning, Ramadan mode, smart grocery lists, and cooking timers.',
+  title: 'خطط لوجبات عائلتك بلمسة تراثية أصيلة | Wajba',
+  description: 'خطط لوجبات عائلتك، واكتشف وصفات عربية أصيلة، ونظم قائمة التسوق الأسبوعية بسهولة.',
+};
+
+const DASHBOARD_SEO = {
+  title: 'لوحة تخطيط الوجبات العائلية | Wajba',
+  description: 'لوحة Wajba الخاصة بتخطيط الوجبات والوصفات وقائمة التسوق العائلية.',
 };
 
 export interface SeoMetadata {
@@ -24,23 +29,23 @@ function siteBaseUrl(siteUrl?: string): string | undefined {
   return parsed.toString().replace(/\/$/, '');
 }
 
-export function getSeoMetadata(recipe?: Recipe, siteUrl?: string, notFound = false): SeoMetadata {
+export function getSeoMetadata(recipe?: Recipe, siteUrl?: string, notFound = false, dashboard = false): SeoMetadata {
   siteBaseUrl(siteUrl);
-  const path = recipe ? `/recipes/${encodeURIComponent(recipe.id)}` : '/';
+  const path = recipe ? `/recipes/${encodeURIComponent(recipe.id)}` : dashboard ? '/dashboard' : '/';
 
   return {
-    title: recipe ? `${recipe.titleEn} | Wajba` : DEFAULT_SEO.title,
-    description: recipe?.descriptionEn || DEFAULT_SEO.description,
+    title: recipe ? `${recipe.titleEn} | Wajba` : dashboard ? DASHBOARD_SEO.title : DEFAULT_SEO.title,
+    description: recipe?.descriptionEn || (dashboard ? DASHBOARD_SEO.description : DEFAULT_SEO.description),
     path,
     type: recipe ? 'article' : 'website',
     image: '/logo.svg',
-    robots: notFound ? 'noindex,follow' : 'index,follow',
+    robots: notFound || dashboard ? 'noindex,follow' : 'index,follow',
     recipe,
   };
 }
 
-export function getPublicRecipeRoute(recipes: Recipe[]): {recipe?: Recipe; isRecipePath: boolean} {
-  const match = window.location.pathname.match(/^\/recipes\/([^/]+)\/?$/);
+export function getPublicRecipeRoute(recipes: Recipe[], pathname = window.location.pathname): {recipe?: Recipe; isRecipePath: boolean} {
+  const match = pathname.match(/^\/recipes\/([^/]+)\/?$/);
   if (!match) return {isRecipePath: false};
 
   let recipeId: string;
@@ -100,9 +105,9 @@ function recipeJsonLd(recipe: Recipe, url: string, image: string) {
   };
 }
 
-export function updateSeo(recipe?: Recipe, notFound = false) {
-  const metadata = getSeoMetadata(recipe, window.location.origin, notFound);
-  const canonicalUrl = notFound ? null : new URL(metadata.path, window.location.origin).href;
+export function updateSeo(recipe?: Recipe, notFound = false, dashboard = false) {
+  const metadata = getSeoMetadata(recipe, window.location.origin, notFound, dashboard);
+  const canonicalUrl = notFound || dashboard ? null : new URL(metadata.path, window.location.origin).href;
   const socialImageUrl = new URL(metadata.image, window.location.origin).href;
   const recipeImageUrl = recipe ? new URL(recipe.image, window.location.origin).href : socialImageUrl;
 

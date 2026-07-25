@@ -10,10 +10,7 @@ interface NavbarProps {
   onLanguageChange: (lang: Language) => void;
   theme: 'light' | 'dark';
   onThemeToggle: () => void;
-  isRamadanMode: boolean;
-  onToggleRamadanMode: () => void;
   activeTimers: ActiveTimer[];
-  onOpenLanding?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -23,10 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLanguageChange,
   theme,
   onThemeToggle,
-  isRamadanMode,
-  onToggleRamadanMode,
   activeTimers,
-  onOpenLanding,
 }) => {
   const isArabic = language === 'ar';
 
@@ -106,40 +100,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right Action Controls */}
           <div className="flex items-center gap-1 sm:gap-2">
-            {/* Landing Guide Button */}
-            {onOpenLanding && (
-              <button
-                onClick={onOpenLanding}
-                className="flex items-center gap-1.5 px-2 sm:px-3.5 py-1.5 rounded-full bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-200 text-xs font-mono border border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#ff7759] transition-all cursor-pointer"
-                title={isArabic ? 'عرض صفحة البداية والتعريف' : 'View Landing Guide'}
-              >
-                <span className="sm:hidden">🏠</span>
-                <span className="hidden sm:inline">{isArabic ? 'الرئيسية 🏠' : 'Landing 🏠'}</span>
-              </button>
-            )}
-
-            {/* Ramadan Mode Toggle Badge */}
-            <button
-              onClick={onToggleRamadanMode}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono border transition-all cursor-pointer ${
-                isRamadanMode
-                  ? 'bg-[#17171c] text-white border-[#17171c] dark:bg-white dark:text-[#17171c]'
-                  : 'bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-300 border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#17171c]'
-              }`}
-              title={isArabic ? 'تبديل وضع شهر رمضان المبارك' : 'Toggle Ramadan Planning Mode'}
-            >
-              <Moon className={`w-3.5 h-3.5 ${isRamadanMode ? 'text-[#ff7759] fill-[#ff7759]' : 'text-stone-500'}`} />
-              <span className="hidden sm:inline">
-                {isRamadanMode
-                  ? isArabic
-                    ? 'رمضان 🌙'
-                    : 'Ramadan Mode 🌙'
-                  : isArabic
-                  ? 'عادي'
-                  : 'Standard'}
-              </span>
-            </button>
-
             {/* Active Timers Badge if any */}
             {activeTimers.length > 0 && (
               <div

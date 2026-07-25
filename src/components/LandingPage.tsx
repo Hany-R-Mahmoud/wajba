@@ -7,8 +7,6 @@ import {
   ShoppingBag,
   Moon,
   Trophy,
-  ArrowRight,
-  ArrowLeft,
   CheckCircle2,
   Sparkles,
   Flame,
@@ -25,8 +23,6 @@ interface LandingPageProps {
   language: Language;
   onLanguageChange: (lang: Language) => void;
   onEnterDashboard: () => void;
-  isRamadanMode: boolean;
-  onToggleRamadanMode: () => void;
   theme: 'light' | 'dark';
   onThemeToggle: () => void;
 }
@@ -35,8 +31,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   language,
   onLanguageChange,
   onEnterDashboard,
-  isRamadanMode,
-  onToggleRamadanMode,
   theme,
   onThemeToggle,
 }) => {
@@ -49,16 +43,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <WajbaLogo variant="navbar" isArabic={isArabic} onClick={onEnterDashboard} />
 
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Fast Enter Dashboard Button */}
-          <button
-            onClick={onEnterDashboard}
-            aria-label={isArabic ? 'دخول التطبيق' : 'Enter App'}
-            className="px-3 sm:px-6 py-2 rounded-full bg-[#17171c] dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-100 text-white dark:text-[#17171c] text-xs font-mono tracking-tight font-bold transition-all border border-transparent flex items-center gap-2 shadow-xs cursor-pointer"
-          >
-            <span className="hidden sm:inline">{isArabic ? 'دخول التطبيق' : 'Enter App'}</span>
-            {isArabic ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
-          </button>
-
           {/* Language Switcher */}
           <button
             onClick={() => onLanguageChange(isArabic ? 'en' : 'ar')}
@@ -121,21 +105,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <span>{isArabic ? 'ابدأ التخطيط الآن ➔' : 'Start Meal Planning ➔'}</span>
               </button>
 
-              <button
-                onClick={onToggleRamadanMode}
-                className={`py-2.5 px-5 rounded-full font-mono text-xs border transition-all flex items-center gap-2 cursor-pointer ${
-                  isRamadanMode
-                    ? 'bg-[#D86540] text-white border-[#D86540]'
-                    : 'bg-[#f0eee8] dark:bg-stone-800 text-[#17171c] dark:text-white border-[#e2e0d8] dark:border-stone-700 hover:border-[#17171c]'
-                }`}
-              >
-                <Moon className={`w-3.5 h-3.5 ${isRamadanMode ? 'text-white fill-white' : 'text-stone-500'}`} />
-                <span>
-                  {isRamadanMode
-                    ? (isArabic ? 'وضع رمضان مفرّد 🌙' : 'Ramadan Active 🌙')
-                    : (isArabic ? 'تنشيط وضع رمضان' : 'Ramadan Mode')}
-                </span>
-              </button>
             </div>
           </div>
         </section>
@@ -266,14 +235,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   : 'Seamlessly toggle to Ramadan mode. Enjoy specialized Suhoor & Iftar meal slots, fasting countdown timers, hydration counters, and traditional Ramadan dessert recipes.'}
               </p>
 
-              <div className="pt-2">
-                <button
-                  onClick={onToggleRamadanMode}
-                  className="py-3 px-6 rounded-full bg-[#ff7759] hover:bg-[#ff552e] text-white font-mono font-bold text-xs transition-all cursor-pointer shadow-md"
-                >
-                  <span>{isRamadanMode ? (isArabic ? 'تم تنشيط وضع رمضان 🌙' : 'Ramadan Mode Active 🌙') : (isArabic ? 'تجربة وضع رمضان الآن 🌙' : 'Try Ramadan Mode Now 🌙')}</span>
-                </button>
-              </div>
             </div>
           </div>
         </section>

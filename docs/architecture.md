@@ -9,7 +9,7 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 | Module | Responsibility |
 |---|---|
 | `src/main.tsx` | Mount React under `#root` |
-| `src/App.tsx` | Landing/dashboard state, navigation, shared handlers |
+| `src/App.tsx` | URL-based landing/dashboard routing, shared state, navigation, and handlers |
 | `src/components/` | User-facing views and modals |
 | `src/data/recipes.ts` | Bundled runtime recipe catalog |
 | `src/utils/storage.ts` | `localStorage`, seed data, shared-plan URL decoding/encoding, pantry and backup state |
@@ -19,11 +19,12 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 ## Data / Control Flow
 
 1. `src/main.tsx` mounts `App`.
-2. `App` loads language, theme, plans, favorites, votes, custom recipes, grocery state, and timers from browser storage.
-3. `App` combines custom recipes with `INITIAL_RECIPES` from `src/data/recipes.ts`.
-4. Planner views update weekly/monthly plans; the aggregator derives grocery items from assigned recipe IDs and servings.
-5. UI actions save updated state back to `localStorage`.
-6. Family sync actions encode a weekly plan into a URL, download files, or send a JSON payload to a user-provided Apps Script URL.
+2. `/` renders the public landing page; `/dashboard` and its tab routes render the dashboard shell.
+3. `App` loads language, theme, plans, favorites, votes, custom recipes, grocery state, and timers from browser storage.
+4. `App` combines custom recipes with `INITIAL_RECIPES` from `src/data/recipes.ts`.
+5. Planner views update weekly/monthly plans; the aggregator derives grocery items from assigned recipe IDs and servings.
+6. UI actions save updated state back to `localStorage`.
+7. Family sync actions encode a weekly plan into a URL, download files, or send a JSON payload to a user-provided Apps Script URL.
 
 ## Diagram
 

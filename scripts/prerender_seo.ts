@@ -63,7 +63,7 @@ function notFoundHtml(template: string): string {
   let result = template
     .replace(/<noscript>[\s\S]*?<\/noscript>\n?/g, '')
     .replace('<div id="root"></div>', `<div id="root">${renderToStaticMarkup(React.createElement(PublicRecipeNotFound, {language: 'en'}))}</div>`)
-    .replace('<title>وجبة Wajba - MENA Meal Planner & Arabic Kitchen</title>', '<title>Page not found | Wajba</title>')
+    .replace('<title>خطط لوجبات عائلتك بلمسة تراثية أصيلة | Wajba</title>', '<title>Page not found | Wajba</title>')
     .replace(/<meta name="description"[^>]*>/, '<meta name="description" content="The requested Wajba page was not found." />')
     .replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex,follow" />')
     .replace(/<meta property="og:title"[^>]*>/, '<meta property="og:title" content="Page not found | Wajba" />')

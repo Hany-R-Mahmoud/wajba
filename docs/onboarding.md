@@ -16,7 +16,7 @@ bun install
 bun run dev
 ```
 
-Open `http://localhost:3000`, enter the dashboard, switch language/theme, inspect recipes, and verify planner-to-grocery behavior.
+Open `http://localhost:3000/` for the landing page, then enter the dashboard at `/dashboard`. Switch language/theme, inspect recipes, and verify planner-to-grocery behavior.
 
 ## Safe First Change
 

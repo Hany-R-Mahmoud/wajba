@@ -15,12 +15,12 @@ Wajba helps households discover Arabic and MENA recipes, assign meals to weekly 
 - Save custom recipes, favorites, votes, and active timers locally in the browser.
 - Edit/delete custom recipes with focused validation and one-step undo.
 - Share a weekly plan through an encoded URL, export/restore a full JSON backup, export CSV, or optionally POST to a user-provided Google Apps Script URL.
-- Use Settings to change language/theme, export or restore data, and clear local state.
+- Use Settings to change language/theme and Standard/Ramadan planning mode, export or restore data, and clear local state.
 
 ## Runtime Components
 
 - `src/main.tsx` mounts the React application.
-- `src/App.tsx` owns top-level state and selects the landing page or dashboard.
+- `src/App.tsx` owns top-level state and selects the `/` landing page or dashboard routes under `/dashboard`.
 - `src/components/` contains recipe, planner, grocery, leaderboard, timer, and family-sync views.
 - `src/utils/` contains persistence, grocery aggregation, CSV, and sync behavior.
 
