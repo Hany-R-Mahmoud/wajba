@@ -57,7 +57,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           {isArabic ? regionInfo.ar : regionInfo.en}
         </span>
 
-        {/* Favorite Star Button & Gallery Badge */}
+        {/* Favorite Star Button */}
         <div className="absolute top-3 left-3 flex items-center gap-1.5 z-10">
           <button
             onClick={(e) => {
@@ -69,15 +69,6 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           >
             <Star className={`w-4 h-4 ${isFavorite ? 'fill-[#ff7759] text-[#ff7759]' : 'text-stone-300'}`} />
           </button>
-
-          {recipe.galleryImages && recipe.galleryImages.length > 1 && (
-            <span
-              className="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-mono border border-white/20 shadow-xs"
-              title={isArabic ? `كتالوج يحتوي على ${recipe.galleryImages.length} صور` : `${recipe.galleryImages.length} gallery images`}
-            >
-              🖼️ {recipe.galleryImages.length}
-            </span>
-          )}
         </div>
 
         {/* Title Overlay */}

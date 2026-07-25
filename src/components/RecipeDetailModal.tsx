@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ActiveTimer, Language, MealSlot, Recipe } from '../types';
-import { X, Clock, Users, Timer, Share2, Check, Plus, Minus, CalendarPlus, ShoppingBag, BookOpen, ThumbsUp, ChevronLeft, ChevronRight, Maximize2, Images } from 'lucide-react';
+import { X, Clock, Users, Timer, Share2, Check, Plus, Minus, CalendarPlus, ShoppingBag, BookOpen, ThumbsUp } from 'lucide-react';
 import { REGION_BADGES } from './RecipeCard';
 
 interface RecipeDetailModalProps {
@@ -25,12 +25,6 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
   const isArabic = language === 'ar';
   const regionInfo = REGION_BADGES[recipe.region] || REGION_BADGES.general;
 
-  const galleryList = recipe.galleryImages && recipe.galleryImages.length > 0
-    ? recipe.galleryImages
-    : [recipe.image];
-
-  const [activeImgIdx, setActiveImgIdx] = useState<number>(0);
-  const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
   const [currentServings, setCurrentServings] = useState<number>(recipe.servings || 4);
   const [copiedLink, setCopiedLink] = useState(false);
   const [addedGrocery, setAddedGrocery] = useState(false);
@@ -39,17 +33,6 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
   const [selectedSlot, setSelectedSlot] = useState<MealSlot>('lunch');
 
   const scale = currentServings / (recipe.servings || 1);
-  const currentImage = galleryList[activeImgIdx] || recipe.image;
-
-  const handleNextImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setActiveImgIdx((prev) => (prev + 1) % galleryList.length);
-  };
-
-  const handlePrevImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setActiveImgIdx((prev) => (prev - 1 + galleryList.length) % galleryList.length);
-  };
 
   const handleShareWhatsApp = () => {
     const text = isArabic
@@ -84,71 +67,31 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-stone-950/70 backdrop-blur-sm overflow-y-auto animate-in fade-in duration-200">
       <div className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 my-8 overflow-hidden flex flex-col max-h-[90vh]">
         
-        {/* Header with Hero Image Catalog */}
+        {/* Header with Hero Image */}
         <div className="relative h-72 sm:h-80 w-full bg-stone-950 flex-shrink-0 group overflow-hidden">
           <img
-            src={currentImage}
+            src={recipe.image}
             alt={isArabic ? recipe.titleAr : recipe.titleEn}
             onError={(e) => {
               (e.target as HTMLImageElement).src = '/recipe-placeholder.svg';
             }}
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 cursor-pointer"
-            onClick={() => setIsLightboxOpen(true)}
+            className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/30 to-black/40" />
 
-          {/* Top Actions Bar */}
-          <div className="absolute top-4 right-4 left-4 flex items-center justify-between z-10">
-            {/* Catalog Badge */}
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-1.5 rounded-full bg-stone-900/80 backdrop-blur-md text-amber-300 text-xs font-bold border border-amber-500/30 flex items-center gap-1.5 shadow-md">
-                <Images className="w-3.5 h-3.5" />
-                <span>
-                  {isArabic
-                    ? `كتالوج الصور (${activeImgIdx + 1}/${galleryList.length})`
-                    : `Image Gallery (${activeImgIdx + 1}/${galleryList.length})`}
-                </span>
-              </span>
-
-              <button
-                onClick={() => setIsLightboxOpen(true)}
-                className="p-2 rounded-full bg-stone-900/80 hover:bg-amber-600 backdrop-blur-md text-white transition-all shadow-md"
-                title={isArabic ? 'تكبير الصور' : 'Fullscreen Gallery'}
-              >
-                <Maximize2 className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Close Button */}
+          {/* Close Button */}
+          <div className="absolute top-4 right-4 z-10">
             <button
               onClick={onClose}
-              className="p-2.5 rounded-full bg-stone-900/80 hover:bg-red-600 backdrop-blur-md text-white transition-all shadow-md"
+              className="p-2.5 rounded-full bg-stone-900/80 hover:bg-red-600 backdrop-blur-md text-white transition-all shadow-md cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Carousel Next/Prev Controls */}
-          {galleryList.length > 1 && (
-            <>
-              <button
-                onClick={handlePrevImage}
-                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-stone-900/60 hover:bg-amber-600 text-white backdrop-blur-md transition-all shadow-lg z-10"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNextImage}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-stone-900/60 hover:bg-amber-600 text-white backdrop-blur-md transition-all shadow-lg z-10"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </>
-          )}
-
           {/* Region & Header Metadata */}
-          <div className="absolute bottom-16 right-4 left-4 text-white z-10">
+          <div className="absolute bottom-6 right-4 left-4 text-white z-10">
             <span className={`inline-block mb-1.5 px-3 py-1 rounded-full text-xs font-bold border backdrop-blur-md ${regionInfo.bg}`}>
               {isArabic ? regionInfo.ar : regionInfo.en}
             </span>
@@ -159,36 +102,6 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
               {isArabic ? recipe.titleEn : recipe.titleAr}
             </p>
           </div>
-
-          {/* Interactive Thumbnail Catalog Bar */}
-          {galleryList.length > 1 && (
-            <div className="absolute bottom-3 left-4 right-4 flex items-center justify-center gap-2 z-10">
-              {galleryList.map((imgUrl, idx) => (
-                <button
-                  key={idx}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveImgIdx(idx);
-                  }}
-                  className={`relative w-12 h-10 rounded-lg overflow-hidden border-2 transition-all shadow-md ${
-                    activeImgIdx === idx
-                      ? 'border-amber-400 scale-110 ring-2 ring-amber-400/50'
-                      : 'border-white/40 opacity-70 hover:opacity-100 hover:scale-105'
-                  }`}
-                >
-                  <img
-                    src={imgUrl}
-                    alt={`Thumb ${idx + 1}`}
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/recipe-placeholder.svg';
-                    }}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          )}
         </div>
 
         {/* Modal Scrollable Body */}
@@ -435,87 +348,6 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
           </button>
         </div>
       </div>
-
-      {/* Fullscreen Interactive Lightbox Overlay */}
-      {isLightboxOpen && (
-        <div className="fixed inset-0 z-50 bg-stone-950/95 flex flex-col items-center justify-between p-4 sm:p-8 animate-in fade-in duration-200">
-          {/* Lightbox Header */}
-          <div className="w-full max-w-5xl flex items-center justify-between text-white z-10">
-            <div className="flex items-center gap-3">
-              <span className="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold">
-                {activeImgIdx + 1} / {galleryList.length}
-              </span>
-              <h3 className="text-sm sm:text-base font-bold">
-                {isArabic ? recipe.titleAr : recipe.titleEn}
-              </h3>
-            </div>
-
-            <button
-              onClick={() => setIsLightboxOpen(false)}
-              className="p-2.5 rounded-full bg-stone-800 hover:bg-stone-700 text-white transition-all"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Lightbox Main Image & Navigation */}
-          <div className="relative flex-1 w-full max-w-5xl flex items-center justify-center my-4 overflow-hidden">
-            <img
-              src={currentImage}
-              alt={isArabic ? recipe.titleAr : recipe.titleEn}
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = '/recipe-placeholder.svg';
-              }}
-              referrerPolicy="no-referrer"
-              className="max-h-full max-w-full object-contain rounded-2xl shadow-2xl"
-            />
-
-            {galleryList.length > 1 && (
-              <>
-                <button
-                  onClick={handlePrevImage}
-                  className="absolute left-2 sm:left-4 p-3 rounded-full bg-stone-900/80 hover:bg-amber-600 text-white transition-all shadow-xl"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={handleNextImage}
-                  className="absolute right-2 sm:right-4 p-3 rounded-full bg-stone-900/80 hover:bg-amber-600 text-white transition-all shadow-xl"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </>
-            )}
-          </div>
-
-          {/* Lightbox Thumbnails Catalog Footer */}
-          {galleryList.length > 1 && (
-            <div className="flex items-center justify-center gap-3 overflow-x-auto p-2 max-w-full z-10">
-              {galleryList.map((imgUrl, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveImgIdx(idx)}
-                  className={`w-16 h-14 rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 ${
-                    activeImgIdx === idx
-                      ? 'border-amber-400 scale-110 ring-2 ring-amber-400/50'
-                      : 'border-stone-700 opacity-60 hover:opacity-100'
-                  }`}
-                >
-                  <img
-                    src={imgUrl}
-                    alt={`Gallery Thumb ${idx + 1}`}
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/recipe-placeholder.svg';
-                    }}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 };
