@@ -1,0 +1,302 @@
+{
+  "_meta": {
+    "generatedAt": "2026-07-25T04:41:30.402879Z",
+    "input": "/Users/hanyramadan/new era/ops/apexyard-portfolio/workspace/wajba/recipes_data.json",
+    "output": "/Users/hanyramadan/new era/ops/apexyard-portfolio/workspace/wajba/recipes_enriched.json",
+    "existingMeals": 25,
+    "newMeals": 24,
+    "totalMeals": 49
+  },
+  "researchSources": [
+    "https://www.experienceegypt.eg/en/Attraction-Details/315/gastronomy-",
+    "https://international.visitjordan.com/page/13/FeastinginJordan.aspx",
+    "https://visitabudhabi.ae/en/plan-your-trip/article-hub/emirati-food-to-try",
+    "https://visitqatar.com/intl-en/about-qatar/cuisine",
+    "https://www.visitsaudi.com/en/stories/aljareesh-dish",
+    "https://ich.unesco.org/en/RL/al-mansaf-in-jordan-a-festive-banquet-and-its-social-and-cultural-meanings-01849"
+  ],
+  "automaticRepairs": [
+    {
+      "recipeId": "egypt-hawawshi",
+      "field": "isRamadanSpecial",
+      "change": "Added missing field with conservative default false"
+    },
+    {
+      "recipeId": "egypt-alex-liver",
+      "field": "isRamadanSpecial",
+      "change": "Added missing field with conservative default false"
+    },
+    {
+      "recipeId": "egypt-sayadieh",
+      "field": "isRamadanSpecial",
+      "change": "Added missing field with conservative default false"
+    },
+    {
+      "recipeId": "levant-beef-shawarma",
+      "field": "isRamadanSpecial",
+      "change": "Added missing field with conservative default false"
+    },
+    {
+      "recipeId": "egypt-mesakaa",
+      "field": "isRamadanSpecial",
+      "change": "Added missing field with conservative default false"
+    }
+  ],
+  "validationIssues": [],
+  "imageReview": [
+    {
+      "recipeId": "egypt-koshary",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "recipeId": "egypt-fatteh",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "recipeId": "egypt-molokhia",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "recipeId": "egypt-mahshi-meshkel",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "recipeId": "egypt-bamia-beef",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "recipeId": "levant-kibbeh-shami",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "recipeId": "ramadan-sambousak",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "recipeId": "egypt-mombar",
+      "status": "needs-human-review",
+      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
+      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "scope": "database",
+      "status": "needs-cleanup",
+      "reason": "Gallery contains heavily reused stock images; semantic fit requires visual review",
+      "duplicateImageUrls": {
+        "https://images.unsplash.com/photo-1541518763669-27fef04b14e8": 8,
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd": 9,
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c": 2,
+        "https://images.unsplash.com/photo-1544025162-d76694265947": 10,
+        "https://images.unsplash.com/photo-1565557623262-b51c2513a641": 3,
+        "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398": 2,
+        "https://images.unsplash.com/photo-1596797038530-2c107229654b": 3,
+        "https://images.unsplash.com/photo-1547592166-23ac45744acd": 4,
+        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b": 4,
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38": 5,
+        "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46": 2,
+        "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd": 2,
+        "https://images.unsplash.com/photo-1561758033-d89a9ad46330": 4,
+        "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e": 2,
+        "https://images.unsplash.com/photo-1540420773420-3366772f4999": 8,
+        "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af": 2,
+        "https://images.unsplash.com/photo-1565958011703-44f9829ba187": 2,
+        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1": 4,
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836": 6,
+        "https://images.unsplash.com/photo-1551183053-bf91a1d81141": 2,
+        "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2": 2,
+        "https://images.unsplash.com/photo-1601050690597-df0568f70950": 5,
+        "https://images.unsplash.com/photo-1579372786545-d24232daf58c": 4,
+        "https://images.unsplash.com/photo-1551024709-8f23befc6f87": 4,
+        "https://images.unsplash.com/photo-1587314168485-3236d6710814": 4,
+        "https://images.unsplash.com/photo-1509440159596-0249088772ff": 3,
+        "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8": 4,
+        "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9": 3,
+        "https://images.unsplash.com/photo-1590412200988-a436970781fa": 2,
+        "https://images.unsplash.com/photo-1585937421612-70a008356fbe": 2
+      }
+    },
+    {
+      "recipeId": "egypt-kofta-haty",
+      "status": "candidate-needs-human-review",
+      "query": "Egyptian kofta grilled",
+      "selected": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Grilled_Kofta.jpg/1920px-Grilled_Kofta.jpg",
+        "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Grilled_Kofta.jpg",
+        "title": "File:Grilled Kofta.jpg",
+        "license": "CC BY-SA 4.0",
+        "artist": "Mona Abo-Abda",
+        "matchedTokens": "grilled, kofta"
+      },
+      "candidates": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Grilled_Kofta.jpg/1920px-Grilled_Kofta.jpg",
+          "descriptionUrl": "https://commons.wikimedia.org/wiki/File:Grilled_Kofta.jpg",
+          "title": "File:Grilled Kofta.jpg",
+          "license": "CC BY-SA 4.0",
+          "artist": "Mona Abo-Abda",
+          "matchedTokens": "grilled, kofta"
+        }
+      ],
+      "reason": "Keyword match and license metadata recorded; visual approval is still required"
+    },
+    {
+      "recipeId": "egypt-hamam-mahshi",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Egyptian stuffed pigeon freekeh"
+    },
+    {
+      "recipeId": "egypt-roz-meammar",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Egyptian roz meammar rice"
+    },
+    {
+      "recipeId": "egypt-bessara",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Egyptian bessara fava bean dip"
+    },
+    {
+      "recipeId": "egypt-feteer-meshaltet",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Egyptian feteer meshaltet"
+    },
+    {
+      "recipeId": "egypt-roz-bel-laban",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Egyptian rice pudding roz bel laban"
+    },
+    {
+      "recipeId": "egypt-basbousa",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Egyptian basbousa semolina cake"
+    },
+    {
+      "recipeId": "egypt-feseekh",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Egyptian feseekh salted mullet"
+    },
+    {
+      "recipeId": "lebanon-manakish-zaatar",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Lebanese zaatar manakish"
+    },
+    {
+      "recipeId": "lebanon-mujadara",
+      "status": "placeholder",
+      "reason": "No filename with a dish-specific token was found",
+      "query": "Lebanese mujadara lentils rice"
+    },
+    {
+      "recipeId": "lebanon-shish-tawook",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Lebanese shish tawook"
+    },
+    {
+      "recipeId": "lebanon-batata-harra",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Lebanese batata harra potatoes"
+    },
+    {
+      "recipeId": "palestine-maqluba",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Palestinian maqluba"
+    },
+    {
+      "recipeId": "jordan-zarb",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Jordanian Bedouin zarb food"
+    },
+    {
+      "recipeId": "syria-shishbarak",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "shish barak yogurt dumplings"
+    },
+    {
+      "recipeId": "lebanon-warak-enab",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Lebanese stuffed grape leaves warak enab"
+    },
+    {
+      "recipeId": "saudi-jareesh",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Saudi jareesh dish"
+    },
+    {
+      "recipeId": "saudi-saleeg",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Saudi saleeg rice chicken"
+    },
+    {
+      "recipeId": "uae-thareed",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Emirati thareed stew bread"
+    },
+    {
+      "recipeId": "uae-luqaimat",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Emirati luqaimat date syrup"
+    },
+    {
+      "recipeId": "qatar-saloona",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Qatari saloona stew"
+    },
+    {
+      "recipeId": "qatar-balaleet",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Qatari balaleet vermicelli egg"
+    },
+    {
+      "recipeId": "oman-shuwa",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Omani shuwa meat"
+    },
+    {
+      "recipeId": "kuwait-mutabbaq-samak",
+      "status": "placeholder",
+      "reason": "Wikimedia lookup failed: HTTPError",
+      "query": "Kuwaiti mutabbaq samak fish rice"
+    }
+  ],
+  "notes": [
+    "Automated URL and keyword checks cannot prove that a photograph accurately depicts a dish.",
+    "Approve each candidate visually before production use.",
+    "Wikimedia creator and license details are recorded beside every candidate when available.",
+    "New engagement fields intentionally start at zero.",
+    "Feseekh must be professionally cured and purchased from a licensed source; unsafe curing can cause botulism."
+  ]
+}

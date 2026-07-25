@@ -398,7 +398,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                     src={preset.url}
                     alt=""
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                      (e.target as HTMLImageElement).src = '/recipe-placeholder.svg';
                     }}
                     referrerPolicy="no-referrer"
                     className="w-full h-16 object-cover group-hover:scale-105 transition-transform"
@@ -717,4 +717,3 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
     </div>
   );
 };
-

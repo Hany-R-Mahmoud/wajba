@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Local browser/debug artifacts
+.playwright-mcp/
+wajba-landing-*.png
+package-lock.json

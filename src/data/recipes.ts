@@ -25,7 +25,7 @@ export const INITIAL_RECIPES: Recipe[] = [
       "وجبة مشبعة",
       "Ramadan Favorite"
     ],
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20food%20Koshary.jpg?width=1000",
     "galleryImages": [
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
@@ -194,7 +194,7 @@ export const INITIAL_RECIPES: Recipe[] = [
       "لحوم",
       "Ramadan Classic"
     ],
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20Fattah.jpg?width=1000",
     "galleryImages": [
       "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1000&q=80",
@@ -345,7 +345,7 @@ export const INITIAL_RECIPES: Recipe[] = [
       "أرز",
       "Comfort Food"
     ],
-    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Molokheya%20and%20rice%20with%20chiken%2C%20Egypt%202012.JPG?width=1000",
     "galleryImages": [
       "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1000&q=80",
@@ -478,7 +478,7 @@ export const INITIAL_RECIPES: Recipe[] = [
       "وجبات شارع",
       "Street Food"
     ],
-    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20meatloaf.jpg?width=1000",
     "galleryImages": [
       "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1000&q=80",
@@ -713,9 +713,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "حار",
       "Street Favorite"
     ],
-    "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Kebda_Iskandarani(_Alexandria_Liver)_sandowichs.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Kebda_Iskandarani(_Alexandria_Liver)_sandowichs.jpg",
       "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80"
@@ -964,9 +964,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "أسماك",
       "أرز صيادية"
     ],
-    "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Sayadiyah_Fish.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Sayadiyah_Fish.jpg",
       "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1512152272829-e3139592d56f?auto=format&fit=crop&w=1000&q=80"
@@ -1195,9 +1195,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "قشطة",
       "Royal Dessert"
     ],
-    "image": "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Om_Ali_Dessert.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Om_Ali_Dessert.jpg",
       "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
@@ -1671,9 +1671,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "قشطة",
       "Ramadan Sweet"
     ],
-    "image": "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Qatayef_with_honey_JO.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Qatayef_with_honey_JO.jpg",
       "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
@@ -2003,9 +2003,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "لحم ضأن",
       "Comfort Stew"
     ],
-    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Beef%20Okra_Bamia.jpg?updatedAt=1784964071603",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Beef%20Okra_Bamia.jpg?updatedAt=1784964071603",
       "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80"
@@ -2461,7 +2461,7 @@ export const INITIAL_RECIPES: Recipe[] = [
       "قشطة",
       "Sweet Icon"
     ],
-    "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese%20Kanafeh.jpg?width=1000",
     "galleryImages": [
       "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80",
@@ -2572,9 +2572,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "صنوبر",
       "Levantine Classic"
     ],
-    "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Fried%20Kibbeh.jpg?updatedAt=1784964171694",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Fried%20Kibbeh.jpg?updatedAt=1784964171694",
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80"
@@ -2680,9 +2680,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "جبن",
       "Iftar Appetizer"
     ],
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Sambousek.JPG",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Sambousek.JPG",
       "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80"
@@ -2779,9 +2779,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "نباتي",
       "Fresh Salad"
     ],
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Fattoush.JPG",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Fattoush.JPG",
       "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80"
@@ -2868,9 +2868,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "شعبي",
       "Street Icon"
     ],
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Mombar.jpeg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
+      "https://ik.imagekit.io/hrim/images/wajba/Mombar.jpeg",
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80",
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80"
@@ -2981,9 +2981,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "كفتة",
       "عزائم"
     ],
-    "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Koftet-el-hati.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Koftet-el-hati.jpg"
     ],
     "storyAr": "ترتبط كفتة الحاتي بمحلات الكباب الشعبية في القاهرة والإسكندرية، حيث تمنحها نار الفحم رائحتها المميزة.",
     "storyEn": "Kofta Haty is associated with Egypt's neighborhood kebab shops, where charcoal gives the skewers their characteristic smoky aroma.",
@@ -3682,9 +3682,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "سميد",
       "رمضان"
     ],
-    "image": "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Basboosa.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Basboosa.jpg"
     ],
     "storyAr": "البسبوسة من أشهر حلويات الصواني في مصر وتظهر بقوة في رمضان والمناسبات العائلية.",
     "storyEn": "Basbousa is among Egypt's best-known tray bakes and is especially prominent during Ramadan and family gatherings.",
@@ -4477,9 +4477,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "لحم",
       "مدخن"
     ],
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Cooked_zarb_01.png",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Cooked_zarb_01.png"
     ],
     "storyAr": "يصف مجلس السياحة الأردني الزرب كطبق بدوي من اللحم أو الدجاج يطهى في حفرة مبطنة بالطوب لاكتساب النكهة المدخنة.",
     "storyEn": "The Jordan Tourism Board describes zarb as a Bedouin meat dish cooked in a brick-lined underground pit for its smoky character.",
@@ -4594,9 +4594,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "عجين",
       "لحم"
     ],
-    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Shish_barak.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Shish_barak.jpg"
     ],
     "storyAr": "الشيش برك من أطباق اللبن المطبوخ المعروفة في سوريا ولبنان، ويحتاج تشكيل حباته الصغيرة إلى صبر ولطف.",
     "storyEn": "Shish barak is a cooked-yogurt dish known in Syria and Lebanon; shaping its tiny dumplings is traditionally patient work.",
@@ -4711,9 +4711,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "نباتي",
       "مزة"
     ],
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Mahshi.JPG",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Mahshi.JPG"
     ],
     "storyAr": "نسخة الزيت من ورق العنب جزء أساسي من المزة اللبنانية وتقدم غالباً باردة أو بدرجة حرارة الغرفة.",
     "storyEn": "The olive-oil version of stuffed grape leaves is a core Lebanese mezze item, often served cool or at room temperature.",
@@ -4822,9 +4822,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "قمح",
       "تراثي"
     ],
-    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Jarish_SaudiCuisine.JPG",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Jarish_SaudiCuisine.JPG"
     ],
     "storyAr": "الجريش طبق سعودي تراثي يعتمد على القمح المجروش والطهي الهادئ، ويرتبط بموائد نجد والمناسبات.",
     "storyEn": "Jareesh is a Saudi heritage dish of cracked wheat and slow cooking, closely associated with Najdi tables and gatherings.",
@@ -5172,9 +5172,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "حلويات",
       "رمضان"
     ],
-    "image": "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Luqaimat.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Luqaimat.jpg"
     ],
     "storyAr": "اللقيمات حلوى إماراتية محبوبة تقدم في رمضان والمناسبات وتعبر عن المشاركة والكرم.",
     "storyEn": "Luqaimat are a beloved Emirati sweet served during Ramadan and celebrations, associated with sharing and generosity.",
@@ -5289,9 +5289,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "يخنة",
       "لومي"
     ],
-    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Maraq.png",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Maraq.png"
     ],
     "storyAr": "تدرج هيئة قطر للسياحة الصالونة بين الأطباق التقليدية المحبوبة وتصفها كيخنة طماطم غنية بالتوابل واللومي.",
     "storyEn": "Qatar Tourism lists saloona among beloved traditional dishes and describes it as a thick tomato stew rich in spice and black lime.",
@@ -5521,9 +5521,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "لحم",
       "أعياد"
     ],
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Wadi_Rum-Zarb_(2).jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Wadi_Rum-Zarb_(2).jpg"
     ],
     "storyAr": "الشواء العماني طبق مناسبات يطهى تقليدياً لساعات طويلة في تنور أرضي جماعي.",
     "storyEn": "Omani shuwa is a celebration dish traditionally cooked for many hours in a communal underground oven.",
@@ -5637,9 +5637,9 @@ export const INITIAL_RECIPES: Recipe[] = [
       "أرز",
       "لومي"
     ],
-    "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80",
+    "image": "https://ik.imagekit.io/hrim/images/wajba/Kuwaiti_Fish.jpg",
     "galleryImages": [
-      "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80"
+      "https://ik.imagekit.io/hrim/images/wajba/Kuwaiti_Fish.jpg"
     ],
     "storyAr": "مطبق السمك من أطباق الساحل الكويتي التي تجمع صيد الخليج بالأرز والبصل واللومي.",
     "storyEn": "Mutabbaq samak reflects Kuwait's Gulf coast, bringing local fish together with rice, onions, and dried lime.",

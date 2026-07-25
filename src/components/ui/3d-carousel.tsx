@@ -7,6 +7,10 @@ import {
   useTransform,
 } from "framer-motion";
 import { X, Sparkles, Clock, Flame, CalendarPlus } from "lucide-react";
+import { INITIAL_RECIPES } from "../../data/recipes";
+import { Recipe } from "../../types";
+
+const RECIPE_PLACEHOLDER = "/recipe-placeholder.svg";
 
 export const useIsomorphicLayoutEffect =
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
@@ -59,6 +63,7 @@ export function useMediaQuery(
 
 export interface DishCardData {
   id: string;
+  recipeId: string;
   url: string;
   titleAr: string;
   titleEn: string;
@@ -68,88 +73,46 @@ export interface DishCardData {
   cookTime: number;
 }
 
+const REGION_LABELS: Record<Recipe["region"], { ar: string; en: string }> = {
+  egypt: { ar: "مصر 🇪🇬", en: "Egypt 🇪🇬" },
+  levant: { ar: "بلاد الشام 🇱🇧", en: "Levant 🇱🇧" },
+  gulf: { ar: "الخليج العربي 🇸🇦", en: "Arabian Gulf 🇸🇦" },
+  maghreb: { ar: "المغرب العربي 🇲🇦", en: "Maghreb 🇲🇦" },
+  general: { ar: "عربي عام 🌍", en: "Arab World 🌍" },
+};
+
+const getRecipe = (recipeId: string): Recipe => {
+  const recipe = INITIAL_RECIPES.find((candidate) => candidate.id === recipeId);
+  if (!recipe) throw new Error(`Landing recipe ID is missing from the catalog: ${recipeId}`);
+  return recipe;
+};
+
+const toDishCard = (recipeId: string): DishCardData => {
+  const recipe = getRecipe(recipeId);
+  const region = REGION_LABELS[recipe.region];
+  return {
+    id: recipe.id,
+    recipeId: recipe.id,
+    url: recipe.image,
+    titleAr: recipe.titleAr,
+    titleEn: recipe.titleEn,
+    regionAr: region.ar,
+    regionEn: region.en,
+    prepTime: recipe.prepTimeMinutes,
+    cookTime: recipe.cookTimeMinutes,
+  };
+};
+
 export const DEFAULT_DISHES: DishCardData[] = [
-  {
-    id: "bashamel",
-    url: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=800",
-    titleAr: "المكرونة البشاميل المصرية",
-    titleEn: "Egyptian Macarona Béchamel",
-    regionAr: "مصر 🇪🇬",
-    regionEn: "Egypt 🇪🇬",
-    prepTime: 25,
-    cookTime: 45,
-  },
-  {
-    id: "mansaf",
-    url: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&q=80&w=800",
-    titleAr: "المنسف الشامي بالجميد",
-    titleEn: "Levantine Lamb Mansaf",
-    regionAr: "بلاد الشام 🇵🇸 🇯🇴",
-    regionEn: "Levant 🇵🇸 🇯🇴",
-    prepTime: 30,
-    cookTime: 90,
-  },
-  {
-    id: "kabsa",
-    url: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80&w=800",
-    titleAr: "الكبسة السعودية باللحم",
-    titleEn: "Saudi Royal Lamb Kabsa",
-    regionAr: "الخليج العربي 🇸🇦 🇦🇪",
-    regionEn: "Arabian Gulf 🇸🇦 🇦🇪",
-    prepTime: 25,
-    cookTime: 60,
-  },
-  {
-    id: "fatteh",
-    url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800",
-    titleAr: "فتة الباذنجان والرُّمان",
-    titleEn: "Eggplant & Pomegranate Fatteh",
-    regionAr: "لبنان وسوريا 🇱🇧 🇸🇾",
-    regionEn: "Lebanon & Syria 🇱🇧 🇸🇾",
-    prepTime: 15,
-    cookTime: 25,
-  },
-  {
-    id: "tajine",
-    url: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&q=80&w=800",
-    titleAr: "الطاجين المغربي بالبرقوق",
-    titleEn: "Moroccan Lamb & Prune Tagine",
-    regionAr: "المغرب العربي 🇲🇦",
-    regionEn: "North Africa 🇲🇦",
-    prepTime: 30,
-    cookTime: 75,
-  },
-  {
-    id: "atayef",
-    url: "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&q=80&w=800",
-    titleAr: "القطايف الرمضانية بالقشطة",
-    titleEn: "Ramadan Atayef with Cream",
-    regionAr: "طبق رمضاني 🌙",
-    regionEn: "Ramadan Special 🌙",
-    prepTime: 20,
-    cookTime: 15,
-  },
-  {
-    id: "falafel",
-    url: "https://images.unsplash.com/photo-1593001874117-c99c800e3eb7?auto=format&fit=crop&q=80&w=800",
-    titleAr: "الفلافل والعمبة العراقية",
-    titleEn: "Crispy Arab Falafel Platter",
-    regionAr: "العراق ومصر 🇮🇶 🇪🇬",
-    regionEn: "Middle East 🇮🇶 🇪🇬",
-    prepTime: 20,
-    cookTime: 15,
-  },
-  {
-    id: "kunafa",
-    url: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=800",
-    titleAr: "الكنافة النابلسية الجبنة",
-    titleEn: "Golden Nabulsi Kunafa",
-    regionAr: "فلسطين 🇵🇸",
-    regionEn: "Palestine 🇵🇸",
-    prepTime: 20,
-    cookTime: 30,
-  },
-];
+  "egypt-macarona-beamel",
+  "levant-mansaf",
+  "gulf-kabsa",
+  "egypt-fatteh",
+  "maghreb-couscous-lamb",
+  "ramadan-qatayef",
+  "egypt-taameya-ful",
+  "ramadan-kunafa-ashta",
+].map(toDishCard);
 
 const transitionOverlay = { duration: 0.4, ease: [0.32, 0.72, 0, 1] };
 
@@ -177,8 +140,6 @@ const Carousel = memo(
       rotation,
       (value) => `translateY(-16px) rotateX(-10deg) rotateY(${value}deg)`
     );
-
-    const fallbackImage = "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&q=80&w=800";
 
     return (
       <div
@@ -232,7 +193,7 @@ const Carousel = memo(
                     src={dish.url}
                     alt={isArabic ? dish.titleAr : dish.titleEn}
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = fallbackImage;
+                      (e.target as HTMLImageElement).src = RECIPE_PLACEHOLDER;
                     }}
                     className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500 pointer-events-none"
                   />
@@ -322,7 +283,7 @@ export function ThreeDPhotoCarousel({
                   src={activeDish.url}
                   alt={isArabic ? activeDish.titleAr : activeDish.titleEn}
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800";
+                    (e.target as HTMLImageElement).src = RECIPE_PLACEHOLDER;
                   }}
                   className="w-full h-full object-cover rounded-2xl"
                 />
@@ -382,4 +343,3 @@ export function ThreeDPhotoCarousel({
 }
 
 export default ThreeDPhotoCarousel;
-

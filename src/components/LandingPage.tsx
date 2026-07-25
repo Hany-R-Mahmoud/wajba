@@ -45,16 +45,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   return (
     <div className="min-h-screen bg-[#f8f7f4] dark:bg-[#0c1220] text-[#18181b] dark:text-[#f8fafc] font-sans transition-colors flex flex-col justify-between selection:bg-[#ff7759] selection:text-white">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] px-3 sm:px-8 py-3.5 flex items-center justify-between gap-2">
         <WajbaLogo variant="navbar" isArabic={isArabic} onClick={onEnterDashboard} />
 
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Fast Enter Dashboard Button */}
           <button
             onClick={onEnterDashboard}
-            className="px-4 sm:px-6 py-2 rounded-full bg-[#17171c] dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-100 text-white dark:text-[#17171c] text-xs font-mono tracking-tight font-bold transition-all border border-transparent flex items-center gap-2 shadow-xs cursor-pointer"
+            aria-label={isArabic ? 'دخول التطبيق' : 'Enter App'}
+            className="px-3 sm:px-6 py-2 rounded-full bg-[#17171c] dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-100 text-white dark:text-[#17171c] text-xs font-mono tracking-tight font-bold transition-all border border-transparent flex items-center gap-2 shadow-xs cursor-pointer"
           >
-            <span>{isArabic ? 'دخول التطبيق' : 'Enter App'}</span>
+            <span className="hidden sm:inline">{isArabic ? 'دخول التطبيق' : 'Enter App'}</span>
             {isArabic ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
           </button>
 
@@ -180,7 +181,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                     src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=800"
                     alt="Macarona Bechamel"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800";
+                      (e.target as HTMLImageElement).src = "/recipe-placeholder.svg";
                     }}
                     className="w-full h-full object-cover"
                   />

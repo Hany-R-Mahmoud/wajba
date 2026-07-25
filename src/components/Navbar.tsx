@@ -65,13 +65,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 gap-2">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 gap-1 sm:gap-2">
           {/* Brand Logo & Name */}
           <WajbaLogo variant="navbar" isArabic={isArabic} onClick={() => onTabChange('recipes')} />
 
           {/* Center Navigation Tabs for Desktop */}
-          <nav className="hidden md:flex items-center gap-1 bg-[#f0eee8] dark:bg-[#0c1220] p-1.5 rounded-full border border-[#e2e0d8] dark:border-[#2b3a54]">
+          <nav className="hidden lg:flex items-center gap-1 bg-[#f0eee8] dark:bg-[#0c1220] p-1.5 rounded-full border border-[#e2e0d8] dark:border-[#2b3a54]">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentTab === item.id;
@@ -93,15 +93,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action Controls */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             {/* Landing Guide Button */}
             {onOpenLanding && (
               <button
                 onClick={onOpenLanding}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-200 text-xs font-mono border border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#ff7759] transition-all cursor-pointer"
+                className="flex items-center gap-1.5 px-2 sm:px-3.5 py-1.5 rounded-full bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-200 text-xs font-mono border border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#ff7759] transition-all cursor-pointer"
                 title={isArabic ? 'عرض صفحة البداية والتعريف' : 'View Landing Guide'}
               >
-                <span>{isArabic ? 'الرئيسية 🏠' : 'Landing 🏠'}</span>
+                <span className="sm:hidden">🏠</span>
+                <span className="hidden sm:inline">{isArabic ? 'الرئيسية 🏠' : 'Landing 🏠'}</span>
               </button>
             )}
 
@@ -159,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile Navigation Row */}
-        <div className="md:hidden flex items-center justify-around py-2 border-t border-[#d9d9dd] dark:border-stone-800 overflow-x-auto no-scrollbar gap-1">
+        <div className="lg:hidden flex items-center justify-start py-2 border-t border-[#d9d9dd] dark:border-stone-800 overflow-x-auto no-scrollbar gap-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = currentTab === item.id;

@@ -555,7 +555,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                             src={recipe.image}
                             alt=""
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                              (e.target as HTMLImageElement).src = '/recipe-placeholder.svg';
                             }}
                             referrerPolicy="no-referrer"
                             className="w-14 h-14 rounded-xl object-cover"
@@ -649,7 +649,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                       src={r.image}
                       alt=""
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80';
+                        (e.target as HTMLImageElement).src = '/recipe-placeholder.svg';
                       }}
                       referrerPolicy="no-referrer"
                       className="w-12 h-12 rounded-lg object-cover"
