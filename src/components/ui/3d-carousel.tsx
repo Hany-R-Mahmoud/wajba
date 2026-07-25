@@ -1,4 +1,4 @@
-import { memo, useEffect, useLayoutEffect, useState } from "react";
+import { memo, useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
   animate,
@@ -134,16 +134,17 @@ const Carousel = memo(
     const radius = isScreenSizeSm ? 220 : 340;
     const cardWidth = isScreenSizeSm ? 175 : 215;
     const rotation = useMotionValue(0);
+    const isDraggingRef = useRef(false);
 
-    // Balanced 3D forward tilt (-10deg) with -16px translateY so front card bottom is clearly visible above bottom pill
+    // Balanced 3D forward tilt (-10deg) with -28px translateY so carousel is shifted up and fits compactly
     const transform = useTransform(
       rotation,
-      (value) => `translateY(-16px) rotateX(-10deg) rotateY(${value}deg)`
+      (value) => `translateY(-28px) rotateX(-10deg) rotateY(${value}deg)`
     );
 
     return (
       <div
-        className="flex h-full w-full items-center justify-center overflow-hidden pt-4 pb-12"
+        className="flex h-full w-full items-center justify-center overflow-hidden pt-0 pb-6"
         style={{
           perspective: isScreenSizeSm ? "1000px" : "1400px",
           transformStyle: "preserve-3d",
@@ -158,6 +159,9 @@ const Carousel = memo(
             width: radius * 2,
             transformStyle: "preserve-3d",
           }}
+          onDragStart={() => {
+            isDraggingRef.current = true;
+          }}
           onDrag={(_, info) =>
             isCarouselActive &&
             rotation.set(rotation.get() + info.offset.x * 0.1)
@@ -171,6 +175,9 @@ const Carousel = memo(
               damping: 20,
               mass: 0.15,
             });
+            setTimeout(() => {
+              isDraggingRef.current = false;
+            }, 120);
           }}
         >
           {cards.map((dish, i) => {
@@ -178,33 +185,45 @@ const Carousel = memo(
             return (
               <motion.div
                 key={`key-${dish.id}-${i}`}
-                className="absolute flex flex-col rounded-2xl bg-white dark:bg-[#212e47] text-stone-900 dark:text-white p-2.5 border border-stone-300 dark:border-[#384966] shadow-2xl group cursor-pointer hover:border-[#ff7759] hover:shadow-orange-500/30 transition-all duration-300"
+                className="absolute flex flex-col rounded-2xl bg-white dark:bg-[#212e47] text-stone-900 dark:text-white p-2.5 border border-stone-300 dark:border-[#384966] shadow-2xl group transition-all duration-300"
                 style={{
                   width: `${cardWidth}px`,
                   height: `${isScreenSizeSm ? 250 : 285}px`,
                   transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
                   backfaceVisibility: "visible",
                 }}
-                onClick={() => handleClick(dish, i)}
               >
-                {/* Fixed Aspect Image with Error Fallback */}
-                <div className="relative w-full h-[150px] sm:h-[180px] rounded-xl overflow-hidden bg-stone-900 border border-black/10 dark:border-white/10">
+                {/* Fixed Aspect Image - Clicking image opens recipe overlay */}
+                <div
+                  className="relative w-full h-[150px] sm:h-[180px] rounded-xl overflow-hidden bg-stone-900 border border-black/10 dark:border-white/10 cursor-pointer group/img transition-all duration-300 hover:ring-2 hover:ring-[#ff7759]/80"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (isDraggingRef.current) return;
+                    handleClick(dish, i);
+                  }}
+                >
                   <img
                     src={dish.url}
                     alt={isArabic ? dish.titleAr : dish.titleEn}
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = RECIPE_PLACEHOLDER;
                     }}
-                    className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                    className="w-full h-full object-cover rounded-xl group-hover/img:scale-105 transition-transform duration-500 pointer-events-none"
                   />
                   <div className="absolute top-2 right-2 bg-[#121216]/95 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-mono text-[#ff7759] border border-white/15 font-bold shadow-md">
                     {isArabic ? dish.regionAr : dish.regionEn}
+                  </div>
+
+                  {/* Tap/Click image badge */}
+                  <div className="absolute bottom-2 left-2 bg-stone-900/85 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-mono text-white/90 border border-white/15 flex items-center gap-1 opacity-80 group-hover/img:opacity-100 group-hover/img:border-[#ff7759] transition-all shadow-sm">
+                    <Sparkles className="w-2.5 h-2.5 text-[#ff7759]" />
+                    <span>{isArabic ? "اضغط الصورة" : "Tap image"}</span>
                   </div>
                 </div>
 
                 {/* Typography & Dish Meta */}
                 <div className="p-2 space-y-1 font-mono text-center flex-1 flex flex-col justify-center">
-                  <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white truncate group-hover:text-[#ff7759] transition-colors">
+                  <h4 className="text-xs sm:text-sm font-bold text-stone-900 dark:text-white truncate">
                     {isArabic ? dish.titleAr : dish.titleEn}
                   </h4>
                   <div className="flex items-center justify-center gap-2 text-[10px] text-stone-600 dark:text-stone-300">
@@ -263,17 +282,17 @@ export function ThreeDPhotoCarousel({
             layoutId={`img-container-${activeDish.id}`}
             layout="position"
             onClick={handleClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-10"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4 sm:p-10 cursor-pointer"
             style={{ willChange: "opacity" }}
             transition={transitionOverlay}
           >
             <div
-              className="relative bg-[#162032] text-white rounded-3xl p-6 sm:p-8 max-w-lg w-full border border-[#2b3a54] shadow-2xl space-y-4"
+              className="relative bg-[#f0eee8] dark:bg-[#162032] text-stone-900 dark:text-white rounded-3xl p-6 pt-12 sm:p-8 sm:pt-14 max-w-lg w-full border border-[#e2e0d8] dark:border-[#2b3a54] shadow-2xl space-y-4 cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={handleClose}
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors cursor-pointer"
+                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-stone-200/90 hover:bg-stone-300 dark:bg-stone-800/80 dark:hover:bg-stone-700 text-stone-800 dark:text-white border border-stone-300 dark:border-white/10 transition-colors cursor-pointer shadow-md"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -290,13 +309,13 @@ export function ThreeDPhotoCarousel({
               </div>
 
               <div className="space-y-2 font-mono">
-                <span className="px-3 py-1 rounded-full bg-stone-800 text-[#ff7759] text-xs font-bold inline-block border border-white/10">
+                <span className="px-3 py-1 rounded-full bg-stone-200/80 dark:bg-stone-800 text-[#ff7759] text-xs font-bold inline-block border border-stone-300 dark:border-white/10">
                   {isArabic ? activeDish.regionAr : activeDish.regionEn}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
+                <h3 className="text-xl sm:text-2xl font-bold text-stone-900 dark:text-white">
                   {isArabic ? activeDish.titleAr : activeDish.titleEn}
                 </h3>
-                <div className="flex items-center gap-4 text-xs text-stone-300 pt-2 border-t border-stone-800">
+                <div className="flex items-center gap-4 text-xs text-stone-600 dark:text-stone-300 pt-2 border-t border-stone-300/80 dark:border-stone-800">
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4 text-[#ff7759]" />
                     {activeDish.prepTime + activeDish.cookTime}{" "}
@@ -330,7 +349,7 @@ export function ThreeDPhotoCarousel({
         )}
       </AnimatePresence>
 
-      <div className="relative h-[440px] sm:h-[500px] lg:h-[540px] w-full overflow-hidden rounded-3xl bg-[#f0eee8] dark:bg-[#162032] border border-[#e2e0d8] dark:border-[#2b3a54] shadow-sm flex items-center justify-center">
+      <div className="relative h-[390px] sm:h-[440px] lg:h-[470px] w-full overflow-hidden rounded-3xl bg-[#f0eee8] dark:bg-[#162032] border border-[#e2e0d8] dark:border-[#2b3a54] shadow-sm flex items-center justify-center">
         <Carousel
           handleClick={handleClick}
           cards={dishes}

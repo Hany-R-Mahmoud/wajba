@@ -227,8 +227,18 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto" role="presentation">
-      <div role="dialog" aria-modal="true" aria-labelledby="recipe-modal-title" className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-5 sm:p-7 my-6 max-h-[92vh] overflow-y-auto text-stone-800 dark:text-stone-100">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto cursor-pointer"
+      role="presentation"
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="recipe-modal-title"
+        className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-5 sm:p-7 my-6 max-h-[92vh] overflow-y-auto text-stone-800 dark:text-stone-100 cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Header */}
         <div className="flex items-center justify-between pb-4 border-b border-amber-200 dark:border-stone-800 mb-5">
           <div className="flex items-center gap-2.5">

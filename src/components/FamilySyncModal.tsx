@@ -66,8 +66,18 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto" role="presentation">
-      <div role="dialog" aria-modal="true" aria-labelledby="family-sync-title" className="relative w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-sm overflow-y-auto cursor-pointer"
+      role="presentation"
+      onClick={onClose}
+    >
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="family-sync-title"
+        className="relative w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5 cursor-default"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-3 border-b border-amber-200 dark:border-stone-800">
           <div className="flex items-center gap-2">

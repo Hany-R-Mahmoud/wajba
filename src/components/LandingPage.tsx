@@ -65,10 +65,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       </header>
 
       {/* MAIN HERO & SCROLLABLE FEATURE SECTIONS */}
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-4 pb-12 space-y-12 sm:space-y-16">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 sm:pt-2 pb-12 space-y-10 sm:space-y-14">
 
         {/* HERO SECTION WITH 3D CAROUSEL FIRST & TEXT CONTENT BELOW */}
-        <section className="flex flex-col justify-between space-y-4 py-2">
+        <section className="flex flex-col justify-between space-y-3 py-0">
           {/* 3D Photo Carousel Container */}
           <div className="w-full">
             <ThreeDPhotoCarousel
