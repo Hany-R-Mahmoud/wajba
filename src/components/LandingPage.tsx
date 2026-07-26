@@ -39,28 +39,32 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   return (
     <div className="min-h-screen bg-[#f8f7f4] dark:bg-[#0c1220] text-[#18181b] dark:text-[#f8fafc] font-sans transition-colors flex flex-col justify-between selection:bg-[#ff7759] selection:text-white">
       {/* Top Navigation Bar */}
-      <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] px-3 sm:px-8 py-3.5 flex items-center justify-between gap-2">
-        <WajbaLogo variant="navbar" isArabic={isArabic} onClick={onEnterDashboard} />
+      <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-[#162032]/95 backdrop-blur-md border-b border-[#e2e0d8] dark:border-[#2b3a54] transition-colors">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 gap-1 sm:gap-2">
+            <WajbaLogo variant="navbar" isArabic={isArabic} onClick={onEnterDashboard} />
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Language Switcher */}
-          <button
-            onClick={() => onLanguageChange(isArabic ? 'en' : 'ar')}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-200 text-xs font-mono border border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#ff7759] transition-colors cursor-pointer"
-            title={isArabic ? 'Switch to English' : 'التحويل للغة العربية'}
-          >
-            <Globe className="w-3.5 h-3.5 text-[#ff7759]" />
-            <span>{isArabic ? 'EN' : 'عربي'}</span>
-          </button>
+            <div className="flex items-center gap-1 sm:gap-2">
+              {/* Language Switcher */}
+              <button
+                onClick={() => onLanguageChange(isArabic ? 'en' : 'ar')}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#eeece7] dark:bg-stone-800 text-[#17171c] dark:text-stone-200 text-xs font-mono hover:border-[#17171c] transition-colors border border-[#d9d9dd] dark:border-stone-700 cursor-pointer"
+                title={isArabic ? 'Switch to English' : 'التحويل للغة العربية'}
+              >
+                <Globe className="w-3.5 h-3.5 text-[#ff7759]" />
+                <span>{isArabic ? 'EN' : 'عربي'}</span>
+              </button>
 
-          {/* Theme Toggle */}
-          <button
-            onClick={onThemeToggle}
-            className="p-2 rounded-full bg-[#f0eee8] dark:bg-[#0c1220] text-[#17171c] dark:text-stone-200 border border-[#e2e0d8] dark:border-[#2b3a54] hover:border-[#ff7759] transition-colors cursor-pointer"
-            title={isArabic ? 'تغيير المظهر' : 'Toggle Theme'}
-          >
-            {theme === 'light' ? <Moon className="w-4 h-4 text-[#17171c]" /> : <Sun className="w-4 h-4 text-amber-400" />}
-          </button>
+              {/* Theme Toggle */}
+              <button
+                onClick={onThemeToggle}
+                className="p-2 rounded-full bg-[#eeece7] dark:bg-stone-800 text-[#17171c] dark:text-stone-200 hover:border-[#17171c] transition-colors border border-[#d9d9dd] dark:border-stone-700 cursor-pointer"
+                title={isArabic ? 'تغيير المظهر' : 'Toggle Theme'}
+              >
+                {theme === 'light' ? <Moon className="w-4 h-4 text-[#17171c]" /> : <Sun className="w-4 h-4 text-amber-400" />}
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -112,7 +116,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* SECTION 1: Authentic MENA Heritage Recipe Treasury */}
         <section className="bg-white dark:bg-[#162032] rounded-3xl p-6 sm:p-10 lg:p-14 border border-[#e2e0d8] dark:border-[#2b3a54] shadow-xs space-y-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 space-y-5">
+            <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold">
                 <BookOpen className="w-3.5 h-3.5 text-[#ff7759]" />
                 <span>{isArabic ? 'الميزة ١: مكتبة الوصفات الأصيلة' : 'Feature 1: Heritage Recipe Treasury'}</span>
@@ -124,7 +128,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   : 'Authentic Regional MENA Recipes & Image Catalogs'}
               </h2>
 
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
+              <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
                   ? 'استمتع بوصفات تقليدية موثوقة مثل المكرونة البشاميل المصرية، المنسف الشامي، الكبسة الملكية، والفتة المصرية. تحتوي كل وصفة على قصص تراثية، وكتالوج صور متعدد، ومؤقتات طهي تفاعلية تتيح لك تشغيل التنبيهات أثناء إعداد الطعام.'
                   : 'Enjoy rich heritage recipes with multi-photo image catalogs, step-by-step cooking timers, cultural background stories, and family voting systems.'}
@@ -143,8 +147,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
 
             {/* Interactive Preview Card */}
-            <div className="lg:col-span-6">
-              <div className="bg-[#f8f7f4] dark:bg-[#212e47] rounded-2xl p-5 border border-[#e2e0d8] dark:border-[#384966] shadow-xl space-y-4">
+            <div className="lg:col-span-5">
+              <div className="bg-[#f8f7f4] dark:bg-[#212e47] rounded-2xl p-6 border border-[#e2e0d8] dark:border-[#384966] shadow-xl space-y-4">
                 <div className="relative h-56 rounded-xl overflow-hidden bg-stone-900">
                   <img
                     src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=800"
@@ -229,7 +233,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   : 'Dedicated Suhoor & Iftar Planners with Fasting Countdowns'}
               </h2>
 
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
+              <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
                   ? 'تحول بنقرة واحدة إلى وضع رمضان المخصص. يمنحك الجدول خانات محددة للإفطار والسحور، وحاسبة تنازلية لمواقيت الصيام، بالإضافة إلى توصيات للحلويات والمشروبات الرمضانية مثل القطايف والكنافة والعصائر التراثية.'
                   : 'Seamlessly toggle to Ramadan mode. Enjoy specialized Suhoor & Iftar meal slots, fasting countdown timers, hydration counters, and traditional Ramadan dessert recipes.'}
@@ -242,7 +246,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* SECTION 3: Interactive Weekly & Monthly Planner with Serving Scaler */}
         <section className="bg-white dark:bg-[#162032] rounded-3xl p-6 sm:p-10 lg:p-14 border border-[#e2e0d8] dark:border-[#2b3a54] shadow-xs space-y-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-6 space-y-5">
+            <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold">
                 <CalendarDays className="w-3.5 h-3.5 text-[#ff7759]" />
                 <span>{isArabic ? 'الميزة ٣: التقويم المرن وحاسبة الحصص' : 'Feature 3: Flexible Calendar & Portion Scaler'}</span>
@@ -254,7 +258,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   : 'Interactive 7-Day & 30-Day Calendar Planners'}
               </h2>
 
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
+              <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
                   ? 'نظم أسبوعك بالكامل أو خطط لشهر كامل مسبقاً. اضبط عدد الأفراد (مثلاً ٤ أو ٨ أو ١٢ فرداً) ليقوم النظام بتعديل كميات المكونات تلقائياً في قائمة التسوق.'
                   : 'Plan your weekly meals or full 30-day month ahead. Dynamically scale portion sizes for small or large family gatherings with zero effort.'}
@@ -277,8 +281,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
 
             {/* Calendar Preview Mockup */}
-            <div className="lg:col-span-6">
-              <div className="bg-[#f8f7f4] dark:bg-[#212e47] rounded-2xl p-5 border border-[#e2e0d8] dark:border-[#384966] shadow-xl space-y-3 font-mono">
+            <div className="lg:col-span-5">
+              <div className="bg-[#f8f7f4] dark:bg-[#212e47] rounded-2xl p-6 border border-[#e2e0d8] dark:border-[#384966] shadow-xl space-y-3 font-mono">
                 <div className="flex items-center justify-between pb-2 border-b border-[#e2e0d8] dark:border-[#384966] text-xs">
                   <span className="font-bold text-[#17171c] dark:text-white">
                     {isArabic ? 'جدول الأسبوع (الجمعة - الخميس)' : 'Weekly Schedule (Fri - Thu)'}
@@ -370,7 +374,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   : 'Auto-Aggregated Grocery Lists Categorized by Store Aisles'}
               </h2>
 
-              <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
+              <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
                   ? 'لا داعي لحساب المقادير يدوياً. يجمع النظام كافة المكونات المطلوبة للأسبوع ويصنفها في ممرات واضحة (خضروات، لحوم، ألبان، بهارات)، مع إمكانية التصدير بنقرة واحدة عبر واتساب أو طباعة القائمة.'
                   : 'Automatically aggregates and groups ingredients into organized supermarket aisles. Export to WhatsApp or print your checklist instantly for hassle-free grocery trips.'}
@@ -425,7 +429,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="w-8 h-8 rounded-lg bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1">
               <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
             </div>
-            <span className="font-extrabold text-[#17171c] dark:text-white font-mono">WAJBA SYSTEM <span className="text-[#D86540] text-xs"> وجبة</span></span>
+            <span className="font-extrabold text-[#17171c] dark:text-white font-mono">WAJBA SYSTEM</span>
           </div>
           <p>
             {isArabic

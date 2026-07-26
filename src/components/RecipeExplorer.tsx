@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { DIETARY_TAGS, DietaryTag, Language, Recipe, Region } from '../types';
 import { DIETARY_LABELS, filterRecipesByDietaryTag } from '../utils/recipes';
 import { RecipeCard } from './RecipeCard';
-import { Search, Plus, Sparkles, Filter, Bookmark, RotateCcw } from 'lucide-react';
+import { Search, Plus, Filter, Bookmark, RotateCcw } from 'lucide-react';
 
 interface RecipeExplorerProps {
   recipes: Recipe[];
@@ -85,24 +85,6 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Hero Welcome Banner */}
-      <div className="relative rounded-3xl overflow-hidden bg-[#17171c] dark:bg-[#162032] text-white p-6 sm:p-8 shadow-xs border border-stone-800 dark:border-[#2b3a54]">
-        <div className="relative z-10 max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white border border-white/20 text-xs font-mono uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#ff7759]" />
-            <span>{isArabic ? 'مكتبة المطبخ العربي والمصري الاصيل' : 'Authentic MENA Culinary Treasury'}</span>
-          </div>
-          <h1 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight">
-            {isArabic ? 'استكشف أشهى الأطباق واصنع جدولك العائلي' : 'Explore Authentic Dishes & Plan Your Feast'}
-          </h1>
-          <p className="text-xs sm:text-sm text-stone-200/90 leading-relaxed font-sans">
-            {isArabic
-              ? 'مجموعة وصفات تراثية موثوقة من المكرونة البشاميل والفتة إلى الكبسة والحلويات الرمضانية مع مؤقتات طهي تفاعلية وقائمة تسوق ذكية.'
-              : 'Discover heritage recipes from Egyptian Macarona Béchamel to Levantine Mansaf & Ramadan Sweets with interactive cooking timers.'}
-          </p>
-        </div>
-      </div>
-
       {/* Search Bar & Comprehensive Filters */}
       <div className="bg-white dark:bg-[#162032] p-4 sm:p-5 rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-xs space-y-4">
         {/* Search & Custom Recipe Button */}
@@ -118,13 +100,13 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
                   ? 'ابحث باسم الوصفة، المكونات (بشاميل، كنافة، لحم)...'
                   : 'Search by recipe name or ingredient...'
               }
-              className="w-full py-2.5 px-10 rounded-full bg-[#eeece7] dark:bg-stone-800 border border-[#d9d9dd] dark:border-stone-700 text-xs font-mono focus:outline-none focus:border-[#17171c]"
+              className="w-full py-2.5 px-10 rounded-full bg-[#eeece7] dark:bg-stone-800 border border-[#d9d9dd] dark:border-stone-700 text-sm font-mono focus:outline-none focus:border-[#17171c]"
             />
           </div>
 
           <button
             onClick={onOpenCreateRecipeModal}
-            className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#17171c] hover:bg-[#212121] dark:bg-white dark:text-[#17171c] text-white text-xs font-mono font-bold transition-all flex-shrink-0 cursor-pointer"
+            className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#17171c] hover:bg-[#212121] dark:bg-white dark:text-[#17171c] text-white text-xs sm:text-sm font-mono font-bold transition-all flex-shrink-0 cursor-pointer"
           >
             <Plus className="w-4 h-4 text-[#ff7759]" />
             <span>{isArabic ? 'إضافة وصفة خاصة' : 'Add Custom Recipe'}</span>
@@ -134,8 +116,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
         {/* Primary Type Filter (Meals vs Sweets & Desserts) */}
         <div className="pt-3 border-t border-[#d9d9dd] dark:border-stone-800">
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
-            <span className="text-xs font-mono text-[#75758a] me-1 flex items-center gap-1">
-              <Filter className="w-3.5 h-3.5" />
+            <span className="text-xs sm:text-sm font-mono text-[#75758a] me-1 flex items-center gap-1">
+              <Filter className="w-4 h-4" />
               <span>{isArabic ? 'نوع الطبق:' : 'Category:'}</span>
             </span>
 
@@ -149,7 +131,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id as any)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-mono font-medium whitespace-nowrap transition-all cursor-pointer ${
                   selectedCategory === cat.id
                     ? 'bg-[#17171c] text-white shadow-xs dark:bg-white dark:text-[#17171c]'
                     : 'bg-[#eeece7] dark:bg-stone-800 text-[#212121] dark:text-stone-300 hover:border-[#17171c] border border-[#d9d9dd]'
@@ -164,7 +146,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
         {/* Region & Favorites Chips */}
         <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#d9d9dd] dark:border-stone-800">
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
-            <span className="text-xs font-mono text-[#75758a] me-1">
+            <span className="text-xs sm:text-sm font-mono text-[#75758a] me-1">
               {isArabic ? 'المنطقة:' : 'Region:'}
             </span>
 
@@ -179,7 +161,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
               <button
                 key={reg.id}
                 onClick={() => setSelectedRegion(reg.id as Region | 'all')}
-                className={`px-3 py-1 rounded-full text-xs font-mono font-medium whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-medium whitespace-nowrap transition-all cursor-pointer ${
                   selectedRegion === reg.id
                     ? 'bg-[#17171c] text-white shadow-xs dark:bg-white dark:text-[#17171c]'
                     : 'bg-[#eeece7] dark:bg-stone-800 text-[#212121] dark:text-stone-300 border border-[#d9d9dd] dark:border-stone-700'
@@ -193,7 +175,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={() => setOnlyFavorites(!onlyFavorites)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-mono transition-all cursor-pointer ${
                 onlyFavorites
                   ? 'bg-[#ff7759] text-white'
                   : 'bg-[#eeece7] dark:bg-stone-800 text-[#212121] dark:text-stone-300 border border-[#d9d9dd] dark:border-stone-700'

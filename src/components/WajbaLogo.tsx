@@ -49,12 +49,12 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#162032] dark:text-white font-mono flex items-center gap-1.5">
-              WAJBA <span className="text-[#D86540] font-bold text-[10px] sm:text-xs uppercase tracking-widest bg-[#D86540]/10 px-1.5 py-0.5 rounded border border-[#D86540]/20">وجبة</span>
+            <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#162032] dark:text-white font-mono">
+              WAJBA
             </span>
           </div>
-          <p className="text-[10px] font-mono text-stone-500 dark:text-stone-300 hidden sm:block">
-            {isArabic ? 'جدول الوجبات وقائمة التسوق الذكية' : 'Middle Eastern Culinary Architecture'}
+          <p className="text-xs sm:text-sm font-medium text-stone-600 dark:text-stone-300 hidden sm:block">
+            {isArabic ? 'هناكل ايه انهاردة' : 'What are we eating today?'}
           </p>
         </div>
       </div>

@@ -4,8 +4,7 @@
 
 @layer base {
   :root {
-    --font-arabic: 'Almarai', 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
-    --font-english: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-almarai: 'Almarai', 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
 
     /* Unified Cohere Palette: Black, Soft Stone, White & Coral Accent */
     --cohere-black: #000000;
@@ -20,21 +19,27 @@
     --cohere-action-blue: #1863dc;
   }
 
+  html,
+  body,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-almarai) !important;
+  }
+
   html {
-    font-family: var(--font-arabic);
-  }
-
-  html[dir="rtl"] body {
-    font-family: var(--font-arabic);
-  }
-
-  html[dir="ltr"] body {
-    font-family: var(--font-english);
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     background-color: var(--cohere-canvas);
     color: var(--cohere-ink);
+    line-height: 1.65;
+    font-size: 0.95rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

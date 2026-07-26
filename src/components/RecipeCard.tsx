@@ -54,7 +54,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
         {/* Region Badge */}
-        <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-[11px] font-mono font-medium bg-black/60 text-white backdrop-blur-md shadow-xs border border-white/20">
+        <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-mono font-bold bg-black/70 text-white backdrop-blur-md shadow-xs border border-white/20">
           {isArabic ? regionInfo.ar : regionInfo.en}
         </span>
 
@@ -74,7 +74,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
 
         {/* Title Overlay */}
         <div className="absolute bottom-3 right-3 left-3 text-white">
-          <h3 className="text-lg font-bold leading-snug line-clamp-1 drop-shadow-md">
+          <h3 className="text-xl font-extrabold leading-snug line-clamp-1 drop-shadow-md">
             <a
               href={`/recipes/${encodeURIComponent(recipe.id)}`}
               onClick={(event) => event.stopPropagation()}
@@ -83,7 +83,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               {isArabic ? recipe.titleAr : recipe.titleEn}
             </a>
           </h3>
-          <p className="text-xs text-stone-200/90 font-mono line-clamp-1">
+          <p className="text-sm font-medium text-stone-200/90 font-mono line-clamp-1">
             {isArabic ? recipe.titleEn : recipe.titleAr}
           </p>
         </div>
@@ -92,25 +92,25 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
       {/* Card Content Body */}
       <div className="p-4 flex-1 flex flex-col justify-between gap-3">
         {/* Description */}
-        <p className="text-xs text-[#616161] dark:text-stone-300 line-clamp-2 leading-relaxed font-sans">
+        <p className="text-sm sm:text-base text-[#424242] dark:text-stone-200 line-clamp-2 leading-relaxed font-sans font-normal">
           {isArabic ? recipe.descriptionAr : recipe.descriptionEn}
         </p>
 
         {recipe.dietaryTags && recipe.dietaryTags.length > 0 && (
           <div className="flex flex-wrap gap-1.5" aria-label={isArabic ? 'الوسوم الغذائية' : 'Dietary tags'}>
-            {recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}
+            {recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}
           </div>
         )}
 
         {/* Info Pills (Time, Difficulty, Ramadan tag) */}
-        <div className="flex items-center justify-between gap-2 text-[11px] font-mono text-[#75758a] dark:text-stone-300 pt-2 border-t border-[#d9d9dd] dark:border-[#2b3a54]">
+        <div className="flex items-center justify-between gap-2 text-xs sm:text-sm font-mono font-medium text-[#616161] dark:text-stone-300 pt-2 border-t border-[#d9d9dd] dark:border-[#2b3a54]">
           <div className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-[#ff7759]" />
+            <Clock className="w-4 h-4 text-[#ff7759]" />
             <span>{totalTime} {isArabic ? 'دقيقة' : 'min'}</span>
           </div>
 
           <div className="flex items-center gap-1">
-            <Flame className="w-3.5 h-3.5 text-[#ff7759]" />
+            <Flame className="w-4 h-4 text-[#ff7759]" />
             <span>
               {recipe.difficulty === 'easy'
                 ? isArabic ? 'سهل' : 'Easy'
@@ -121,7 +121,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           </div>
 
           {recipe.isRamadanSpecial && (
-            <span className="text-[#ff7759] font-bold bg-[#17171c] text-white px-2 py-0.5 rounded-full text-[10px] font-mono border border-white/10">
+            <span className="text-[#ff7759] font-bold bg-[#17171c] text-white px-2.5 py-0.5 rounded-full text-xs font-mono border border-white/10">
               🌙 {isArabic ? 'رمضاني' : 'Ramadan'}
             </span>
           )}
@@ -133,36 +133,36 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           <div className="flex items-center gap-1 bg-[#eeece7] dark:bg-stone-800 p-1 rounded-full border border-[#d9d9dd] dark:border-stone-700">
             <button
               onClick={() => onVote(recipe.id, 'like')}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono transition-colors cursor-pointer ${
+              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
                 userVote === 'like'
                   ? 'bg-[#17171c] text-white shadow-xs'
                   : 'text-[#212121] dark:text-stone-300 hover:text-[#ff7759]'
               }`}
               title={isArabic ? 'أعجبني' : 'Like'}
             >
-              <ThumbsUp className="w-3.5 h-3.5" />
+              <ThumbsUp className="w-4 h-4" />
               <span>{recipe.votesCount.likes}</span>
             </button>
 
             <button
               onClick={() => onVote(recipe.id, 'dislike')}
-              className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono transition-colors cursor-pointer ${
+              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
                 userVote === 'dislike'
                   ? 'bg-rose-700 text-white shadow-xs'
                   : 'text-[#212121] dark:text-stone-300 hover:text-rose-700'
               }`}
               title={isArabic ? 'لم يعجبني' : 'Dislike'}
             >
-              <ThumbsDown className="w-3.5 h-3.5" />
+              <ThumbsDown className="w-4 h-4" />
             </button>
           </div>
 
           {/* Quick Add to Planner */}
           <button
             onClick={() => onQuickAddToPlanner(recipe)}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#17171c] hover:bg-[#212121] dark:bg-white dark:text-[#17171c] text-white text-xs font-mono font-bold shadow-xs transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#17171c] hover:bg-[#212121] dark:bg-white dark:text-[#17171c] text-white text-xs sm:text-sm font-mono font-bold shadow-xs transition-all cursor-pointer"
           >
-            <CalendarPlus className="w-3.5 h-3.5 text-[#ff7759]" />
+            <CalendarPlus className="w-4 h-4 text-[#ff7759]" />
             <span>{isArabic ? 'للجدول' : '+ Plan'}</span>
           </button>
         </div>

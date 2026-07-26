@@ -42,6 +42,24 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
     setTimeout(() => setCopiedLink(false), 2500);
   };
 
+  const handleNativeShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: isArabic ? 'جدول الوجبات العائلي - تطبيق وجبة' : 'Wajba Family Meal Plan',
+          text: isArabic
+            ? 'إليك جدول الوجبات العائلي وقائمة التسوق من تطبيق وجبة:'
+            : 'Check out our family meal plan and grocery list on Wajba:',
+          url: sharedUrl,
+        });
+      } catch {
+        // User cancelled share dialog
+      }
+    } else {
+      handleCopyLink();
+    }
+  };
+
   const handleSyncSheets = async () => {
     if (!sheetsUrl.trim()) return;
     setSyncing(true);
@@ -103,20 +121,29 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
               : 'Share this live link with family members to open the exact meal plan & grocery list instantly.'}
           </p>
 
-          <div className="flex items-center gap-2 pt-1">
+          <div className="flex flex-wrap items-center gap-2 pt-1">
             <input
               readOnly
               type="text"
               value={sharedUrl}
-              className="flex-1 p-2 text-xs rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-stone-500 select-all"
+              className="flex-1 min-w-[200px] p-2.5 text-xs rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-stone-600 dark:text-stone-300 select-all"
             />
             <button
               onClick={handleCopyLink}
-              className="px-4 py-2 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold flex items-center gap-1.5 flex-shrink-0"
+              className="px-4 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold flex items-center gap-1.5 flex-shrink-0 cursor-pointer transition-colors shadow-xs"
             >
-              {copiedLink ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              {copiedLink ? <Check className="w-4 h-4 text-emerald-300" /> : <Copy className="w-4 h-4" />}
               <span>{copiedLink ? (isArabic ? 'تم النسخ!' : 'Copied!') : (isArabic ? 'نسخ الرابط' : 'Copy Link')}</span>
             </button>
+            {typeof navigator !== 'undefined' && 'share' in navigator && (
+              <button
+                onClick={handleNativeShare}
+                className="px-4 py-2.5 rounded-xl bg-[#17171c] hover:bg-stone-800 dark:bg-white dark:text-[#17171c] text-white text-xs font-bold flex items-center gap-1.5 flex-shrink-0 cursor-pointer transition-colors shadow-xs"
+              >
+                <Share2 className="w-4 h-4 text-[#ff7759]" />
+                <span>{isArabic ? 'مشاركة عبر التطبيقات' : 'Share Link'}</span>
+              </button>
+            )}
           </div>
         </div>
 

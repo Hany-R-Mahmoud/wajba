@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GroceryItem, IngredientAisle, Language } from '../types';
 import { AISLE_LABELS } from '../utils/aggregator';
-import { ShoppingBag, CheckSquare, Square, Plus, Share2, Copy, Download, Printer, Trash2, CheckCircle2 } from 'lucide-react';
+import { ShoppingBag, CheckSquare, Square, Plus, Share2, Copy, Download, Printer, Trash2, CheckCircle2, Search, Filter, RotateCcw, X } from 'lucide-react';
 import { downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
 
 interface GroceryListViewProps {
@@ -30,14 +30,83 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
   const [extraError, setExtraError] = useState('');
   const [actionError, setActionError] = useState('');
 
+  // Search & Filter State
+  const [searchInput, setSearchInput] = useState('');
+  const [activeSearchQuery, setActiveSearchQuery] = useState('');
+  const [selectedAisleFilter, setSelectedAisleFilter] = useState<IngredientAisle | 'all'>('all');
+  const [selectedStatusFilter, setSelectedStatusFilter] = useState<'all' | 'pending' | 'checked' | 'covered'>('all');
+  const [selectedSourceType, setSelectedSourceType] = useState<'all' | 'recipe' | 'custom'>('all');
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setActiveSearchQuery(searchInput.trim());
+  };
+
+  const handleClearSearch = () => {
+    setSearchInput('');
+    setActiveSearchQuery('');
+  };
+
+  const handleResetFilters = () => {
+    setSearchInput('');
+    setActiveSearchQuery('');
+    setSelectedAisleFilter('all');
+    setSelectedStatusFilter('all');
+    setSelectedSourceType('all');
+  };
+
+  const hasActiveFilters =
+    activeSearchQuery !== '' ||
+    selectedAisleFilter !== 'all' ||
+    selectedStatusFilter !== 'all' ||
+    selectedSourceType !== 'all';
+
   const shoppingItems = groceryList.filter((item) => !item.isCovered);
   const totalCount = shoppingItems.length;
   const checkedCount = shoppingItems.filter((i) => i.isChecked).length;
   const progressPercent = totalCount > 0 ? Math.round((checkedCount / totalCount) * 100) : 0;
 
+  // Filter list based on search and selected filters
+  const filteredList = groceryList.filter((item) => {
+    // 1. Search Query
+    if (activeSearchQuery) {
+      const q = activeSearchQuery.toLowerCase();
+      const matchesNameAr = item.nameAr.toLowerCase().includes(q);
+      const matchesNameEn = item.nameEn.toLowerCase().includes(q);
+      const matchesSource = item.recipeSources.some((src) => src.toLowerCase().includes(q));
+      if (!matchesNameAr && !matchesNameEn && !matchesSource) {
+        return false;
+      }
+    }
+
+    // 2. Aisle Filter
+    if (selectedAisleFilter !== 'all') {
+      const aisle = item.aisle || 'other';
+      if (aisle !== selectedAisleFilter) return false;
+    }
+
+    // 3. Status Filter
+    if (selectedStatusFilter === 'pending') {
+      if (item.isChecked || item.isCovered) return false;
+    } else if (selectedStatusFilter === 'checked') {
+      if (!item.isChecked) return false;
+    } else if (selectedStatusFilter === 'covered') {
+      if (!item.isCovered) return false;
+    }
+
+    // 4. Source Type Filter
+    if (selectedSourceType === 'recipe') {
+      if (item.isCustomExtra) return false;
+    } else if (selectedSourceType === 'custom') {
+      if (!item.isCustomExtra) return false;
+    }
+
+    return true;
+  });
+
   // Group items by aisle
   const groupedByAisle: { [key in IngredientAisle]?: GroceryItem[] } = {};
-  groceryList.forEach((item) => {
+  filteredList.forEach((item) => {
     const aisle = item.aisle || 'other';
     if (!groupedByAisle[aisle]) {
       groupedByAisle[aisle] = [];
@@ -124,10 +193,10 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
               <ShoppingBag className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-xl font-extrabold text-amber-950 dark:text-amber-100">
+              <h1 className="text-2xl font-extrabold text-amber-950 dark:text-amber-100">
                 {isArabic ? 'قائمة التسوق الذكية المجمعة' : 'Smart Aggregated Grocery List'}
               </h1>
-              <p className="text-xs text-stone-500">
+              <p className="text-sm font-medium text-stone-600 dark:text-stone-300 mt-1">
                 {isArabic
                   ? 'تم دمج وتجميع كافة مقادير الوجبات المحددة في الجدول حسب أقسام السوبرماركت.'
                   : 'All ingredients from your week plan combined and organized by supermarket aisles.'}
@@ -234,6 +303,112 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
       {extraError && <p role="alert" className="text-sm font-bold text-rose-700 dark:text-rose-300">{extraError}</p>}
       {actionError && <p role="alert" className="text-sm font-bold text-rose-700 dark:text-rose-300">{actionError}</p>}
 
+      {/* Search Bar & Filters Panel */}
+      {groceryList.length > 0 && (
+        <div className="bg-white dark:bg-stone-900 p-4 sm:p-5 rounded-2xl border border-stone-200/80 dark:border-stone-800 shadow-xs space-y-4 no-print">
+          {/* Search Form */}
+          <form onSubmit={handleSearchSubmit} className="flex gap-2">
+            <div className="relative flex-1">
+              <Search className="absolute top-1/2 -translate-y-1/2 start-3.5 w-4 h-4 text-stone-400" />
+              <input
+                type="text"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                placeholder={
+                  isArabic
+                    ? 'ابحث باسم المكون أو المصدر (اضغط بحث للتطبيق)...'
+                    : 'Search by ingredient or source name (click Search)...'
+                }
+                className="w-full ps-10 pe-9 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50/60 dark:bg-stone-800/60 font-medium focus:outline-none focus:border-[#17171c]"
+              />
+              {searchInput && (
+                <button
+                  type="button"
+                  onClick={handleClearSearch}
+                  className="absolute top-1/2 -translate-y-1/2 end-3 text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 p-1"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+            <button
+              type="submit"
+              className="px-5 py-2.5 rounded-xl bg-[#17171c] hover:bg-stone-800 dark:bg-white dark:hover:bg-stone-100 text-white dark:text-[#17171c] text-xs sm:text-sm font-bold flex items-center gap-1.5 cursor-pointer transition-colors shrink-0 shadow-xs"
+            >
+              <Search className="w-4 h-4 text-[#ff7759]" />
+              <span>{isArabic ? 'بحث' : 'Search'}</span>
+            </button>
+          </form>
+
+          {/* Filters Row */}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-stone-100 dark:border-stone-800">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+              <span className="text-stone-500 font-bold flex items-center gap-1 me-1">
+                <Filter className="w-3.5 h-3.5" />
+                <span>{isArabic ? 'التصفية:' : 'Filter:'}</span>
+              </span>
+
+              {/* Aisle Filter Dropdown */}
+              <select
+                value={selectedAisleFilter}
+                onChange={(e) => setSelectedAisleFilter(e.target.value as any)}
+                className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 font-semibold cursor-pointer focus:outline-none"
+              >
+                <option value="all">{isArabic ? 'كل الأقسام' : 'All Aisles'}</option>
+                {Object.entries(AISLE_LABELS).map(([key, info]) => (
+                  <option key={key} value={key}>
+                    {info.icon} {isArabic ? info.ar : info.en}
+                  </option>
+                ))}
+              </select>
+
+              {/* Status Filter Dropdown */}
+              <select
+                value={selectedStatusFilter}
+                onChange={(e) => setSelectedStatusFilter(e.target.value as any)}
+                className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 font-semibold cursor-pointer focus:outline-none"
+              >
+                <option value="all">{isArabic ? 'كل الحالات' : 'All Statuses'}</option>
+                <option value="pending">{isArabic ? 'غير المشتراة' : 'To Buy (Pending)'}</option>
+                <option value="checked">{isArabic ? 'تم شراؤها' : 'Purchased'}</option>
+                <option value="covered">{isArabic ? 'متوفرة بالمخزن' : 'Pantry Covered'}</option>
+              </select>
+
+              {/* Source Type Filter Dropdown */}
+              <select
+                value={selectedSourceType}
+                onChange={(e) => setSelectedSourceType(e.target.value as any)}
+                className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-800 dark:text-stone-200 font-semibold cursor-pointer focus:outline-none"
+              >
+                <option value="all">{isArabic ? 'كل المصادر' : 'All Sources'}</option>
+                <option value="recipe">{isArabic ? 'مقادير الوجبات' : 'Recipe Ingredients'}</option>
+                <option value="custom">{isArabic ? 'إضافات شخصية' : 'Custom Extras'}</option>
+              </select>
+            </div>
+
+            {/* Match Counter & Reset Filters */}
+            <div className="flex items-center gap-3 ms-auto">
+              <span className="text-xs font-bold text-stone-500">
+                {isArabic
+                  ? `النتائج: ${filteredList.length} من ${groceryList.length}`
+                  : `Showing ${filteredList.length} of ${groceryList.length}`}
+              </span>
+
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  onClick={handleResetFilters}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-900 text-xs font-bold hover:bg-rose-100 transition-colors cursor-pointer"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>{isArabic ? 'إعادة ضبط' : 'Reset Filters'}</span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Aisle Grouped Grocery Sections */}
       {groceryList.length === 0 ? (
         <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-amber-200/80 dark:border-stone-800 p-8 space-y-3">
@@ -246,6 +421,26 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
               ? 'قم بإضافة وجبات إلى جدول الأسبوع لتوليد مقادير التسوق تلقائياً.'
               : 'Add meals to your weekly planner to generate your shopping list automatically.'}
           </p>
+        </div>
+      ) : filteredList.length === 0 ? (
+        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-amber-200/80 dark:border-stone-800 p-8 space-y-3">
+          <div className="text-4xl">🔍</div>
+          <h3 className="text-base font-bold text-stone-800 dark:text-stone-200">
+            {isArabic ? 'لا توجد نتائج تطابق بحثك وتصفياتك' : 'No items match your search or filters'}
+          </h3>
+          <p className="text-xs text-stone-500 max-w-sm mx-auto">
+            {isArabic
+              ? 'جرب البحث بكلمة أخرى أو قم بإعادة ضبط معايير التصفية لعرض باقي العناصر.'
+              : 'Try searching for a different keyword or reset filters to display your items.'}
+          </p>
+          <button
+            type="button"
+            onClick={handleResetFilters}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold transition-all cursor-pointer"
+          >
+            <RotateCcw className="w-4 h-4" />
+            <span>{isArabic ? 'إعادة ضبط التصفية' : 'Reset All Filters'}</span>
+          </button>
         </div>
       ) : (
         <div className="space-y-4">

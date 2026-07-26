@@ -126,11 +126,11 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
         <div>
           <div className="flex items-center gap-2">
             <Calendar className="w-6 h-6 text-amber-700" />
-            <h1 className="text-xl font-extrabold text-amber-950 dark:text-amber-100">
+            <h1 className="text-2xl font-extrabold text-amber-950 dark:text-amber-100">
               {isArabic ? 'جدول الوجبات العائلي الأسبوعي' : 'Weekly Family Meal Planner'}
             </h1>
           </div>
-          <p className="text-xs text-stone-500 mt-1">
+          <p className="text-sm font-medium text-stone-600 dark:text-stone-300 mt-1">
             {isArabic
               ? 'صمم وجبات الأسبوع وقم بتوليد قائمة التسوق التلقائية المجمعة فوراً.'
               : 'Assign meals across days and generate a combined smart grocery list instantly.'}

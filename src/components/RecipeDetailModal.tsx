@@ -45,7 +45,6 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 
   const isArabic = language === 'ar';
   const regionInfo = REGION_BADGES[recipe.region] || REGION_BADGES.general;
-
   const scale = currentServings / (recipe.servings || 1);
 
   const handleShareWhatsApp = () => {

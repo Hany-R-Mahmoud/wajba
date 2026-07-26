@@ -142,22 +142,65 @@ export function deleteCustomRecipe(recipeId: string): Recipe[] {
   return updated;
 }
 
+export function decodePlanFromUrl(encodedStr: string): WeeklyPlan | null {
+  try {
+    const decodedParam = decodeURIComponent(encodedStr);
+
+    // Attempt 1: Standard Base64 of UTF-8 Bytes
+    try {
+      const binary = atob(decodedParam);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+      const jsonStr = new TextDecoder().decode(bytes);
+      const parsed = JSON.parse(jsonStr);
+      if (parsed && typeof parsed === 'object' && Array.isArray(parsed.days)) {
+        return parsed as WeeklyPlan;
+      }
+    } catch {
+      // Ignore and try fallback
+    }
+
+    // Attempt 2: Base64 of percent-encoded UTF-8
+    try {
+      const binary = atob(decodedParam);
+      const jsonStr = decodeURIComponent(binary);
+      const parsed = JSON.parse(jsonStr);
+      if (parsed && typeof parsed === 'object' && Array.isArray(parsed.days)) {
+        return parsed as WeeklyPlan;
+      }
+    } catch {
+      // Ignore and try fallback
+    }
+
+    // Attempt 3: Direct JSON parameter
+    try {
+      const parsed = JSON.parse(decodedParam);
+      if (parsed && typeof parsed === 'object' && Array.isArray(parsed.days)) {
+        return parsed as WeeklyPlan;
+      }
+    } catch {
+      // Ignore
+    }
+  } catch (e) {
+    console.warn('Failed to decode plan from URL', e);
+  }
+  return null;
+}
+
 export function loadWeeklyPlan(): WeeklyPlan {
   try {
     // Check if URL has shared encoded plan first!
     const urlParams = new URLSearchParams(window.location.search);
     const sharedPlan = urlParams.get('plan');
     if (sharedPlan) {
-      try {
-        const decoded = JSON.parse(atob(decodeURIComponent(sharedPlan)));
-        if (decoded && decoded.days) {
-          saveWeeklyPlan(decoded);
-          // clean URL param gracefully
-          window.history.replaceState({}, document.title, window.location.pathname);
-          return decoded;
-        }
-      } catch (e) {
-        console.warn('Failed to parse shared URL plan', e);
+      const decoded = decodePlanFromUrl(sharedPlan);
+      if (decoded) {
+        saveWeeklyPlan(decoded);
+        // clean URL param gracefully
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return decoded;
       }
     }
 
@@ -181,10 +224,16 @@ export function saveWeeklyPlan(plan: WeeklyPlan) {
 export function encodePlanToUrl(plan: WeeklyPlan): string {
   try {
     const jsonStr = JSON.stringify(plan);
-    const b64 = btoa(encodeURIComponent(jsonStr));
+    const bytes = new TextEncoder().encode(jsonStr);
+    let binary = '';
+    for (let i = 0; i < bytes.byteLength; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    const b64 = btoa(binary);
     const baseUrl = window.location.origin + window.location.pathname;
     return `${baseUrl}?plan=${encodeURIComponent(b64)}`;
-  } catch {
+  } catch (e) {
+    console.error('Failed to encode plan to URL', e);
     return window.location.href;
   }
 }
