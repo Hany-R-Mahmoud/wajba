@@ -423,7 +423,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1">
-              <img src="/favicon.svg" alt="Wajba Logo" className="w-full h-full object-contain" />
+              <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
             </div>
             <span className="font-extrabold text-[#17171c] dark:text-white font-mono">WAJBA SYSTEM <span className="text-[#D86540] text-xs"> وجبة</span></span>
           </div>

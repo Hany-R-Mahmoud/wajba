@@ -31,7 +31,7 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
           onClick ? 'cursor-pointer hover:scale-105 transition-transform' : ''
         } ${className}`}
       >
-        <img src="/favicon.svg" alt="Wajba Emblem" className="w-full h-full object-contain" />
+        <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
       </div>
     );
   }
@@ -45,7 +45,7 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
         } ${className}`}
       >
         <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
-          <img src="/favicon.svg" alt="Wajba Logo" className="w-full h-full object-contain" />
+          <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
         </div>
         <div>
           <div className="flex items-center gap-2">
@@ -70,8 +70,8 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
         } ${className}`}
       >
         <img
-          src="/logo.svg"
-          alt="Wajba Middle Eastern Culinary Architecture"
+          src="/wajba-logo.png"
+          alt="شعار وجبة Wajba"
           className="w-full max-w-xs h-auto object-contain mx-auto"
         />
       </div>
@@ -104,8 +104,8 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
 
         {/* Scaled Full Logo SVG */}
         <img
-          src="/logo.svg"
-          alt="Wajba • وجبة - Middle Eastern Culinary Architecture"
+          src="/wajba-logo.png"
+          alt="شعار وجبة Wajba"
           className="w-full h-auto object-contain max-h-[320px] sm:max-h-[380px] md:max-h-[420px] mx-auto filter drop-shadow-sm"
         />
       </div>

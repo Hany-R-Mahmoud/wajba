@@ -38,7 +38,7 @@ export function getSeoMetadata(recipe?: Recipe, siteUrl?: string, notFound = fal
     description: recipe?.descriptionEn || (dashboard ? DASHBOARD_SEO.description : DEFAULT_SEO.description),
     path,
     type: recipe ? 'article' : 'website',
-    image: '/logo.svg',
+    image: '/wajba-logo.png',
     robots: notFound || dashboard ? 'noindex,follow' : 'index,follow',
     recipe,
   };
@@ -119,7 +119,7 @@ export function updateSeo(recipe?: Recipe, notFound = false, dashboard = false) 
   upsertMeta('property', 'og:type', metadata.type);
   upsertMeta('property', 'og:url', canonicalUrl || window.location.href);
   upsertMeta('property', 'og:image', socialImageUrl);
-  upsertMeta('property', 'og:image:alt', 'Wajba logo');
+  upsertMeta('property', 'og:image:alt', 'شعار وجبة Wajba');
   upsertMeta('name', 'twitter:card', 'summary_large_image');
   upsertMeta('name', 'twitter:title', metadata.title);
   upsertMeta('name', 'twitter:description', metadata.description);

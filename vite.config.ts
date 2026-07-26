@@ -20,7 +20,7 @@ function seoIndexTags() {
   return {
     name: 'wajba-seo-index-tags',
     transformIndexHtml(html: string) {
-      const withAbsoluteImage = html.replaceAll('content="/logo.svg"', `content="${htmlSiteUrl}/logo.svg"`);
+      const withAbsoluteImage = html.replaceAll('content="/wajba-logo.png"', `content="${htmlSiteUrl}/wajba-logo.png"`);
       return withAbsoluteImage.replace(
         '</head>',
         `    <link rel="canonical" href="${htmlSiteUrl}/" />\n    <meta property="og:url" content="${htmlSiteUrl}/" />\n</head>`,

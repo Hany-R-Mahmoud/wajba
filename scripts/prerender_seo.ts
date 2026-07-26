@@ -35,7 +35,7 @@ function replaceTag(source: string, pattern: RegExp, replacement: string): strin
 function routeHtml(template: string, recipe: (typeof INITIAL_RECIPES)[number], baseUrl?: string): string {
   const recipeUrl = `/recipes/${encodeURIComponent(recipe.id)}`;
   const canonical = baseUrl ? `${baseUrl}${recipeUrl}` : undefined;
-  const socialImage = baseUrl ? `${baseUrl}/logo.svg` : '/logo.svg';
+  const socialImage = baseUrl ? `${baseUrl}/wajba-logo.png` : '/wajba-logo.png';
   const schema = JSON.stringify(getRecipeJsonLd(recipe, baseUrl)).replace(/</g, '\\u003c');
   let result = template
     .replace('<html lang="ar" dir="rtl">', '<html lang="en" dir="ltr">')
@@ -48,7 +48,7 @@ function routeHtml(template: string, recipe: (typeof INITIAL_RECIPES)[number], b
   result = replaceTag(result, /<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${html(recipe.descriptionEn)}" />`);
   result = replaceTag(result, /<meta property="og:type"[^>]*>/, '<meta property="og:type" content="article" />');
   result = replaceTag(result, /<meta property="og:image"[^>]*>/, `<meta property="og:image" content="${html(socialImage)}" />`);
-  result = replaceTag(result, /<meta property="og:image:alt"[^>]*>/, '<meta property="og:image:alt" content="Wajba logo" />');
+  result = replaceTag(result, /<meta property="og:image:alt"[^>]*>/, '<meta property="og:image:alt" content="شعار وجبة Wajba" />');
   result = replaceTag(result, /<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${html(`${recipe.titleEn} | Wajba`)}" />`);
   result = replaceTag(result, /<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${html(recipe.descriptionEn)}" />`);
   result = replaceTag(result, /<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${html(socialImage)}" />`);
