@@ -44,3 +44,11 @@ When `VITE_SITE_URL` or `SITE_URL` is set to the real production origin, the bui
 
 - Deployment target, CI ownership, and the intended Gemini/Express runtime are `Unknown / verify`.
 - Recipe JSON files are checked-in data artifacts; the running app imports `src/data/recipes.ts` directly.
+
+## Apex Yard portfolio snapshot
+
+- Status: showcase
+- Category: Web
+- Source of truth: [docs/portfolio.json](docs/portfolio.json)
+
+This section is maintained from repository evidence and should be updated with docs/portfolio.json when the project changes.

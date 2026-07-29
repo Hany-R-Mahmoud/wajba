@@ -59,3 +59,8 @@ Run the smallest relevant check, normally `bun run lint` and `bun run build`. No
 
 - `Unknown / verify`: deployment target and CI requirements.
 - `Unknown / verify`: whether `@google/genai`, `express`, `GEMINI_API_KEY`, and `APP_URL` belong to a future server integration; no current app source imports or uses them.
+
+## Apex Yard documentation
+
+Read README.md and docs/portfolio.json before changing this project.
+Keep portfolio facts source-backed, update the structured document when the repository changes, and write Unknown / verify instead of guessing.
