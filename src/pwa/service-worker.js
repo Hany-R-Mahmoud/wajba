@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wajba-shell-v1';
+const CACHE_NAME = 'wajba-shell-v2';
 const PRECACHE_ENTRIES = __PRECACHE_ENTRIES__;
 
 self.addEventListener('install', (event) => {
