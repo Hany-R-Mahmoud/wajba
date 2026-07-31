@@ -22,11 +22,12 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 
 1. `src/main.tsx` mounts `App`.
 2. `/` renders the public landing page; `/dashboard` and its tab routes render the dashboard shell.
-3. `App` loads language, theme, plans, favorites, votes, custom recipes, grocery state, and timers from browser storage.
-4. `App` combines custom recipes with `INITIAL_RECIPES` from `src/data/recipes.ts`.
-5. Planner views update weekly/monthly plans; the aggregator derives grocery items from assigned recipe IDs and servings.
-6. UI actions save updated state back to `localStorage`.
-7. Family sync actions encode a weekly plan into a URL, download files, or send a JSON payload to a user-provided Apps Script URL.
+3. Dashboard navigation stays in the header on larger screens and uses a fixed mobile bottom bar with a secondary-destination menu on smaller screens.
+4. `App` loads language, theme, plans, favorites, votes, custom recipes, grocery state, and timers from browser storage.
+5. `App` combines custom recipes with `INITIAL_RECIPES` from `src/data/recipes.ts`.
+6. Planner views update weekly/monthly plans; the aggregator derives grocery items from assigned recipe IDs and servings.
+7. UI actions save updated state back to `localStorage`.
+8. Family sync actions encode a weekly plan into a URL, download files, or send a JSON payload to a user-provided Apps Script URL.
 
 ## PWA Installation
 

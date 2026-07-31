@@ -49,6 +49,7 @@ import { getPublicRecipeRoute, updateSeo } from './utils/seo';
 import { Calendar, CalendarDays } from 'lucide-react';
 import {PwaInstallHelpDialog} from './components/PwaInstallHelpDialog';
 import {PwaStatusBar} from './components/PwaStatusBar';
+import { MobileBottomNav } from './components/MobileBottomNav';
 
 type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'settings';
 
@@ -384,6 +385,17 @@ export default function App() {
         activeTimers={activeTimers}
       />
       <PwaStatusBar language={language} dark={theme === 'dark'} />
+      <MobileBottomNav
+        currentTab={currentTab}
+        onTabChange={(tab) => {
+          if (tab === 'family') {
+            setFamilySyncModalOpen(true);
+          } else {
+            navigateToTab(tab);
+          }
+        }}
+        language={language}
+      />
 
       {/* Main View Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">

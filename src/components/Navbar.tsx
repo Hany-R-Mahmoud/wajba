@@ -17,10 +17,11 @@ import {
 } from 'lucide-react';
 import { WajbaLogo } from './WajbaLogo';
 import {PwaInstallMenuAction} from './PwaInstallMenuAction';
+import { NavigationTab } from './MobileBottomNav';
 
 interface NavbarProps {
-  currentTab: 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'family' | 'settings';
-  onTabChange: (tab: 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'family' | 'settings') => void;
+  currentTab: NavigationTab;
+  onTabChange: (tab: NavigationTab) => void;
   language: Language;
   onLanguageChange: (lang: Language) => void;
   theme: 'light' | 'dark';
@@ -99,7 +100,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     },
   ];
 
-  const allNavItems = [...primaryNavItems, ...secondaryNavItems];
   const isSecondaryActive = secondaryNavItems.some((item) => item.id === currentTab);
   const activeSecondaryItem = secondaryNavItems.find((item) => item.id === currentTab);
 
@@ -226,27 +226,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Mobile Navigation Row */}
-        <div className="lg:hidden flex items-center justify-start py-2 border-t border-[#d9d9dd] dark:border-stone-800 overflow-x-auto no-scrollbar gap-1">
-          {allNavItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = currentTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => onTabChange(item.id)}
-                className={`flex flex-col items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-mono whitespace-nowrap transition-colors ${
-                  isActive
-                    ? 'text-white bg-[#17171c] dark:bg-white dark:text-[#17171c] font-bold'
-                    : 'text-[#616161] dark:text-stone-400 hover:text-[#17171c] dark:hover:text-stone-200'
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span>{isArabic ? item.labelAr : item.labelEn}</span>
-              </button>
-            );
-          })}
-        </div>
       </div>
     </header>
   );

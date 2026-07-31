@@ -46,9 +46,9 @@ Spacing follows a 4px base unit. Existing Tailwind spacing values are preserved.
 
 ### Navigation
 
-- Structure: header, brand, desktop tab row, mobile horizontal tab row, utility controls.
+- Structure: sticky header, brand, desktop tab row, mobile fixed bottom navigation, utility controls, and a compact secondary-destination menu.
 - States: default, active, hover, focus-visible.
-- Accessibility: semantic `nav`, labelled controls, keyboard reachability.
+- Accessibility: semantic `nav`, labelled controls, keyboard reachability, `aria-current` for the active destination, and safe-area padding on mobile.
 
 ### Modal
 
