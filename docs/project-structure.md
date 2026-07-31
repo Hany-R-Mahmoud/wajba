@@ -13,6 +13,7 @@ wajba/
     types.ts                 Shared domain types
   public/                    Static assets and recipe JSON copy
   recipes_data.json          Recipe database artifact/input
+  recipe_expansion_seeds.json NotebookLM expansion handoff seeds
   wajba_recipe_generator.py  Recipe generation and validation utility
   scripts/prerender_seo.ts   Static recipe pages and production crawler files
   index.html                 HTML shell, metadata, fonts, favicon
@@ -40,6 +41,7 @@ wajba/
 
 - `src/main.tsx`: browser application entry.
 - `wajba_recipe_generator.py`: standalone recipe-data utility entry.
+- `recipe_expansion_seeds.json`: reviewed compact seed records for the NotebookLM expansion workflow.
 
 ## Ignore As Source
 

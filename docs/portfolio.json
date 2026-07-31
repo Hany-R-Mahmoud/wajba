@@ -20,8 +20,8 @@
   ],
   "features": [
     {
-      "en": "49 bilingual MENA recipes with cultural stories, ingredients, instructions, timers, and source-reviewed metadata.",
-      "ar": "49 وصفة ثنائية اللغة من مطابخ المنطقة، مع قصص تراثية ومكونات وخطوات ومؤقتات وبيانات تمت مراجعة مصادرها."
+      "en": "65 bilingual MENA recipes with cultural stories, ingredients, instructions, timers, and source-reviewed metadata.",
+      "ar": "65 وصفة ثنائية اللغة من مطابخ المنطقة، مع قصص تراثية ومكونات وخطوات ومؤقتات وبيانات تمت مراجعة مصادرها."
     },
     {
       "en": "Weekly and monthly meal planning with Standard and Ramadan modes.",
@@ -45,8 +45,8 @@
     }
   ],
   "progress": {
-    "en": "Showcase-ready local-first product with a source-reviewed 49-recipe catalog and documented browser-only architecture.",
-    "ar": "منتج محلي جاهز للعرض، يضم كتالوجاً من 49 وصفة تمت مراجعة مصادرها، ومعمارية موثقة تعتمد على المتصفح فقط."
+    "en": "Showcase-ready local-first product with a source-reviewed 65-recipe catalog and documented browser-only architecture.",
+    "ar": "منتج محلي جاهز للعرض، يضم كتالوجاً من 65 وصفة تمت مراجعة مصادرها، ومعمارية موثقة تعتمد على المتصفح فقط."
   },
   "issues": [
     {

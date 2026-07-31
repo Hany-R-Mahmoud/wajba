@@ -22,7 +22,7 @@
 
 ## Recipe Utility
 
-`wajba_recipe_generator.py` uses Python standard-library modules. It validates recipe schema, can discover an existing `recipes_data.json`, optionally looks up Wikimedia images, and writes `recipes_enriched.json` plus `recipes_audit.json` by default.
+`wajba_recipe_generator.py` uses Python standard-library modules. It validates recipe schema, can discover an existing `recipes_data.json`, loads the checked-in `recipe_expansion_seeds.json` handoff records, optionally looks up Wikimedia images, and writes `recipes_enriched.json` plus `recipes_audit.json` by default. The NotebookLM prompt contract is documented in `docs/notebooklm-recipe-expansion.md`.
 
 ## Unknowns
 

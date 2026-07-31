@@ -4,7 +4,7 @@
 
 Wajba helps households discover Arabic and MENA recipes, assign meals to weekly or monthly plans, track pantry stock, generate a grocery list with pantry quantities subtracted, and run cooking timers. The interface supports Arabic and English plus RTL/LTR layout switching.
 
-The bundled catalog contains 49 source-reviewed recipes across Egypt, the Levant, the Gulf, the Maghreb, and shared regional dishes. See [Recipe Content Review](content-review.md) for provenance and remaining image-review limits.
+The bundled catalog contains 65 source-reviewed recipes across Egypt, the Levant, the Gulf, the Maghreb, and shared regional dishes. See [Recipe Content Review](content-review.md) for provenance and remaining image-review limits.
 
 ## Main Use Cases
 

@@ -4,7 +4,7 @@ Generate an enriched Wajba recipe database.
 
 The script is deliberately self-contained:
   * no third-party Python packages;
-  * no required input file (it can generate the 24 new recipes by itself);
+  * no required input file (it can generate the authored expansion recipes by itself);
   * automatic discovery of an existing recipes_data.json when present;
   * strict schema validation and a separate audit report;
   * optional, API-key-free Wikimedia Commons image lookup.
@@ -115,6 +115,9 @@ SOURCE_URLS = [
     "https://visitqatar.com/intl-en/about-qatar/cuisine",
     "https://www.visitsaudi.com/en/stories/aljareesh-dish",
     "https://ich.unesco.org/en/RL/al-mansaf-in-jordan-a-festive-banquet-and-its-social-and-cultural-meanings-01849",
+    "https://www.visitmorocco.com/en/travel-info/food-drinks",
+    "https://www.visitmorocco.com/en/discover-morocco/gastronomy",
+    "https://ich.unesco.org/en/RL/knowledge-know-how-and-practices-pertaining-to-the-production-and-consumption-of-couscous-01602",
 ]
 
 
@@ -897,6 +900,24 @@ RECIPE_SEEDS: list[dict[str, Any]] = [
 ]
 
 
+def load_expansion_seeds() -> list[dict[str, Any]]:
+    """Load the NotebookLM handoff records used for the next catalog expansion."""
+    path = Path(__file__).with_name("recipe_expansion_seeds.json")
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid JSON in {path}: {exc}") from exc
+    if not isinstance(payload, list) or any(not isinstance(seed, dict) for seed in payload):
+        raise ValueError(f"{path} must contain a JSON array of seed objects")
+    ids = [str(seed.get("id", "")) for seed in payload]
+    if len(ids) != len(set(ids)):
+        raise ValueError(f"Duplicate expansion recipe IDs in {path}")
+    return payload
+
+
+RECIPE_SEEDS.extend(load_expansion_seeds())
+
+
 def build_recipe(seed: dict[str, Any]) -> dict[str, Any]:
     slug = seed["id"]
     prefix = "".join(part[0] for part in slug.split("-"))[:4]
@@ -1190,7 +1211,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", help="Existing recipes JSON; otherwise common project paths are searched")
     parser.add_argument("--output", default="recipes_enriched.json", help="Output JSON path")
     parser.add_argument("--audit-output", default="recipes_audit.json", help="Audit report path")
-    parser.add_argument("--new-only", action="store_true", help="Ignore existing data and output only the 24 new recipes")
+    parser.add_argument("--new-only", action="store_true", help="Ignore existing data and output only the authored expansion recipes")
     parser.add_argument("--offline", action="store_true", help="Skip Wikimedia image lookup and use labelled placeholders")
     parser.add_argument("--fail-on-warning", action="store_true", help="Return a non-zero exit status if placeholders or image-review items remain")
     return parser.parse_args()

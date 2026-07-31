@@ -1,0 +1,627 @@
+[
+  {
+    "id": "maghreb-moroccan-harira",
+    "titleAr": "الحريرة المغربية",
+    "titleEn": "Moroccan Harira",
+    "descriptionAr": "شوربة مغربية غنية بالطماطم والعدس والحمص والأعشاب وتقدم كثيراً في رمضان.",
+    "descriptionEn": "A nourishing Moroccan soup of tomatoes, lentils, chickpeas, herbs, and fine vermicelli, often served during Ramadan.",
+    "region": "maghreb",
+    "mealType": ["dinner", "iftar", "suhoor"],
+    "prep": 20,
+    "cook": 55,
+    "servings": 6,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["مغربي", "شوربة", "رمضان", "عدس"],
+    "imageQuery": "Moroccan harira soup",
+    "storyAr": "الحريرة جزء أساسي من مائدة الإفطار المغربية، وتجمع بين البقول والطماطم والأعشاب في طبق دافئ مشبع.",
+    "storyEn": "Harira is central to Moroccan iftar tables, bringing legumes, tomatoes, and herbs together in a warming, filling bowl.",
+    "ingredients": [
+      ["عدس بني", "Brown lentils", 1, "كوب", "cup", "pantry"],
+      ["حمص مسلوق", "Cooked chickpeas", 1, "كوب", "cup", "pantry"],
+      ["طماطم مبشورة", "Grated tomatoes", 4, "حبة", "pcs", "produce"],
+      ["كرفس وكزبرة", "Celery and cilantro", 1, "حزمة", "bunch", "produce"],
+      ["شعيرية رفيعة", "Fine vermicelli", 0.5, "كوب", "cup", "pantry"],
+      ["دقيق", "Flour", 3, "ملعقة كبيرة", "tbsp", "pantry"]
+    ],
+    "stepsAr": [
+      "شوح الكرفس والبصل والطماطم مع العدس والبهارات ثم أضف الماء واترك الخليط يغلي.",
+      "أضف الحمص واترك الشوربة على نار هادئة حتى يطرى العدس وتتداخل النكهات.",
+      "أضف الشعيرية واطهها حتى تلين.",
+      "اخلط الدقيق بالماء البارد وأضفه تدريجياً مع التقليب حتى تتماسك الشوربة ثم أضف الكزبرة."
+    ],
+    "stepsEn": [
+      "Sauté celery, onion, and tomatoes with lentils and spices, then add water and bring to a boil.",
+      "Add chickpeas and simmer until the lentils are tender and the flavors meld.",
+      "Add vermicelli and cook until tender.",
+      "Whisk flour with cold water, add gradually while stirring to thicken, then finish with cilantro."
+    ],
+    "timers": [[1, "طهي العدس", "Cook lentils", 40], [2, "طهي الشعيرية", "Cook vermicelli", 8]]
+  },
+  {
+    "id": "maghreb-chicken-tagine-olives",
+    "titleAr": "طاجن الدجاج بالزيتون والليمون المصير",
+    "titleEn": "Moroccan Chicken Tagine with Olives and Preserved Lemon",
+    "descriptionAr": "دجاج مطهو ببطء مع البصل والزيتون والليمون المصير وبهارات مغربية عطرية.",
+    "descriptionEn": "Slow-cooked chicken with onions, olives, preserved lemon, and fragrant Moroccan spices.",
+    "region": "maghreb",
+    "mealType": ["lunch", "dinner", "iftar"],
+    "prep": 25,
+    "cook": 75,
+    "servings": 6,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["مغربي", "طاجن", "دجاج", "زيتون"],
+    "imageQuery": "Moroccan chicken tagine preserved lemon olives",
+    "storyAr": "يُطهى الطاجن المغربي ببطء في وعاء يحافظ على البخار، وتمنح مكونات مثل الليمون المصير والزيتون الطبق نكهته المميزة.",
+    "storyEn": "Moroccan tagine is gently steamed in a domed vessel, with preserved lemon and olives giving this version its signature character.",
+    "ingredients": [
+      ["أفخاذ دجاج", "Chicken thighs", 1.2, "كجم", "kg", "meat"],
+      ["بصل مفروم", "Chopped onions", 3, "حبة", "pcs", "produce"],
+      ["ليمون مصير", "Preserved lemon", 1, "حبة", "pc", "produce"],
+      ["زيتون أخضر منزوع النوى", "Pitted green olives", 1, "كوب", "cup", "pantry"],
+      ["زنجبيل وكركم وفلفل", "Ginger, turmeric, and pepper", 2, "ملعقة صغيرة", "tsp", "pantry"],
+      ["زيت زيتون", "Olive oil", 4, "ملعقة كبيرة", "tbsp", "pantry"]
+    ],
+    "stepsAr": [
+      "تبّل الدجاج بالزنجبيل والكركم والفلفل والملح.",
+      "شوح البصل في زيت الزيتون ثم أضف الدجاج وحمره من الجانبين.",
+      "أضف ماءً قليلاً وغط الوعاء واطه الدجاج على نار هادئة حتى ينضج.",
+      "أضف الليمون المصير والزيتون في النهاية واترك الصلصة تتكاثف قبل التقديم."
+    ],
+    "stepsEn": [
+      "Season chicken with ginger, turmeric, pepper, and salt.",
+      "Sauté onions in olive oil, add chicken, and brown both sides.",
+      "Add a little water, cover, and simmer gently until the chicken is cooked through.",
+      "Add preserved lemon and olives near the end and reduce the sauce before serving."
+    ],
+    "timers": [[2, "طهي الدجاج", "Simmer chicken", 55], [3, "تكثيف الصلصة", "Reduce sauce", 10]]
+  },
+  {
+    "id": "maghreb-couscous-seven-vegetables",
+    "titleAr": "كسكس مغربي بسبع خضروات",
+    "titleEn": "Moroccan Couscous with Seven Vegetables",
+    "descriptionAr": "كسكس مفلفل يقدم مع مرق غني بسبع خضروات وحمص وتوابل دافئة.",
+    "descriptionEn": "Fluffy couscous served with a rich broth of seven vegetables, chickpeas, and warm spices.",
+    "region": "maghreb",
+    "mealType": ["lunch", "dinner", "iftar"],
+    "prep": 30,
+    "cook": 70,
+    "servings": 8,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["مغربي", "كسكس", "خضروات", "نباتي"],
+    "imageQuery": "Moroccan couscous seven vegetables",
+    "storyAr": "الكسكس طبق جماعي يرتبط بالاجتماع والمشاركة، وتختلف الخضروات المصاحبة له حسب الموسم والمنطقة.",
+    "storyEn": "Couscous is a communal dish associated with sharing, while the vegetables in its broth change with season and region.",
+    "ingredients": [
+      ["كسكس متوسط", "Medium couscous", 3, "كوب", "cups", "pantry"],
+      ["حمص مسلوق", "Cooked chickpeas", 1.5, "كوب", "cups", "pantry"],
+      ["جزر", "Carrots", 4, "حبة", "pcs", "produce"],
+      ["كوسا وقرع ولفت", "Zucchini, pumpkin, and turnips", 1, "كجم", "kg", "produce"],
+      ["ملفوف أبيض", "White cabbage", 0.5, "رأس", "head", "produce"],
+      ["طماطم وبصل", "Tomatoes and onion", 3, "حبة", "pcs", "produce"],
+      ["زيت زيتون وتوابل", "Olive oil and spices", 4, "ملعقة كبيرة", "tbsp", "pantry"]
+    ],
+    "stepsAr": [
+      "شوح البصل والطماطم مع التوابل ثم أضف الماء والحمص واترك المرق يغلي.",
+      "أضف الخضروات القاسية أولاً ثم الكوسا والقرع والملفوف حتى تنضج دون أن تهترئ.",
+      "رطب الكسكس بقليل من الماء والزيت ثم بخّره حتى ينتفخ وافركه بالشوكة.",
+      "ضع الكسكس في طبق واسع واسكب المرق ورتب الخضروات والحمص فوقه."
+    ],
+    "stepsEn": [
+      "Sauté onion and tomatoes with spices, add water and chickpeas, and bring the broth to a boil.",
+      "Add firm vegetables first, then zucchini, pumpkin, and cabbage so they cook without collapsing.",
+      "Moisten couscous with a little water and oil, steam until fluffy, and separate with a fork.",
+      "Spread couscous on a platter, ladle over broth, and arrange vegetables and chickpeas on top."
+    ],
+    "timers": [[1, "طهي الخضروات", "Cook vegetables", 45], [2, "تبخير الكسكس", "Steam couscous", 20]]
+  },
+  {
+    "id": "maghreb-rfissa-chicken",
+    "titleAr": "الرفيسة المغربية بالدجاج والعدس",
+    "titleEn": "Moroccan Chicken Rfissa",
+    "descriptionAr": "دجاج متبل يقدم فوق رقائق المسمن مع مرق البصل والعدس والحلبة.",
+    "descriptionEn": "Spiced chicken served over shredded msemen with an onion, lentil, and fenugreek broth.",
+    "region": "maghreb",
+    "mealType": ["lunch", "dinner", "iftar"],
+    "prep": 35,
+    "cook": 80,
+    "servings": 6,
+    "difficulty": "hard",
+    "ramadan": true,
+    "tags": ["مغربي", "رفيسة", "دجاج", "عدس"],
+    "imageQuery": "Moroccan chicken rfissa msemen",
+    "storyAr": "الرفيسة طبق ضيافة مغربي يحتفي بالمسمن والمرق المعطر ويقدم في المناسبات العائلية.",
+    "storyEn": "Rfissa is a Moroccan hospitality dish built around msemen, fragrant broth, and chicken for family occasions.",
+    "ingredients": [
+      ["دجاجة مقطعة", "Jointed chicken", 1.5, "كجم", "kg", "meat"],
+      ["مسمن مقطع شرائح", "Shredded msemen", 6, "قطع", "pieces", "bakery"],
+      ["بصل", "Onions", 5, "حبة", "pcs", "produce"],
+      ["عدس بني", "Brown lentils", 1, "كوب", "cup", "pantry"],
+      ["حلبة", "Fenugreek", 1, "ملعقة كبيرة", "tbsp", "pantry"],
+      ["رأس الحانوت وزنجبيل", "Ras el hanout and ginger", 2, "ملعقة صغيرة", "tsp", "pantry"]
+    ],
+    "stepsAr": [
+      "تبّل الدجاج بالبهارات والملح ثم حمره قليلاً في قدر واسع.",
+      "أضف البصل والحلبة والعدس والماء واطه المزيج حتى ينضج الدجاج والعدس.",
+      "سخن شرائح المسمن سريعاً حتى تلين دون أن تجف.",
+      "فتت المسمن في طبق عميق واسكب المرق فوقه وضع الدجاج في الوسط."
+    ],
+    "stepsEn": [
+      "Season chicken with spices and salt, then brown it lightly in a wide pot.",
+      "Add onions, fenugreek, lentils, and water; cook until the chicken and lentils are tender.",
+      "Warm shredded msemen briefly so it softens without drying.",
+      "Pile msemen in a deep platter, ladle over broth, and place chicken in the center."
+    ],
+    "timers": [[1, "طهي الدجاج والعدس", "Cook chicken and lentils", 65], [2, "تسخين المسمن", "Warm msemen", 5]]
+  },
+  {
+    "id": "maghreb-chicken-pastilla",
+    "titleAr": "البسطيلة المغربية بالدجاج واللوز",
+    "titleEn": "Moroccan Chicken Pastilla",
+    "descriptionAr": "فطيرة احتفالية بطبقات رقيقة محشوة بالدجاج والبيض واللوز والقرفة.",
+    "descriptionEn": "A festive flaky pastry layered with chicken, eggs, almonds, and cinnamon.",
+    "region": "maghreb",
+    "mealType": ["lunch", "dinner", "iftar"],
+    "prep": 45,
+    "cook": 55,
+    "servings": 8,
+    "difficulty": "hard",
+    "ramadan": true,
+    "tags": ["مغربي", "بسطيلة", "دجاج", "لوز"],
+    "imageQuery": "Moroccan chicken pastilla",
+    "storyAr": "البسطيلة من أطباق المناسبات المغربية، وتمزج بين الحشوة المتبلة والقشرة المقرمشة واللمسة الحلوة.",
+    "storyEn": "Pastilla is a Moroccan celebration pastry balancing a savory spiced filling, crisp layers, and a gentle sweet finish.",
+    "ingredients": [
+      ["صدور دجاج", "Chicken breasts", 1, "كجم", "kg", "meat"],
+      ["رقائق ورق البسطيلة", "Warqa or phyllo sheets", 12, "ورقة", "sheets", "frozen"],
+      ["بيض", "Eggs", 6, "حبة", "pcs", "dairy"],
+      ["لوز محمص مطحون", "Ground toasted almonds", 1.5, "كوب", "cups", "pantry"],
+      ["بصل", "Onions", 3, "حبة", "pcs", "produce"],
+      ["قرفة وزنجبيل", "Cinnamon and ginger", 2, "ملعقة صغيرة", "tsp", "pantry"]
+    ],
+    "stepsAr": [
+      "اطه الدجاج مع البصل والبهارات وماء قليل ثم فتته واحتفظ بالمرق.",
+      "اختزل المرق وأضف البيض المخفوق مع التحريك حتى تتكون حشوة ناعمة.",
+      "ادهن الرقائق بالزبدة ورتبها في قالب ثم أضف الدجاج وحشوة البيض واللوز على طبقات.",
+      "أغلق الفطيرة واخبزها حتى تصبح ذهبية ثم رشها بالسكر البودرة والقرفة."
+    ],
+    "stepsEn": [
+      "Cook chicken with onions, spices, and a little water, then shred it and reserve the broth.",
+      "Reduce the broth and stir in beaten eggs until a soft filling forms.",
+      "Brush pastry sheets with butter, layer them in a pan, and add chicken, egg filling, and almonds.",
+      "Seal the pastry and bake until golden, then dust with powdered sugar and cinnamon."
+    ],
+    "timers": [[0, "طهي الدجاج", "Cook chicken", 35], [3, "خبز البسطيلة", "Bake pastilla", 35]]
+  },
+  {
+    "id": "maghreb-zaalouk",
+    "titleAr": "الزعلوك المغربي",
+    "titleEn": "Moroccan Zaalouk",
+    "descriptionAr": "سلطة دافئة من الباذنجان والطماطم والثوم والكمون تقدم مع الخبز.",
+    "descriptionEn": "A warm eggplant and tomato salad with garlic and cumin, served with bread.",
+    "region": "maghreb",
+    "mealType": ["breakfast", "snack", "iftar"],
+    "prep": 15,
+    "cook": 35,
+    "servings": 4,
+    "difficulty": "easy",
+    "ramadan": true,
+    "tags": ["مغربي", "باذنجان", "سلطة", "نباتي"],
+    "imageQuery": "Moroccan zaalouk eggplant salad",
+    "storyAr": "الزعلوك من المقبلات المغربية المنزلية التي تقدم دافئة أو بدرجة حرارة الغرفة مع الخبز.",
+    "storyEn": "Zaalouk is a Moroccan home-style accompaniment served warm or at room temperature with bread.",
+    "ingredients": [
+      ["باذنجان", "Eggplant", 3, "حبة", "pcs", "produce"],
+      ["طماطم", "Tomatoes", 4, "حبة", "pcs", "produce"],
+      ["ثوم", "Garlic", 4, "فصوص", "cloves", "produce"],
+      ["كزبرة مفرومة", "Chopped cilantro", 0.5, "كوب", "cup", "produce"],
+      ["كمون وبابريكا", "Cumin and paprika", 2, "ملعقة صغيرة", "tsp", "pantry"],
+      ["زيت زيتون", "Olive oil", 4, "ملعقة كبيرة", "tbsp", "pantry"]
+    ],
+    "stepsAr": [
+      "اشوِ الباذنجان أو اسلقه حتى يطرى ثم قشره وقطعه.",
+      "شوح الثوم والطماطم مع الزيت والكمون والبابريكا.",
+      "أضف الباذنجان واهرِسه برفق واطه الخليط حتى يتبخر الماء.",
+      "أضف الكزبرة والليمون وقدمه مع الخبز."
+    ],
+    "stepsEn": [
+      "Roast or simmer eggplant until tender, then peel and chop it.",
+      "Sauté garlic and tomatoes with oil, cumin, and paprika.",
+      "Add eggplant, mash gently, and cook until excess moisture evaporates.",
+      "Finish with cilantro and lemon and serve with bread."
+    ],
+    "timers": [[0, "تطرية الباذنجان", "Tenderize eggplant", 20], [2, "اختزال السلطة", "Reduce salad", 12]]
+  },
+  {
+    "id": "maghreb-msemen",
+    "titleAr": "المسمن المغربي",
+    "titleEn": "Moroccan Msemen",
+    "descriptionAr": "خبز مغربي مربع مورق يقدم مع العسل أو الجبن في الفطور والشاي.",
+    "descriptionEn": "Layered Moroccan square flatbread served with honey or cheese at breakfast and tea time.",
+    "region": "maghreb",
+    "mealType": ["breakfast", "snack", "suhoor"],
+    "prep": 40,
+    "cook": 20,
+    "servings": 8,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["مغربي", "خبز", "فطور", "عجين"],
+    "imageQuery": "Moroccan msemen flatbread",
+    "storyAr": "المسمن حاضر في الفطور المغربي ووقت الشاي، وتظهر طبقاته من فرد العجين الرقيق وطيه بالزيت.",
+    "storyEn": "Msemen is a Moroccan breakfast and tea-time staple whose layers come from stretching and folding oiled dough.",
+    "ingredients": [
+      ["دقيق", "Flour", 3, "كوب", "cups", "pantry"],
+      ["سميد ناعم", "Fine semolina", 1, "كوب", "cup", "pantry"],
+      ["ماء فاتر", "Lukewarm water", 2, "كوب", "cups", "other"],
+      ["ملح وسكر", "Salt and sugar", 1, "ملعقة صغيرة", "tsp", "pantry"],
+      ["زيت نباتي", "Vegetable oil", 0.75, "كوب", "cup", "pantry"],
+      ["زبدة مذابة", "Melted butter", 100, "جرام", "g", "dairy"]
+    ],
+    "stepsAr": [
+      "اعجن الدقيق والسميد والملح والسكر بالماء حتى تصبح العجينة لينة ثم أرحها.",
+      "قسم العجين كرات وادهنها بالزيت ثم افردها رقيقة جداً.",
+      "ادهن بالزبدة ورش السميد واطوِ الأطراف إلى مربع.",
+      "افرد المربع قليلاً وحمره على صاج ساخن من الجانبين حتى يصبح مورقاً."
+    ],
+    "stepsEn": [
+      "Knead flour, semolina, salt, and sugar with water until soft, then rest the dough.",
+      "Divide into balls, oil them, and stretch each one very thin.",
+      "Brush with butter, sprinkle with semolina, and fold the edges into a square.",
+      "Flatten each square slightly and cook on a hot griddle until layered and golden."
+    ],
+    "timers": [[0, "راحة العجين", "Rest dough", 30], [3, "طهي المسمن", "Cook msemen", 12]]
+  },
+  {
+    "id": "maghreb-sellou",
+    "titleAr": "السلو المغربي",
+    "titleEn": "Moroccan Sellou",
+    "descriptionAr": "حلوى مغربية جافة من الدقيق المحمص واللوز والسمسم والعسل تقدم في رمضان.",
+    "descriptionEn": "A Moroccan no-bake sweet of toasted flour, almonds, sesame, and honey, popular during Ramadan.",
+    "region": "maghreb",
+    "mealType": ["dessert", "snack", "suhoor"],
+    "prep": 25,
+    "cook": 20,
+    "servings": 10,
+    "difficulty": "easy",
+    "ramadan": true,
+    "tags": ["مغربي", "حلويات", "رمضان", "لوز"],
+    "imageQuery": "Moroccan sellou sfouf dessert",
+    "storyAr": "السلو من حلويات رمضان المغربية المركزة، ويقدم في كرات أو طبقات مع الشاي.",
+    "storyEn": "Sellou is a concentrated Moroccan Ramadan sweet served in mounds or slices alongside tea.",
+    "ingredients": [
+      ["دقيق محمص", "Toasted flour", 2, "كوب", "cups", "pantry"],
+      ["لوز محمص مطحون", "Ground toasted almonds", 1, "كوب", "cup", "pantry"],
+      ["سمسم محمص", "Toasted sesame", 0.75, "كوب", "cup", "pantry"],
+      ["عسل", "Honey", 0.75, "كوب", "cup", "pantry"],
+      ["زبدة مذابة", "Melted butter", 150, "جرام", "g", "dairy"],
+      ["يانسون وقرفة", "Anise and cinnamon", 2, "ملعقة صغيرة", "tsp", "pantry"]
+    ],
+    "stepsAr": [
+      "حمص الدقيق على نار هادئة مع التقليب حتى يصبح ذهبياً ثم اتركه يبرد.",
+      "اخلط الدقيق مع اللوز والسمسم واليانسون والقرفة.",
+      "أضف الزبدة والعسل تدريجياً حتى يتماسك الخليط.",
+      "شكله في طبق أو كرات وزينه باللوز واتركه يبرد قبل التقديم."
+    ],
+    "stepsEn": [
+      "Toast flour over low heat, stirring until golden, then cool it.",
+      "Combine flour with almonds, sesame, anise, and cinnamon.",
+      "Add butter and honey gradually until the mixture holds together.",
+      "Press into a dish or shape into mounds, garnish with almonds, and cool before serving."
+    ],
+    "timers": [[0, "تحميص الدقيق", "Toast flour", 15], [2, "تماسك الخليط", "Bind mixture", 5]]
+  },
+  {
+    "id": "saudi-chicken-kabsa",
+    "titleAr": "كبسة الدجاج السعودية",
+    "titleEn": "Saudi Chicken Kabsa",
+    "descriptionAr": "أرز بسمتي متبل بالدجاج والطماطم واللومي والبهارات الخليجية.",
+    "descriptionEn": "Fragrant basmati rice cooked with chicken, tomato, dried lime, and Saudi spices.",
+    "region": "gulf",
+    "mealType": ["lunch", "dinner", "iftar"],
+    "prep": 20,
+    "cook": 65,
+    "servings": 6,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["سعودي", "كبسة", "دجاج", "أرز"],
+    "imageQuery": "Saudi chicken kabsa rice",
+    "storyAr": "الكبسة من أطباق التجمعات في السعودية، وتظهر فيها نكهة اللومي والبهارات مع الأرز والدجاج.",
+    "storyEn": "Kabsa is a Saudi gathering dish where dried lime and warm spices perfume rice cooked with chicken.",
+    "ingredients": [
+      ["دجاج مقطع", "Jointed chicken", 1.2, "كجم", "kg", "meat"],
+      ["أرز بسمتي", "Basmati rice", 3, "كوب", "cups", "pantry"],
+      ["طماطم مفرومة", "Chopped tomatoes", 3, "حبة", "pcs", "produce"],
+      ["بصل", "Onions", 2, "حبة", "pcs", "produce"],
+      ["لومي وبهارات كبسة", "Dried lime and kabsa spices", 2, "حبة", "pcs", "pantry"],
+      ["زبيب ولوز", "Raisins and almonds", 0.5, "كوب", "cup", "pantry"]
+    ],
+    "stepsAr": [
+      "حمر البصل والدجاج مع البهارات حتى يكتسب الدجاج لوناً.",
+      "أضف الطماطم واللومي والماء واطه الدجاج حتى ينضج.",
+      "ارفع الدجاج وصف المرق ثم أضف الأرز واطهه مغطى حتى يتشرب.",
+      "حمر الدجاج في الفرن وأضفه فوق الأرز مع الزبيب واللوز."
+    ],
+    "stepsEn": [
+      "Brown onion and chicken with spices until the chicken gains color.",
+      "Add tomatoes, dried lime, and water and cook until the chicken is tender.",
+      "Remove chicken, strain the broth, add rice, and cook covered until absorbed.",
+      "Brown chicken in the oven and serve over rice with raisins and almonds."
+    ],
+    "timers": [[1, "طهي الدجاج", "Cook chicken", 45], [2, "طهي الأرز", "Cook rice", 22]]
+  },
+  {
+    "id": "oman-harees",
+    "titleAr": "الهريس العُماني",
+    "titleEn": "Omani Harees",
+    "descriptionAr": "قمح مطهو ببطء مع اللحم والسمن حتى يصبح قوامه ناعماً ومتماسكاً.",
+    "descriptionEn": "Wheat and meat cooked slowly with ghee until smooth and cohesive.",
+    "region": "gulf",
+    "mealType": ["lunch", "dinner", "iftar", "suhoor"],
+    "prep": 15,
+    "cook": 150,
+    "servings": 6,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["عُماني", "هريس", "قمح", "رمضان"],
+    "imageQuery": "Omani harees wheat meat",
+    "storyAr": "الهريس طبق خليجي احتفالي حاضر في رمضان والمناسبات، ويعتمد على الطهي البطيء والهرس حتى النعومة.",
+    "storyEn": "Harees is a Gulf celebration dish served in Ramadan and on special occasions, built around slow cooking and pounding until smooth.",
+    "ingredients": [
+      ["قمح مجروش منقوع", "Soaked cracked wheat", 2, "كوب", "cups", "pantry"],
+      ["لحم ضأن بدون عظم", "Boneless lamb", 700, "جرام", "g", "meat"],
+      ["ماء", "Water", 8, "كوب", "cups", "other"],
+      ["سمن", "Ghee", 4, "ملعقة كبيرة", "tbsp", "dairy"],
+      ["هيل وقرفة", "Cardamom and cinnamon", 1, "ملعقة صغيرة", "tsp", "pantry"],
+      ["ملح", "Salt", 1, "ملعقة صغيرة", "tsp", "pantry"]
+    ],
+    "stepsAr": [
+      "انقع القمح عدة ساعات ثم صفه.",
+      "اطه القمح واللحم والماء والهيل على نار هادئة حتى يلين القمح وينضج اللحم تماماً.",
+      "فتت اللحم واهرِس الخليط أو اخفقه حتى يصبح ناعماً.",
+      "قدمه ساخناً مع السمن والقرفة."
+    ],
+    "stepsEn": [
+      "Soak the wheat for several hours, then drain it.",
+      "Cook wheat, meat, water, and cardamom gently until the wheat is soft and meat is fully cooked.",
+      "Shred the meat and pound or whisk the mixture until smooth.",
+      "Serve hot with ghee and cinnamon."
+    ],
+    "timers": [[0, "نقع القمح", "Soak wheat", 240], [1, "الطهي البطيء", "Slow cook", 120]]
+  },
+  {
+    "id": "bahrain-muhammar",
+    "titleAr": "المحمر البحريني",
+    "titleEn": "Bahraini Muhammar Rice",
+    "descriptionAr": "أرز حلو مع دبس التمر والزعفران وماء الورد يقدم مع الأطباق البحرية.",
+    "descriptionEn": "Sweet rice perfumed with date syrup, saffron, and rosewater, traditionally paired with seafood.",
+    "region": "gulf",
+    "mealType": ["lunch", "dinner", "dessert"],
+    "prep": 10,
+    "cook": 35,
+    "servings": 6,
+    "difficulty": "easy",
+    "ramadan": false,
+    "tags": ["بحريني", "أرز", "تمر", "حلو"],
+    "imageQuery": "Bahraini muhammar sweet rice",
+    "storyAr": "المحمر أرز بحريني حلو ارتبط بالمائدة الساحلية ويقدم خصوصاً إلى جانب السمك.",
+    "storyEn": "Muhammar is a Bahraini sweet rice dish rooted in the coastal table and often served alongside fish.",
+    "ingredients": [
+      ["أرز بسمتي", "Basmati rice", 2, "كوب", "cups", "pantry"],
+      ["دبس تمر", "Date syrup", 0.5, "كوب", "cup", "pantry"],
+      ["سكر", "Sugar", 0.25, "كوب", "cup", "pantry"],
+      ["زعفران وماء ورد", "Saffron and rosewater", 2, "ملعقة كبيرة", "tbsp", "pantry"],
+      ["زبدة", "Butter", 3, "ملعقة كبيرة", "tbsp", "dairy"],
+      ["هيل", "Cardamom", 1, "ملعقة صغيرة", "tsp", "pantry"]
+    ],
+    "stepsAr": [
+      "اغسل الأرز واسلقه في ماء مملح حتى يقترب من النضج ثم صفه.",
+      "سخن دبس التمر والسكر والزبدة والهيل مع قليل من الماء.",
+      "أضف الأرز ووزع الزعفران وماء الورد ثم غطه على نار هادئة.",
+      "اتركه يرتاح وافلفله بالشوكة قبل التقديم."
+    ],
+    "stepsEn": [
+      "Rinse rice, parboil it in salted water until nearly tender, then drain.",
+      "Warm date syrup, sugar, butter, cardamom, and a little water.",
+      "Add rice, scatter over saffron and rosewater, and steam covered on low heat.",
+      "Rest and fluff with a fork before serving."
+    ],
+    "timers": [[0, "سلق الأرز", "Parboil rice", 12], [2, "تبخير الأرز", "Steam rice", 18]]
+  },
+  {
+    "id": "qatar-madrouba",
+    "titleAr": "المضروبة القطرية بالدجاج",
+    "titleEn": "Qatari Chicken Madrouba",
+    "descriptionAr": "طبق أرز كثيف يطهى مع الدجاج واللبن والبهارات ثم يهرس حتى يصبح كريمي القوام.",
+    "descriptionEn": "A thick rice and chicken dish cooked with yogurt and spices, then beaten to a creamy texture.",
+    "region": "gulf",
+    "mealType": ["lunch", "dinner", "iftar", "suhoor"],
+    "prep": 20,
+    "cook": 90,
+    "servings": 6,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["قطري", "مضروبة", "دجاج", "أرز"],
+    "imageQuery": "Qatari chicken madrouba",
+    "storyAr": "المضروبة من أطباق الخليج الدافئة، ويأتي اسمها من طريقة ضرب الأرز واللحم حتى يتجانس القوام.",
+    "storyEn": "Madrouba is a warming Gulf dish named for the beating that combines rice and meat into a cohesive texture.",
+    "ingredients": [
+      ["أرز قصير الحبة", "Short-grain rice", 2, "كوب", "cups", "pantry"],
+      ["دجاج منزوع الجلد", "Skinless chicken", 800, "جرام", "g", "meat"],
+      ["زبادي", "Yogurt", 1, "كوب", "cup", "dairy"],
+      ["بصل", "Onion", 2, "حبة", "pcs", "produce"],
+      ["هيل وزنجبيل وكركم", "Cardamom, ginger, and turmeric", 2, "ملعقة صغيرة", "tsp", "pantry"],
+      ["ليمون مجفف", "Dried lime", 2, "حبة", "pcs", "pantry"]
+    ],
+    "stepsAr": [
+      "شوح البصل والدجاج مع البهارات والليمون المجفف.",
+      "أضف الأرز والماء واطه الخليط مغطى حتى يتهرى الأرز وينضج الدجاج.",
+      "أخرج الليمون وفتت الدجاج ثم أعده إلى القدر.",
+      "أضف الزبادي تدريجياً واضرب الخليط حتى يصبح كثيفاً وناعماً ثم قدمه ساخناً."
+    ],
+    "stepsEn": [
+      "Sauté onion and chicken with spices and dried lime.",
+      "Add rice and water, cover, and cook until the rice breaks down and chicken is tender.",
+      "Remove limes, shred the chicken, and return it to the pot.",
+      "Stir in yogurt gradually and beat until thick and smooth, then serve hot."
+    ],
+    "timers": [[1, "طهي الأرز والدجاج", "Cook rice and chicken", 70], [3, "تجانس المضروبة", "Blend madrouba", 10]]
+  },
+  {
+    "id": "palestine-musakhan",
+    "titleAr": "المسخن الفلسطيني",
+    "titleEn": "Palestinian Musakhan",
+    "descriptionAr": "دجاج بالبصل والسماق وزيت الزيتون يقدم فوق خبز الطابون مع الصنوبر.",
+    "descriptionEn": "Chicken with sumac onions and olive oil served over taboon bread with pine nuts.",
+    "region": "levant",
+    "mealType": ["lunch", "dinner", "iftar"],
+    "prep": 25,
+    "cook": 65,
+    "servings": 6,
+    "difficulty": "medium",
+    "ramadan": true,
+    "tags": ["فلسطيني", "مسخن", "سماق", "دجاج"],
+    "imageQuery": "Palestinian musakhan chicken sumac",
+    "storyAr": "المسخن الفلسطيني يحتفي بزيت الزيتون والسماق وخبز الطابون، ويقدم غالباً في موسم قطاف الزيتون.",
+    "storyEn": "Palestinian musakhan celebrates olive oil, sumac, and taboon bread, especially around the olive harvest season.",
+    "ingredients": [
+      ["أفخاذ دجاج", "Chicken thighs", 1.2, "كجم", "kg", "meat"],
+      ["بصل شرائح", "Sliced onions", 6, "حبة", "pcs", "produce"],
+      ["سماق", "Sumac", 4, "ملعقة كبيرة", "tbsp", "pantry"],
+      ["خبز طابون أو خبز عربي", "Taboon or flatbread", 4, "أرغفة", "loaves", "bakery"],
+      ["زيت زيتون", "Olive oil", 1, "كوب", "cup", "pantry"],
+      ["صنوبر محمص", "Toasted pine nuts", 0.5, "كوب", "cup", "pantry"]
+    ],
+    "stepsAr": [
+      "تبّل الدجاج بالملح والفلفل والبهارات واخبزه حتى ينضج.",
+      "اطه البصل ببطء في زيت الزيتون حتى يذبل ثم أضف السماق.",
+      "ضع الخبز في صينية ووزع فوقه البصل وزيت الزيتون ثم الدجاج.",
+      "حمّر الصينية سريعاً وزينها بالصنوبر وقدّمها ساخنة."
+    ],
+    "stepsEn": [
+      "Season chicken with salt, pepper, and spices and roast until cooked through.",
+      "Cook onions slowly in olive oil until soft, then stir in sumac.",
+      "Arrange bread in a tray and cover with onions, olive oil, and chicken.",
+      "Brown briefly, garnish with pine nuts, and serve hot."
+    ],
+    "timers": [[0, "خبز الدجاج", "Roast chicken", 45], [1, "طهي البصل", "Cook onions", 25]]
+  },
+  {
+    "id": "levant-fattet-hummus",
+    "titleAr": "فتة الحمص الشامية",
+    "titleEn": "Levantine Fattet Hummus",
+    "descriptionAr": "خبز محمص وحمص ولبن وطحينة في طبق دافئ مزين بالصنوبر والبابريكا.",
+    "descriptionEn": "Toasted bread layered with chickpeas, yogurt, and tahini, finished with pine nuts and paprika.",
+    "region": "levant",
+    "mealType": ["breakfast", "lunch", "iftar"],
+    "prep": 20,
+    "cook": 15,
+    "servings": 4,
+    "difficulty": "easy",
+    "ramadan": true,
+    "tags": ["شامي", "فتة", "حمص", "نباتي"],
+    "imageQuery": "Levantine fattet hummus chickpeas",
+    "storyAr": "فتة الحمص طبق شامي منزلي يقدم دافئاً، وتوازن فيه طبقات الخبز والحمص واللبن بين القوام المقرمش والكريمي.",
+    "storyEn": "Fattet hummus is a warm Levantine home dish balancing crisp bread, tender chickpeas, and creamy yogurt.",
+    "ingredients": [
+      ["حمص مسلوق", "Cooked chickpeas", 3, "كوب", "cups", "pantry"],
+      ["خبز عربي محمص", "Toasted pita", 3, "أرغفة", "loaves", "bakery"],
+      ["زبادي", "Yogurt", 2, "كوب", "cups", "dairy"],
+      ["طحينة", "Tahini", 0.5, "كوب", "cup", "pantry"],
+      ["ثوم وليمون", "Garlic and lemon", 3, "فصوص", "cloves", "produce"],
+      ["صنوبر وزبدة", "Pine nuts and butter", 3, "ملعقة كبيرة", "tbsp", "dairy"]
+    ],
+    "stepsAr": [
+      "حمص الخبز في الفرن حتى يصبح مقرمشاً ثم كسره في طبق التقديم.",
+      "سخن الحمص مع قليل من ماء السلق والكمون.",
+      "اخلط اللبن والطحينة والثوم والليمون والملح.",
+      "ضع الحمص فوق الخبز واسكب خليط اللبن وحمر الصنوبر بالزبدة فوق الوجه."
+    ],
+    "stepsEn": [
+      "Toast pita until crisp, then break it into a serving dish.",
+      "Warm chickpeas with a little cooking liquid and cumin.",
+      "Whisk yogurt, tahini, garlic, lemon, and salt.",
+      "Layer chickpeas over bread, pour on yogurt sauce, and top with pine nuts browned in butter."
+    ],
+    "timers": [[0, "تحميص الخبز", "Toast bread", 8], [3, "تحمير الصنوبر", "Brown pine nuts", 3]]
+  },
+  {
+    "id": "egypt-ful-medames",
+    "titleAr": "الفول المدمس المصري",
+    "titleEn": "Egyptian Ful Medames",
+    "descriptionAr": "فول مدمس متبل بالكمون والليمون وزيت الزيتون ويقدم مع الخبز والخضار.",
+    "descriptionEn": "Slow-cooked fava beans seasoned with cumin, lemon, and olive oil and served with bread and vegetables.",
+    "region": "egypt",
+    "mealType": ["breakfast", "lunch", "suhoor"],
+    "prep": 10,
+    "cook": 20,
+    "servings": 4,
+    "difficulty": "easy",
+    "ramadan": true,
+    "tags": ["مصري", "فول", "فطور", "نباتي"],
+    "imageQuery": "Egyptian ful medames fava beans",
+    "storyAr": "الفول المدمس من أشهر أطباق الفطور المصرية ويقدم من عربات الشوارع إلى موائد البيوت مع إضافات متعددة.",
+    "storyEn": "Ful medames is one of Egypt's most beloved breakfasts, served everywhere from street carts to family tables with varied toppings.",
+    "ingredients": [
+      ["فول مدمس معلب أو مطهو", "Cooked fava beans", 3, "كوب", "cups", "pantry"],
+      ["طماطم", "Tomato", 2, "حبة", "pcs", "produce"],
+      ["بصل أخضر", "Spring onions", 2, "حزمة", "bunches", "produce"],
+      ["ليمون", "Lemon", 2, "حبة", "pcs", "produce"],
+      ["كمون", "Cumin", 1, "ملعقة صغيرة", "tsp", "pantry"],
+      ["زيت زيتون", "Olive oil", 4, "ملعقة كبيرة", "tbsp", "pantry"]
+    ],
+    "stepsAr": [
+      "سخن الفول مع قليل من مائه حتى يغلي برفق.",
+      "اهرِس جزءاً من الحبوب واترك بعضها كاملاً.",
+      "تبّل بالكمون والليمون والملح وزيت الزيتون.",
+      "قدمه فوراً مع الطماطم والبصل الأخضر والخبز."
+    ],
+    "stepsEn": [
+      "Warm fava beans with a little of their liquid until gently bubbling.",
+      "Mash some beans while leaving the rest whole.",
+      "Season with cumin, lemon, salt, and olive oil.",
+      "Serve immediately with tomato, spring onion, and bread."
+    ],
+    "timers": [[0, "تسخين الفول", "Warm beans", 12]]
+  },
+  {
+    "id": "general-arabic-lentil-soup",
+    "titleAr": "شوربة العدس العربية",
+    "titleEn": "Arabic Red Lentil Soup",
+    "descriptionAr": "شوربة عدس حمراء ناعمة بالجزر والبطاطس والكمون والليمون.",
+    "descriptionEn": "A smooth red lentil soup with carrot, potato, cumin, and lemon.",
+    "region": "general",
+    "mealType": ["dinner", "iftar", "suhoor"],
+    "prep": 15,
+    "cook": 35,
+    "servings": 6,
+    "difficulty": "easy",
+    "ramadan": true,
+    "tags": ["عربي", "شوربة", "عدس", "رمضان"],
+    "imageQuery": "Arabic red lentil soup",
+    "storyAr": "شوربة العدس طبق دافئ مشترك في مطابخ المنطقة، وتظهر كثيراً على موائد الشتاء والإفطار.",
+    "storyEn": "Red lentil soup is a warming shared staple across the region, especially welcome in winter and at iftar.",
+    "ingredients": [
+      ["عدس أحمر", "Red lentils", 2, "كوب", "cups", "pantry"],
+      ["جزر", "Carrots", 3, "حبة", "pcs", "produce"],
+      ["بطاطس", "Potatoes", 2, "حبة", "pcs", "produce"],
+      ["بصل", "Onion", 1, "حبة", "pc", "produce"],
+      ["كمون وكركم", "Cumin and turmeric", 2, "ملعقة صغيرة", "tsp", "pantry"],
+      ["ليمون", "Lemon", 2, "حبة", "pcs", "produce"]
+    ],
+    "stepsAr": [
+      "اغسل العدس وضعه مع البصل والجزر والبطاطس والبهارات في قدر ماء.",
+      "اطه الخليط حتى تلين الخضروات والعدس تماماً.",
+      "اخلط الشوربة حتى تصبح ناعمة ثم أعدها إلى النار واضبط الملح.",
+      "قدمها ساخنة مع عصير الليمون والخبز المحمص."
+    ],
+    "stepsEn": [
+      "Rinse lentils and place them with onion, carrot, potato, spices, and water in a pot.",
+      "Cook until the vegetables and lentils are completely tender.",
+      "Blend until smooth, return to the heat, and adjust the salt.",
+      "Serve hot with lemon juice and toasted bread."
+    ],
+    "timers": [[1, "طهي العدس والخضروات", "Cook lentils and vegetables", 30]]
+  }
+]
