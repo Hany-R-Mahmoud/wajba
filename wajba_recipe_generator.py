@@ -915,7 +915,24 @@ def load_expansion_seeds() -> list[dict[str, Any]]:
     return payload
 
 
+def load_image_sources() -> dict[str, dict[str, str]]:
+    """Load manually reviewed, dish-specific image overrides."""
+    path = Path(__file__).with_name("recipe_image_sources.json")
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid JSON in {path}: {exc}") from exc
+    overrides = payload.get("overrides") if isinstance(payload, dict) else None
+    if not isinstance(overrides, dict) or any(not isinstance(item, dict) for item in overrides.values()):
+        raise ValueError(f"{path} must contain an overrides object of recipe image records")
+    for recipe_id, item in overrides.items():
+        if not item.get("image") or not item.get("sourcePage"):
+            raise ValueError(f"Image source for {recipe_id} must include image and sourcePage")
+    return overrides
+
+
 RECIPE_SEEDS.extend(load_expansion_seeds())
+IMAGE_SOURCE_OVERRIDES = load_image_sources()
 
 
 def build_recipe(seed: dict[str, Any]) -> dict[str, Any]:
@@ -1079,6 +1096,8 @@ def resolve_new_images(
 ) -> None:
     seeds_by_id = {seed["id"]: seed for seed in RECIPE_SEEDS}
     for recipe in recipes:
+        if recipe["id"] in IMAGE_SOURCE_OVERRIDES:
+            continue
         query = seeds_by_id[recipe["id"]]["imageQuery"]
         if offline:
             audit_images.append({
@@ -1115,6 +1134,27 @@ def resolve_new_images(
             "selected": candidates[0],
             "candidates": candidates,
             "reason": "Keyword match and license metadata recorded; visual approval is still required",
+        })
+
+
+def apply_image_overrides(
+    recipes: list[dict[str, Any]],
+    audit_images: list[dict[str, Any]],
+) -> None:
+    """Apply the source manifest after generated and imported records are merged."""
+    for recipe in recipes:
+        source = IMAGE_SOURCE_OVERRIDES.get(str(recipe.get("id")))
+        if not source:
+            continue
+        recipe["image"] = source["image"]
+        recipe["galleryImages"] = [source["image"]]
+        audit_images.append({
+            "recipeId": recipe["id"],
+            "status": "source-confirmed-needs-human-visual-review",
+            "image": source["image"],
+            "sourcePage": source["sourcePage"],
+            "sourceLabel": source.get("sourceLabel", ""),
+            "reason": source.get("verification", "Source manifest override applied"),
         })
 
 
@@ -1187,13 +1227,21 @@ def audit_existing_images(recipes: list[dict[str, Any]]) -> list[dict[str, Any]]
                 "reason": f"Primary image is reused by {counts[normalized]} different recipes and cannot be assumed to depict this dish",
                 "image": recipe.get("image"),
             })
-    all_images = [
-        str(url).split("?")[0]
+    # Count an image once per recipe so the normal primary/gallery pairing is
+    # not reported as cross-recipe reuse.
+    recipe_images = [
+        {
+            str(url).split("?")[0]
+            for url in [recipe.get("image", ""), *recipe.get("galleryImages", [])]
+            if url
+        }
         for recipe in recipes
-        for url in [recipe.get("image", ""), *recipe.get("galleryImages", [])]
-        if url
     ]
-    reused = {url: count for url, count in Counter(all_images).items() if count > 1}
+    reused = {
+        url: count
+        for url, count in Counter(url for images in recipe_images for url in images).items()
+        if count > 1
+    }
     if reused:
         entries.append({
             "scope": "database",
@@ -1230,7 +1278,6 @@ def main() -> int:
         existing = [repair_existing(recipe, changes) for recipe in original["recipes"]]
         schema = original.get("schema") if isinstance(original.get("schema"), dict) else copy.deepcopy(SCHEMA)
         meta_title = original.get("_meta", {}).get("title", "Wajba Culinary Architecture - Meals & Recipes Database")
-        image_audit.extend(audit_existing_images(existing))
     else:
         existing = []
         schema = copy.deepcopy(SCHEMA)
@@ -1243,6 +1290,8 @@ def main() -> int:
     resolve_new_images(new_recipes, args.offline, image_audit)
 
     recipes = existing + new_recipes
+    apply_image_overrides(recipes, image_audit)
+    image_audit.extend(audit_existing_images(recipes))
     now = dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z")
     database = {
         "_meta": {

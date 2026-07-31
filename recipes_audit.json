@@ -1,10 +1,10 @@
 {
   "_meta": {
-    "generatedAt": "2026-07-31T13:09:52.725782Z",
+    "generatedAt": "2026-07-31T13:56:20.061455Z",
     "input": "/Users/hanyramadan/new era/ops/apexyard-portfolio/workspace/wajba/recipes_data.json",
-    "output": "/private/tmp/wajba-expansion.json",
-    "existingMeals": 49,
-    "newMeals": 16,
+    "output": "/Users/hanyramadan/new era/ops/apexyard-portfolio/workspace/wajba/recipes_enriched.json",
+    "existingMeals": 65,
+    "newMeals": 0,
     "skippedExistingSeeds": [
       "egypt-kofta-haty",
       "egypt-hamam-mahshi",
@@ -29,7 +29,23 @@
       "qatar-saloona",
       "qatar-balaleet",
       "oman-shuwa",
-      "kuwait-mutabbaq-samak"
+      "kuwait-mutabbaq-samak",
+      "maghreb-moroccan-harira",
+      "maghreb-chicken-tagine-olives",
+      "maghreb-couscous-seven-vegetables",
+      "maghreb-rfissa-chicken",
+      "maghreb-chicken-pastilla",
+      "maghreb-zaalouk",
+      "maghreb-msemen",
+      "maghreb-sellou",
+      "saudi-chicken-kabsa",
+      "oman-harees",
+      "bahrain-muhammar",
+      "qatar-madrouba",
+      "palestine-musakhan",
+      "levant-fattet-hummus",
+      "egypt-ful-medames",
+      "general-arabic-lentil-soup"
     ],
     "totalMeals": 65
   },
@@ -44,317 +60,136 @@
     "https://www.visitmorocco.com/en/discover-morocco/gastronomy",
     "https://ich.unesco.org/en/RL/knowledge-know-how-and-practices-pertaining-to-the-production-and-consumption-of-couscous-01602"
   ],
-  "automaticRepairs": [
-    {
-      "recipeId": "egypt-hawawshi",
-      "field": "isRamadanSpecial",
-      "change": "Added missing field with conservative default false"
-    },
-    {
-      "recipeId": "egypt-alex-liver",
-      "field": "isRamadanSpecial",
-      "change": "Added missing field with conservative default false"
-    },
-    {
-      "recipeId": "egypt-sayadieh",
-      "field": "isRamadanSpecial",
-      "change": "Added missing field with conservative default false"
-    },
-    {
-      "recipeId": "levant-beef-shawarma",
-      "field": "isRamadanSpecial",
-      "change": "Added missing field with conservative default false"
-    },
-    {
-      "recipeId": "egypt-mesakaa",
-      "field": "isRamadanSpecial",
-      "change": "Added missing field with conservative default false"
-    }
-  ],
+  "automaticRepairs": [],
   "validationIssues": [],
   "imageReview": [
     {
-      "recipeId": "egypt-koshary",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 3 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-fatteh",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-molokhia",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-alex-liver",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-sayadieh",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-mahshi-meshkel",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-om-ali",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "ramadan-qatayef",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-bamia-beef",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "levant-kibbeh-shami",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "ramadan-sambousak",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 3 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "levant-fattoush-tabbouleh",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-mombar",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-kofta-haty",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "egypt-basbousa",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "jordan-zarb",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "syria-shishbarak",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "lebanon-warak-enab",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 3 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1541518763669-27fef04b14e8?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "saudi-jareesh",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "uae-luqaimat",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "qatar-saloona",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "oman-shuwa",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 4 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "recipeId": "kuwait-mutabbaq-samak",
-      "status": "needs-human-review",
-      "reason": "Primary image is reused by 2 different recipes and cannot be assumed to depict this dish",
-      "image": "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      "scope": "database",
-      "status": "needs-cleanup",
-      "reason": "Gallery contains heavily reused stock images; semantic fit requires visual review",
-      "duplicateImageUrls": {
-        "https://images.unsplash.com/photo-1541518763669-27fef04b14e8": 10,
-        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd": 11,
-        "https://images.unsplash.com/photo-1543339308-43e59d6b73a6": 3,
-        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c": 4,
-        "https://images.unsplash.com/photo-1544025162-d76694265947": 14,
-        "https://images.unsplash.com/photo-1565557623262-b51c2513a641": 3,
-        "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398": 2,
-        "https://images.unsplash.com/photo-1596797038530-2c107229654b": 3,
-        "https://images.unsplash.com/photo-1547592166-23ac45744acd": 8,
-        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b": 4,
-        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38": 5,
-        "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46": 2,
-        "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd": 2,
-        "https://images.unsplash.com/photo-1561758033-d89a9ad46330": 4,
-        "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e": 2,
-        "https://images.unsplash.com/photo-1540420773420-3366772f4999": 8,
-        "https://images.unsplash.com/photo-1505253716362-afaea1d3d1af": 2,
-        "https://images.unsplash.com/photo-1565958011703-44f9829ba187": 2,
-        "https://images.unsplash.com/photo-1555939594-58d7cb561ad1": 6,
-        "https://images.unsplash.com/photo-1504674900247-0877df9cc836": 6,
-        "https://images.unsplash.com/photo-1551183053-bf91a1d81141": 2,
-        "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2": 4,
-        "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb": 3,
-        "https://images.unsplash.com/photo-1601050690597-df0568f70950": 5,
-        "https://images.unsplash.com/photo-1579372786545-d24232daf58c": 6,
-        "https://images.unsplash.com/photo-1551024709-8f23befc6f87": 4,
-        "https://images.unsplash.com/photo-1587314168485-3236d6710814": 6,
-        "https://images.unsplash.com/photo-1509440159596-0249088772ff": 5,
-        "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8": 4,
-        "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9": 3,
-        "https://images.unsplash.com/photo-1590412200988-a436970781fa": 2,
-        "https://images.unsplash.com/photo-1585937421612-70a008356fbe": 2,
-        "https://images.unsplash.com/photo-1514944288352-fffac99f0bdf": 2,
-        "https://images.unsplash.com/photo-1536304929831-ee1ca9d44906": 2,
-        "https://images.unsplash.com/photo-1517427294546-5aa121f68e8a": 2,
-        "https://images.unsplash.com/photo-1565299585323-38d6b0865b47": 2,
-        "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0": 2,
-        "https://images.unsplash.com/photo-1518013431117-eb1465fa5752": 2,
-        "https://images.unsplash.com/photo-1541832676-9b763b0239ab": 2,
-        "https://images.unsplash.com/photo-1512058564366-18510be2db19": 2,
-        "https://images.unsplash.com/photo-1546833999-b9f581a1996d": 2,
-        "https://images.unsplash.com/photo-1612927601601-6638404737ce": 2
-      }
-    },
-    {
       "recipeId": "maghreb-moroccan-harira",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan harira soup"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Harira.png?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Harira.png",
+      "sourceLabel": "Wikimedia Commons — Harira",
+      "reason": "Dish-specific file title and Moroccan soup recipe context."
     },
     {
       "recipeId": "maghreb-chicken-tagine-olives",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan chicken tagine preserved lemon olives"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Moroccan_food-Chicken_tagine_with_preserved_lemons_and_olives-01.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Moroccan_food-Chicken_tagine_with_preserved_lemons_and_olives-01.jpg",
+      "sourceLabel": "Wikimedia Commons — Moroccan chicken tagine with preserved lemons and olives",
+      "reason": "File title names the exact chicken, preserved-lemon, and olive preparation."
     },
     {
       "recipeId": "maghreb-couscous-seven-vegetables",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan couscous seven vegetables"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Couscous_%227_vegetables%22.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Couscous_%227_vegetables%22.jpg",
+      "sourceLabel": "Wikimedia Commons — Couscous 7 vegetables",
+      "reason": "File title and Commons categories identify Moroccan couscous with seven vegetables."
     },
     {
       "recipeId": "maghreb-rfissa-chicken",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan chicken rfissa msemen"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rfissa_marocaine.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rfissa_marocaine.jpg",
+      "sourceLabel": "Wikimedia Commons — Moroccan rfissa",
+      "reason": "Dish-specific Moroccan rfissa file."
     },
     {
       "recipeId": "maghreb-chicken-pastilla",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan chicken pastilla"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pastilla_au_poulet.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pastilla_au_poulet.jpg",
+      "sourceLabel": "Wikimedia Commons — Chicken pastilla",
+      "reason": "French file title identifies chicken pastilla."
     },
     {
       "recipeId": "maghreb-zaalouk",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan zaalouk eggplant salad"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zaalouk-01.JPG?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Zaalouk-01.JPG",
+      "sourceLabel": "Wikimedia Commons — Zaalouk",
+      "reason": "Dish-specific zaalouk file."
     },
     {
       "recipeId": "maghreb-msemen",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan msemen flatbread"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Msemmem.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Msemmem.jpg",
+      "sourceLabel": "Wikimedia Commons — Msemmen",
+      "reason": "Commons structured data identifies the dish as Msemmen."
     },
     {
       "recipeId": "maghreb-sellou",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Moroccan sellou sfouf dessert"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sellou_with_Moroccan_tea.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sellou_with_Moroccan_tea.jpg",
+      "sourceLabel": "Wikimedia Commons — Sellou with Moroccan tea",
+      "reason": "Dish-specific Moroccan sellou file."
     },
     {
       "recipeId": "saudi-chicken-kabsa",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Saudi chicken kabsa rice"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_Kabsa.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Chicken_Kabsa.jpg",
+      "sourceLabel": "Wikimedia Commons — Chicken kabsa",
+      "reason": "Commons caption identifies chicken kabsa as a Saudi Arabian dish."
     },
     {
       "recipeId": "oman-harees",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Omani harees wheat meat"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Harees.JPG?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Harees.JPG",
+      "sourceLabel": "Wikimedia Commons — Harees",
+      "reason": "Harees is identified, but the source does not prove this is the Omani regional presentation; keep a human regional visual check."
     },
     {
       "recipeId": "bahrain-muhammar",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Bahraini muhammar sweet rice"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://img.ccnull.de/1100000/thumbnail/1101862_6f445831ec6033da9504496d4b726384.jpg",
+      "sourcePage": "https://www.ccnull.de/foto/bahraini-muhammar-suesser-reis-mit-fisch/1101862",
+      "sourceLabel": "ccnull.de — Bahraini Muhammar sweet rice with fish",
+      "reason": "The source identifies Bahraini Muhammar sweet rice with fish and publishes the image under CC BY 2.0 with attribution. The page notes the image was AI-generated; retain human review for production authenticity and attribution compliance."
     },
     {
       "recipeId": "qatar-madrouba",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Qatari chicken madrouba"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Madrouba.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Madrouba.jpg",
+      "sourceLabel": "Wikimedia Commons — Madrouba",
+      "reason": "Dish-specific madrouba file; regional attribution should remain Qatar-focused in the recipe metadata."
     },
     {
       "recipeId": "palestine-musakhan",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Palestinian musakhan chicken sumac"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mushakhan_Dish.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Mushakhan_Dish.jpg",
+      "sourceLabel": "Wikimedia Commons — Palestinian musakhan",
+      "reason": "Commons description identifies the traditional Palestinian dish of Musakhan."
     },
     {
       "recipeId": "levant-fattet-hummus",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Levantine fattet hummus chickpeas"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palestinian_Hummus_Fatteh.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Palestinian_Hummus_Fatteh.jpg",
+      "sourceLabel": "Wikimedia Commons — Palestinian hummus fatteh",
+      "reason": "Commons description explicitly identifies Palestinian hummus fatteh and the file is categorized as fattet hummus."
     },
     {
       "recipeId": "egypt-ful-medames",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Egyptian ful medames fava beans"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ful_medames_%28arabic_meal%29.jpg?width=1000",
+      "sourcePage": "https://en.wikipedia.org/wiki/Ful_medames",
+      "sourceLabel": "Wikipedia/Wikimedia Commons — Ful medames",
+      "reason": "Dish-specific ful medames file used by the ful medames article."
     },
     {
       "recipeId": "general-arabic-lentil-soup",
-      "status": "placeholder",
-      "reason": "Offline mode: image lookup was not attempted",
-      "query": "Arabic red lentil soup"
+      "status": "source-confirmed-needs-human-visual-review",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/EgFoodLentilSoup.jpg",
+      "sourcePage": "https://en.wikipedia.org/wiki/Lentil_soup",
+      "sourceLabel": "Wikipedia/Wikimedia Commons — Egyptian lentil soup",
+      "reason": "The article covers shorbat al-adas/Arabic lentil soup and the Commons image is an Egyptian lentil soup photograph."
     }
   ],
   "notes": [

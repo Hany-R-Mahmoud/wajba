@@ -1,0 +1,118 @@
+{
+  "schema": "wajba.recipe-image-sources.v1",
+  "notebook": {
+    "title": "Wajba MENA Recipe Image Audit and Verification Guide",
+    "reviewedAt": "2026-07-31",
+    "verdictSummary": {
+      "match": 26,
+      "needs-human-visual-check": 23,
+      "replace": 16
+    },
+    "limitation": "NotebookLM reviewed the recipe metadata and image URLs, but the uploaded text/CSV sources did not contain image pixels or embedded visual metadata. Its confirmation is therefore a source-and-URL audit, not a pixel-level visual proof.",
+    "candidateReview": {
+      "reviewedAt": "2026-07-31",
+      "confirmed-by-source": 14,
+      "needs-human-visual-check": 1,
+      "replace": 1,
+      "notebookFinding": "Omani harees remains region-uncertain because the source identifies generic harees; the original third-party Food.com Muhammar candidate was rejected for unclear image rights and replaced with a CC BY 2.0 source."
+    }
+  },
+  "overrides": {
+    "maghreb-moroccan-harira": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Harira.png?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Harira.png",
+      "sourceLabel": "Wikimedia Commons — Harira",
+      "verification": "Dish-specific file title and Moroccan soup recipe context."
+    },
+    "maghreb-chicken-tagine-olives": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Moroccan_food-Chicken_tagine_with_preserved_lemons_and_olives-01.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Moroccan_food-Chicken_tagine_with_preserved_lemons_and_olives-01.jpg",
+      "sourceLabel": "Wikimedia Commons — Moroccan chicken tagine with preserved lemons and olives",
+      "verification": "File title names the exact chicken, preserved-lemon, and olive preparation."
+    },
+    "maghreb-couscous-seven-vegetables": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Couscous_%227_vegetables%22.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Couscous_%227_vegetables%22.jpg",
+      "sourceLabel": "Wikimedia Commons — Couscous 7 vegetables",
+      "verification": "File title and Commons categories identify Moroccan couscous with seven vegetables."
+    },
+    "maghreb-rfissa-chicken": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rfissa_marocaine.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Rfissa_marocaine.jpg",
+      "sourceLabel": "Wikimedia Commons — Moroccan rfissa",
+      "verification": "Dish-specific Moroccan rfissa file."
+    },
+    "maghreb-chicken-pastilla": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pastilla_au_poulet.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Pastilla_au_poulet.jpg",
+      "sourceLabel": "Wikimedia Commons — Chicken pastilla",
+      "verification": "French file title identifies chicken pastilla."
+    },
+    "maghreb-zaalouk": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zaalouk-01.JPG?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Zaalouk-01.JPG",
+      "sourceLabel": "Wikimedia Commons — Zaalouk",
+      "verification": "Dish-specific zaalouk file."
+    },
+    "maghreb-msemen": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Msemmem.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Msemmem.jpg",
+      "sourceLabel": "Wikimedia Commons — Msemmen",
+      "verification": "Commons structured data identifies the dish as Msemmen."
+    },
+    "maghreb-sellou": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sellou_with_Moroccan_tea.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sellou_with_Moroccan_tea.jpg",
+      "sourceLabel": "Wikimedia Commons — Sellou with Moroccan tea",
+      "verification": "Dish-specific Moroccan sellou file."
+    },
+    "saudi-chicken-kabsa": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_Kabsa.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Chicken_Kabsa.jpg",
+      "sourceLabel": "Wikimedia Commons — Chicken kabsa",
+      "verification": "Commons caption identifies chicken kabsa as a Saudi Arabian dish."
+    },
+    "oman-harees": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Harees.JPG?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Harees.JPG",
+      "sourceLabel": "Wikimedia Commons — Harees",
+      "verification": "Harees is identified, but the source does not prove this is the Omani regional presentation; keep a human regional visual check."
+    },
+    "bahrain-muhammar": {
+      "image": "https://img.ccnull.de/1100000/thumbnail/1101862_6f445831ec6033da9504496d4b726384.jpg",
+      "sourcePage": "https://www.ccnull.de/foto/bahraini-muhammar-suesser-reis-mit-fisch/1101862",
+      "sourceLabel": "ccnull.de — Bahraini Muhammar sweet rice with fish",
+      "verification": "The source identifies Bahraini Muhammar sweet rice with fish and publishes the image under CC BY 2.0 with attribution. The page notes the image was AI-generated; retain human review for production authenticity and attribution compliance."
+    },
+    "qatar-madrouba": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Madrouba.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Madrouba.jpg",
+      "sourceLabel": "Wikimedia Commons — Madrouba",
+      "verification": "Dish-specific madrouba file; regional attribution should remain Qatar-focused in the recipe metadata."
+    },
+    "palestine-musakhan": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mushakhan_Dish.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Mushakhan_Dish.jpg",
+      "sourceLabel": "Wikimedia Commons — Palestinian musakhan",
+      "verification": "Commons description identifies the traditional Palestinian dish of Musakhan."
+    },
+    "levant-fattet-hummus": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palestinian_Hummus_Fatteh.jpg?width=1000",
+      "sourcePage": "https://commons.wikimedia.org/wiki/File:Palestinian_Hummus_Fatteh.jpg",
+      "sourceLabel": "Wikimedia Commons — Palestinian hummus fatteh",
+      "verification": "Commons description explicitly identifies Palestinian hummus fatteh and the file is categorized as fattet hummus."
+    },
+    "egypt-ful-medames": {
+      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ful_medames_%28arabic_meal%29.jpg?width=1000",
+      "sourcePage": "https://en.wikipedia.org/wiki/Ful_medames",
+      "sourceLabel": "Wikipedia/Wikimedia Commons — Ful medames",
+      "verification": "Dish-specific ful medames file used by the ful medames article."
+    },
+    "general-arabic-lentil-soup": {
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/EgFoodLentilSoup.jpg",
+      "sourcePage": "https://en.wikipedia.org/wiki/Lentil_soup",
+      "sourceLabel": "Wikipedia/Wikimedia Commons — Egyptian lentil soup",
+      "verification": "The article covers shorbat al-adas/Arabic lentil soup and the Commons image is an Egyptian lentil soup photograph."
+    }
+  }
+}
