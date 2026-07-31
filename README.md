@@ -37,6 +37,7 @@ When `VITE_SITE_URL` or `SITE_URL` is set to the real production origin, the bui
 - [Project Structure](docs/project-structure.md)
 - [Local Development](docs/local-development.md)
 - [Key Flows](docs/key-flows.md)
+- [Recipe Content Review](docs/content-review.md)
 - [Onboarding](docs/onboarding.md)
 - [AI Agent Guide](docs/ai-agent-guide.md)
 - [Team Decisions](docs/team-decisions/README.md)

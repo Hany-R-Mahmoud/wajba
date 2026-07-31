@@ -127,7 +127,7 @@ export const INITIAL_RECIPES: Recipe[] = [
       }
     ],
     "instructionsAr": [
-      "حمر بصل الورد شرايح في زيت غزير حتى يكتسب لوناً ذهبياً مقرمشاً، ثم صفه واحتفظ بالزيت لاستخدامه في باقي المكونات.",
+      "حمر شرائح البصل في زيت غزير حتى تكتسب لوناً ذهبياً مقرمشاً، ثم صفها واحتفظ بالزيت لاستخدامه في باقي المكونات.",
       "اسلق العدس البني في ماء مع كمون لمدة 15 دقيقة حتى يكتمل نصف نضجه.",
       "حمر الشعرية في جزء من زيت البصل، ثم أضف الأرز المغسول والعدس المسلوق والماء والملح والكمون واتركه ينضج.",
       "اسلق المكرونة الصغيرة في ماء مغلي وملح ثم صفها واخلطها بقليل من زيت البصل.",
@@ -202,11 +202,11 @@ export const INITIAL_RECIPES: Recipe[] = [
       "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=1000&q=80"
     ],
     "storyAr": "تعتبر الفتة المصرية من أقدم الأطباق التراثية التي ارتبطت بالبهجة، حيث تقدم دائماً في أول أيام عيد الأضحى والعزائم الرمضانية الفاخرة.",
-    "storyEn": "Egyptian Fatteh is a ancient celebratory tradition served during Eid, Ramadan Iftars, and special family gatherings across Egypt.",
+    "storyEn": "Egyptian Fatteh is an ancient celebratory tradition served during Eid, Ramadan Iftars, and special family gatherings across Egypt.",
     "ingredients": [
       {
         "id": "f1",
-        "nameAr": "لحم كاندوز أو موزة موزة",
+        "nameAr": "لحم بقري أو موزة",
         "nameEn": "Beef Shank or Stew Meat",
         "amount": 1000,
         "unitAr": "جرام",
@@ -5737,7 +5737,6 @@ const VERIFIED_DIETARY_TAGS: Record<string, DietaryTag[]> = {
   'egypt-koshary': ['vegan', 'dairy-free'],
   'arabic-shakshuka': ['vegetarian'],
   'egypt-taameya-ful': ['vegan', 'dairy-free'],
-  'levant-hummus-falafel': ['vegan', 'dairy-free'],
 };
 
 INITIAL_RECIPES.forEach((recipe) => {

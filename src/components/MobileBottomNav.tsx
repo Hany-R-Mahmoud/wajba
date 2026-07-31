@@ -29,8 +29,8 @@ interface MobileBottomNavProps {
 }
 
 const primaryItems = [
-  { id: 'recipes' as const, labelAr: 'الوصفات', labelEn: 'Recipes', icon: BookOpen },
   { id: 'planner' as const, labelAr: 'الجدول', labelEn: 'Plan', icon: CalendarDays },
+  { id: 'recipes' as const, labelAr: 'الوصفات', labelEn: 'Recipes', icon: BookOpen },
   { id: 'grocery' as const, labelAr: 'التسوق', labelEn: 'Grocery', icon: ShoppingBag },
   { id: 'pantry' as const, labelAr: 'المخزن', labelEn: 'Pantry', icon: Warehouse },
 ];

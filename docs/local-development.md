@@ -26,10 +26,12 @@ Vite listens on port `3000` and binds to `0.0.0.0`.
 
 ```bash
 bun run lint
+bun run test
+bun run pwa:check
 bun run build
 ```
 
-The build prerenders public recipe pages into `dist/recipes/<id>/`. Set the real production origin when generating production crawler files:
+The core test suite covers aggregation, pantry subtraction, dietary filtering, backup validation, and storage recovery. The PWA check covers platform detection and install fallback behavior. The build prerenders public recipe pages into `dist/recipes/<id>/`. Set the real production origin when generating production crawler files:
 
 ```bash
 VITE_SITE_URL=https://your-real-domain.example bun run build
@@ -54,7 +56,7 @@ python3 wajba_recipe_generator.py --help
 python3 wajba_recipe_generator.py --offline --output recipes_enriched.json --audit-output recipes_audit.json
 ```
 
-The second command writes files in the repository root. Review generated image placeholders and audit warnings before using output in production. Do not run it over user-owned data without checking the input/output paths first.
+The second command writes files in the repository root and is safe to rerun: recipe seeds already present in the input are reported and skipped. Review generated image placeholders and audit warnings before using output in production. Do not run it over user-owned data without checking the input/output paths first.
 
 ## Troubleshooting
 

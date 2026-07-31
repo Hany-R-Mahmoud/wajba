@@ -54,8 +54,8 @@ import { MobileBottomNav } from './components/MobileBottomNav';
 type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'settings';
 
 const DASHBOARD_PATHS: Record<DashboardTab, string> = {
-  recipes: '/dashboard',
-  planner: '/dashboard/planner',
+  planner: '/dashboard',
+  recipes: '/dashboard/recipes',
   grocery: '/dashboard/grocery',
   pantry: '/dashboard/pantry',
   leaderboard: '/dashboard/leaderboard',
@@ -63,8 +63,8 @@ const DASHBOARD_PATHS: Record<DashboardTab, string> = {
 };
 
 function getDashboardTab(pathname: string): DashboardTab | null {
-  if (pathname === '/dashboard' || pathname === '/dashboard/') return 'recipes';
-  const tab = pathname.match(/^\/dashboard\/(planner|grocery|pantry|leaderboard|settings)\/?$/)?.[1];
+  if (pathname === '/dashboard' || pathname === '/dashboard/') return 'planner';
+  const tab = pathname.match(/^\/dashboard\/(recipes|planner|grocery|pantry|leaderboard|settings)\/?$/)?.[1];
   return (tab as DashboardTab | undefined) ?? null;
 }
 
@@ -79,7 +79,7 @@ export default function App() {
 
   const dashboardTab = useMemo(() => getDashboardTab(pathname), [pathname]);
   const isDashboardRoute = pathname === '/dashboard' || pathname.startsWith('/dashboard/');
-  const [currentTab, setCurrentTab] = useState<DashboardTab>(() => getDashboardTab(window.location.pathname) ?? 'recipes');
+  const [currentTab, setCurrentTab] = useState<DashboardTab>(() => getDashboardTab(window.location.pathname) ?? 'planner');
 
   useEffect(() => {
     if (dashboardTab) setCurrentTab(dashboardTab);
@@ -359,7 +359,7 @@ export default function App() {
           onLanguageChange={setLanguage}
           theme={theme}
           onThemeToggle={toggleTheme}
-          onEnterDashboard={() => navigateToTab('recipes')}
+          onEnterDashboard={() => navigateToTab('planner')}
         />
         <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />
       </>
@@ -429,7 +429,7 @@ export default function App() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all ${
                     plannerMode === 'weekly'
                       ? 'bg-amber-700 text-white shadow-md shadow-amber-800/20'
-                      : 'text-stone-700 dark:text-stone-300 hover:bg-amber-200/60 dark:hover:bg-stone-700/60'
+                      : 'text-amber-950 dark:text-stone-300 hover:bg-amber-200/60 dark:hover:bg-stone-700/60'
                   }`}
                 >
                   <CalendarDays className="w-4 h-4" />
@@ -441,7 +441,7 @@ export default function App() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all ${
                     plannerMode === 'monthly'
                       ? 'bg-amber-700 text-white shadow-md shadow-amber-800/20'
-                      : 'text-stone-700 dark:text-stone-300 hover:bg-amber-200/60 dark:hover:bg-stone-700/60'
+                      : 'text-amber-950 dark:text-stone-300 hover:bg-amber-200/60 dark:hover:bg-stone-700/60'
                   }`}
                 >
                   <Calendar className="w-4 h-4" />

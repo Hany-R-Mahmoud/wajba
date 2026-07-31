@@ -21,7 +21,7 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 ## Data / Control Flow
 
 1. `src/main.tsx` mounts `App`.
-2. `/` renders the public landing page; `/dashboard` and its tab routes render the dashboard shell.
+2. `/` renders the public landing page; `/dashboard` opens the schedule as the dashboard home, while `/dashboard/recipes` and the other tab routes render the remaining dashboard views.
 3. Dashboard navigation stays in the header on larger screens and uses a fixed mobile bottom bar with a secondary-destination menu on smaller screens.
 4. `App` loads language, theme, plans, favorites, votes, custom recipes, grocery state, and timers from browser storage.
 5. `App` combines custom recipes with `INITIAL_RECIPES` from `src/data/recipes.ts`.

@@ -306,7 +306,7 @@ export function getInitialMonthlyPlanWithSeed(year: number, month: number): Mont
     'egypt-alex-liver',
     'egypt-taameya-ful',
     'egypt-om-ali',
-    'levant-hummus-falafel',
+    'levant-fattoush-tabbouleh',
   ];
 
   for (let d = 1; d <= daysInMonth; d++) {

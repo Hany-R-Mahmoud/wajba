@@ -4,6 +4,8 @@
 
 Wajba helps households discover Arabic and MENA recipes, assign meals to weekly or monthly plans, track pantry stock, generate a grocery list with pantry quantities subtracted, and run cooking timers. The interface supports Arabic and English plus RTL/LTR layout switching.
 
+The bundled catalog contains 49 source-reviewed recipes across Egypt, the Levant, the Gulf, the Maghreb, and shared regional dishes. See [Recipe Content Review](content-review.md) for provenance and remaining image-review limits.
+
 ## Main Use Cases
 
 - Search recipes by title, description, ingredients, tags, region, difficulty, Ramadan status, or favorites.
@@ -20,7 +22,7 @@ Wajba helps households discover Arabic and MENA recipes, assign meals to weekly 
 ## Runtime Components
 
 - `src/main.tsx` mounts the React application.
-- `src/App.tsx` owns top-level state and selects the `/` landing page or dashboard routes under `/dashboard`.
+- `src/App.tsx` owns top-level state and selects the `/` landing page or dashboard routes under `/dashboard`; `/dashboard` opens the schedule and recipes live at `/dashboard/recipes`.
 - `src/components/` contains recipe, planner, grocery, leaderboard, timer, and family-sync views.
 - `src/utils/` contains persistence, grocery aggregation, CSV, and sync behavior.
 

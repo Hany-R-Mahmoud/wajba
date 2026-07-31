@@ -6,8 +6,8 @@
     "ar": "Wajba"
   },
   "summary": {
-    "en": "Wajba is a local-first bilingual Arabic/English MENA meal-planning web app. It combines a static recipe catalog with weekly and monthly planning, Ramadan mode, dietary filters, pantry quantity matching, grocery aggregation, cooking timers, browser persistence, family URL sharing,",
-    "ar": "Wajba is a local-first bilingual Arabic/English MENA meal-planning web app. It combines a static recipe catalog with weekly and monthly planning, Ramadan mode, dietary filters, pantry quantity matching, grocery aggregation, cooking timers, browser persistence, family URL sharing,"
+    "en": "Wajba is a local-first bilingual Arabic/English MENA meal-planning app for discovering recipes, planning meals, matching pantry stock, and building a smarter grocery list.",
+    "ar": "وجبة تطبيق محلي ثنائي اللغة (العربية والإنجليزية) لتخطيط وجبات المطبخ العربي والشرق الأوسط، واكتشاف الوصفات، ومطابقة محتويات المخزن، وإنشاء قائمة تسوق أذكى."
   },
   "status": "showcase",
   "portfolio": true,
@@ -20,44 +20,44 @@
   ],
   "features": [
     {
-      "en": "Project Structure",
-      "ar": "Project Structure"
+      "en": "49 bilingual MENA recipes with cultural stories, ingredients, instructions, timers, and source-reviewed metadata.",
+      "ar": "49 وصفة ثنائية اللغة من مطابخ المنطقة، مع قصص تراثية ومكونات وخطوات ومؤقتات وبيانات تمت مراجعة مصادرها."
     },
     {
-      "en": "Local Development",
-      "ar": "Local Development"
+      "en": "Weekly and monthly meal planning with Standard and Ramadan modes.",
+      "ar": "تخطيط أسبوعي وشهري للوجبات مع وضعي التخطيط العادي ورمضان."
     },
     {
-      "en": "AI Agent Guide",
-      "ar": "AI Agent Guide"
+      "en": "Ingredient aggregation, pantry quantity matching, aisle grouping, and grocery checklist state.",
+      "ar": "تجميع المكونات، ومطابقة الكميات مع المخزن، وتقسيم القائمة حسب الأقسام، وتتبع إنجاز التسوق."
     },
     {
-      "en": "Team Decisions",
-      "ar": "Team Decisions"
+      "en": "Serving scaling, cooking timers, favorites, votes, custom recipes, and recipe sharing.",
+      "ar": "تغيير عدد الحصص، ومؤقتات الطهي، والمفضلة والتقييمات، والوصفات المخصصة، ومشاركة الوصفات."
     },
     {
-      "en": "Deployment target, CI ownership, and the intended Gemini/Express runtime are `Unknown / verify`.",
-      "ar": "Deployment target, CI ownership, and the intended Gemini/Express runtime are `Unknown / verify`."
+      "en": "Local-first persistence with JSON backup/restore, CSV export, encoded weekly-plan sharing, and optional user-owned Google Apps Script sync.",
+      "ar": "حفظ محلي مع نسخ احتياطي واستعادة بصيغة JSON، وتصدير CSV، ومشاركة الخطة الأسبوعية عبر رابط مشفر، ومزامنة اختيارية مع Google Apps Script يملكه المستخدم."
     },
     {
-      "en": "Recipe JSON files are checked-in data artifacts; the running app imports `src/data/recipes.ts` directly.",
-      "ar": "Recipe JSON files are checked-in data artifacts; the running app imports `src/data/recipes.ts` directly."
+      "en": "Responsive dashboard navigation, bilingual RTL/LTR layout, dark mode, and installable PWA support.",
+      "ar": "تنقل متجاوب في لوحة التحكم، ودعم العربية والإنجليزية مع RTL/LTR، ووضع داكن، وإمكانية تثبيت التطبيق كتطبيق PWA."
     }
   ],
   "progress": {
-    "en": "Classified as showcase-ready by Apex Yard; this snapshot reflects the current repository evidence.",
-    "ar": "Classified as showcase-ready by Apex Yard; this snapshot reflects the current repository evidence."
+    "en": "Showcase-ready local-first product with a source-reviewed 49-recipe catalog and documented browser-only architecture.",
+    "ar": "منتج محلي جاهز للعرض، يضم كتالوجاً من 49 وصفة تمت مراجعة مصادرها، ومعمارية موثقة تعتمد على المتصفح فقط."
   },
   "issues": [
     {
-      "en": "Unknown / verify — no issue inventory was found in the current repository sources.",
-      "ar": "Unknown / verify — no issue inventory was found in the current repository sources."
+      "en": "Unknown / verify — image placeholders and repeated stock imagery remain in the recipe audit and need human visual review before production use.",
+      "ar": "غير معروف / يحتاج تحقق — يتضمن تدقيق الوصفات صوراً بديلة وصوراً مخزنة مكررة، وتحتاج إلى مراجعة بصرية بشرية قبل الاستخدام الإنتاجي."
     }
   ],
   "suggestions": [
     {
-      "en": "Add reviewed screenshots and a fuller case study when visual evidence is available.",
-      "ar": "Add reviewed screenshots and a fuller case study when visual evidence is available."
+      "en": "Replace placeholders with approved dish-specific images and add reviewed screenshots plus a fuller case study when visual evidence is available.",
+      "ar": "استبدال الصور البديلة بصور معتمدة ومخصصة للأطباق، وإضافة لقطات شاشة تمت مراجعتها ودراسة حالة أشمل عند توفر الدليل البصري."
     }
   ],
   "commands": {
@@ -74,6 +74,6 @@
   },
   "source": {
     "workspace": "workspace/wajba",
-    "last_reviewed": "2026-07-29"
+    "last_reviewed": "2026-07-31"
   }
 }

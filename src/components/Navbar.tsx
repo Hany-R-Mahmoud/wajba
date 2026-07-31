@@ -54,16 +54,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const primaryNavItems = [
     {
-      id: 'recipes' as const,
-      labelAr: 'وصفات الطعام',
-      labelEn: 'Recipes',
-      icon: BookOpen,
-    },
-    {
       id: 'planner' as const,
       labelAr: 'جدول الوجبات',
       labelEn: 'Weekly Plan',
       icon: CalendarDays,
+    },
+    {
+      id: 'recipes' as const,
+      labelAr: 'وصفات الطعام',
+      labelEn: 'Recipes',
+      icon: BookOpen,
     },
     {
       id: 'grocery' as const,
@@ -108,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-1 sm:gap-2">
           {/* Brand Logo & Name */}
-          <WajbaLogo variant="navbar" isArabic={isArabic} onClick={() => onTabChange('recipes')} />
+          <WajbaLogo variant="navbar" isArabic={isArabic} onClick={() => onTabChange('planner')} />
 
           {/* Compact Center Navigation Tabs for Desktop */}
           <nav className="hidden lg:flex items-center gap-1 bg-[#f0eee8]/90 dark:bg-[#0c1220]/90 p-1 rounded-full border border-[#e2e0d8] dark:border-[#2b3a54]">

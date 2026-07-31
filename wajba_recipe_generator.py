@@ -1215,13 +1215,11 @@ def main() -> int:
         schema = copy.deepcopy(SCHEMA)
         meta_title = "Wajba Culinary Architecture - Meals & Recipes Database"
 
-    new_recipes = [build_recipe(seed) for seed in RECIPE_SEEDS]
-    resolve_new_images(new_recipes, args.offline, image_audit)
-
+    candidate_recipes = [build_recipe(seed) for seed in RECIPE_SEEDS]
     existing_ids = {recipe.get("id") for recipe in existing}
-    collisions = [recipe["id"] for recipe in new_recipes if recipe["id"] in existing_ids]
-    if collisions:
-        raise ValueError("New recipe IDs already exist in input: " + ", ".join(collisions))
+    skipped_existing_seeds = [recipe["id"] for recipe in candidate_recipes if recipe["id"] in existing_ids]
+    new_recipes = [recipe for recipe in candidate_recipes if recipe["id"] not in existing_ids]
+    resolve_new_images(new_recipes, args.offline, image_audit)
 
     recipes = existing + new_recipes
     now = dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z")
@@ -1243,6 +1241,7 @@ def main() -> int:
             "output": str(output),
             "existingMeals": len(existing),
             "newMeals": len(new_recipes),
+            "skippedExistingSeeds": skipped_existing_seeds,
             "totalMeals": len(recipes),
         },
         "researchSources": SOURCE_URLS,
@@ -1266,7 +1265,8 @@ def main() -> int:
     placeholders = sum(item.get("status") == "placeholder" for item in image_audit)
     review_items = sum(item.get("status") in {"candidate-needs-human-review", "needs-human-review", "needs-cleanup"} for item in image_audit)
     print(f"Input: {input_path or 'none (self-contained new-only generation)'}")
-    print(f"Wrote {len(recipes)} recipes ({len(new_recipes)} new) to {output}")
+    skipped_message = f"; skipped {len(skipped_existing_seeds)} existing seeds" if skipped_existing_seeds else ""
+    print(f"Wrote {len(recipes)} recipes ({len(new_recipes)} new{skipped_message}) to {output}")
     print(f"Wrote audit report to {audit_output}")
     print(f"Validation errors: {len(errors)}; image placeholders: {placeholders}; review items: {review_items}")
     if errors:

@@ -29,6 +29,8 @@
 
 ```bash
 bun run lint
+bun run test
+bun run pwa:check
 bun run build
 python3 /Users/hanyramadan/.codex/skills/agent-repo-manager/scripts/docs_audit.py --repo .
 ```
@@ -39,4 +41,4 @@ python3 /Users/hanyramadan/.codex/skills/agent-repo-manager/scripts/docs_audit.p
 - Do not invent commands, env vars, services, APIs, or architecture.
 - Read `docs/team-decisions/` before durable architecture/API/workflow changes.
 - Report uncertainty as `Unknown / verify`.
-- No test script exists; do not claim tests passed when only type-check/build ran.
+- Report each verification command separately; do not claim tests passed when only type-check/build ran.

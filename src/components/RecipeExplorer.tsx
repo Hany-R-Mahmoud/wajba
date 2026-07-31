@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { DIETARY_TAGS, DietaryTag, Language, Recipe, Region } from '../types';
 import { DIETARY_LABELS, filterRecipesByDietaryTag } from '../utils/recipes';
 import { RecipeCard } from './RecipeCard';
-import { Search, Plus, Filter, Bookmark, RotateCcw } from 'lucide-react';
+import { Search, Plus, Filter, Bookmark, RotateCcw, ChevronDown } from 'lucide-react';
 
 interface RecipeExplorerProps {
   recipes: Recipe[];
@@ -83,6 +83,58 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
     setOnlyFavorites(false);
   };
 
+  const categoryOptions = [
+    { id: 'all' as const, ar: 'كل الأطباق', en: 'All dishes' },
+    { id: 'meals' as const, ar: 'وجبات رئيسية', en: 'Main meals' },
+    { id: 'sweets' as const, ar: 'حلويات وسكاكر', en: 'Sweets & desserts' },
+    { id: 'ramadan' as const, ar: 'رمضانيات', en: 'Ramadan' },
+    { id: 'easy' as const, ar: 'سهل وسريع', en: 'Quick & easy' },
+  ];
+
+  const regionOptions = [
+    { id: 'all' as const, ar: 'كل المناطق', en: 'All regions' },
+    { id: 'egypt' as const, ar: 'مصر', en: 'Egypt' },
+    { id: 'levant' as const, ar: 'الشام', en: 'Levant' },
+    { id: 'gulf' as const, ar: 'الخليج', en: 'Gulf' },
+    { id: 'maghreb' as const, ar: 'المغرب', en: 'Maghreb' },
+    { id: 'general' as const, ar: 'عام', en: 'General' },
+  ];
+
+  const dietaryOptions = [
+    { id: 'all' as const, ar: 'كل الخصائص', en: 'All dietary options' },
+    ...DIETARY_TAGS.map((tag) => ({ id: tag, ar: DIETARY_LABELS[tag].ar, en: DIETARY_LABELS[tag].en })),
+  ];
+
+  const FilterSelect = ({
+    label,
+    value,
+    options,
+    onChange,
+  }: {
+    label: string;
+    value: string;
+    options: Array<{ id: string; ar: string; en: string }>;
+    onChange: (value: string) => void;
+  }) => (
+    <label className="relative block">
+      <span className="mb-1.5 block text-xs font-bold tracking-wide text-stone-500 dark:text-stone-400">{label}</span>
+      <span className="relative block">
+        <select
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className="min-h-11 w-full appearance-none rounded-xl border border-[#d9d9dd] bg-[#eeece7] px-3 text-xs font-mono text-[#212121] transition-colors hover:border-[#ff7759] focus:border-[#ff7759] focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
+        >
+          {options.map((option) => (
+            <option key={option.id} value={option.id}>
+              {isArabic ? option.ar : option.en}
+            </option>
+          ))}
+        </select>
+        <ChevronDown className="pointer-events-none absolute top-1/2 -translate-y-1/2 end-3 h-4 w-4 text-stone-500" aria-hidden="true" />
+      </span>
+    </label>
+  );
+
   return (
     <div className="space-y-6">
       {/* Search Bar & Comprehensive Filters */}
@@ -113,123 +165,57 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
           </button>
         </div>
 
-        {/* Primary Type Filter (Meals vs Sweets & Desserts) */}
-        <div className="pt-3 border-t border-[#d9d9dd] dark:border-stone-800">
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
-            <span className="text-xs sm:text-sm font-mono text-[#75758a] me-1 flex items-center gap-1">
-              <Filter className="w-4 h-4" />
-              <span>{isArabic ? 'نوع الطبق:' : 'Category:'}</span>
-            </span>
-
-            {[
-              { id: 'all', ar: 'الكل 🍽️', en: 'All 🍽️' },
-              { id: 'meals', ar: 'وجبات رئيسية 🥘', en: 'Meals 🥘' },
-              { id: 'sweets', ar: 'حلويات وسكاكر 🥐', en: 'Sweets & Desserts 🥐' },
-              { id: 'ramadan', ar: 'رمضانيات 🌙', en: 'Ramadan 🌙' },
-              { id: 'easy', ar: 'سهل وسريع ⚡', en: 'Quick & Easy ⚡' },
-            ].map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id as any)}
-                className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-mono font-medium whitespace-nowrap transition-all cursor-pointer ${
-                  selectedCategory === cat.id
-                    ? 'bg-[#17171c] text-white shadow-xs dark:bg-white dark:text-[#17171c]'
-                    : 'bg-[#eeece7] dark:bg-stone-800 text-[#212121] dark:text-stone-300 hover:border-[#17171c] border border-[#d9d9dd]'
-                }`}
-              >
-                {isArabic ? cat.ar : cat.en}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Region & Favorites Chips */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#d9d9dd] dark:border-stone-800">
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
-            <span className="text-xs sm:text-sm font-mono text-[#75758a] me-1">
-              {isArabic ? 'المنطقة:' : 'Region:'}
-            </span>
-
-            {[
-              { id: 'all', ar: 'الكل 🌍', en: 'All 🌍' },
-              { id: 'egypt', ar: 'مصر 🇪🇬', en: 'Egypt 🇪🇬' },
-              { id: 'levant', ar: 'الشام 🇱🇧', en: 'Levant 🇱🇧' },
-              { id: 'gulf', ar: 'الخليج 🇸🇦', en: 'Gulf 🇸🇦' },
-              { id: 'maghreb', ar: 'المغرب 🇲🇦', en: 'Maghreb 🇲🇦' },
-              { id: 'general', ar: 'عام 🇸🇦', en: 'General 🇸🇦' },
-            ].map((reg) => (
-              <button
-                key={reg.id}
-                onClick={() => setSelectedRegion(reg.id as Region | 'all')}
-                className={`px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-medium whitespace-nowrap transition-all cursor-pointer ${
-                  selectedRegion === reg.id
-                    ? 'bg-[#17171c] text-white shadow-xs dark:bg-white dark:text-[#17171c]'
-                    : 'bg-[#eeece7] dark:bg-stone-800 text-[#212121] dark:text-stone-300 border border-[#d9d9dd] dark:border-stone-700'
-                }`}
-              >
-                {isArabic ? reg.ar : reg.en}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setOnlyFavorites(!onlyFavorites)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-mono transition-all cursor-pointer ${
-                onlyFavorites
-                  ? 'bg-[#ff7759] text-white'
-                  : 'bg-[#eeece7] dark:bg-stone-800 text-[#212121] dark:text-stone-300 border border-[#d9d9dd] dark:border-stone-700'
-              }`}
-            >
-              <Bookmark className={`w-3.5 h-3.5 ${onlyFavorites ? 'fill-white' : ''}`} />
-              <span>{isArabic ? 'المفضلة' : 'Favorites'}</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Dietary Filter Bar */}
-        <div className="border-t border-[#d9d9dd] pt-3 dark:border-stone-800">
-          <div className="mb-2 flex items-center justify-between gap-2 text-xs font-mono text-[#75758a]">
-            <span>{isArabic ? 'الخصائص الغذائية:' : 'Dietary Options:'}</span>
+        {/* Compact filter controls */}
+        <div className="border-t border-[#d9d9dd] pt-4 dark:border-stone-800">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-stone-500 dark:text-stone-400">
+              <Filter className="h-4 w-4" aria-hidden="true" />
+              <span>{isArabic ? 'تصفية الوصفات' : 'Filter recipes'}</span>
+            </div>
             {isFiltered && (
               <button
+                type="button"
                 onClick={handleResetFilters}
-                className="flex items-center gap-1 text-[#ff7759] hover:underline cursor-pointer font-bold"
+                className="inline-flex min-h-11 items-center gap-1 rounded-lg px-2.5 text-xs font-bold text-[#d86540] hover:underline"
               >
-                <RotateCcw className="w-3 h-3" />
-                <span>{isArabic ? 'إعادة ضبط الفلاتر' : 'Reset Filters'}</span>
+                <RotateCcw className="h-3 w-3" aria-hidden="true" />
+                <span>{isArabic ? 'إعادة ضبط الفلاتر' : 'Reset filters'}</span>
               </button>
             )}
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            <button
-              type="button"
-              aria-pressed={selectedDietaryTag === 'all'}
-              onClick={() => setSelectedDietaryTag('all')}
-              className={`rounded-full px-3 py-1 text-xs font-mono transition-all cursor-pointer ${
-                selectedDietaryTag === 'all'
-                  ? 'bg-[#17171c] text-white dark:bg-white dark:text-[#17171c]'
-                  : 'bg-[#eeece7] dark:bg-stone-800 text-stone-700 dark:text-stone-300'
-              }`}
-            >
-              {isArabic ? 'الكل' : 'All'}
-            </button>
-            {DIETARY_TAGS.map((tag) => (
-              <button
-                type="button"
-                key={tag}
-                aria-pressed={selectedDietaryTag === tag}
-                onClick={() => setSelectedDietaryTag(tag)}
-                className={`rounded-full px-3 py-1 text-xs font-mono transition-all cursor-pointer ${
-                  selectedDietaryTag === tag
-                    ? 'bg-[#ff7759] text-white font-bold'
-                    : 'bg-[#eeece7] dark:bg-stone-800 text-stone-700 dark:text-stone-300'
-                }`}
-              >
-                {isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}
-              </button>
-            ))}
+          <div className="grid gap-3 sm:grid-cols-3">
+            <FilterSelect
+              label={isArabic ? 'نوع الطبق' : 'Category'}
+              value={selectedCategory}
+              options={categoryOptions}
+              onChange={(value) => setSelectedCategory(value as typeof selectedCategory)}
+            />
+            <FilterSelect
+              label={isArabic ? 'المنطقة' : 'Region'}
+              value={selectedRegion}
+              options={regionOptions}
+              onChange={(value) => setSelectedRegion(value as Region | 'all')}
+            />
+            <FilterSelect
+              label={isArabic ? 'الخصائص الغذائية' : 'Dietary options'}
+              value={selectedDietaryTag}
+              options={dietaryOptions}
+              onChange={(value) => setSelectedDietaryTag(value as DietaryTag | 'all')}
+            />
           </div>
+          <button
+            type="button"
+            aria-pressed={onlyFavorites}
+            onClick={() => setOnlyFavorites(!onlyFavorites)}
+            className={`mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-xs font-bold transition-colors ${
+              onlyFavorites
+                ? 'bg-[#ff7759] text-white'
+                : 'border border-[#d9d9dd] bg-[#eeece7] text-[#212121] hover:border-[#ff7759] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+            }`}
+          >
+            <Bookmark className={`h-3.5 w-3.5 ${onlyFavorites ? 'fill-white' : ''}`} aria-hidden="true" />
+            <span>{isArabic ? 'المفضلة فقط' : 'Favorites only'}</span>
+          </button>
         </div>
       </div>
 
@@ -243,7 +229,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
         {isFiltered && (
           <button
             onClick={handleResetFilters}
-            className="text-[#ff7759] hover:underline cursor-pointer"
+            className="inline-flex min-h-11 items-center rounded-lg px-2.5 text-[#ff7759] hover:underline cursor-pointer"
           >
             {isArabic ? 'إلغاء البحث والفلاتر' : 'Clear search & filters'}
           </button>
@@ -290,4 +276,3 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
     </div>
   );
 };
-
