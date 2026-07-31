@@ -21,6 +21,7 @@ Open `http://localhost:3000`.
 | `bun run lint` | Run TypeScript checking with `tsc --noEmit` |
 | `bun run build` | Create the Vite production build in `dist/` |
 | `bun run test` | Run core Node test-runner checks through `tsx` |
+| `bun run pwa:check` | Run focused PWA platform and fallback tests |
 | `bun run preview` | Preview the production build |
 | `python3 wajba_recipe_generator.py --help` | Show recipe generator options |
 

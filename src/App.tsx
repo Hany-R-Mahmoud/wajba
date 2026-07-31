@@ -47,6 +47,8 @@ import { SettingsView } from './components/SettingsView';
 import { PublicRecipeNotFound, PublicRecipePage } from './components/PublicRecipePage';
 import { getPublicRecipeRoute, updateSeo } from './utils/seo';
 import { Calendar, CalendarDays } from 'lucide-react';
+import {PwaInstallHelpDialog} from './components/PwaInstallHelpDialog';
+import {PwaStatusBar} from './components/PwaStatusBar';
 
 type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'settings';
 
@@ -333,21 +335,33 @@ export default function App() {
 
   if (publicRecipeRoute.isRecipePath) {
     return publicRecipeRoute.recipe ? (
-      <PublicRecipePage recipe={publicRecipeRoute.recipe} language={language} />
+      <>
+        <PwaStatusBar language={language} dark={theme === 'dark'} />
+        <PublicRecipePage recipe={publicRecipeRoute.recipe} language={language} />
+        <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />
+      </>
     ) : (
-      <PublicRecipeNotFound language={language} />
+      <>
+        <PwaStatusBar language={language} dark={theme === 'dark'} />
+        <PublicRecipeNotFound language={language} />
+        <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />
+      </>
     );
   }
 
   if (pathname === '/') {
     return (
-      <LandingPage
-        language={language}
-        onLanguageChange={setLanguage}
-        theme={theme}
-        onThemeToggle={toggleTheme}
-        onEnterDashboard={() => navigateToTab('recipes')}
-      />
+      <>
+        <PwaStatusBar language={language} dark={theme === 'dark'} />
+        <LandingPage
+          language={language}
+          onLanguageChange={setLanguage}
+          theme={theme}
+          onThemeToggle={toggleTheme}
+          onEnterDashboard={() => navigateToTab('recipes')}
+        />
+        <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />
+      </>
     );
   }
 
@@ -369,6 +383,7 @@ export default function App() {
         onThemeToggle={toggleTheme}
         activeTimers={activeTimers}
       />
+      <PwaStatusBar language={language} dark={theme === 'dark'} />
 
       {/* Main View Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -584,6 +599,7 @@ export default function App() {
           onImportPlan={handleUpdateWeeklyPlan}
         />
       )}
+      <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />
     </div>
   );
 }

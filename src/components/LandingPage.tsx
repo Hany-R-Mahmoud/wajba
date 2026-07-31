@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import ThreeDPhotoCarousel from './ui/3d-carousel';
 import { WajbaLogo } from './WajbaLogo';
+import {PwaInstallMenuAction} from './PwaInstallMenuAction';
 
 interface LandingPageProps {
   language: Language;
@@ -45,6 +46,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <WajbaLogo variant="navbar" isArabic={isArabic} onClick={onEnterDashboard} />
 
             <div className="flex items-center gap-1 sm:gap-2">
+              <PwaInstallMenuAction language={language} dark={theme === 'dark'} />
               {/* Language Switcher */}
               <button
                 onClick={() => onLanguageChange(isArabic ? 'en' : 'ar')}

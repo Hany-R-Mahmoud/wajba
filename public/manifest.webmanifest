@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "وجبة — Wajba",
+  "short_name": "وجبة",
+  "description": "خطط لوجبات عائلتك، واكتشف وصفات عربية أصيلة، ونظم قائمة التسوق بسهولة.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "theme_color": "#071829",
+  "background_color": "#ffffff",
+  "categories": ["food", "lifestyle", "shopping"],
+  "icons": [
+    {"src": "/wajba-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/wajba-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/wajba-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

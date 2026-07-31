@@ -11,6 +11,8 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 | `src/main.tsx` | Mount React under `#root` |
 | `src/App.tsx` | URL-based landing/dashboard routing, shared state, navigation, and handlers |
 | `src/components/` | User-facing views and modals |
+| `src/pwa/` | Platform detection, install state, help/fallback flows, and service-worker source |
+| `src/components/Pwa*.tsx` | In-flow install promotion, persistent recovery action, and installation help dialog |
 | `src/data/recipes.ts` | Bundled runtime recipe catalog |
 | `src/utils/storage.ts` | `localStorage`, seed data, shared-plan URL decoding/encoding, pantry and backup state |
 | `src/utils/aggregator.ts` | Convert planned recipes into normalized grocery items and subtract compatible pantry quantities |
@@ -25,6 +27,12 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 5. Planner views update weekly/monthly plans; the aggregator derives grocery items from assigned recipe IDs and servings.
 6. UI actions save updated state back to `localStorage`.
 7. Family sync actions encode a weekly plan into a URL, download files, or send a JSON payload to a user-provided Apps Script URL.
+
+## PWA Installation
+
+`PwaProvider` registers the production service worker, captures Chromium's install prompt when available, detects standalone launches, and persists dismissal/recovery state. The UI keeps a transient in-flow promotion separate from a persistent install/recovery action in the landing header and dashboard navigation. Android WebViews receive an external-browser intent plus a copyable URL fallback; iOS WebViews receive Safari/Add to Home Screen guidance because the host controls whether an external browser can be opened.
+
+The worker precaches the application shell and static PWA assets, uses network-first navigation fallback, and deliberately excludes recipe data, API/auth routes, downloads, and other user/data endpoints from caching.
 
 ## Diagram
 

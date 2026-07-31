@@ -16,6 +16,7 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 import { WajbaLogo } from './WajbaLogo';
+import {PwaInstallMenuAction} from './PwaInstallMenuAction';
 
 interface NavbarProps {
   currentTab: 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'family' | 'settings';
@@ -202,6 +203,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             )}
 
+            <PwaInstallMenuAction language={language} dark={theme === 'dark'} />
+
             {/* Language Switcher */}
             <button
               onClick={() => onLanguageChange(isArabic ? 'en' : 'ar')}
@@ -248,4 +251,3 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
-

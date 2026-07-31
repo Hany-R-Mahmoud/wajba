@@ -1,7 +1,26 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import {existsSync, readFileSync} from 'node:fs';
 import path from 'path';
 import {defineConfig} from 'vite';
+
+function pwaServiceWorkerPlugin() {
+  return {
+    name: 'wajba-pwa-service-worker',
+    generateBundle(_options: unknown, bundle: Record<string, {type: string}>) {
+      const precacheEntries = new Set(['/index.html']);
+      for (const fileName of Object.keys(bundle)) {
+        if (/^assets\/index-[^/]+\.(?:js|css)$/.test(fileName)) precacheEntries.add(`/${fileName}`);
+      }
+      for (const publicFile of ['manifest.webmanifest', 'favicon.svg', 'wajba-icon-192.png', 'wajba-icon-512.png', 'wajba-icon-maskable-512.png', 'apple-touch-icon.png']) {
+        if (existsSync(path.resolve(__dirname, 'public', publicFile))) precacheEntries.add(`/${publicFile}`);
+      }
+      const source = readFileSync(path.resolve(__dirname, 'src/pwa/service-worker.js'), 'utf8')
+        .replace('__PRECACHE_ENTRIES__', JSON.stringify([...precacheEntries]));
+      this.emitFile({type: 'asset', fileName: 'sw.js', source});
+    },
+  };
+}
 
 function seoIndexTags() {
   const configuredSiteUrl = process.env.SITE_URL || process.env.VITE_SITE_URL;
@@ -31,7 +50,7 @@ function seoIndexTags() {
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss(), seoIndexTags()],
+    plugins: [pwaServiceWorkerPlugin(), react(), tailwindcss(), seoIndexTags()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
