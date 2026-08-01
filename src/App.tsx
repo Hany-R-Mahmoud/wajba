@@ -28,9 +28,11 @@ import {
   deleteCustomRecipe,
   replaceWajbaState,
   clearWajbaUserData,
-  clearWajbaScheduleData,
-  createEmptyMonthlyPlan,
-  createEmptyWeeklyPlan,
+  clearMonthlyAssignmentsForDates,
+  clearMonthlyPlanAssignments,
+  clearPersistedMonthlyAssignmentsForDates,
+  clearWeeklyPlanAssignments,
+  getCurrentWeekDateKeys,
   detectStorageIssues,
 } from './utils/storage';
 
@@ -202,14 +204,28 @@ export default function App() {
     setMonthlyPlan(loaded);
   };
 
-  const handleResetSchedule = () => {
-    if (!window.confirm(language === 'ar' ? 'هل أنت متأكد من إعادة ضبط كل الجداول؟ سيتم حذف الوجبات الأسبوعية والشهرية.' : 'Reset all schedules? This will remove all weekly and monthly meal assignments.')) {
+  const handleClearWeek = () => {
+    if (!window.confirm(language === 'ar' ? 'هل أنت متأكد من مسح هذا الأسبوع؟ سيتم حذف الأسبوع الحالي من الجدول الأسبوعي والشهري.' : 'Clear this week? The current week will be removed from both weekly and monthly schedules.')) {
       return;
     }
 
-    clearWajbaScheduleData();
-    const nextWeeklyPlan = createEmptyWeeklyPlan();
-    const nextMonthlyPlan = createEmptyMonthlyPlan(monthlyPlan.year, monthlyPlan.month);
+    const weekDateKeys = getCurrentWeekDateKeys();
+    const nextWeeklyPlan = clearWeeklyPlanAssignments(weeklyPlan);
+    const nextMonthlyPlan = clearMonthlyAssignmentsForDates(monthlyPlan, weekDateKeys);
+    clearPersistedMonthlyAssignmentsForDates(weekDateKeys);
+    saveWeeklyPlan(nextWeeklyPlan);
+    saveMonthlyPlan(nextMonthlyPlan);
+    setWeeklyPlan(nextWeeklyPlan);
+    setMonthlyPlan(nextMonthlyPlan);
+  };
+
+  const handleClearMonthAndWeek = () => {
+    if (!window.confirm(language === 'ar' ? 'هل أنت متأكد من مسح الشهر والأسبوع؟ سيتم حذف كل وجبات الشهر الظاهر والجدول الأسبوعي.' : 'Clear this month and the weekly schedule? All assignments in the displayed month and the weekly plan will be removed.')) {
+      return;
+    }
+
+    const nextWeeklyPlan = clearWeeklyPlanAssignments(weeklyPlan);
+    const nextMonthlyPlan = clearMonthlyPlanAssignments(monthlyPlan);
     saveWeeklyPlan(nextWeeklyPlan);
     saveMonthlyPlan(nextMonthlyPlan);
     setWeeklyPlan(nextWeeklyPlan);
@@ -488,7 +504,7 @@ export default function App() {
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
-                onResetSchedule={handleResetSchedule}
+                onClearWeek={handleClearWeek}
               />
             ) : (
               <MonthlyCalendarView
@@ -501,7 +517,7 @@ export default function App() {
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onChangeMonth={handleChangeMonth}
                 onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
-                onResetSchedule={handleResetSchedule}
+                onClearMonthAndWeek={handleClearMonthAndWeek}
               />
             )}
           </div>

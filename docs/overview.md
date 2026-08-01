@@ -11,7 +11,7 @@ The bundled catalog contains 65 source-reviewed recipes across Egypt, the Levant
 - Search recipes by title, description, ingredients, tags, region, difficulty, Ramadan status, or favorites.
 - Filter recipes by curated informational dietary tags.
 - Add recipes to weekly or monthly plans and change servings.
-- Start with empty weekly and monthly schedules, choose which meal slots are visible, and reset all schedule assignments when needed.
+- Start with empty weekly and monthly schedules, choose which meal slots are visible, and clear assignments by the current week or displayed month.
 - Toggle Ramadan mode to use suhoor, iftar, and dessert slots.
 - Track pantry quantities and show needed, partially covered, and fully covered grocery items.
 - Aggregate ingredients into grocery aisles, check items, and add custom extras.

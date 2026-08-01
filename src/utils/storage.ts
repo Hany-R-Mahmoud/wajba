@@ -194,6 +194,81 @@ export function saveWeeklyPlan(plan: WeeklyPlan) {
   localStorage.setItem(STORAGE_KEYS.WEEKLY_PLAN, JSON.stringify(plan));
 }
 
+export function clearWeeklyPlanAssignments(plan: WeeklyPlan): WeeklyPlan {
+  return {
+    ...plan,
+    days: plan.days.map((day) => ({ ...day, slots: {} })),
+  };
+}
+
+function formatDateKey(date: Date): string {
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${date.getFullYear()}-${month}-${day}`;
+}
+
+export function getCurrentWeekDateKeys(referenceDate: Date = new Date()): string[] {
+  const weekStart = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate());
+  const daysSinceSaturday = (weekStart.getDay() + 1) % 7;
+  weekStart.setDate(weekStart.getDate() - daysSinceSaturday);
+
+  return Array.from({ length: 7 }, (_, offset) => {
+    const date = new Date(weekStart);
+    date.setDate(weekStart.getDate() + offset);
+    return formatDateKey(date);
+  });
+}
+
+export function clearMonthlyAssignmentsForDates(plan: MonthlyPlan, dateKeys: string[]): MonthlyPlan {
+  const targetDates = new Set(dateKeys);
+  const days = { ...plan.days };
+
+  targetDates.forEach((dateKey) => {
+    if (days[dateKey]) days[dateKey] = { ...days[dateKey], slots: {} };
+  });
+
+  return { ...plan, days };
+}
+
+function parseDateKey(dateKey: string): { year: number; month: number } | null {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateKey);
+  if (!match) return null;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]) - 1;
+  const day = Number(match[3]);
+  const date = new Date(year, month, day);
+
+  if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) return null;
+  return { year, month };
+}
+
+export function clearPersistedMonthlyAssignmentsForDates(dateKeys: string[]) {
+  const datesByMonth = new Map<string, string[]>();
+
+  dateKeys.forEach((dateKey) => {
+    const parsed = parseDateKey(dateKey);
+    if (!parsed) return;
+
+    const storageKey = `${STORAGE_KEYS.MONTHLY_PLAN}_${parsed.year}_${parsed.month}`;
+    const dates = datesByMonth.get(storageKey) ?? [];
+    dates.push(dateKey);
+    datesByMonth.set(storageKey, dates);
+  });
+
+  datesByMonth.forEach((dates, storageKey) => {
+    const saved = localStorage.getItem(storageKey);
+    if (!saved) return;
+
+    try {
+      const plan: unknown = JSON.parse(saved);
+      if (isMonthlyPlan(plan)) saveMonthlyPlan(clearMonthlyAssignmentsForDates(plan, dates));
+    } catch (error) {
+      if (!(error instanceof SyntaxError)) throw error;
+    }
+  });
+}
+
 export function encodePlanToUrl(plan: WeeklyPlan): string {
   try {
     const jsonStr = JSON.stringify(plan);
@@ -311,14 +386,11 @@ export function saveMonthlyPlan(plan: MonthlyPlan) {
   localStorage.setItem(key, JSON.stringify(plan));
 }
 
-export function clearWajbaScheduleData() {
-  localStorage.removeItem(STORAGE_KEYS.WEEKLY_PLAN);
-  localStorage.removeItem(STORAGE_KEYS.MONTHLY_PLAN);
-
-  for (let index = localStorage.length - 1; index >= 0; index -= 1) {
-    const key = localStorage.key(index);
-    if (key?.startsWith(MONTHLY_PLAN_PREFIX)) localStorage.removeItem(key);
-  }
+export function clearMonthlyPlanAssignments(plan: MonthlyPlan): MonthlyPlan {
+  return {
+    ...plan,
+    days: {},
+  };
 }
 
 export function loadAllMonthlyPlans(): MonthlyPlan[] {

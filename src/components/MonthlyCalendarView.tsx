@@ -15,7 +15,6 @@ import {
   Utensils,
   Clock,
   Eye,
-  RefreshCw,
 } from 'lucide-react';
 import { MealDisplayControls, MealDisplayOption } from './MealDisplayControls';
 
@@ -29,7 +28,7 @@ interface MonthlyCalendarViewProps {
   onOpenFamilySync: () => void;
   onChangeMonth: (year: number, month: number) => void;
   onOpenCreateRecipeModal?: () => void;
-  onResetSchedule: () => void;
+  onClearMonthAndWeek: () => void;
 }
 
 const MONTH_NAMES = {
@@ -78,7 +77,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
   onOpenFamilySync,
   onChangeMonth,
   onOpenCreateRecipeModal,
-  onResetSchedule,
+  onClearMonthAndWeek,
 }) => {
   const isArabic = language === 'ar';
 
@@ -116,10 +115,10 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
     });
   };
 
-  const handleResetSchedule = () => {
+  const handleClearMonthAndWeek = () => {
     setSelectedDateKey(null);
     setAssignModalSlot(null);
-    onResetSchedule();
+    onClearMonthAndWeek();
   };
 
   const year = monthlyPlan.year;
@@ -257,21 +256,6 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
       ...monthlyPlan,
       days: newDays,
     });
-  };
-
-  const handleClearMonth = () => {
-    if (
-      confirm(
-        isArabic
-          ? 'هل أنت متأكد من مسح جميع وجبات الشهر؟'
-          : 'Are you sure you want to clear all monthly meals?'
-      )
-    ) {
-      onUpdateMonthlyPlan({
-        ...monthlyPlan,
-        days: {},
-      });
-    }
   };
 
   const handleAssignRecipeToDateSlot = (recipeId: string) => {
@@ -426,21 +410,10 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
             </button>
 
             <button
-              onClick={handleClearMonth}
-              className="p-2 rounded-xl text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40"
-              title={isArabic ? 'تفريغ الشهر' : 'Clear Month'}
+              onClick={handleClearMonthAndWeek}
+              className="whitespace-nowrap rounded-xl border border-rose-200 px-3 py-2 text-xs font-bold text-rose-700 hover:bg-rose-50 dark:border-rose-900 dark:text-rose-300 dark:hover:bg-rose-950/40"
             >
-              <Trash2 className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={handleResetSchedule}
-              aria-label={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
-              className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-rose-700 hover:bg-rose-50 dark:text-rose-300 dark:hover:bg-rose-950/40"
-              title={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
-            >
-              <RefreshCw className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{isArabic ? 'إعادة ضبط الجداول' : 'Reset schedules'}</span>
+              <span>{isArabic ? 'مسح الشهر والأسبوع' : 'Clear month + week'}</span>
             </button>
           </div>
         </div>

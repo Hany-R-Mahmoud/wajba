@@ -24,8 +24,8 @@
       "ar": "65 وصفة ثنائية اللغة من مطابخ المنطقة، مع قصص تراثية ومكونات وخطوات ومؤقتات وبيانات تمت مراجعة مصادرها."
     },
     {
-      "en": "Empty-first weekly and monthly meal planning with selectable meal visibility, local persistence, reset controls, and Standard/Ramadan modes.",
-      "ar": "تخطيط أسبوعي وشهري يبدأ فارغاً، مع اختيار الوجبات الظاهرة، وحفظ محلي، وأزرار لإعادة الضبط، ووضعَي التخطيط العادي ورمضان."
+      "en": "Empty-first weekly and monthly meal planning with selectable meal visibility, local persistence, scope-aware clear controls, and Standard/Ramadan modes.",
+      "ar": "تخطيط أسبوعي وشهري يبدأ فارغاً، مع اختيار الوجبات الظاهرة، وحفظ محلي، وأزرار مسح مرتبطة بالفترة، ووضعَي التخطيط العادي ورمضان."
     },
     {
       "en": "Ingredient aggregation, pantry quantity matching, aisle grouping, and grocery checklist state.",

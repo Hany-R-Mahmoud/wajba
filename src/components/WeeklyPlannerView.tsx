@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DayPlanner, Language, MealSlot, Recipe, WeeklyPlan } from '../types';
-import { Calendar, Moon, Sun, Trash2, Plus, Sparkles, Share2, ShoppingBag, Utensils, RefreshCw } from 'lucide-react';
+import { Calendar, Moon, Sun, Trash2, Plus, Sparkles, Share2, ShoppingBag, Utensils } from 'lucide-react';
 import { MealDisplayControls, MealDisplayOption } from './MealDisplayControls';
 
 interface WeeklyPlannerViewProps {
@@ -12,7 +12,7 @@ interface WeeklyPlannerViewProps {
   onOpenRecipeDetail: (recipe: Recipe) => void;
   onOpenFamilySync: () => void;
   onOpenCreateRecipeModal?: () => void;
-  onResetSchedule: () => void;
+  onClearWeek: () => void;
 }
 
 export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
@@ -24,7 +24,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
   onOpenRecipeDetail,
   onOpenFamilySync,
   onOpenCreateRecipeModal,
-  onResetSchedule,
+  onClearWeek,
 }) => {
   const isArabic = language === 'ar';
 
@@ -62,9 +62,9 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
     });
   };
 
-  const handleResetSchedule = () => {
+  const handleClearWeek = () => {
     setAssignModalOpen(false);
-    onResetSchedule();
+    onClearWeek();
   };
 
   const toggleRamadanMode = () => {
@@ -114,13 +114,6 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
       return day;
     });
     onUpdatePlan({ ...plan, days: updatedDays });
-  };
-
-  const handleClearWeek = () => {
-    if (confirm(isArabic ? 'هل انت متأكد من تفريغ جدول الأسبوع؟' : 'Clear all meals in weekly planner?')) {
-      const clearedDays = plan.days.map((d) => ({ ...d, slots: {} }));
-      onUpdatePlan({ ...plan, days: clearedDays });
-    }
   };
 
   const handleRandomizeArabPlan = () => {
@@ -207,20 +200,9 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
 
           <button
             onClick={handleClearWeek}
-            className="p-2 rounded-xl text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40"
-            title={isArabic ? 'تفريغ الجدول' : 'Clear Plan'}
+            className="rounded-xl border border-rose-200 px-3 py-2 text-xs font-bold text-rose-700 hover:bg-rose-50 dark:border-rose-900 dark:text-rose-300 dark:hover:bg-rose-950/40"
           >
-            <Trash2 className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={handleResetSchedule}
-            aria-label={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
-            className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-rose-700 hover:bg-rose-50 dark:text-rose-300 dark:hover:bg-rose-950/40"
-            title={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
-          >
-            <RefreshCw className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">{isArabic ? 'إعادة ضبط الجداول' : 'Reset schedules'}</span>
+            <span>{isArabic ? 'مسح هذا الأسبوع' : 'Clear this week'}</span>
           </button>
         </div>
       </div>

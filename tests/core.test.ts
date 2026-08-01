@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { generateGroceryListFromPlan, normalizeUnit } from '../src/utils/aggregator';
 import { DIETARY_TAGS, GroceryItem, MonthlyPlan, PantryItem, Recipe, WeeklyPlan } from '../src/types';
-import { clearWajbaScheduleData, createCurrentWajbaBackup, createEmptyMonthlyPlan, createEmptyWeeklyPlan, createWajbaBackup, deleteCustomRecipe, detectStorageIssues, loadCustomRecipes, parseWajbaBackup, replaceWajbaState, saveCustomRecipe, saveMonthlyPlan, saveWeeklyPlan, STORAGE_KEYS } from '../src/utils/storage';
+import { clearMonthlyAssignmentsForDates, clearPersistedMonthlyAssignmentsForDates, clearWeeklyPlanAssignments, createCurrentWajbaBackup, createEmptyMonthlyPlan, createEmptyWeeklyPlan, createWajbaBackup, deleteCustomRecipe, detectStorageIssues, getCurrentWeekDateKeys, loadCustomRecipes, parseWajbaBackup, replaceWajbaState, saveCustomRecipe, saveMonthlyPlan, saveWeeklyPlan, STORAGE_KEYS } from '../src/utils/storage';
 import { filterRecipesByDietaryTag } from '../src/utils/recipes';
 
 const recipe: Recipe = {
@@ -196,22 +196,45 @@ test('custom recipe persistence edits by stable ID and deletes safely', () => {
   assert.deepEqual(loadCustomRecipes(), []);
 });
 
-test('schedule defaults are empty and reset clears weekly and monthly plans', () => {
+test('schedule clearing is scoped to the current week and preserves unrelated monthly entries', () => {
   globalThis.localStorage = new MemoryStorage();
   const weeklyPlan = createEmptyWeeklyPlan();
   const monthlyPlan = createEmptyMonthlyPlan(2026, 7);
+  const otherMonthlyPlan = createEmptyMonthlyPlan(2026, 8);
+  const weekDateKeys = getCurrentWeekDateKeys(new Date(2026, 7, 5));
 
   assert.equal(weeklyPlan.days.every((day) => Object.keys(day.slots).length === 0), true);
   assert.equal(Object.values(monthlyPlan.days).every((day) => Object.keys(day.slots).length === 0), true);
+  assert.deepEqual(weekDateKeys, ['2026-08-01', '2026-08-02', '2026-08-03', '2026-08-04', '2026-08-05', '2026-08-06', '2026-08-07']);
+
+  monthlyPlan.days['2026-08-02'].slots = { lunch: { recipeId: recipe.id, servings: 2 } };
+  monthlyPlan.days['2026-08-10'].slots = { dinner: { recipeId: recipe.id, servings: 2 } };
+  otherMonthlyPlan.days['2026-09-01'].slots = { breakfast: { recipeId: recipe.id, servings: 2 } };
 
   saveWeeklyPlan(weeklyPlan);
   saveMonthlyPlan(monthlyPlan);
-  saveMonthlyPlan(createEmptyMonthlyPlan(2026, 8));
-  clearWajbaScheduleData();
+  saveMonthlyPlan(otherMonthlyPlan);
+  clearPersistedMonthlyAssignmentsForDates(weekDateKeys);
 
-  assert.equal(localStorage.getItem(STORAGE_KEYS.WEEKLY_PLAN), null);
-  assert.equal(localStorage.getItem(`${STORAGE_KEYS.MONTHLY_PLAN}_2026_7`), null);
-  assert.equal(localStorage.getItem(`${STORAGE_KEYS.MONTHLY_PLAN}_2026_8`), null);
+  const clearedMonthlyPlan = JSON.parse(localStorage.getItem(`${STORAGE_KEYS.MONTHLY_PLAN}_2026_7`) || '{}') as MonthlyPlan;
+  const preservedMonthlyPlan = JSON.parse(localStorage.getItem(`${STORAGE_KEYS.MONTHLY_PLAN}_2026_8`) || '{}') as MonthlyPlan;
+  assert.deepEqual(clearedMonthlyPlan.days['2026-08-02']?.slots, {});
+  assert.equal(clearedMonthlyPlan.days['2026-08-10']?.slots.dinner?.recipeId, recipe.id);
+  assert.equal(preservedMonthlyPlan.days['2026-09-01']?.slots.breakfast?.recipeId, recipe.id);
+  assert.equal(clearWeeklyPlanAssignments({ ...weeklyPlan, days: [{ ...weeklyPlan.days[0], slots: { lunch: { recipeId: recipe.id, servings: 2 } } }] }).days[0]?.slots.lunch, undefined);
+  assert.deepEqual(clearMonthlyAssignmentsForDates(monthlyPlan, ['2026-08-10']).days['2026-08-10']?.slots, {});
+});
+
+test('current week calculation crosses month boundaries using Saturday start', () => {
+  assert.deepEqual(getCurrentWeekDateKeys(new Date(2026, 7, 30)), [
+    '2026-08-29',
+    '2026-08-30',
+    '2026-08-31',
+    '2026-09-01',
+    '2026-09-02',
+    '2026-09-03',
+    '2026-09-04',
+  ]);
 });
 
 test('storage fallback reports corrupted JSON without throwing', () => {
