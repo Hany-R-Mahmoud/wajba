@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { generateGroceryListFromPlan, normalizeUnit } from '../src/utils/aggregator';
 import { DIETARY_TAGS, GroceryItem, MonthlyPlan, PantryItem, Recipe, WeeklyPlan } from '../src/types';
-import { createCurrentWajbaBackup, createWajbaBackup, deleteCustomRecipe, detectStorageIssues, loadCustomRecipes, parseWajbaBackup, replaceWajbaState, saveCustomRecipe, STORAGE_KEYS } from '../src/utils/storage';
+import { clearWajbaScheduleData, createCurrentWajbaBackup, createEmptyMonthlyPlan, createEmptyWeeklyPlan, createWajbaBackup, deleteCustomRecipe, detectStorageIssues, loadCustomRecipes, parseWajbaBackup, replaceWajbaState, saveCustomRecipe, saveMonthlyPlan, saveWeeklyPlan, STORAGE_KEYS } from '../src/utils/storage';
 import { filterRecipesByDietaryTag } from '../src/utils/recipes';
 
 const recipe: Recipe = {
@@ -194,6 +194,24 @@ test('custom recipe persistence edits by stable ID and deletes safely', () => {
   assert.equal(loadCustomRecipes()[0]?.titleEn, 'Edited Test Recipe');
   deleteCustomRecipe(recipe.id);
   assert.deepEqual(loadCustomRecipes(), []);
+});
+
+test('schedule defaults are empty and reset clears weekly and monthly plans', () => {
+  globalThis.localStorage = new MemoryStorage();
+  const weeklyPlan = createEmptyWeeklyPlan();
+  const monthlyPlan = createEmptyMonthlyPlan(2026, 7);
+
+  assert.equal(weeklyPlan.days.every((day) => Object.keys(day.slots).length === 0), true);
+  assert.equal(Object.values(monthlyPlan.days).every((day) => Object.keys(day.slots).length === 0), true);
+
+  saveWeeklyPlan(weeklyPlan);
+  saveMonthlyPlan(monthlyPlan);
+  saveMonthlyPlan(createEmptyMonthlyPlan(2026, 8));
+  clearWajbaScheduleData();
+
+  assert.equal(localStorage.getItem(STORAGE_KEYS.WEEKLY_PLAN), null);
+  assert.equal(localStorage.getItem(`${STORAGE_KEYS.MONTHLY_PLAN}_2026_7`), null);
+  assert.equal(localStorage.getItem(`${STORAGE_KEYS.MONTHLY_PLAN}_2026_8`), null);
 });
 
 test('storage fallback reports corrupted JSON without throwing', () => {

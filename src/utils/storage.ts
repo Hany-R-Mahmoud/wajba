@@ -9,7 +9,6 @@ import {
   WajbaBackup,
   WajbaBackupState,
 } from '../types';
-import { INITIAL_RECIPES } from '../data/recipes';
 
 export const STORAGE_KEYS = {
   LANGUAGE: 'wajba_language',
@@ -28,51 +27,25 @@ export const STORAGE_KEYS = {
 
 const MONTHLY_PLAN_PREFIX = `${STORAGE_KEYS.MONTHLY_PLAN}_`;
 
-export const DEFAULT_WEEKLY_PLAN: WeeklyPlan = {
-  id: 'current_plan',
-  name: 'جدول العائلة الأسبوعي',
-  isRamadanMode: false,
-  updatedAt: new Date().toISOString(),
-  days: [
-    { dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: {} },
-    { dayId: 'sun', dayNameAr: 'الأحد', dayNameEn: 'Sunday', slots: {} },
-    { dayId: 'mon', dayNameAr: 'الإثنين', dayNameEn: 'Monday', slots: {} },
-    { dayId: 'tue', dayNameAr: 'الثلاثاء', dayNameEn: 'Tuesday', slots: {} },
-    { dayId: 'wed', dayNameAr: 'الأربعاء', dayNameEn: 'Wednesday', slots: {} },
-    { dayId: 'thu', dayNameAr: 'الخميس', dayNameEn: 'Thursday', slots: {} },
-    { dayId: 'fri', dayNameAr: 'الجمعة', dayNameEn: 'Friday', slots: {} },
-  ],
-};
-
-// Seed initial meal plan with iconic Egyptian/Arabic dishes so the user gets a vibrant filled experience immediately
-export function getInitialWeeklyPlanWithSeed(): WeeklyPlan {
-  const plan: WeeklyPlan = JSON.parse(JSON.stringify(DEFAULT_WEEKLY_PLAN));
-  // Sat: Ful Medames & Ta'ameya breakfast, Macarona Beamel lunch
-  plan.days[0].slots.breakfast = { recipeId: 'egypt-taameya-ful', servings: 4 };
-  plan.days[0].slots.lunch = { recipeId: 'egypt-macarona-beamel', servings: 6 };
-
-  // Sun: Shakshuka breakfast, Macarona Beamel dinner
-  plan.days[1].slots.breakfast = { recipeId: 'arabic-shakshuka', servings: 4 };
-  plan.days[1].slots.dinner = { recipeId: 'egypt-macarona-beamel', servings: 8 };
-
-  // Mon: Alexandrian Liver dinner
-  plan.days[2].slots.dinner = { recipeId: 'egypt-alex-liver', servings: 4 };
-
-  // Tue: Hawawshi lunch
-  plan.days[3].slots.lunch = { recipeId: 'egypt-hawawshi', servings: 4 };
-
-  // Wed: Molokhia lunch
-  plan.days[4].slots.lunch = { recipeId: 'egypt-molokhia', servings: 4 };
-
-  // Thu: Kabsa dinner, Om Ali dessert
-  plan.days[5].slots.dinner = { recipeId: 'gulf-kabsa', servings: 6 };
-  plan.days[5].slots.dessert = { recipeId: 'egypt-om-ali', servings: 6 };
-
-  // Fri: Fatteh lunch
-  plan.days[6].slots.lunch = { recipeId: 'egypt-fatteh', servings: 6 };
-
-  return plan;
+export function createEmptyWeeklyPlan(): WeeklyPlan {
+  return {
+    id: 'current_plan',
+    name: 'جدول العائلة الأسبوعي',
+    isRamadanMode: false,
+    updatedAt: new Date().toISOString(),
+    days: [
+      { dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: {} },
+      { dayId: 'sun', dayNameAr: 'الأحد', dayNameEn: 'Sunday', slots: {} },
+      { dayId: 'mon', dayNameAr: 'الإثنين', dayNameEn: 'Monday', slots: {} },
+      { dayId: 'tue', dayNameAr: 'الثلاثاء', dayNameEn: 'Tuesday', slots: {} },
+      { dayId: 'wed', dayNameAr: 'الأربعاء', dayNameEn: 'Wednesday', slots: {} },
+      { dayId: 'thu', dayNameAr: 'الخميس', dayNameEn: 'Thursday', slots: {} },
+      { dayId: 'fri', dayNameAr: 'الجمعة', dayNameEn: 'Friday', slots: {} },
+    ],
+  };
 }
+
+export const DEFAULT_WEEKLY_PLAN: WeeklyPlan = createEmptyWeeklyPlan();
 
 export function loadStoredLanguage(): 'ar' | 'en' {
   const saved = localStorage.getItem(STORAGE_KEYS.LANGUAGE);
@@ -211,9 +184,9 @@ export function loadWeeklyPlan(): WeeklyPlan {
   } catch {
     // ignore
   }
-  const initialSeeded = getInitialWeeklyPlanWithSeed();
-  saveWeeklyPlan(initialSeeded);
-  return initialSeeded;
+  const initial = createEmptyWeeklyPlan();
+  saveWeeklyPlan(initial);
+  return initial;
 }
 
 export function saveWeeklyPlan(plan: WeeklyPlan) {
@@ -290,58 +263,16 @@ export function savePantryItems(items: PantryItem[]) {
   localStorage.setItem(STORAGE_KEYS.PANTRY_ITEMS, JSON.stringify(items));
 }
 
-export function getInitialMonthlyPlanWithSeed(year: number, month: number): MonthlyPlan {
+export function createEmptyMonthlyPlan(year: number, month: number): MonthlyPlan {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
   const days: MonthlyPlan['days'] = {};
-
-  // Sample recipe IDs to distribute nicely
-  const sampleRecipes = [
-    'egypt-macarona-beamel',
-    'egypt-fatteh',
-    'egypt-molokhia',
-    'arabic-shakshuka',
-    'egypt-hawawshi',
-    'gulf-kabsa',
-    'levant-mansaf',
-    'egypt-alex-liver',
-    'egypt-taameya-ful',
-    'egypt-om-ali',
-    'levant-fattoush-tabbouleh',
-  ];
 
   for (let d = 1; d <= daysInMonth; d++) {
     const monthStr = String(month + 1).padStart(2, '0');
     const dayStr = String(d).padStart(2, '0');
     const dateKey = `${year}-${monthStr}-${dayStr}`;
 
-    const dateObj = new Date(year, month, d);
-    const dayOfWeek = dateObj.getDay(); // 0=Sun, 1=Mon, ..., 5=Fri, 6=Sat
-
-    const slots: MonthlyPlan['days'][string]['slots'] = {};
-
-    // Friday = Fatteh or Kabsa
-    if (dayOfWeek === 5) {
-      slots.lunch = { recipeId: d % 2 === 0 ? 'egypt-fatteh' : 'gulf-kabsa', servings: 6 };
-    }
-    // Saturday = Macarona Beamel or Alexandria Liver
-    else if (dayOfWeek === 6) {
-      slots.lunch = { recipeId: d % 2 === 0 ? 'egypt-macarona-beamel' : 'egypt-alex-liver', servings: 4 };
-    }
-    // Sunday = Shakshuka breakfast, Macarona Beamel dinner
-    else if (dayOfWeek === 0) {
-      slots.breakfast = { recipeId: 'arabic-shakshuka', servings: 4 };
-      if (d % 3 === 0) slots.dinner = { recipeId: 'egypt-macarona-beamel', servings: 6 };
-    }
-    // Tuesday = Molokhia
-    else if (dayOfWeek === 2) {
-      slots.lunch = { recipeId: 'egypt-molokhia', servings: 4 };
-    }
-    // Thursday = Hawawshi or Mansaf
-    else if (dayOfWeek === 4) {
-      slots.dinner = { recipeId: d % 2 === 0 ? 'egypt-hawawshi' : 'levant-mansaf', servings: 4 };
-    }
-
-    days[dateKey] = { slots };
+    days[dateKey] = { slots: {} };
   }
 
   return {
@@ -369,7 +300,7 @@ export function loadMonthlyPlan(year?: number, month?: number): MonthlyPlan {
     // ignore
   }
 
-  const initial = getInitialMonthlyPlanWithSeed(y, m);
+  const initial = createEmptyMonthlyPlan(y, m);
   localStorage.setItem(key, JSON.stringify(initial));
   return initial;
 }
@@ -378,6 +309,16 @@ export function saveMonthlyPlan(plan: MonthlyPlan) {
   plan.updatedAt = new Date().toISOString();
   const key = `${STORAGE_KEYS.MONTHLY_PLAN}_${plan.year}_${plan.month}`;
   localStorage.setItem(key, JSON.stringify(plan));
+}
+
+export function clearWajbaScheduleData() {
+  localStorage.removeItem(STORAGE_KEYS.WEEKLY_PLAN);
+  localStorage.removeItem(STORAGE_KEYS.MONTHLY_PLAN);
+
+  for (let index = localStorage.length - 1; index >= 0; index -= 1) {
+    const key = localStorage.key(index);
+    if (key?.startsWith(MONTHLY_PLAN_PREFIX)) localStorage.removeItem(key);
+  }
 }
 
 export function loadAllMonthlyPlans(): MonthlyPlan[] {

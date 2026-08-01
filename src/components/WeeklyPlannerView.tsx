@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DayPlanner, Language, MealSlot, Recipe, WeeklyPlan } from '../types';
 import { Calendar, Moon, Sun, Trash2, Plus, Sparkles, Share2, ShoppingBag, Utensils, RefreshCw } from 'lucide-react';
+import { MealDisplayControls, MealDisplayOption } from './MealDisplayControls';
 
 interface WeeklyPlannerViewProps {
   plan: WeeklyPlan;
@@ -11,6 +12,7 @@ interface WeeklyPlannerViewProps {
   onOpenRecipeDetail: (recipe: Recipe) => void;
   onOpenFamilySync: () => void;
   onOpenCreateRecipeModal?: () => void;
+  onResetSchedule: () => void;
 }
 
 export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
@@ -22,17 +24,20 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
   onOpenRecipeDetail,
   onOpenFamilySync,
   onOpenCreateRecipeModal,
+  onResetSchedule,
 }) => {
   const isArabic = language === 'ar';
 
   const [assignModalOpen, setAssignModalOpen] = useState(false);
   const [activeDayId, setActiveDayId] = useState<string>('sat');
   const [activeSlotKey, setActiveSlotKey] = useState<MealSlot>('lunch');
+  const [showAllMeals, setShowAllMeals] = useState(false);
+  const [selectedMealSlots, setSelectedMealSlots] = useState<MealSlot[]>([plan.isRamadanMode ? 'iftar' : 'lunch']);
 
   const recipeMap = new Map<string, Recipe>();
   recipes.forEach((r) => recipeMap.set(r.id, r));
 
-  const slotsToDisplay: { key: MealSlot; labelAr: string; labelEn: string; icon: string }[] = plan.isRamadanMode
+  const slotsToDisplay: MealDisplayOption[] = plan.isRamadanMode
     ? [
         { key: 'suhoor', labelAr: 'وجبة السحور المبارك', labelEn: 'Suhoor Meal', icon: '🌙' },
         { key: 'iftar', labelAr: 'وجبة الإفطار الرئيسي', labelEn: 'Iftar Feast', icon: '🌅' },
@@ -44,11 +49,31 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
         { key: 'dinner', labelAr: 'العشاء', labelEn: 'Dinner', icon: '🥪' },
       ];
 
+  const visibleSlots = showAllMeals
+    ? slotsToDisplay
+    : slotsToDisplay.filter((slotInfo) => selectedMealSlots.includes(slotInfo.key));
+
+  const handleToggleMealSlot = (slot: MealSlot) => {
+    setSelectedMealSlots((current) => {
+      if (current.includes(slot)) {
+        return current.length === 1 ? current : current.filter((selectedSlot) => selectedSlot !== slot);
+      }
+      return [...current, slot];
+    });
+  };
+
+  const handleResetSchedule = () => {
+    setAssignModalOpen(false);
+    onResetSchedule();
+  };
+
   const toggleRamadanMode = () => {
+    const nextIsRamadanMode = !plan.isRamadanMode;
     onUpdatePlan({
       ...plan,
-      isRamadanMode: !plan.isRamadanMode,
+      isRamadanMode: nextIsRamadanMode,
     });
+    setSelectedMealSlots([nextIsRamadanMode ? 'iftar' : 'lunch']);
   };
 
   const handleOpenAssign = (dayId: string, slotKey: MealSlot) => {
@@ -187,8 +212,27 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
           >
             <Trash2 className="w-4 h-4" />
           </button>
+
+          <button
+            onClick={handleResetSchedule}
+            aria-label={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
+            className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-rose-700 hover:bg-rose-50 dark:text-rose-300 dark:hover:bg-rose-950/40"
+            title={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
+          >
+            <RefreshCw className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{isArabic ? 'إعادة ضبط الجداول' : 'Reset schedules'}</span>
+          </button>
         </div>
       </div>
+
+      <MealDisplayControls
+        language={language}
+        options={slotsToDisplay}
+        showAllMeals={showAllMeals}
+        selectedMealSlots={selectedMealSlots}
+        onShowAllMealsChange={setShowAllMeals}
+        onToggleMealSlot={handleToggleMealSlot}
+      />
 
       {/* 7-Day Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
@@ -206,7 +250,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
 
             {/* Slots */}
             <div className="p-2.5 flex-1 space-y-2.5">
-              {slotsToDisplay.map((slotInfo) => {
+              {visibleSlots.map((slotInfo) => {
                 const assignment = day.slots[slotInfo.key];
                 const recipe = assignment ? recipeMap.get(assignment.recipeId) : null;
 

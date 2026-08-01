@@ -28,6 +28,9 @@ import {
   deleteCustomRecipe,
   replaceWajbaState,
   clearWajbaUserData,
+  clearWajbaScheduleData,
+  createEmptyMonthlyPlan,
+  createEmptyWeeklyPlan,
   detectStorageIssues,
 } from './utils/storage';
 
@@ -197,6 +200,20 @@ export default function App() {
   const handleChangeMonth = (year: number, month: number) => {
     const loaded = loadMonthlyPlan(year, month);
     setMonthlyPlan(loaded);
+  };
+
+  const handleResetSchedule = () => {
+    if (!window.confirm(language === 'ar' ? 'هل أنت متأكد من إعادة ضبط كل الجداول؟ سيتم حذف الوجبات الأسبوعية والشهرية.' : 'Reset all schedules? This will remove all weekly and monthly meal assignments.')) {
+      return;
+    }
+
+    clearWajbaScheduleData();
+    const nextWeeklyPlan = createEmptyWeeklyPlan();
+    const nextMonthlyPlan = createEmptyMonthlyPlan(monthlyPlan.year, monthlyPlan.month);
+    saveWeeklyPlan(nextWeeklyPlan);
+    saveMonthlyPlan(nextMonthlyPlan);
+    setWeeklyPlan(nextWeeklyPlan);
+    setMonthlyPlan(nextMonthlyPlan);
   };
 
   const handleToggleCheckGroceryItem = (itemId: string) => {
@@ -471,6 +488,7 @@ export default function App() {
                 onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
+                onResetSchedule={handleResetSchedule}
               />
             ) : (
               <MonthlyCalendarView
@@ -483,6 +501,7 @@ export default function App() {
                 onOpenFamilySync={() => setFamilySyncModalOpen(true)}
                 onChangeMonth={handleChangeMonth}
                 onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
+                onResetSchedule={handleResetSchedule}
               />
             )}
           </div>

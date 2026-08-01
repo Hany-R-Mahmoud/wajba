@@ -15,7 +15,9 @@ import {
   Utensils,
   Clock,
   Eye,
+  RefreshCw,
 } from 'lucide-react';
+import { MealDisplayControls, MealDisplayOption } from './MealDisplayControls';
 
 interface MonthlyCalendarViewProps {
   monthlyPlan: MonthlyPlan;
@@ -27,6 +29,7 @@ interface MonthlyCalendarViewProps {
   onOpenFamilySync: () => void;
   onChangeMonth: (year: number, month: number) => void;
   onOpenCreateRecipeModal?: () => void;
+  onResetSchedule: () => void;
 }
 
 const MONTH_NAMES = {
@@ -75,16 +78,19 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
   onOpenFamilySync,
   onChangeMonth,
   onOpenCreateRecipeModal,
+  onResetSchedule,
 }) => {
   const isArabic = language === 'ar';
 
   const [selectedDateKey, setSelectedDateKey] = useState<string | null>(null);
   const [assignModalSlot, setAssignModalSlot] = useState<MealSlot | null>(null);
+  const [showAllMeals, setShowAllMeals] = useState(false);
+  const [selectedMealSlots, setSelectedMealSlots] = useState<MealSlot[]>([monthlyPlan.isRamadanMode ? 'iftar' : 'lunch']);
 
   const recipeMap = new Map<string, Recipe>();
   recipes.forEach((r) => recipeMap.set(r.id, r));
 
-  const slotsToDisplay: { key: MealSlot; labelAr: string; labelEn: string; icon: string }[] =
+  const slotsToDisplay: MealDisplayOption[] =
     monthlyPlan.isRamadanMode
       ? [
           { key: 'suhoor', labelAr: 'وجبة السحور المبارك', labelEn: 'Suhoor Meal', icon: '🌙' },
@@ -96,6 +102,25 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
           { key: 'lunch', labelAr: 'الغداء الرئيسي', labelEn: 'Main Lunch', icon: '🍲' },
           { key: 'dinner', labelAr: 'العشاء', labelEn: 'Dinner', icon: '🥪' },
         ];
+
+  const visibleSlots = showAllMeals
+    ? slotsToDisplay
+    : slotsToDisplay.filter((slotInfo) => selectedMealSlots.includes(slotInfo.key));
+
+  const handleToggleMealSlot = (slot: MealSlot) => {
+    setSelectedMealSlots((current) => {
+      if (current.includes(slot)) {
+        return current.length === 1 ? current : current.filter((selectedSlot) => selectedSlot !== slot);
+      }
+      return [...current, slot];
+    });
+  };
+
+  const handleResetSchedule = () => {
+    setSelectedDateKey(null);
+    setAssignModalSlot(null);
+    onResetSchedule();
+  };
 
   const year = monthlyPlan.year;
   const month = monthlyPlan.month;
@@ -131,10 +156,12 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
   };
 
   const toggleRamadanMode = () => {
+    const nextIsRamadanMode = !monthlyPlan.isRamadanMode;
     onUpdateMonthlyPlan({
       ...monthlyPlan,
-      isRamadanMode: !monthlyPlan.isRamadanMode,
+      isRamadanMode: nextIsRamadanMode,
     });
+    setSelectedMealSlots([nextIsRamadanMode ? 'iftar' : 'lunch']);
   };
 
   // Calendar matrix calculation
@@ -405,9 +432,28 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
             >
               <Trash2 className="w-4 h-4" />
             </button>
+
+            <button
+              onClick={handleResetSchedule}
+              aria-label={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
+              className="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-rose-700 hover:bg-rose-50 dark:text-rose-300 dark:hover:bg-rose-950/40"
+              title={isArabic ? 'إعادة ضبط كل الجداول' : 'Reset all schedules'}
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{isArabic ? 'إعادة ضبط الجداول' : 'Reset schedules'}</span>
+            </button>
           </div>
         </div>
       </div>
+
+      <MealDisplayControls
+        language={language}
+        options={slotsToDisplay}
+        showAllMeals={showAllMeals}
+        selectedMealSlots={selectedMealSlots}
+        onShowAllMealsChange={setShowAllMeals}
+        onToggleMealSlot={handleToggleMealSlot}
+      />
 
       {/* Calendar Grid Container */}
       <div className="bg-white dark:bg-[#162032] rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-sm overflow-hidden p-3 sm:p-4">
@@ -427,7 +473,9 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
         <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
           {calendarCells.map((cell) => {
             const dayData = monthlyPlan.days[cell.dateKey];
-            const slotCount = dayData?.slots ? Object.keys(dayData.slots).length : 0;
+            const slotCount = dayData?.slots
+              ? visibleSlots.filter((slotInfo) => Boolean(dayData.slots[slotInfo.key])).length
+              : 0;
 
             return (
               <div
@@ -467,7 +515,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                 {/* Day Meals List Summary */}
                 <div className="space-y-1 my-1 flex-1 overflow-hidden">
                   {dayData?.slots &&
-                    slotsToDisplay.map((slotInfo) => {
+                    visibleSlots.map((slotInfo) => {
                       const assignment = dayData.slots[slotInfo.key];
                       if (!assignment) return null;
                       const recipe = recipeMap.get(assignment.recipeId);
