@@ -35,6 +35,29 @@ function seoIndexTags() {
 
   const siteUrl = parsedSiteUrl.toString().replace(/\/$/, '');
   const htmlSiteUrl = siteUrl.replaceAll('&', '&amp;');
+  const homepageSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        name: 'Wajba',
+        url: `${siteUrl}/`,
+        description: 'خطط لوجبات عائلتك، واكتشف وصفات عربية أصيلة، ونظم قائمة التسوق الأسبوعية بسهولة.',
+        inLanguage: ['ar', 'en'],
+      },
+      {
+        '@type': 'WebApplication',
+        '@id': `${siteUrl}/#application`,
+        name: 'Wajba',
+        url: `${siteUrl}/`,
+        description: 'خطط لوجبات عائلتك، واكتشف وصفات عربية أصيلة، ونظم قائمة التسوق الأسبوعية بسهولة.',
+        applicationCategory: 'LifestyleApplication',
+        operatingSystem: 'Web',
+        inLanguage: ['ar', 'en'],
+      },
+    ],
+  }).replace(/</g, '\\u003c');
 
   return {
     name: 'wajba-seo-index-tags',
@@ -42,7 +65,7 @@ function seoIndexTags() {
       const withAbsoluteImage = html.replaceAll('content="/wajba-logo.png"', `content="${htmlSiteUrl}/wajba-logo.png"`);
       return withAbsoluteImage.replace(
         '</head>',
-        `    <link rel="canonical" href="${htmlSiteUrl}/" />\n    <meta property="og:url" content="${htmlSiteUrl}/" />\n</head>`,
+        `    <link rel="canonical" href="${htmlSiteUrl}/" />\n    <meta property="og:url" content="${htmlSiteUrl}/" />\n    <script type="application/ld+json">${homepageSchema}</script>\n</head>`,
       );
     },
   };
