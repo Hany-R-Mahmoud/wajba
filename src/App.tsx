@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { ActiveTimer, GroceryItem, Language, MealSlot, MonthlyPlan, PantryItem, Recipe, WeeklyPlan, WajbaBackup } from './types';
-import StandaloneVisitorCounter from './components/StandaloneVisitorCounter';
 import { INITIAL_RECIPES } from './data/recipes';
 import { generateGroceryListFromPlan } from './utils/aggregator';
 import {
@@ -605,8 +604,6 @@ export default function App() {
         language={language}
         onUpdateTimers={handleUpdateTimers}
       />
-
-      <StandaloneVisitorCounter />
 
       {/* Recipe Detail View Modal */}
       {selectedDetailRecipe && (

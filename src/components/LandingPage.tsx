@@ -19,6 +19,7 @@ import {
 import ThreeDPhotoCarousel from './ui/3d-carousel';
 import { WajbaLogo } from './WajbaLogo';
 import {PwaInstallMenuAction} from './PwaInstallMenuAction';
+import StandaloneVisitorCounter from './StandaloneVisitorCounter';
 
 interface LandingPageProps {
   language: Language;
@@ -439,6 +440,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               : '© 2026 Wajba • Enterprise MENA Culinary & Grocery Planner'}
           </p>
         </div>
+        <StandaloneVisitorCounter />
       </footer>
     </div>
   );
