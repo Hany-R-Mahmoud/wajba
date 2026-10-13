@@ -155,7 +155,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <div className="bg-[#f8f7f4] dark:bg-[#212e47] rounded-2xl p-6 border border-[#e2e0d8] dark:border-[#384966] shadow-xl space-y-4">
                 <div className="relative h-56 rounded-xl overflow-hidden bg-stone-900">
                   <img
-                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80&w=800"
+                    src="/recipe-images/wajba-egypt-macarona-beamel.webp"
                     alt="Macarona Bechamel"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = "/recipe-placeholder.svg";
