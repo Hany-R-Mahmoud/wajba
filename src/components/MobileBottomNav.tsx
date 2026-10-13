@@ -12,6 +12,7 @@ import {
   Warehouse,
 } from 'lucide-react';
 import { Language } from '../types';
+import { FEATURE_FLAGS } from '../config/features';
 
 export type NavigationTab =
   | 'recipes'
@@ -36,7 +37,9 @@ const primaryItems = [
 ];
 
 const secondaryItems = [
-  { id: 'leaderboard' as const, labelAr: 'أفضل الوجبات', labelEn: 'Top 10 Meals', icon: Trophy },
+  ...(FEATURE_FLAGS.leaderboard
+    ? [{ id: 'leaderboard' as const, labelAr: 'أفضل الوجبات', labelEn: 'Top 10 Meals', icon: Trophy }]
+    : []),
   { id: 'family' as const, labelAr: 'مشاركة العائلة', labelEn: 'Family Sync', icon: Users },
   { id: 'settings' as const, labelAr: 'الإعدادات', labelEn: 'Settings', icon: Settings },
 ];

@@ -2,7 +2,7 @@
   "_meta": {
     "title": "Wajba Culinary Architecture - Meals & Recipes Database",
     "exportedAt": "2026-07-31T13:46:34.458110Z",
-    "totalMeals": 65
+    "totalMeals": 100
   },
   "schema": {
     "description": "Expected structure and typescript interfaces for Wajba recipes.",
@@ -64,9 +64,9 @@
         "وجبة مشبعة",
         "Ramadan Favorite"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20food%20Koshary.jpg?width=1000",
+      "image": "/recipe-images/wajba-egypt-koshary.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20food%20Koshary.jpg?width=1000"
+        "/recipe-images/wajba-egypt-koshary.webp"
       ],
       "storyAr": "يعود تاريخ الكشري المصري إلى أواخر القرن التاسع عشر، وحظي بشعبية عارمة في أحياء القاهرة التاريخية كأكبر طبق مشبع ولذيذ يجمع مكونات بسيطة غنية بالبروتين النباتي.",
       "storyEn": "Originating in late 19th-century Cairo, Koshary became Egypt's iconic street dish combining budget-friendly staples into a deeply satisfying, protein-rich feast.",
@@ -230,9 +230,9 @@
         "لحوم",
         "Ramadan Classic"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20Fattah.jpg?width=1000",
+      "image": "/recipe-images/wajba-egypt-fatteh.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20Fattah.jpg?width=1000"
+        "/recipe-images/wajba-egypt-fatteh.webp"
       ],
       "storyAr": "تعتبر الفتة المصرية من أقدم الأطباق التراثية التي ارتبطت بالبهجة، حيث تقدم دائماً في أول أيام عيد الأضحى والعزائم الرمضانية الفاخرة.",
       "storyEn": "Egyptian Fatteh is an ancient celebratory tradition served during Eid, Ramadan Iftars, and special family gatherings across Egypt.",
@@ -378,9 +378,9 @@
         "أرز",
         "Comfort Food"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Molokheya%20and%20rice%20with%20chiken%2C%20Egypt%202012.JPG?width=1000",
+      "image": "/recipe-images/wajba-egypt-molokhia.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Molokheya%20and%20rice%20with%20chiken%2C%20Egypt%202012.JPG?width=1000"
+        "/recipe-images/wajba-egypt-molokhia.webp"
       ],
       "storyAr": "تعد الملوخية طعام الفراعنة والملوك القدماء في مصر، وتشتهر في البيوت المصرية بـ \"شهقة الملوخية\" عند سكب طشة الثوم والكزبرة الساخنة.",
       "storyEn": "Dating back to ancient Pharaohs, Molokhia is synonymous with Egyptian family meals, famous for the traditional gasp (\"Shah'a\") made when pouring the hot garlic ta'shah.",
@@ -508,9 +508,9 @@
         "وجبات شارع",
         "Street Food"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20meatloaf.jpg?width=1000",
+      "image": "/recipe-images/wajba-egypt-hawawshi.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Egyptian%20meatloaf.jpg?width=1000"
+        "/recipe-images/wajba-egypt-hawawshi.webp"
       ],
       "storyAr": "ابتكر الأسطى \"حواوشي\" الجزار بالقاهرة في فترة السبعينات هذا الرغيف الشهير الذي غزا شوارع مصر بفضل طعمه المقرمش المتبل الرائع.",
       "storyEn": "Invented by a Cairene butcher named Hawawshi in the 1970s, this seasoned meat-stuffed crispy pita became Egypt's most popular street snack.",
@@ -625,9 +625,9 @@
         "نباتي",
         "Suhoor Essential"
       ],
-      "image": "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-taameya-ful.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-taameya-ful.webp"
       ],
       "storyAr": "تتميز الطعمية المصرية عن الفلافل الشامية باعتمدها الحصري على الفول المدشوش بدلاً من الحمص، مما يعطيها قواماً أفرغ وأكثر هشاشة ونكهة مصرية خالصة.",
       "storyEn": "Unlike Levantine chickpea falafel, Egyptian Ta'ameya uses split fava beans mixed with fresh herbs, yielding an extraordinarily light, airy green interior.",
@@ -738,9 +738,9 @@
         "حار",
         "Street Favorite"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Kebda_Iskandarani(_Alexandria_Liver)_sandowichs.jpg",
+      "image": "/recipe-images/wajba-egypt-alex-liver.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Kebda_Iskandarani(_Alexandria_Liver)_sandowichs.jpg"
+        "/recipe-images/wajba-egypt-alex-liver.webp"
       ],
       "storyAr": "سر الكبدة الإسكندراني الحقيقي هو عدم غسل الكبدة بالماء بل نقعها بالليمون والخل، والطهي السريع على نار شديدة جداً للاحتفاظ بالطراوة والنكهة.",
       "storyEn": "The real Alexandrian secret is flash-searing on roaring high heat for less than 7 minutes with abundant garlic and green chili peppers.",
@@ -853,9 +853,9 @@
         "فرن",
         "Comfort Legend"
       ],
-      "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-macarona-beamel.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-macarona-beamel.webp"
       ],
       "storyAr": "انتقلت صلصة البشاميل من المطبخ الأوروبي لتستقر في قلوب المصريين، حيث أضافوا إليها طابعهم الخاص باللحم المعصج المتبل والوجه الذهبي المقرمش.",
       "storyEn": "An Egyptian adaptation of European béchamel, baked to savory perfection with aromatic spices, becoming a indispensable staple of every Egyptian feast.",
@@ -984,9 +984,9 @@
         "أسماك",
         "أرز صيادية"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Sayadiyah_Fish.jpg",
+      "image": "/recipe-images/wajba-egypt-sayadieh.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Sayadiyah_Fish.jpg"
+        "/recipe-images/wajba-egypt-sayadieh.webp"
       ],
       "storyAr": "ابتكر صيادو الإسكندرية والسويس هذا الطبق العريق للاستفادة من البصل المكرمل لإعطاء لون ونكهة عميقة للأرز والسمك الطازج من البحر المتوسط.",
       "storyEn": "Pioneered by Mediterranean fishermen in Alexandria, using deeply caramelized dark onions to create an intense savory broth for fresh catch.",
@@ -1096,9 +1096,9 @@
         "خضروات",
         "Ramadan Feast"
       ],
-      "image": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-mahshi-meshkel.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-mahshi-meshkel.webp"
       ],
       "storyAr": "يعد المحشي رمز الكرم واللمة العائلية في مصر، وتحتاج خلطة المحشي المصرية إلى ضبط توازان بين الشبت والبقدونس والكزبرة مع التسبيكة المميزة.",
       "storyEn": "Mahshi brings Egyptian families together around big steaming trays, defined by the rich combination of dill, parsley, cilantro, and tomato sauce.",
@@ -1210,9 +1210,9 @@
         "قشطة",
         "Royal Dessert"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Om_Ali_Dessert.jpg",
+      "image": "/recipe-images/wajba-egypt-om-ali.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Om_Ali_Dessert.jpg"
+        "/recipe-images/wajba-egypt-om-ali.webp"
       ],
       "storyAr": "ترتبط أم علي بتاريخ مصر المملوكي العريق، وأصبحت الحلوى الرمضانية الأولى المفضلة لمذاقها الكريمي الغني الذي يذوب في الفم.",
       "storyEn": "Originating in Mamluk-era Cairo, Om Ali is the quintessential warm dessert for cold winter nights and Ramadan gatherings.",
@@ -1326,9 +1326,9 @@
         "ضأن",
         "Feast Icon"
       ],
-      "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-levant-mansaf.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-levant-mansaf.webp"
       ],
       "storyAr": "يعبر المنسف عن أسمى قيم الضيافة والكرم في الأردن والشام، ويطبخ بلبن الجميد الجاف المصنوع تقليدياً من حليب الغنم.",
       "storyEn": "Mansaf represents the peak of Jordanian honor and hospitality, uniquely defined by Jameed—sun-dried fermented sheep milk yogurt stone.",
@@ -1442,9 +1442,9 @@
         "بسمتي",
         "Gulf Feast"
       ],
-      "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-gulf-kabsa.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-gulf-kabsa.webp"
       ],
       "storyAr": "تتنوع بهارات الكبسة الخليجية لتشمل اللومي المجفف والقرفة والهيل والقرنفل، مما يعطي الأرز طعماً وريحة ملكية زكية.",
       "storyEn": "Saudi Kabsa gets its irresistible aroma from black dried lime (Loomi), cardamom pods, cinnamon bark, and cloves.",
@@ -1556,9 +1556,9 @@
         "سريع",
         "Skillet Classic"
       ],
-      "image": "https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-arabic-shakshuka.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-arabic-shakshuka.webp"
       ],
       "storyAr": "تعتبر الشكشوكة من أكثر الأطباق شعبية من المغرب إلى الخليج ومصر، وتتميز بسهولة تحضيرها وطعمها الغني المحبب للجميع.",
       "storyEn": "A universal Mediterranean favorite enjoyed from North Africa to Egypt and the Levant, perfect for breakfast or quick Suhoor meals.",
@@ -1674,9 +1674,9 @@
         "قشطة",
         "Ramadan Sweet"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Qatayef_with_honey_JO.jpg",
+      "image": "/recipe-images/wajba-ramadan-qatayef.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Qatayef_with_honey_JO.jpg"
+        "/recipe-images/wajba-ramadan-qatayef.webp"
       ],
       "storyAr": "تعتبر القطايف أقدم حلوى رمضانية ارتبطت بليالي الفاطميين والمماليك، وتصنع خصيصاً في شهر رمضان المبارك.",
       "storyEn": "Serving Qatayef after Ramadan Iftar has been a tradition since Fatimid Cairo, representing festive joy and family warmth.",
@@ -1778,9 +1778,9 @@
         "سندوتشات",
         "Street Icon"
       ],
-      "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-levant-beef-shawarma.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-levant-beef-shawarma.webp"
       ],
       "storyAr": "سر شاورما الشارع الشامي يكمن في إضافة رشة سماق للبصل ولية الضأن المذابة أثناء تشويح اللحم على نار عالية.",
       "storyEn": "The Levant street secrets: a generous sumac onion salad and flash-searing with a touch of rendered lamb fat.",
@@ -1885,9 +1885,9 @@
         "بسمتي",
         "Smoked Feast"
       ],
-      "image": "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-gulf-mandi-chicken.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-gulf-mandi-chicken.webp"
       ],
       "storyAr": "يعود المندي الأصيل إلى حضرموت باليمن، حيث يطهى تقليدياً في تنور حفري تحت الأرض ليمنح الدجاج والأرز طعماً مدخناً وفريداً لا يُنسى.",
       "storyEn": "Originating in Hadramout, Yemen, Mandi is traditionally slow-cooked underground in a tannour pit, locking in rich smoky juices.",
@@ -1998,9 +1998,9 @@
         "لحم ضأن",
         "Comfort Stew"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Beef%20Okra_Bamia.jpg?updatedAt=1784964071603",
+      "image": "/recipe-images/wajba-egypt-bamia-beef.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Beef%20Okra_Bamia.jpg?updatedAt=1784964071603"
+        "/recipe-images/wajba-egypt-bamia-beef.webp"
       ],
       "storyAr": "تعتبر البامية باللحم الضأن من أقدم وأعرق أطباق المطبخ المصري الريفي، حيث يمنحها الفخار نكهة دافئة لا تضاهى.",
       "storyEn": "A cornerstone of Egyptian countryside cooking, slow-baked in unglazed earthenware clay pots for incredible flavor density.",
@@ -2106,9 +2106,9 @@
         "زيت زيتون",
         "Heritage Dish"
       ],
-      "image": "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-levant-musakhan.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-levant-musakhan.webp"
       ],
       "storyAr": "طبق التراث الشامي والاحتفال بموسم عصر الزيتون في فلسطين، حيث يمتزج زيت الزيتون البكر مع البصل المكرمل والسماق الجبلي اليدوي.",
       "storyEn": "A celebration of the olive harvest in Palestine, marrying fresh-pressed olive oil with wild mountain sumac and wood-fired bread.",
@@ -2228,9 +2228,9 @@
         "خضار",
         "Couscous Feast"
       ],
-      "image": "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-maghreb-couscous-lamb.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-maghreb-couscous-lamb.webp"
       ],
       "storyAr": "يعتبر الكسكسي طبق الجمعة والأعياد السعيد في دول المغرب العربي، ويحضر بتبخير حبيبات السميد ثلاث مرات فوق المرق المعطر بالرأس الحانوت.",
       "storyEn": "The traditional Friday gathering centerpiece across North Africa, steamed three times over simmering meat broth for ethereal lightness.",
@@ -2339,9 +2339,9 @@
         "فرن",
         "Comfort Food"
       ],
-      "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-mesakaa.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-mesakaa.webp"
       ],
       "storyAr": "المسقعة المصرية طبق مصري أصيل يعشقه الجميع، وتتميز بعصاج اللحم المتبل بصلصة الثوم والخل والخلطة الكمونية.",
       "storyEn": "A beloved Egyptian classic featuring rich layers of pan-fried eggplant soaked in garlic tomato meat sauce.",
@@ -2445,9 +2445,9 @@
         "قشطة",
         "Sweet Icon"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese%20Kanafeh.jpg?width=1000",
+      "image": "/recipe-images/wajba-ramadan-kunafa-ashta.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese%20Kanafeh.jpg?width=1000"
+        "/recipe-images/wajba-ramadan-kunafa-ashta.webp"
       ],
       "storyAr": "ملكة الحلويات العربية الرمضانية، يعود أصلها لمدينة نابلس وتشتهر بلونها الذهبي وقوامها المقرمش المحشو بالقشطة الذائبة.",
       "storyEn": "The crown jewel of Middle Eastern sweet making, famous for its crisp buttery crust and silky warm cream center.",
@@ -2553,9 +2553,9 @@
         "صنوبر",
         "Levantine Classic"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Fried%20Kibbeh.jpg?updatedAt=1784964171694",
+      "image": "/recipe-images/wajba-levant-kibbeh-shami.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Fried%20Kibbeh.jpg?updatedAt=1784964171694"
+        "/recipe-images/wajba-levant-kibbeh-shami.webp"
       ],
       "storyAr": "تعتبر الكبة زين الموائد الشامية في رمضان والعزائم، وتتطلب مهارة عالية في تشكيل الأقراص الرقيقة جداً المحشوة باللحم والمكسرات.",
       "storyEn": "An iconic symbol of Levantine culinary craft, requiring delicate hand skills to shape wafer-thin crispy shells.",
@@ -2658,9 +2658,9 @@
         "جبن",
         "Iftar Appetizer"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Sambousek.JPG",
+      "image": "/recipe-images/wajba-ramadan-sambousak.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Sambousek.JPG"
+        "/recipe-images/wajba-ramadan-sambousak.webp"
       ],
       "storyAr": "لا تخلو سفرة إفطار رمضانية في العالم العربي من مقبلات السمبوسك المقرمشة التي تقدم فور آذان المغرب.",
       "storyEn": "An absolute non-negotiable starter across Arab Iftar tables, celebrated for its flaky golden shell.",
@@ -2754,9 +2754,9 @@
         "نباتي",
         "Fresh Salad"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Fattoush.JPG",
+      "image": "/recipe-images/wajba-levant-fattoush-tabbouleh.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Fattoush.JPG"
+        "/recipe-images/wajba-levant-fattoush-tabbouleh.webp"
       ],
       "storyAr": "السلطة الأولى على السفرة الرمضانية والشامية، تجمع انتعاش الأعشاب الخضراء مع حموضة السماق ودبس الرمان وقرمشة الخبز.",
       "storyEn": "The most famous refreshing salad of the Levant, bringing zesty pomegranate molasses and crispy pita together.",
@@ -2840,9 +2840,9 @@
         "شعبي",
         "Street Icon"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Mombar.jpeg",
+      "image": "/recipe-images/wajba-egypt-mombar.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Mombar.jpeg"
+        "/recipe-images/wajba-egypt-mombar.webp"
       ],
       "storyAr": "يعشق المصريون الممبار المقرمش المحمر بالسمن البلدي، ويعد من أشهر الأطباق الشعبية في أعياد الأضحى والعزائم.",
       "storyEn": "A revered Egyptian street delicacy, boiled in savory herb stock and pan-fried until golden crunchy.",
@@ -2950,9 +2950,9 @@
         "كفتة",
         "عزائم"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Koftet-el-hati.jpg",
+      "image": "/recipe-images/wajba-egypt-kofta-haty.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Koftet-el-hati.jpg"
+        "/recipe-images/wajba-egypt-kofta-haty.webp"
       ],
       "storyAr": "ترتبط كفتة الحاتي بمحلات الكباب الشعبية في القاهرة والإسكندرية، حيث تمنحها نار الفحم رائحتها المميزة.",
       "storyEn": "Kofta Haty is associated with Egypt's neighborhood kebab shops, where charcoal gives the skewers their characteristic smoky aroma.",
@@ -3067,9 +3067,9 @@
         "فريك",
         "عزائم"
       ],
-      "image": "https://images.unsplash.com/photo-1514944288352-fffac99f0bdf?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-hamam-mahshi.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1514944288352-fffac99f0bdf?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-hamam-mahshi.webp"
       ],
       "storyAr": "الحمام المحشي طبق احتفالي قديم في الريف والمدن المصرية ويقدم عادة في الولائم والمناسبات.",
       "storyEn": "Stuffed pigeon is a long-standing Egyptian celebration dish served at family feasts in both rural and urban communities.",
@@ -3184,9 +3184,9 @@
         "طاجن",
         "ريفي"
       ],
-      "image": "https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-roz-meammar.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-roz-meammar.webp"
       ],
       "storyAr": "يشتهر الأرز المعمر في قرى دلتا النيل ويخبز تقليدياً في طواجن فخار تحتفظ بالحرارة.",
       "storyEn": "Roz meammar is strongly associated with Nile Delta villages and is traditionally baked in heat-retaining clay casseroles.",
@@ -3301,9 +3301,9 @@
         "فول",
         "اقتصادي"
       ],
-      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-bessara.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-bessara.webp"
       ],
       "storyAr": "البصارة من أطباق البيوت المصرية الاقتصادية القديمة وتعتمد على الفول المدشوش والأعشاب المتاحة.",
       "storyEn": "Bessara is an old, economical Egyptian home dish built from split fava beans and abundant fresh herbs.",
@@ -3417,9 +3417,9 @@
         "ريفي",
         "مخبوزات"
       ],
-      "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-feteer-meshaltet.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-feteer-meshaltet.webp"
       ],
       "storyAr": "الفطير المشلتت رمز للضيافة الريفية المصرية، وتبنى طبقاته بفرد العجين وطيه مراراً بالسمن.",
       "storyEn": "Feteer meshaltet is a symbol of rural Egyptian hospitality, with layers built by repeatedly stretching and folding ghee-brushed dough.",
@@ -3534,9 +3534,9 @@
         "أرز باللبن",
         "بارد"
       ],
-      "image": "https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-roz-bel-laban.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-roz-bel-laban.webp"
       ],
       "storyAr": "الأرز باللبن حلوى منزلية ومحلّية واسعة الانتشار في مصر وتقدم ساخنة أو مبردة.",
       "storyEn": "Rice pudding is a widely loved Egyptian home and dairy-shop dessert, served either warm or thoroughly chilled.",
@@ -3651,9 +3651,9 @@
         "سميد",
         "رمضان"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Basboosa.jpg",
+      "image": "/recipe-images/wajba-egypt-basbousa.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Basboosa.jpg"
+        "/recipe-images/wajba-egypt-basbousa.webp"
       ],
       "storyAr": "البسبوسة من أشهر حلويات الصواني في مصر وتظهر بقوة في رمضان والمناسبات العائلية.",
       "storyEn": "Basbousa is among Egypt's best-known tray bakes and is especially prominent during Ramadan and family gatherings.",
@@ -3766,9 +3766,9 @@
         "سمك مملح",
         "تراثي"
       ],
-      "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-egypt-feseekh.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-egypt-feseekh.webp"
       ],
       "storyAr": "يرتبط الفسيخ ارتباطاً وثيقاً باحتفال شم النسيم المصري منذ آلاف السنين.",
       "storyEn": "Feseekh is closely tied to Egypt's ancient Sham El-Nessim spring celebration.",
@@ -3869,9 +3869,9 @@
         "زعتر",
         "فطور"
       ],
-      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-lebanon-manakish-zaatar.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-lebanon-manakish-zaatar.webp"
       ],
       "storyAr": "المناقيش من أساسيات أفران الأحياء في لبنان وتؤكل ساخنة في الصباح مطوية مع الخضار.",
       "storyEn": "Manakish are a staple of Lebanese neighborhood bakeries, commonly eaten hot in the morning and folded around fresh vegetables.",
@@ -3985,9 +3985,9 @@
         "عدس",
         "اقتصادي"
       ],
-      "image": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-lebanon-mujadara.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-lebanon-mujadara.webp"
       ],
       "storyAr": "المجدرة طبق منزلي نباتي متجذر في بلاد الشام ويعتمد على مكونات المؤونة البسيطة.",
       "storyEn": "Mujadara is a deeply rooted Levantine meatless home dish based on simple pantry staples.",
@@ -4102,9 +4102,9 @@
         "مشويات",
         "ثوم"
       ],
-      "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-lebanon-shish-tawook.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-lebanon-shish-tawook.webp"
       ],
       "storyAr": "الشيش طاووق من أشهر المشويات اللبنانية ويقدم غالباً مع الثومية والمخلل والخبز.",
       "storyEn": "Shish tawook is a mainstay of Lebanese grills, commonly paired with garlic sauce, pickles, and flatbread.",
@@ -4219,9 +4219,9 @@
         "بطاطا",
         "نباتي"
       ],
-      "image": "https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-lebanon-batata-harra.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1518013431117-eb1465fa5752?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-lebanon-batata-harra.webp"
       ],
       "storyAr": "البطاطا الحرة طبق مزّة لبناني يجمع القرمشة مع نكهة الثوم والكزبرة والليمون.",
       "storyEn": "Batata harra is a Lebanese mezze favorite balancing crisp potatoes with garlic, cilantro, chili, and lemon.",
@@ -4330,9 +4330,9 @@
         "أرز",
         "عزائم"
       ],
-      "image": "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-palestine-maqluba.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-palestine-maqluba.webp"
       ],
       "storyAr": "تنتشر المقلوبة في فلسطين وبلاد الشام، ويشكل قلب القدر لحظة جماعية مميزة على المائدة.",
       "storyEn": "Maqluba is widespread in Palestine and the Levant, with the dramatic inversion of the pot forming a shared table ritual.",
@@ -4446,9 +4446,9 @@
         "لحم",
         "مدخن"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Cooked_zarb_01.png",
+      "image": "/recipe-images/wajba-jordan-zarb.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Cooked_zarb_01.png"
+        "/recipe-images/wajba-jordan-zarb.webp"
       ],
       "storyAr": "يصف مجلس السياحة الأردني الزرب كطبق بدوي من اللحم أو الدجاج يطهى في حفرة مبطنة بالطوب لاكتساب النكهة المدخنة.",
       "storyEn": "The Jordan Tourism Board describes zarb as a Bedouin meat dish cooked in a brick-lined underground pit for its smoky character.",
@@ -4563,9 +4563,9 @@
         "عجين",
         "لحم"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Shish_barak.jpg",
+      "image": "/recipe-images/wajba-syria-shishbarak.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Shish_barak.jpg"
+        "/recipe-images/wajba-syria-shishbarak.webp"
       ],
       "storyAr": "الشيش برك من أطباق اللبن المطبوخ المعروفة في سوريا ولبنان، ويحتاج تشكيل حباته الصغيرة إلى صبر ولطف.",
       "storyEn": "Shish barak is a cooked-yogurt dish known in Syria and Lebanon; shaping its tiny dumplings is traditionally patient work.",
@@ -4680,9 +4680,9 @@
         "نباتي",
         "مزة"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Mahshi.JPG",
+      "image": "/recipe-images/wajba-lebanon-warak-enab.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Mahshi.JPG"
+        "/recipe-images/wajba-lebanon-warak-enab.webp"
       ],
       "storyAr": "نسخة الزيت من ورق العنب جزء أساسي من المزة اللبنانية وتقدم غالباً باردة أو بدرجة حرارة الغرفة.",
       "storyEn": "The olive-oil version of stuffed grape leaves is a core Lebanese mezze item, often served cool or at room temperature.",
@@ -4791,9 +4791,9 @@
         "قمح",
         "تراثي"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Jarish_SaudiCuisine.JPG",
+      "image": "/recipe-images/wajba-saudi-jareesh.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Jarish_SaudiCuisine.JPG"
+        "/recipe-images/wajba-saudi-jareesh.webp"
       ],
       "storyAr": "الجريش طبق سعودي تراثي يعتمد على القمح المجروش والطهي الهادئ، ويرتبط بموائد نجد والمناسبات.",
       "storyEn": "Jareesh is a Saudi heritage dish of cracked wheat and slow cooking, closely associated with Najdi tables and gatherings.",
@@ -4907,9 +4907,9 @@
         "أرز",
         "دجاج"
       ],
-      "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-saudi-saleeg.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-saudi-saleeg.webp"
       ],
       "storyAr": "ينسب السليق خصوصاً إلى الطائف والحجاز، ويتميز بقوام أرز أبيض ناعم يوازن الدجاج المتبل.",
       "storyEn": "Saleeg is especially associated with Taif and the Hejaz, recognized by its soft white rice contrasting with seasoned chicken.",
@@ -5024,9 +5024,9 @@
         "رقاق",
         "رمضان"
       ],
-      "image": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-uae-thareed.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-uae-thareed.webp"
       ],
       "storyAr": "تصفه هيئة أبوظبي للسياحة كطبق إماراتي مريح بارز في رمضان، ويجمع المرق بالخضار وخبز الرقاق.",
       "storyEn": "Abu Dhabi's tourism authority highlights thareed as an Emirati comfort dish prominent in Ramadan, combining stew, vegetables, and regag bread.",
@@ -5141,9 +5141,9 @@
         "حلويات",
         "رمضان"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Luqaimat.jpg",
+      "image": "/recipe-images/wajba-uae-luqaimat.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Luqaimat.jpg"
+        "/recipe-images/wajba-uae-luqaimat.webp"
       ],
       "storyAr": "اللقيمات حلوى إماراتية محبوبة تقدم في رمضان والمناسبات وتعبر عن المشاركة والكرم.",
       "storyEn": "Luqaimat are a beloved Emirati sweet served during Ramadan and celebrations, associated with sharing and generosity.",
@@ -5258,9 +5258,9 @@
         "يخنة",
         "لومي"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Maraq.png",
+      "image": "/recipe-images/wajba-qatar-saloona.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Maraq.png"
+        "/recipe-images/wajba-qatar-saloona.webp"
       ],
       "storyAr": "تدرج هيئة قطر للسياحة الصالونة بين الأطباق التقليدية المحبوبة وتصفها كيخنة طماطم غنية بالتوابل واللومي.",
       "storyEn": "Qatar Tourism lists saloona among beloved traditional dishes and describes it as a thick tomato stew rich in spice and black lime.",
@@ -5374,9 +5374,9 @@
         "فطور",
         "زعفران"
       ],
-      "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=1000&q=80",
+      "image": "/recipe-images/wajba-qatar-balaleet.webp",
       "galleryImages": [
-        "https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&w=1000&q=80"
+        "/recipe-images/wajba-qatar-balaleet.webp"
       ],
       "storyAr": "تجمع البلاليط الخليجية بين الحلو والمالح؛ وتصفها هيئة قطر للسياحة كشعيرية مع ماء الورد والهيل والزعفران والبيض.",
       "storyEn": "Balaleet combines sweet and savory; Qatar Tourism describes vermicelli flavored with rosewater, cardamom, saffron, and turmeric and topped with egg.",
@@ -5490,9 +5490,9 @@
         "لحم",
         "أعياد"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Wadi_Rum-Zarb_(2).jpg",
+      "image": "/recipe-images/wajba-oman-shuwa.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Wadi_Rum-Zarb_(2).jpg"
+        "/recipe-images/wajba-oman-shuwa.webp"
       ],
       "storyAr": "الشواء العماني طبق مناسبات يطهى تقليدياً لساعات طويلة في تنور أرضي جماعي.",
       "storyEn": "Omani shuwa is a celebration dish traditionally cooked for many hours in a communal underground oven.",
@@ -5606,9 +5606,9 @@
         "أرز",
         "لومي"
       ],
-      "image": "https://ik.imagekit.io/hrim/images/wajba/Kuwaiti_Fish.jpg",
+      "image": "/recipe-images/wajba-kuwait-mutabbaq-samak.webp",
       "galleryImages": [
-        "https://ik.imagekit.io/hrim/images/wajba/Kuwaiti_Fish.jpg"
+        "/recipe-images/wajba-kuwait-mutabbaq-samak.webp"
       ],
       "storyAr": "مطبق السمك من أطباق الساحل الكويتي التي تجمع صيد الخليج بالأرز والبصل واللومي.",
       "storyEn": "Mutabbaq samak reflects Kuwait's Gulf coast, bringing local fish together with rice, onions, and dried lime.",
@@ -5723,9 +5723,9 @@
         "رمضان",
         "عدس"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Harira.png?width=1000",
+      "image": "/recipe-images/wajba-maghreb-moroccan-harira.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Harira.png?width=1000"
+        "/recipe-images/wajba-maghreb-moroccan-harira.webp"
       ],
       "storyAr": "الحريرة جزء أساسي من مائدة الإفطار المغربية، وتجمع بين البقول والطماطم والأعشاب في طبق دافئ مشبع.",
       "storyEn": "Harira is central to Moroccan iftar tables, bringing legumes, tomatoes, and herbs together in a warming, filling bowl.",
@@ -5840,9 +5840,9 @@
         "دجاج",
         "زيتون"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Moroccan_food-Chicken_tagine_with_preserved_lemons_and_olives-01.jpg?width=1000",
+      "image": "/recipe-images/wajba-maghreb-chicken-tagine-olives.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Moroccan_food-Chicken_tagine_with_preserved_lemons_and_olives-01.jpg?width=1000"
+        "/recipe-images/wajba-maghreb-chicken-tagine-olives.webp"
       ],
       "storyAr": "يُطهى الطاجن المغربي ببطء في وعاء يحافظ على البخار، وتمنح مكونات مثل الليمون المصير والزيتون الطبق نكهته المميزة.",
       "storyEn": "Moroccan tagine is gently steamed in a domed vessel, with preserved lemon and olives giving this version its signature character.",
@@ -5957,9 +5957,9 @@
         "خضروات",
         "نباتي"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Couscous_%227_vegetables%22.jpg?width=1000",
+      "image": "/recipe-images/wajba-maghreb-couscous-seven-vegetables.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Couscous_%227_vegetables%22.jpg?width=1000"
+        "/recipe-images/wajba-maghreb-couscous-seven-vegetables.webp"
       ],
       "storyAr": "الكسكس طبق جماعي يرتبط بالاجتماع والمشاركة، وتختلف الخضروات المصاحبة له حسب الموسم والمنطقة.",
       "storyEn": "Couscous is a communal dish associated with sharing, while the vegetables in its broth change with season and region.",
@@ -6083,9 +6083,9 @@
         "دجاج",
         "عدس"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Rfissa_marocaine.jpg?width=1000",
+      "image": "/recipe-images/wajba-maghreb-rfissa-chicken.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Rfissa_marocaine.jpg?width=1000"
+        "/recipe-images/wajba-maghreb-rfissa-chicken.webp"
       ],
       "storyAr": "الرفيسة طبق ضيافة مغربي يحتفي بالمسمن والمرق المعطر ويقدم في المناسبات العائلية.",
       "storyEn": "Rfissa is a Moroccan hospitality dish built around msemen, fragrant broth, and chicken for family occasions.",
@@ -6200,9 +6200,9 @@
         "دجاج",
         "لوز"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Pastilla_au_poulet.jpg?width=1000",
+      "image": "/recipe-images/wajba-maghreb-chicken-pastilla.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Pastilla_au_poulet.jpg?width=1000"
+        "/recipe-images/wajba-maghreb-chicken-pastilla.webp"
       ],
       "storyAr": "البسطيلة من أطباق المناسبات المغربية، وتمزج بين الحشوة المتبلة والقشرة المقرمشة واللمسة الحلوة.",
       "storyEn": "Pastilla is a Moroccan celebration pastry balancing a savory spiced filling, crisp layers, and a gentle sweet finish.",
@@ -6317,9 +6317,9 @@
         "سلطة",
         "نباتي"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Zaalouk-01.JPG?width=1000",
+      "image": "/recipe-images/wajba-maghreb-zaalouk.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Zaalouk-01.JPG?width=1000"
+        "/recipe-images/wajba-maghreb-zaalouk.webp"
       ],
       "storyAr": "الزعلوك من المقبلات المغربية المنزلية التي تقدم دافئة أو بدرجة حرارة الغرفة مع الخبز.",
       "storyEn": "Zaalouk is a Moroccan home-style accompaniment served warm or at room temperature with bread.",
@@ -6434,9 +6434,9 @@
         "فطور",
         "عجين"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Msemmem.jpg?width=1000",
+      "image": "/recipe-images/wajba-maghreb-msemen.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Msemmem.jpg?width=1000"
+        "/recipe-images/wajba-maghreb-msemen.webp"
       ],
       "storyAr": "المسمن حاضر في الفطور المغربي ووقت الشاي، وتظهر طبقاته من فرد العجين الرقيق وطيه بالزيت.",
       "storyEn": "Msemen is a Moroccan breakfast and tea-time staple whose layers come from stretching and folding oiled dough.",
@@ -6551,9 +6551,9 @@
         "رمضان",
         "لوز"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Sellou_with_Moroccan_tea.jpg?width=1000",
+      "image": "/recipe-images/wajba-maghreb-sellou.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Sellou_with_Moroccan_tea.jpg?width=1000"
+        "/recipe-images/wajba-maghreb-sellou.webp"
       ],
       "storyAr": "السلو من حلويات رمضان المغربية المركزة، ويقدم في كرات أو طبقات مع الشاي.",
       "storyEn": "Sellou is a concentrated Moroccan Ramadan sweet served in mounds or slices alongside tea.",
@@ -6668,9 +6668,9 @@
         "دجاج",
         "أرز"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_Kabsa.jpg?width=1000",
+      "image": "/recipe-images/wajba-saudi-chicken-kabsa.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Chicken_Kabsa.jpg?width=1000"
+        "/recipe-images/wajba-saudi-chicken-kabsa.webp"
       ],
       "storyAr": "الكبسة من أطباق التجمعات في السعودية، وتظهر فيها نكهة اللومي والبهارات مع الأرز والدجاج.",
       "storyEn": "Kabsa is a Saudi gathering dish where dried lime and warm spices perfume rice cooked with chicken.",
@@ -6786,9 +6786,9 @@
         "قمح",
         "رمضان"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Harees.JPG?width=1000",
+      "image": "/recipe-images/wajba-oman-harees.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Harees.JPG?width=1000"
+        "/recipe-images/wajba-oman-harees.webp"
       ],
       "storyAr": "الهريس طبق خليجي احتفالي حاضر في رمضان والمناسبات، ويعتمد على الطهي البطيء والهرس حتى النعومة.",
       "storyEn": "Harees is a Gulf celebration dish served in Ramadan and on special occasions, built around slow cooking and pounding until smooth.",
@@ -6903,9 +6903,9 @@
         "تمر",
         "حلو"
       ],
-      "image": "https://img.ccnull.de/1100000/thumbnail/1101862_6f445831ec6033da9504496d4b726384.jpg",
+      "image": "/recipe-images/wajba-bahrain-muhammar.webp",
       "galleryImages": [
-        "https://img.ccnull.de/1100000/thumbnail/1101862_6f445831ec6033da9504496d4b726384.jpg"
+        "/recipe-images/wajba-bahrain-muhammar.webp"
       ],
       "storyAr": "المحمر أرز بحريني حلو ارتبط بالمائدة الساحلية ويقدم خصوصاً إلى جانب السمك.",
       "storyEn": "Muhammar is a Bahraini sweet rice dish rooted in the coastal table and often served alongside fish.",
@@ -7021,9 +7021,9 @@
         "دجاج",
         "أرز"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Madrouba.jpg?width=1000",
+      "image": "/recipe-images/wajba-qatar-madrouba.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Madrouba.jpg?width=1000"
+        "/recipe-images/wajba-qatar-madrouba.webp"
       ],
       "storyAr": "المضروبة من أطباق الخليج الدافئة، ويأتي اسمها من طريقة ضرب الأرز واللحم حتى يتجانس القوام.",
       "storyEn": "Madrouba is a warming Gulf dish named for the beating that combines rice and meat into a cohesive texture.",
@@ -7138,9 +7138,9 @@
         "سماق",
         "دجاج"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mushakhan_Dish.jpg?width=1000",
+      "image": "/recipe-images/wajba-palestine-musakhan.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Mushakhan_Dish.jpg?width=1000"
+        "/recipe-images/wajba-palestine-musakhan.webp"
       ],
       "storyAr": "المسخن الفلسطيني يحتفي بزيت الزيتون والسماق وخبز الطابون، ويقدم غالباً في موسم قطاف الزيتون.",
       "storyEn": "Palestinian musakhan celebrates olive oil, sumac, and taboon bread, especially around the olive harvest season.",
@@ -7255,9 +7255,9 @@
         "حمص",
         "نباتي"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Palestinian_Hummus_Fatteh.jpg?width=1000",
+      "image": "/recipe-images/wajba-levant-fattet-hummus.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Palestinian_Hummus_Fatteh.jpg?width=1000"
+        "/recipe-images/wajba-levant-fattet-hummus.webp"
       ],
       "storyAr": "فتة الحمص طبق شامي منزلي يقدم دافئاً، وتوازن فيه طبقات الخبز والحمص واللبن بين القوام المقرمش والكريمي.",
       "storyEn": "Fattet hummus is a warm Levantine home dish balancing crisp bread, tender chickpeas, and creamy yogurt.",
@@ -7372,9 +7372,9 @@
         "فطور",
         "نباتي"
       ],
-      "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Ful_medames_%28arabic_meal%29.jpg?width=1000",
+      "image": "/recipe-images/wajba-egypt-ful-medames.webp",
       "galleryImages": [
-        "https://commons.wikimedia.org/wiki/Special:FilePath/Ful_medames_%28arabic_meal%29.jpg?width=1000"
+        "/recipe-images/wajba-egypt-ful-medames.webp"
       ],
       "storyAr": "الفول المدمس من أشهر أطباق الفطور المصرية ويقدم من عربات الشوارع إلى موائد البيوت مع إضافات متعددة.",
       "storyEn": "Ful medames is one of Egypt's most beloved breakfasts, served everywhere from street carts to family tables with varied toppings.",
@@ -7483,9 +7483,9 @@
         "عدس",
         "رمضان"
       ],
-      "image": "https://upload.wikimedia.org/wikipedia/commons/6/61/EgFoodLentilSoup.jpg",
+      "image": "/recipe-images/wajba-general-arabic-lentil-soup.webp",
       "galleryImages": [
-        "https://upload.wikimedia.org/wikipedia/commons/6/61/EgFoodLentilSoup.jpg"
+        "/recipe-images/wajba-general-arabic-lentil-soup.webp"
       ],
       "storyAr": "شوربة العدس طبق دافئ مشترك في مطابخ المنطقة، وتظهر كثيراً على موائد الشتاء والإفطار.",
       "storyEn": "Red lentil soup is a warming shared staple across the region, especially welcome in winter and at iftar.",
@@ -7564,6 +7564,3902 @@
           "titleEn": "Cook lentils and vegetables",
           "durationMinutes": 30
         }
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-sineyet-batates-farakh",
+      "titleAr": "صينية بطاطس بالفراخ",
+      "titleEn": "Chicken and Potato Tray Bake",
+      "descriptionAr": "طبق البيوت المصرية الأصيل: شرائح بطاطس وفراخ متبلة متستوية في صلصة طماطم غنية وتتحمر في الفرن لحد ما وشها يبقى ذهبي.",
+      "descriptionEn": "A beloved Egyptian home classic: potato wedges and marinated chicken baked together in a rich tomato sauce until golden on top.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 50,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "طبق فرن",
+        "وجبة مشبعة",
+        "Ramadan Favorite"
+      ],
+      "storyAr": "صينية البطاطس بالفراخ هي الضيف الدائم على موائد الغدا المصري، خصوصًا يوم الجمعة، لما بتتجمع العيلة حواليها مع الأرز بالشعرية.",
+      "storyEn": "The chicken-and-potato tray bake is a fixture of Egyptian family lunches — especially Fridays — served alongside vermicelli rice.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "فرخة كاملة مقطعة",
+          "nameEn": "Whole Chicken, cut up",
+          "amount": 1,
+          "unitAr": "فرخة",
+          "unitEn": "pc",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "بطاطس شرائح",
+          "nameEn": "Potatoes, sliced into wedges",
+          "amount": 6,
+          "unitAr": "حبة متوسطة",
+          "unitEn": "medium pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "عصير طماطم طازج",
+          "nameEn": "Fresh Tomato Puree",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 2,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 5,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل وبهارات فراخ",
+          "nameEn": "Salt, Pepper & Poultry Spice",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت طعام",
+          "nameEn": "Vegetable Oil",
+          "amount": 60,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "تبل قطع الفراخ بالملح والفلفل وبهارات الفراخ والثوم المفروم واتركها 30 دقيقة.",
+        "رص شرائح البطاطس والبصل في صينية فرن مدهونة بالزيت.",
+        "وزع قطع الفراخ فوق البطاطس واسكب عصير الطماطم حتى يغطي نصف المكونات.",
+        "غطِّ الصينية بورق ألومنيوم وادخلها فرن ساخن على 200 درجة لمدة 35 دقيقة.",
+        "ارفع الغطاء وحمر الوش 15 دقيقة لحد ما الفراخ تاخد لون ذهبي والصلصة تتسبك.",
+        "قدمها ساخنة مع الأرز بالشعرية والسلطة الخضراء."
+      ],
+      "instructionsEn": [
+        "Marinate the chicken pieces with salt, pepper, poultry spice and garlic for 30 minutes.",
+        "Arrange potato wedges and onion in an oiled baking tray.",
+        "Lay the chicken over the potatoes and pour tomato puree until it covers half the ingredients.",
+        "Cover with foil and bake at 200°C for 35 minutes.",
+        "Uncover and roast 15 minutes more until golden and the sauce thickens.",
+        "Serve hot with vermicelli rice and green salad."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-sineyet-batates-farakh.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-sineyet-batates-farakh.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-lobia-lahma",
+      "titleAr": "لوبيا باللحمة",
+      "titleEn": "Black-Eyed Pea Stew with Beef",
+      "descriptionAr": "لوبيا سوداء العين مع قطع اللحمة الطرية في صلصة طماطم متسبكة، طبق شتوي دافئ بيتحب مع الأرز الأبيض.",
+      "descriptionEn": "Tender black-eyed peas with beef chunks simmered in a rich tomato sauce — a warming winter stew served over white rice.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 60,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "خضار مطبوخ",
+        "شتوي",
+        "بروتين"
+      ],
+      "storyAr": "اللوبيا من البقوليات المحبوبة في المطبخ المصري، وبتتطبخ مع اللحمة في موسم الشتاء كوجبة غنية بالبروتين والألياف.",
+      "storyEn": "Black-eyed peas are a staple legume in Egyptian cooking, braised with beef in winter as a protein- and fiber-rich meal.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لوبيا سوداء العين منقوعة",
+          "nameEn": "Black-Eyed Peas, soaked",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "لحمة مكعبات",
+          "nameEn": "Beef Cubes",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r3",
+          "nameAr": "عصير طماطم طازج",
+          "nameEn": "Fresh Tomato Puree",
+          "amount": 400,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 2,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 4,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "سمنة أو زيت",
+          "nameEn": "Ghee or Oil",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "ملح وفلفل وكمون",
+          "nameEn": "Salt, Pepper & Cumin",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "انقع اللوبيا 4 ساعات على الأقل، ثم اسلقها نصف سلقة وصفها.",
+        "شوح البصل في السمنة لحد ما يذبل، ثم أضف اللحمة وحمرها من كل الجهات.",
+        "أضف الثوم وعصير الطماطم والملح والفلفل والكمون واتركها تتسبك 10 دقائق.",
+        "أضف اللوبيا المسلوقة وماء مغلي يغطي المكونات واتركها على نار هادئة 45 دقيقة.",
+        "اختبر نضج اللحمة واللوبيا، ثم قدمها مع الأرز الأبيض والسلطة."
+      ],
+      "instructionsEn": [
+        "Soak the peas at least 4 hours, then parboil and drain.",
+        "Sauté onion in ghee until soft, add beef cubes and brown on all sides.",
+        "Add garlic, tomato puree, salt, pepper and cumin; simmer 10 minutes.",
+        "Add the peas and boiling water to cover; cook on low heat 45 minutes.",
+        "Check tenderness, then serve over white rice with salad."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-lobia-lahma.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-lobia-lahma.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-fasolia-khadra",
+      "titleAr": "فاصوليا خضراء باللحمة",
+      "titleEn": "Green Bean Stew with Beef",
+      "descriptionAr": "فاصوليا خضراء طازجة مع اللحمة في صلصة طماطم خفيفة، من أشهر الخضار المطبوخة على السفرة المصرية.",
+      "descriptionEn": "Fresh green beans with beef in a light tomato sauce — one of the most classic cooked vegetables on the Egyptian table.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 45,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "خضار مطبوخ",
+        "وجبة عائلية",
+        "Ramadan Favorite"
+      ],
+      "storyAr": "الفاصوليا الخضراء باللحمة طبق شبه يومي في البيوت المصرية في موسمها، وبتتقدم دايمًا مع الأرز والعيش البلدي.",
+      "storyEn": "Green beans with beef is a near-daily dish in Egyptian homes in season, always served with rice and baladi bread.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "فاصوليا خضراء مقطعة",
+          "nameEn": "Green Beans, trimmed and cut",
+          "amount": 750,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "r2",
+          "nameAr": "لحمة مكعبات",
+          "nameEn": "Beef Cubes",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r3",
+          "nameAr": "عصير طماطم طازج",
+          "nameEn": "Fresh Tomato Puree",
+          "amount": 400,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 2,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 4,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "سمنة أو زيت",
+          "nameEn": "Ghee or Oil",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "ملح وفلفل أسود",
+          "nameEn": "Salt & Black Pepper",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "شوح البصل في السمنة ثم أضف اللحمة وحمرها حتى تاخد لون.",
+        "أضف الثوم وعصير الطماطم والبهارات واتركها تتسبك 10 دقائق.",
+        "أضف الفاصوليا الخضراء وقلبها مع الصلصة دقيقتين.",
+        "أضف ماء مغلي يغطي المكونات واتركها على نار هادئة 35 دقيقة لحد ما اللحمة والفاصوليا يستووا.",
+        "قدمها ساخنة مع الأرز الأبيض أو العيش البلدي."
+      ],
+      "instructionsEn": [
+        "Sauté onion in ghee, add beef and brown.",
+        "Add garlic, tomato puree and spices; simmer 10 minutes.",
+        "Add green beans and toss in the sauce for 2 minutes.",
+        "Add boiling water to cover and simmer 35 minutes until tender.",
+        "Serve hot with white rice or baladi bread."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-fasolia-khadra.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-fasolia-khadra.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-sabanekh",
+      "titleAr": "سبانخ باللحمة المفرومة",
+      "titleEn": "Spinach with Minced Meat",
+      "descriptionAr": "سبانخ طازجة مطبوخة مع اللحمة المفرومة والكزبرة، بتتقدم مع الأرز الأبيض كوجبة غنية بالحديد.",
+      "descriptionEn": "Fresh spinach cooked with minced meat and coriander, served over white rice as an iron-rich meal.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 35,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "خضار مطبوخ",
+        "غني بالحديد"
+      ],
+      "storyAr": "السبانخ من الخضار الشتوية المحبوبة في مصر، وطبخها مع اللحمة المفرومة بيخليها وجبة متكاملة للأطفال والكبار.",
+      "storyEn": "Spinach is a beloved winter green in Egypt; cooking it with minced meat makes a complete meal for kids and adults.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "سبانخ طازجة مغسولة ومقطعة",
+          "nameEn": "Fresh Spinach, washed and chopped",
+          "amount": 1,
+          "unitAr": "كيلو",
+          "unitEn": "kg",
+          "aisle": "produce"
+        },
+        {
+          "id": "r2",
+          "nameAr": "لحمة مفرومة",
+          "nameEn": "Minced Beef",
+          "amount": 300,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 1,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 3,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "كزبرة خضراء مفرومة",
+          "nameEn": "Fresh Coriander, chopped",
+          "amount": 1,
+          "unitAr": "ربطة",
+          "unitEn": "bunch",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل وكمون",
+          "nameEn": "Salt, Pepper & Cumin",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "سمنة أو زيت",
+          "nameEn": "Ghee or Oil",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "شوح البصل في السمنة، ثم أضف اللحمة المفرومة وقلبها حتى تنضج.",
+        "أضف الثوم والكزبرة المفرومة وقلب دقيقة.",
+        "أضف السبانخ على دفعات وقلب حتى تذبل تمامًا.",
+        "تبّل بالملح والفلفل والكمون وأضف نصف كوب ماء واتركها 20 دقيقة على نار هادئة.",
+        "قدمها مع الأرز الأبيض وعصير الليمون."
+      ],
+      "instructionsEn": [
+        "Sauté onion in ghee, add minced meat and cook through.",
+        "Add garlic and coriander; stir one minute.",
+        "Add spinach in batches, stirring until wilted.",
+        "Season with salt, pepper and cumin, add half a cup of water and simmer 20 minutes.",
+        "Serve with white rice and a squeeze of lemon."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-sabanekh.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-sabanekh.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-oloas-selk",
+      "titleAr": "قلقاس بالسلق",
+      "titleEn": "Taro Stew with Chard",
+      "descriptionAr": "مكعبات القلقاس في شوربة غنية مع السلق والكزبرة المحمرين، من أعرق أطباق الشتاء المصري.",
+      "descriptionEn": "Taro cubes in a rich broth topped with fried chard and coriander — one of Egypt's oldest winter dishes.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 50,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "شتوي",
+        "طبق تراثي"
+      ],
+      "storyAr": "القلقاس بالسلق من الأطباق الفرعونية الأصيلة اللي لسه بتتطبخ بنفس الطريقة من آلاف السنين، وبيعتبر طبق الشتاء الأول في الصعيد.",
+      "storyEn": "Taro with chard is a Pharaonic-era dish still cooked the same way for thousands of years — Upper Egypt's signature winter meal.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "قلقاس مقشر ومقطع مكعبات",
+          "nameEn": "Taro Root, peeled and cubed",
+          "amount": 1,
+          "unitAr": "كيلو",
+          "unitEn": "kg",
+          "aisle": "produce"
+        },
+        {
+          "id": "r2",
+          "nameAr": "سلق أخضر مفروم",
+          "nameEn": "Swiss Chard, chopped",
+          "amount": 2,
+          "unitAr": "ربطة",
+          "unitEn": "bunches",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "كزبرة خضراء مفرومة",
+          "nameEn": "Fresh Coriander, chopped",
+          "amount": 1,
+          "unitAr": "ربطة",
+          "unitEn": "bunch",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 6,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "شوربة لحمة أو فراخ",
+          "nameEn": "Meat or Chicken Broth",
+          "amount": 1.5,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "سمنة بلدي",
+          "nameEn": "Baladi Ghee",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r7",
+          "nameAr": "ملح وفلفل",
+          "nameEn": "Salt & Pepper",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق مكعبات القلقاس في الشوربة المغلية مع الملح لحد ما تستوي وتبقى طرية.",
+        "في طاسة، حمر السلق والكزبرة والثوم في السمنة لحد ما يبقى لونهم غامق ومقرمش.",
+        "اهرسي الخضرة المحمرة أو اتركها خشنة حسب الرغبة.",
+        "أضف الخضرة المحمرة على القلقاس وقلب واتركها تغلي 10 دقائق.",
+        "قدمها ساخنة مع الأرز الأبيض أو العيش البلدي والليمون."
+      ],
+      "instructionsEn": [
+        "Boil taro cubes in the broth with salt until tender.",
+        "In a pan, fry chard, coriander and garlic in ghee until dark and crispy.",
+        "Mash or leave the fried greens coarse, as you like.",
+        "Stir the greens into the taro and boil 10 minutes.",
+        "Serve hot with white rice or baladi bread and lemon."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-oloas-selk.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-oloas-selk.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-kofta-roz",
+      "titleAr": "كفتة أرز",
+      "titleEn": "Rice Kofta in Tomato Sauce",
+      "descriptionAr": "صوابع كفتة من اللحمة والأرز المطحون والخضرة، مقلية ثم متستوية في صلصة طماطم غنية، من أشهى أطباق العزومات.",
+      "descriptionEn": "Oblong kofta of ground meat, rice and herbs, fried then braised in rich tomato sauce — a showpiece of Egyptian gatherings.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 40,
+      "cookTimeMinutes": 40,
+      "servings": 6,
+      "difficulty": "hard",
+      "isRamadanSpecial": true,
+      "tags": [
+        "مصري",
+        "عزومات",
+        "طبق مميز",
+        "Ramadan Favorite"
+      ],
+      "storyAr": "كفتة الأرز طبق عريق بيحتاج صبر ومهارة، وبيتعتبر من أطباق الفخر في العزومات المصرية الكبيرة والأفراح.",
+      "storyEn": "Rice kofta is a heritage dish that takes patience and skill — a pride of large Egyptian feasts and weddings.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لحمة مفرومة",
+          "nameEn": "Minced Beef",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "أرز مصري مطحون ناعم",
+          "nameEn": "Finely Ground Egyptian Rice",
+          "amount": 250,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بقدونس وكزبرة وشبت مفرومين",
+          "nameEn": "Chopped Parsley, Coriander & Dill",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بصل مبشور",
+          "nameEn": "Grated Onion",
+          "amount": 1,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 4,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "عصير طماطم طازج",
+          "nameEn": "Fresh Tomato Puree",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r7",
+          "nameAr": "ملح وفلفل وكمون وكزبرة ناشفة",
+          "nameEn": "Salt, Pepper, Cumin & Dry Coriander",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r8",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اعجن اللحمة مع الأرز المطحون والخضرة والبصل والثوم والبهارات كويس لحد ما تبقى عجينة متماسكة.",
+        "شكل العجينة صوابع متوسطة السماكة وبل إيدك بالمية عشان متلزقش.",
+        "اقلي الصوابع في زيت غزير ساخن لحد ما تاخد لون ذهبي وصفها.",
+        "في حلة، شوح ثوم في قليل من الزيت ثم أضف عصير الطماطم والملح واتركها تتسبك.",
+        "رص الكفتة المقلية في الصلصة وأضف ماء مغلي يغطيها واتركها 25 دقيقة على نار هادئة.",
+        "قدمها مع الأرز الأبيض والسلطة الخضراء."
+      ],
+      "instructionsEn": [
+        "Knead the meat with ground rice, herbs, onion, garlic and spices into a firm dough.",
+        "Shape into medium oblong fingers, wetting your hands so the dough doesn't stick.",
+        "Deep-fry in hot oil until golden; drain.",
+        "In a pot, sauté garlic in a little oil, add tomato puree and salt, and simmer.",
+        "Arrange the fried kofta in the sauce, add boiling water to cover, and simmer 25 minutes.",
+        "Serve with white rice and green salad."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-kofta-roz.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-kofta-roz.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-daoud-basha",
+      "titleAr": "داوود باشا",
+      "titleEn": "Daoud Basha Meatballs",
+      "descriptionAr": "كرات لحمة محمرة مع مكعبات البطاطس في صلصة طماطم سميكة، طبق شرقي محبوب عند الكبار والصغار.",
+      "descriptionEn": "Browned meatballs with potato cubes in thick tomato sauce — a Middle Eastern favorite for all ages.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 35,
+      "servings": 5,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "شرقي",
+        "محبوب للأطفال",
+        "وجبة مشبعة"
+      ],
+      "storyAr": "سمي الطبق على اسم داوود باشا، والي عثماني، وانتشر في بلاد الشام ومصر كطبق كرات لحم في صلصة الطماطم.",
+      "storyEn": "Named after Daoud Pasha, an Ottoman governor, the dish spread through the Levant and Egypt as the beloved meatball-and-tomato stew.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لحمة مفرومة",
+          "nameEn": "Minced Beef",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "بطاطس مكعبات",
+          "nameEn": "Potatoes, cubed",
+          "amount": 4,
+          "unitAr": "حبة متوسطة",
+          "unitEn": "medium pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بصل مفروم ناعم",
+          "nameEn": "Finely Minced Onion",
+          "amount": 1,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بقدونس مفروم",
+          "nameEn": "Chopped Parsley",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "عصير طماطم طازج",
+          "nameEn": "Fresh Tomato Puree",
+          "amount": 400,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل وبهارات لحمة",
+          "nameEn": "Salt, Pepper & Meat Spice",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت طعام",
+          "nameEn": "Vegetable Oil",
+          "amount": 60,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اعجن اللحمة مع البصل والبقدونس والبهارات وشكلها كرات متوسطة.",
+        "حمر الكرات في الزيت من كل الجهات وارفعها على ورق مطبخ.",
+        "في نفس الحلة، حمر مكعبات البطاطس نصف تحميرة.",
+        "أضف عصير الطماطم والملح واتركها تتسبك 10 دقائق.",
+        "رجع الكرات للصلصة مع البطاطس وأضف ماء مغلي واتركها 20 دقيقة.",
+        "قدمها مع الأرز الأبيض أو المكرونة."
+      ],
+      "instructionsEn": [
+        "Knead meat with onion, parsley and spices; form medium balls.",
+        "Brown the balls in oil on all sides; drain on paper towels.",
+        "In the same pot, half-fry the potato cubes.",
+        "Add tomato puree and salt; simmer 10 minutes.",
+        "Return the meatballs with potatoes, add boiling water, and cook 20 minutes.",
+        "Serve with white rice or pasta."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-daoud-basha.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-daoud-basha.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-farakh-baneh",
+      "titleAr": "فراخ بانية",
+      "titleEn": "Chicken Pane (Breaded Cutlets)",
+      "descriptionAr": "شرائح فراخ متبلة ومغطاة بطبقة مقرمشة ذهبية، بتتقدم مع البطاطس المقلية والثومية، المفضل الأول للأطفال.",
+      "descriptionEn": "Marinated chicken cutlets in a golden crispy coating, served with fries and garlic dip — kids' number-one favorite.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 20,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "محبوب للأطفال",
+        "مقرمش",
+        "سريع"
+      ],
+      "storyAr": "الفراخ البانية دخلت المطبخ المصري من المطبخ الأوروبي وبقت من أساسيات منيو كل بيت، خصوصًا في أعياد ميلاد الأطفال والعزومات.",
+      "storyEn": "Chicken pane came to Egypt from European cooking and became a staple of every home menu, especially kids' birthdays.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "صدور فراخ شرائح",
+          "nameEn": "Chicken Breasts, sliced",
+          "amount": 750,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "بيض مخفوق",
+          "nameEn": "Beaten Eggs",
+          "amount": 2,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بقسماط مطحون",
+          "nameEn": "Breadcrumbs",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "bakery"
+        },
+        {
+          "id": "r4",
+          "nameAr": "دقيق أبيض",
+          "nameEn": "All-Purpose Flour",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "لبن رايب أو زبادي للتتبيلة",
+          "nameEn": "Buttermilk or Yogurt for marinade",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل وبابريكا وثوم بودر",
+          "nameEn": "Salt, Pepper, Paprika & Garlic Powder",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "تبل شرائح الفراخ في اللبن الرايب مع الملح والفلفل والبابريكا والثوم البودر ساعتين على الأقل.",
+        "جهز ثلاث أطباق: دقيق، بيض مخفوق، بقسماط.",
+        "غطِّ كل شريحة بالدقيق ثم البيض ثم البقسماط واضغط كويس.",
+        "اقلي الشرائح في زيت ساخن متوسط الحرارة لحد ما تاخد لون ذهبي من الجهتين.",
+        "صفها على ورق مطبخ وقدمها مع البطاطس المقلية والثومية والسلطة."
+      ],
+      "instructionsEn": [
+        "Marinate chicken slices in buttermilk with salt, pepper, paprika and garlic powder for at least 2 hours.",
+        "Set up three plates: flour, beaten egg, breadcrumbs.",
+        "Coat each slice in flour, then egg, then breadcrumbs, pressing firmly.",
+        "Fry in medium-hot oil until golden on both sides.",
+        "Drain on paper towels and serve with fries, garlic dip and salad."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-farakh-baneh.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-farakh-baneh.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-farakh-mashweya",
+      "titleAr": "فراخ مشوية في الفرن",
+      "titleEn": "Oven-Roasted Chicken",
+      "descriptionAr": "فرخة كاملة متبلة بخلطة بهارات مصرية وتتحمر في الفرن لحد ما الجلد يبقى مقرمش واللحم طري، مع الخضار المشوية.",
+      "descriptionEn": "A whole chicken rubbed with an Egyptian spice blend, roasted until the skin is crisp and the meat juicy, with roasted vegetables.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 75,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "طبق فرن",
+        "عزومات",
+        "صحي"
+      ],
+      "storyAr": "الفراخ المشوية في الفرن هي بطلة العزومات المصرية، بتتحضر من الصبح وتستوي على مهلها وتطلع ريحتها تملا البيت.",
+      "storyEn": "Oven-roasted chicken stars at Egyptian gatherings — prepped in the morning, slow-roasted until its aroma fills the house.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "فرخة كاملة",
+          "nameEn": "Whole Chicken",
+          "amount": 1.5,
+          "unitAr": "كيلو",
+          "unitEn": "kg",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "بصل مبشور",
+          "nameEn": "Grated Onion",
+          "amount": 2,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 5,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon Juice",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ملح وفلفل وبابريكا وكركم وبهارات فراخ",
+          "nameEn": "Salt, Pepper, Paprika, Turmeric & Poultry Spice",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "زيت زيتون أو زيت طعام",
+          "nameEn": "Olive or Vegetable Oil",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "خضار مشكل للتحمير (بطاطس وجزر)",
+          "nameEn": "Mixed Vegetables for roasting",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط البصل والثوم والليمون والزيت والبهارات وادعك بيها الفرخة من بره وجوه وتحت الجلد.",
+        "اتركها تتبل ساعتين على الأقل، ويفضل ليلة كاملة في التلاجة.",
+        "رص الخضار في صينية وحط الفرخة فوقها.",
+        "ادخلها فرن ساخن على 200 درجة لمدة 60-75 دقيقة مع تقليبها مرة.",
+        "اختبر النضج بشوكة في أسمك جزء، ثم اتركها ترتاح 10 دقائق قبل التقطيع.",
+        "قدمها مع الخضار المشوية والأرز أو العيش."
+      ],
+      "instructionsEn": [
+        "Mix onion, garlic, lemon, oil and spices; rub all over, inside, and under the skin.",
+        "Marinate at least 2 hours, ideally overnight in the fridge.",
+        "Arrange vegetables in a tray and place the chicken on top.",
+        "Roast at 200°C for 60–75 minutes, turning once.",
+        "Test doneness with a fork in the thickest part, then rest 10 minutes before carving.",
+        "Serve with the roasted vegetables, rice or bread."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-farakh-mashweya.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-farakh-mashweya.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-kebda-radda",
+      "titleAr": "كبدة بالردة",
+      "titleEn": "Bran-Coated Fried Liver",
+      "descriptionAr": "شرائح كبدة متبلة ومغطاة بالردة ومقلية لحد القرمشة، بتتقدم مع الليمون والطحينة زي المحلات.",
+      "descriptionEn": "Marinated liver slices coated in bran and fried crisp, served with lemon and tahini — just like the shops.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 15,
+      "servings": 4,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "أكلة شعبية",
+        "سريعة",
+        "غنية بالحديد"
+      ],
+      "storyAr": "الكبدة بالردة من أشهر أكلات الشارع المصري، ومحلات الكبدة في وسط البلد ليها زباين بييجوا من كل حتة عشان الساندوتشات دي.",
+      "storyEn": "Bran-coated liver is iconic Egyptian street food; downtown liver shops draw customers from everywhere for these sandwiches.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "كبدة بقري شرائح رفيعة",
+          "nameEn": "Beef Liver, thin slices",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "ردة (نخالة قمح)",
+          "nameEn": "Wheat Bran",
+          "amount": 1.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 4,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon Juice",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "كمون وكزبرة ناشفة وشطة",
+          "nameEn": "Cumin, Dry Coriander & Chili",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل",
+          "nameEn": "Salt & Pepper",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 400,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "تبل شرائح الكبدة بالثوم والليمون والكمون والكزبرة والشطة والملح والفلفل 30 دقيقة.",
+        "غطِّ كل شريحة بالردة من الجهتين واضغط عليها كويس.",
+        "سخن الزيت كويس واقلي الشرائح دقيقتين لكل جهة لحد ما تبقى ذهبية ومقرمشة.",
+        "متزودش مدة القلي عشان الكبدة متبقاش ناشفة.",
+        "قدمها ساخنة مع شرائح الليمون والطحينة والعيش البلدي."
+      ],
+      "instructionsEn": [
+        "Marinate liver slices with garlic, lemon, cumin, coriander, chili, salt and pepper for 30 minutes.",
+        "Coat each slice in bran on both sides, pressing firmly.",
+        "Heat the oil well and fry 2 minutes per side until golden and crisp.",
+        "Don't overcook or the liver turns tough.",
+        "Serve hot with lemon wedges, tahini and baladi bread."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-kebda-radda.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-kebda-radda.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-sogoq",
+      "titleAr": "سجق إسكندراني",
+      "titleEn": "Alexandrian Sausage",
+      "descriptionAr": "سجق بلدي متشوح مع الفلفل الألوان والبصل، طبق سريع بنكهة مدخنة بيتحب في الساندوتشات.",
+      "descriptionEn": "Baladi sausage seared with colorful peppers and onions — a quick, smoky dish beloved in sandwiches.",
+      "mealType": [
+        "dinner",
+        "snack"
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 15,
+      "servings": 4,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "إسكندراني",
+        "سريع",
+        "ساندوتشات"
+      ],
+      "storyAr": "السجق الإسكندراني اتشهر من محلات الإسكندرية الشعبية، وبقى من أساسيات أكلات الشارع في كل مصر.",
+      "storyEn": "Alexandrian sausage rose to fame from Alexandria's street shops and became a street-food staple across Egypt.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "سجق بلدي",
+          "nameEn": "Baladi Sausage",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "فلفل ألوان شرائح",
+          "nameEn": "Mixed Bell Peppers, sliced",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بصل شرائح",
+          "nameEn": "Onion, sliced",
+          "amount": 2,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 3,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "فلفل حار (اختياري)",
+          "nameEn": "Hot Pepper (optional)",
+          "amount": 1,
+          "unitAr": "حبة",
+          "unitEn": "pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل وكمون",
+          "nameEn": "Salt, Pepper & Cumin",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت طعام",
+          "nameEn": "Vegetable Oil",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "قطع السجق قطع متوسطة وشوحه في الزيت لحد ما ياخد لون.",
+        "أضف البصل والثوم وقلب لحد ما البصل يذبل.",
+        "أضف الفلفل الألوان والفلفل الحار والبهارات وقلب 5 دقائق.",
+        "غطِّ الطاسة واتركها 5 دقائق على نار هادئة لحد ما الخضار يستوي.",
+        "قدمه ساخن في العيش البلدي مع الطحينة والمخلل."
+      ],
+      "instructionsEn": [
+        "Cut the sausage into medium pieces and sear in oil until browned.",
+        "Add onion and garlic; stir until the onion softens.",
+        "Add bell peppers, hot pepper and spices; stir 5 minutes.",
+        "Cover and cook 5 minutes on low until vegetables are tender.",
+        "Serve hot in baladi bread with tahini and pickles."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-sogoq.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-sogoq.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-macarona-salsa",
+      "titleAr": "مكرونة بالصلصة",
+      "titleEn": "Pasta with Garlic Tomato Sauce",
+      "descriptionAr": "مكرونة مسلوقة مع صلصة طماطم بالثوم على الطريقة المصرية، أسرع وأشهر وجبة في كل بيت.",
+      "descriptionEn": "Boiled pasta tossed in Egyptian-style garlic tomato sauce — the fastest, most universal meal in every home.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 20,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "سريعة",
+        "اقتصادية",
+        "محبوبة للأطفال"
+      ],
+      "storyAr": "المكرونة بالصلصة هي المنقذة في كل بيت مصري: مكونات بسيطة، وقت قليل، وطبق بيفرح الكل من الصغير للكبير.",
+      "storyEn": "Pasta with tomato sauce is the savior of every Egyptian home: simple ingredients, little time, and a dish that pleases everyone.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "مكرونة أقلام",
+          "nameEn": "Penne Pasta",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "عصير طماطم طازج",
+          "nameEn": "Fresh Tomato Puree",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 5,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "صلصة طماطم مركزة",
+          "nameEn": "Tomato Paste",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ملح وفلفل ورشة سكر",
+          "nameEn": "Salt, Pepper & Pinch of Sugar",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "زيت طعام",
+          "nameEn": "Vegetable Oil",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق المكرونة في ماء مغلي مملح لحد ما تستوي وصفها مع الاحتفاظ بكوب من ماء السلق.",
+        "شوح الثوم في الزيت لحد ما يصفر، ثم أضف صلصة الطماطم المركزة وقلب دقيقة.",
+        "أضف عصير الطماطم والملح والفلفل ورشة السكر واتركها تتسبك 10 دقائق.",
+        "أضف المكرونة المسلوقة للصلصة مع قليل من ماء السلق وقلب كويس.",
+        "قدمها ساخنة مع رشة فلفل أسود."
+      ],
+      "instructionsEn": [
+        "Boil pasta in salted water until al dente; drain, reserving a cup of pasta water.",
+        "Sauté garlic in oil until golden, add tomato paste and stir one minute.",
+        "Add tomato puree, salt, pepper and a pinch of sugar; simmer 10 minutes.",
+        "Toss the pasta in the sauce with a splash of pasta water.",
+        "Serve hot with a crack of black pepper."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-macarona-salsa.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-macarona-salsa.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-rozz-shaareya",
+      "titleAr": "أرز بالشعرية",
+      "titleEn": "Rice with Toasted Vermicelli",
+      "descriptionAr": "أرز مصري مفلفل مع الشعرية المحمرة الذهبية، الرفيق الأساسي لكل الخضار المطبوخة والصواني.",
+      "descriptionEn": "Fluffy Egyptian rice with golden toasted vermicelli — the essential companion to every stew and tray bake.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 25,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مصري",
+        "طبق جانبي",
+        "أساسي"
+      ],
+      "storyAr": "الأرز بالشعرية هو قاعدة السفرة المصرية: من غيره الخضار المطبوخ والصواني مبتكملش، وسر نجاحه في تحمير الشعرية صح.",
+      "storyEn": "Vermicelli rice is the base of the Egyptian table — stews and tray bakes are incomplete without it, and its secret is perfectly toasted vermicelli.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "أرز مصري مغسول ومنقوع",
+          "nameEn": "Egyptian Rice, washed and soaked",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "شعرية",
+          "nameEn": "Vermicelli",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "سمنة أو زيت",
+          "nameEn": "Ghee or Oil",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "ماء مغلي",
+          "nameEn": "Boiling Water",
+          "amount": 3.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "other"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ملح",
+          "nameEn": "Salt",
+          "amount": 1.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "حمر الشعرية في السمنة على نار متوسطة مع التقليب المستمر لحد ما تاخد لون ذهبي.",
+        "أضف الأرز المصفى وقلبه مع الشعرية دقيقتين.",
+        "أضف الماء المغلي والملح وقلب مرة واحدة.",
+        "غطِّ الحلة واتركها على نار هادئة 20 دقيقة لحد ما يتشرب المية.",
+        "قلب الأرز بالشوكة وقدمه ساخن مع الخضار المطبوخ."
+      ],
+      "instructionsEn": [
+        "Toast the vermicelli in ghee over medium heat, stirring constantly, until golden.",
+        "Add the drained rice and stir with the vermicelli for 2 minutes.",
+        "Add boiling water and salt; stir once.",
+        "Cover and cook on low heat 20 minutes until the water is absorbed.",
+        "Fluff with a fork and serve hot with cooked vegetables."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-rozz-shaareya.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-rozz-shaareya.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-negresco",
+      "titleAr": "نجرسكو",
+      "titleEn": "Negresco (Chicken Béchamel Pasta)",
+      "descriptionAr": "مكرونة أقلام مع الفراخ والمشروم تحت طبقة بشاميل كريمية وجبنة ذائبة، من أشهر أطباق الفرن المصرية الحديثة.",
+      "descriptionEn": "Penne with chicken and mushrooms under creamy béchamel and melted cheese — a modern Egyptian oven classic.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 35,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "طبق فرن",
+        "عزومات",
+        "كريمي"
+      ],
+      "storyAr": "النجرسكو دخل مصر مع المطبخ الإيطالي واتمصر تمامًا، وبقى من أطباق الفرن الأساسية في العزومات والتجمعات العائلية.",
+      "storyEn": "Negresco arrived in Egypt with Italian cooking and became thoroughly Egyptianized — now an oven-bake staple at gatherings.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "مكرونة أقلام مسلوقة نصف سلقة",
+          "nameEn": "Penne, parboiled",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "صدور فراخ مكعبات",
+          "nameEn": "Chicken Breasts, cubed",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r3",
+          "nameAr": "مشروم شرائح",
+          "nameEn": "Mushrooms, sliced",
+          "amount": 250,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "لبن",
+          "nameEn": "Milk",
+          "amount": 1,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r5",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "زبدة",
+          "nameEn": "Butter",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r7",
+          "nameAr": "جبنة موتزاريلا مبشورة",
+          "nameEn": "Grated Mozzarella",
+          "amount": 200,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r8",
+          "nameAr": "ملح وفلفل وجوزة الطيب",
+          "nameEn": "Salt, Pepper & Nutmeg",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "شوح مكعبات الفراخ في قليل من الزيت لحد ما تستوي، ثم أضف المشروم وقلب 5 دقائق.",
+        "للبشاميل: ذوب الزبدة، أضف الدقيق وقلب دقيقتين، ثم أضف اللبن تدريجيًا مع التقليب لحد ما يتقل.",
+        "تبّل البشاميل بالملح والفلفل وجوزة الطيب.",
+        "اخلط المكرونة مع الفراخ والمشروم ونصف كمية البشاميل في صينية فرن.",
+        "اسكب باقي البشاميل على الوش ورش الموتزاريلا.",
+        "ادخلها فرن ساخن على 200 درجة 25 دقيقة لحد ما الوش يحمر."
+      ],
+      "instructionsEn": [
+        "Sauté chicken cubes in a little oil until cooked, add mushrooms and stir 5 minutes.",
+        "For the béchamel: melt butter, stir in flour for 2 minutes, then whisk in milk gradually until thick.",
+        "Season the béchamel with salt, pepper and nutmeg.",
+        "Mix pasta with chicken, mushrooms and half the béchamel in a baking dish.",
+        "Pour over the remaining béchamel and sprinkle mozzarella.",
+        "Bake at 200°C for 25 minutes until golden on top."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-negresco.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-negresco.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-goulash-lahma",
+      "titleAr": "جلاش باللحمة المفرومة",
+      "titleEn": "Phyllo Pie with Minced Meat",
+      "descriptionAr": "رقائق جلاش مورقة محشية لحمة مفرومة متبلة، بتتقطع مربعات وتتحمر في الفرن، من أفخم أطباق العزومات.",
+      "descriptionEn": "Flaky phyllo layers filled with seasoned minced meat, cut into squares and baked golden — a feast centerpiece.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 30,
+      "cookTimeMinutes": 35,
+      "servings": 8,
+      "difficulty": "hard",
+      "isRamadanSpecial": true,
+      "tags": [
+        "طبق فرن",
+        "عزومات",
+        "فاخر",
+        "Ramadan Favorite"
+      ],
+      "storyAr": "الجلاش باللحمة من أطباق الأفراح والعزومات الكبيرة في مصر، وسر نجاحه في توريق الرقائق والسمنة البلدي.",
+      "storyEn": "Meat goulash is a wedding-and-feast dish in Egypt; its secret is well-layered phyllo and baladi ghee.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لفة جلاش طازجة",
+          "nameEn": "Fresh Phyllo Pastry sheets",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "bakery"
+        },
+        {
+          "id": "r2",
+          "nameAr": "لحمة مفرومة",
+          "nameEn": "Minced Beef",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 2,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "سمنة بلدي مذابة",
+          "nameEn": "Melted Baladi Ghee",
+          "amount": 150,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r5",
+          "nameAr": "لبن",
+          "nameEn": "Milk",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r6",
+          "nameAr": "بيضة",
+          "nameEn": "Egg",
+          "amount": 1,
+          "unitAr": "حبة",
+          "unitEn": "pc",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r7",
+          "nameAr": "ملح وفلفل وبهارات لحمة",
+          "nameEn": "Salt, Pepper & Meat Spice",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "عصج اللحمة: شوح البصل ثم أضف اللحمة والبهارات وقلب لحد ما تستوي وتنشف ميتها.",
+        "ادهن صينية بالسمنة ورص نصف رقائق الجلاش مع دهن كل ورقتين بالسمنة.",
+        "وزع اللحمة المعصجة بالتساوي فوق الرقائق.",
+        "رص باقي الرقائق بنفس الطريقة مع الدهن بين كل ورقتين.",
+        "قطع الجلاش مربعات قبل التسوية، ثم اخلط اللبن والبيضة واسكبها على الوش.",
+        "ادخلها فرن ساخن على 180 درجة 30-35 دقيقة لحد ما تحمر وتورق."
+      ],
+      "instructionsEn": [
+        "Brown the meat: sauté onion, add meat and spices, cook until done and dry.",
+        "Grease a tray and layer half the phyllo, brushing ghee every two sheets.",
+        "Spread the cooked meat evenly over the layers.",
+        "Layer the remaining phyllo the same way, brushing ghee between every two sheets.",
+        "Cut into squares before baking, then pour over the whisked milk and egg.",
+        "Bake at 180°C for 30–35 minutes until golden and puffed."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-goulash-lahma.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-goulash-lahma.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-kousa-bechamel",
+      "titleAr": "كوسة بالبشاميل",
+      "titleEn": "Zucchini Béchamel Bake",
+      "descriptionAr": "شرائح كوسة مع اللحمة المفرومة تحت طبقة بشاميل ذهبية وجبنة، طبق فرن خفيف ومشبع.",
+      "descriptionEn": "Zucchini slices with minced meat under golden béchamel and cheese — a light, satisfying oven bake.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 35,
+      "servings": 6,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "طبق فرن",
+        "خضار",
+        "كريمي"
+      ],
+      "storyAr": "الكوسة بالبشاميل من الأطباق اللي بتجمع بين الخضار الخفيف والطعم الغني، وبتتقدم كتير في العزومات جنب المكرونة بالبشاميل.",
+      "storyEn": "Zucchini béchamel combines light vegetables with rich flavor, often served at gatherings next to macarona béchamel.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "كوسة شرائح",
+          "nameEn": "Zucchini, sliced",
+          "amount": 1,
+          "unitAr": "كيلو",
+          "unitEn": "kg",
+          "aisle": "produce"
+        },
+        {
+          "id": "r2",
+          "nameAr": "لحمة مفرومة معصجة",
+          "nameEn": "Cooked Minced Beef",
+          "amount": 400,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 1,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "لبن للبشاميل",
+          "nameEn": "Milk for béchamel",
+          "amount": 750,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r5",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "زبدة",
+          "nameEn": "Butter",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r7",
+          "nameAr": "جبنة موتزاريلا",
+          "nameEn": "Mozzarella",
+          "amount": 150,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r8",
+          "nameAr": "ملح وفلفل وجوزة الطيب",
+          "nameEn": "Salt, Pepper & Nutmeg",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "شوح شرائح الكوسة في قليل من الزيت نصف تشويحة وارفعها.",
+        "عصج اللحمة مع البصل والملح والفلفل لحد ما تستوي.",
+        "جهز البشاميل: ذوب الزبدة مع الدقيق ثم أضف اللبن تدريجيًا وتبّل.",
+        "رص طبقة كوسة في صينية، ثم اللحمة، ثم طبقة كوسة ثانية.",
+        "اسكب البشاميل على الوش ورش الجبنة.",
+        "ادخلها فرن ساخن على 200 درجة 25-30 دقيقة لحد ما تحمر."
+      ],
+      "instructionsEn": [
+        "Lightly sauté the zucchini slices in a little oil; set aside.",
+        "Brown the meat with onion, salt and pepper until cooked.",
+        "Make the béchamel: melt butter with flour, whisk in milk gradually, and season.",
+        "Layer zucchini in a dish, then the meat, then another zucchini layer.",
+        "Pour over the béchamel and sprinkle cheese.",
+        "Bake at 200°C for 25–30 minutes until golden."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-kousa-bechamel.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-kousa-bechamel.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-weika",
+      "titleAr": "ويكة صعيدي",
+      "titleEn": "Saidi Mashed Okra Soup",
+      "descriptionAr": "شوربة بامية مهروسة على الطريقة الصعيدي مع طشة الثوم والكزبرة، طبق تراثي بسيط وعريق.",
+      "descriptionEn": "Traditional Upper-Egyptian mashed okra soup with a garlic-coriander tasha — a simple, ancient dish.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 30,
+      "servings": 5,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "صعيدي",
+        "تراثي",
+        "شوربة"
+      ],
+      "storyAr": "الويكة من أقدم أطباق الصعيد، كانت بتتعمل بالمفراك الخشبي، ولسه لحد النهاردة بتتقدم مع العيش الشمسي والبصل الأخضر.",
+      "storyEn": "Weika is one of Upper Egypt's oldest dishes, once mashed with a wooden mifrak — still served today with sun bread and green onions.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "بامية خضراء صغيرة",
+          "nameEn": "Small Fresh Okra",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "produce"
+        },
+        {
+          "id": "r2",
+          "nameAr": "شوربة لحمة أو فراخ",
+          "nameEn": "Meat or Chicken Broth",
+          "amount": 1,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "ثوم مفروم للطشة",
+          "nameEn": "Minced Garlic for tasha",
+          "amount": 5,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "كزبرة ناشفة",
+          "nameEn": "Dry Coriander",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "سمنة بلدي",
+          "nameEn": "Baladi Ghee",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل",
+          "nameEn": "Salt & Pepper",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق البامية في الشوربة المغلية مع الملح لحد ما تستوي تمامًا وتبقى طرية.",
+        "اهرس البامية بالمفراك أو الهراسة لحد ما تبقى ناعمة مع الاحتفاظ بقوام الشوربة.",
+        "في طاسة، حمر الثوم والكزبرة الناشفة في السمنة لحد ما يبقى لونهم ذهبي (الطشة).",
+        "اسكب الطشة على الويكة وهي بتغلي وقلب كويس.",
+        "قدمها ساخنة مع العيش البلدي أو الشمسي والبصل الأخضر."
+      ],
+      "instructionsEn": [
+        "Boil the okra in the broth with salt until completely tender.",
+        "Mash with a mifrak or masher until smooth, keeping a soupy consistency.",
+        "Fry the garlic and dry coriander in ghee until golden (the tasha).",
+        "Pour the sizzling tasha over the boiling weika and stir well.",
+        "Serve hot with baladi or sun bread and green onions."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-weika.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-weika.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-ful-beid",
+      "titleAr": "فول بالبيض",
+      "titleEn": "Ful with Fried Eggs",
+      "descriptionAr": "فول مدمس بالزيت والليمون وفوقه بيض مقلي عيون، فطار مصري أصيل مشبع.",
+      "descriptionEn": "Ful medames with oil and lemon topped with sunny-side-up eggs — an authentic, hearty Egyptian breakfast.",
+      "mealType": [
+        "breakfast",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "servings": 3,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "فطار",
+        "شعبي",
+        "مشبع",
+        "سريع"
+      ],
+      "storyAr": "الفول بالبيض من أشهر أطباق الفطار على العربيات وفي البيوت، وبيعتبر وجبة السحور المثالية في رمضان لشبعها الطويل.",
+      "storyEn": "Ful with eggs is a breakfast icon at carts and homes alike — the ideal suhoor for its long-lasting fullness.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "فول مدمس جاهز",
+          "nameEn": "Ready Ful Medames",
+          "amount": 400,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "بيض",
+          "nameEn": "Eggs",
+          "amount": 3,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r3",
+          "nameAr": "زيت زيتون أو زيت حار",
+          "nameEn": "Olive Oil or Hot Oil",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon Juice",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "كمون وملح",
+          "nameEn": "Cumin & Salt",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "سمنة أو زبدة لقلي البيض",
+          "nameEn": "Ghee or Butter for eggs",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        }
+      ],
+      "instructionsAr": [
+        "سخن الفول في طاسة مع قليل من الماء والكمون والملح.",
+        "اهرسي الفول خفيف بالشوكة حسب الرغبة.",
+        "في طاسة ثانية، اقلي البيض عيون في السمنة مع رشة ملح وفلفل.",
+        "اسكب الفول في طبق التقديم ورص البيض المقلي فوقه.",
+        "رش الزيت وعصير الليمون وقدمه مع العيش البلدي والسلطة."
+      ],
+      "instructionsEn": [
+        "Heat the ful in a pan with a little water, cumin and salt.",
+        "Lightly mash with a fork to taste.",
+        "In another pan, fry the eggs sunny-side-up in ghee with salt and pepper.",
+        "Spoon the ful into a serving dish and lay the eggs on top.",
+        "Drizzle oil and lemon juice; serve with baladi bread and salad."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-ful-beid.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-ful-beid.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-beid-basterma",
+      "titleAr": "بيض بالبسطرمة",
+      "titleEn": "Eggs with Basterma",
+      "descriptionAr": "بيض مقلي مع شرائح البسطرمة المتبلة بالحلبة والثوم، فطار غني بنكهة قوية.",
+      "descriptionEn": "Fried eggs with slices of fenugreek-and-garlic-cured basterma — a rich, boldly flavored breakfast.",
+      "mealType": [
+        "breakfast",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "servings": 2,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "فطار",
+        "غني",
+        "سريع"
+      ],
+      "storyAr": "البسطرمة من اللحوم المقددة العريقة في مصر وأرمينيا، وطبق البيض بالبسطرمة من أفخر أطباق الفطار في البيوت والمطاعم.",
+      "storyEn": "Basterma is an ancient cured meat of Egypt and Armenia; eggs with basterma is among the finest breakfast dishes at home and in restaurants.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "بيض",
+          "nameEn": "Eggs",
+          "amount": 4,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r2",
+          "nameAr": "بسطرمة شرائح",
+          "nameEn": "Basterma, sliced",
+          "amount": 100,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "meat"
+        },
+        {
+          "id": "r3",
+          "nameAr": "زبدة أو سمنة",
+          "nameEn": "Butter or Ghee",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r4",
+          "nameAr": "فلفل أسود",
+          "nameEn": "Black Pepper",
+          "amount": 0.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "بقدونس للتزيين (اختياري)",
+          "nameEn": "Parsley for garnish (optional)",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        }
+      ],
+      "instructionsAr": [
+        "ذوب الزبدة في طاسة على نار متوسطة.",
+        "شوح شرائح البسطرمة دقيقة لكل جهة لحد ما تطلع ريحتها.",
+        "اكسر البيض فوق البسطرمة مباشرة.",
+        "غطِّ الطاسة دقيقتين لحد ما البياض يستوي والصفار يفضل طري.",
+        "رش الفلفل الأسود وقدمه ساخن مع العيش البلدي."
+      ],
+      "instructionsEn": [
+        "Melt the butter in a pan over medium heat.",
+        "Sear the basterma slices one minute per side until fragrant.",
+        "Crack the eggs directly over the basterma.",
+        "Cover for 2 minutes until whites set and yolks stay runny.",
+        "Sprinkle black pepper and serve hot with baladi bread."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-beid-basterma.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-beid-basterma.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-egga",
+      "titleAr": "عجة",
+      "titleEn": "Eggah (Baked Herb Omelette)",
+      "descriptionAr": "قرص عجة ذهبي بالخضرة والبصل، بيستوي في الفرن أو الطاسة، فطار خفيف وسريع.",
+      "descriptionEn": "A golden herb-omelette disc with greens and onion, baked or pan-cooked — a light, quick breakfast.",
+      "mealType": [
+        "breakfast",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 15,
+      "servings": 4,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "فطار",
+        "خفيف",
+        "سريع",
+        "نباتي"
+      ],
+      "storyAr": "العجة من أطباق البيض الشعبية في مصر، بتتعمل بالخضرة المتوفرة في البيت، وبتتقطع مثلثات زي الكيك.",
+      "storyEn": "Eggah is a popular Egyptian egg dish made with whatever greens are at home, cut into wedges like cake.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "بيض",
+          "nameEn": "Eggs",
+          "amount": 6,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r2",
+          "nameAr": "بقدونس وكزبرة مفرومين",
+          "nameEn": "Chopped Parsley & Coriander",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بصل أخضر مفروم",
+          "nameEn": "Chopped Green Onion",
+          "amount": 3,
+          "unitAr": "عود",
+          "unitEn": "stalks",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ملح وفلفل وكمون",
+          "nameEn": "Salt, Pepper & Cumin",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "زيت أو سمنة",
+          "nameEn": "Oil or Ghee",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اخفق البيض مع الدقيق والملح والفلفل والكمون كويس.",
+        "أضف الخضرة والبصل الأخضر وقلب.",
+        "سخن الزيت في طاسة فرن واسكب الخليط.",
+        "اتركه على نار هادئة 5 دقائق لحد ما الأطراف تتماسك.",
+        "ادخله فرن ساخن 10 دقائق لحد ما الوش يحمر، ثم قطعه مثلثات وقدمه."
+      ],
+      "instructionsEn": [
+        "Whisk eggs with flour, salt, pepper and cumin.",
+        "Stir in the herbs and green onion.",
+        "Heat oil in an oven-safe pan and pour in the mixture.",
+        "Cook on low 5 minutes until edges set.",
+        "Bake 10 minutes until golden on top, then cut into wedges and serve."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-egga.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-egga.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-shorbet-lisan-asfour",
+      "titleAr": "شوربة لسان عصفور",
+      "titleEn": "Toasted Orzo Soup",
+      "descriptionAr": "شوربة لسان عصفور المحمر في شوربة الفراخ الذهبية، أول طبق على السفرة المصرية.",
+      "descriptionEn": "Golden toasted orzo in chicken broth — the first dish on the Egyptian table.",
+      "mealType": [
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 20,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "شوربة",
+        "خفيفة",
+        "بداية الأكل"
+      ],
+      "storyAr": "شوربة لسان العصفور هي الافتتاحية الرسمية للغدا والفطار في رمضان في معظم البيوت المصرية.",
+      "storyEn": "Orzo soup is the official opener of lunch — and Ramadan iftar — in most Egyptian homes.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لسان عصفور (أورزو)",
+          "nameEn": "Orzo Pasta",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "شوربة فراخ",
+          "nameEn": "Chicken Broth",
+          "amount": 1.5,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "سمنة أو زيت",
+          "nameEn": "Ghee or Oil",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "ملح وفلفل",
+          "nameEn": "Salt & Pepper",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "عصير ليمون للتقديم",
+          "nameEn": "Lemon Juice for serving",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        }
+      ],
+      "instructionsAr": [
+        "حمر لسان العصفور في السمنة مع التقليب لحد ما ياخد لون ذهبي.",
+        "أضف الشوربة المغلية تدريجيًا مع التقليب.",
+        "تبّل بالملح والفلفل واتركها على نار هادئة 15 دقيقة.",
+        "قلب من وقت للتاني عشان لسان العصفور ميلزقش.",
+        "قدمها ساخنة مع عصير الليمون."
+      ],
+      "instructionsEn": [
+        "Toast the orzo in ghee, stirring, until golden.",
+        "Gradually add the boiling broth, stirring.",
+        "Season with salt and pepper; simmer 15 minutes on low.",
+        "Stir occasionally so the orzo doesn't stick.",
+        "Serve hot with lemon juice."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-shorbet-lisan-asfour.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-shorbet-lisan-asfour.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-hummus-sham",
+      "titleAr": "حمص الشام",
+      "titleEn": "Hummus El Sham (Hot Chickpea Drink)",
+      "descriptionAr": "مشروب الحمص الساخن بالكمون والليمون والشطة، أشهر مشروب شتوي في شوارع مصر.",
+      "descriptionEn": "Hot chickpea drink with cumin, lemon and chili — Egypt's most famous winter street beverage.",
+      "mealType": [
+        "snack",
+        "iftar"
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 60,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مشروب شتوي",
+        "شعبي",
+        "دافئ"
+      ],
+      "storyAr": "عربيات حمص الشام في الشتاء من علامات الشارع المصري، والكوب الساخن بالكمون والليمون بيدفي في عز البرد.",
+      "storyEn": "Hummus el Sham carts in winter are an Egyptian street landmark — the hot cumin-lemon cup warms you to the bone.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "حمص شام منقوع ليلة",
+          "nameEn": "Chickpeas, soaked overnight",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "طماطم مبشورة",
+          "nameEn": "Grated Tomato",
+          "amount": 2,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 3,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "كمون",
+          "nameEn": "Cumin",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon Juice",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "شطة وملح",
+          "nameEn": "Chili & Salt",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق الحمص المنقوع في ماء مغلي لحد ما يستوي تمامًا.",
+        "أضف الطماطم المبشورة والثوم والملح واتركها تغلي 15 دقيقة.",
+        "تبّل بالكمون والشطة.",
+        "اسكب الحمص مع الشوربة في أكواب.",
+        "أضف عصير الليمون وقدمه ساخنًا."
+      ],
+      "instructionsEn": [
+        "Boil the soaked chickpeas until fully tender.",
+        "Add grated tomato, garlic and salt; boil 15 minutes.",
+        "Season with cumin and chili.",
+        "Ladle chickpeas with their broth into cups.",
+        "Add lemon juice and serve piping hot."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-hummus-sham.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-hummus-sham.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-muhallabia",
+      "titleAr": "مهلبية",
+      "titleEn": "Muhallabia (Milk Pudding)",
+      "descriptionAr": "مهلبية كريمية باللبن والنشا مزينة بالفستق، حلو خفيف بيتحب في كل الأوقات.",
+      "descriptionEn": "Creamy milk-and-starch pudding topped with pistachios — a light dessert loved any time.",
+      "mealType": [
+        "dessert",
+        "iftar",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 15,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "حلو",
+        "خفيف",
+        "بارد"
+      ],
+      "storyAr": "المهلبية من الحلويات العربية العريقة اللي اتسمت على اسم المهلب بن أبي صفرة، وبتتقدم باردة خصوصًا في الصيف ورمضان.",
+      "storyEn": "Muhallabia is an ancient Arab sweet named after Al-Muhallab ibn Abi Sufra, served chilled especially in summer and Ramadan.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لبن",
+          "nameEn": "Milk",
+          "amount": 1,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r2",
+          "nameAr": "نشا ذرة",
+          "nameEn": "Cornstarch",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 0.75,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "ماء ورد أو فانيليا",
+          "nameEn": "Rose Water or Vanilla",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "فستق مجروش للتزيين",
+          "nameEn": "Crushed Pistachios for garnish",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "قرفة مطحونة (اختياري)",
+          "nameEn": "Ground Cinnamon (optional)",
+          "amount": 0.5,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "ذوب النشا في كوب لبن بارد.",
+        "سخن باقي اللبن مع السكر لحد ما يقرب يغلي.",
+        "أضف خليط النشا تدريجيًا مع التقليب المستمر.",
+        "اتركها على نار هادئة مع التقليب لحد ما تتقل.",
+        "أضف ماء الورد واسكبها في أطباق.",
+        "بردها في التلاجة ساعتين وزينها بالفستق والقرفة."
+      ],
+      "instructionsEn": [
+        "Dissolve the cornstarch in a cup of cold milk.",
+        "Heat the remaining milk with sugar until almost boiling.",
+        "Gradually add the starch mixture, stirring constantly.",
+        "Cook on low, stirring, until thickened.",
+        "Add rose water and pour into serving dishes.",
+        "Chill 2 hours; garnish with pistachios and cinnamon."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-muhallabia.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-muhallabia.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-ashura",
+      "titleAr": "عاشوراء",
+      "titleEn": "Ashura (Wheat Pudding)",
+      "descriptionAr": "حلو القمح باللبن مع المكسرات والزبيب وجوز الهند، طبق المناسبات الدينية المحبوب.",
+      "descriptionEn": "Wheat-and-milk pudding with nuts, raisins and coconut — the beloved religious-occasion dessert.",
+      "mealType": [
+        "dessert",
+        "iftar",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 60,
+      "servings": 8,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "حلو",
+        "مناسبات",
+        "مغذي"
+      ],
+      "storyAr": "العاشوراء بتتوزع في يوم عاشوراء من شهر محرم، وليها مكانة خاصة في البيوت المصرية كحلو بيجمع العيلة.",
+      "storyEn": "Ashura is shared on the day of Ashura in Muharram, holding a special place in Egyptian homes as a family-gathering dessert.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "قمح مقشر منقوع ليلة",
+          "nameEn": "Hulled Wheat, soaked overnight",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "لبن",
+          "nameEn": "Milk",
+          "amount": 1,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r3",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "نشا ذرة",
+          "nameEn": "Cornstarch",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "مكسرات مشكلة",
+          "nameEn": "Mixed Nuts",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "زبيب وجوز هند مبشور",
+          "nameEn": "Raisins & Shredded Coconut",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "فانيليا",
+          "nameEn": "Vanilla",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق القمح المنقوع في ماء لحد ما يستوي ويتفتح تمامًا.",
+        "أضف اللبن والسكر وقلب على نار متوسطة.",
+        "ذوب النشا في قليل من اللبن البارد وأضفه مع التقليب لحد ما يتقل القوام.",
+        "أضف الفانيليا ونصف كمية المكسرات والزبيب.",
+        "اسكبها في أطباق وزينها بباقي المكسرات وجوز الهند.",
+        "قدمها دافئة أو باردة حسب الرغبة."
+      ],
+      "instructionsEn": [
+        "Boil the soaked wheat until fully cooked and burst open.",
+        "Add milk and sugar; stir over medium heat.",
+        "Dissolve cornstarch in a little cold milk, add it, and stir until thickened.",
+        "Add vanilla and half the nuts and raisins.",
+        "Pour into dishes and garnish with remaining nuts and coconut.",
+        "Serve warm or chilled, as you like."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-ashura.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-ashura.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-balah-sham",
+      "titleAr": "بلح الشام",
+      "titleEn": "Balah El Sham",
+      "descriptionAr": "أصابع عجينة الشو المقلية الذهبية المسقية بالشربات، من أشهر حلويات الشارع المصري.",
+      "descriptionEn": "Golden fried choux fingers soaked in syrup — one of Egypt's most famous street sweets.",
+      "mealType": [
+        "dessert",
+        "iftar"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 25,
+      "servings": 8,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "حلو",
+        "مقلي",
+        "حلويات شرقية"
+      ],
+      "storyAr": "بلح الشام من حلويات الشارع اللي ريحتها بتجذبك من بعيد، واتسمت كده لشبهها بثمرة البلح.",
+      "storyEn": "Balah el Sham's aroma pulls you in from afar — named for its resemblance to date fruits.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "ماء",
+          "nameEn": "Water",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "other"
+        },
+        {
+          "id": "r3",
+          "nameAr": "زبدة أو سمنة",
+          "nameEn": "Butter or Ghee",
+          "amount": 100,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بيض",
+          "nameEn": "Eggs",
+          "amount": 4,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r5",
+          "nameAr": "شربات (قطر) بارد",
+          "nameEn": "Cold Sugar Syrup",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "فانيليا ورشة ملح",
+          "nameEn": "Vanilla & Pinch of Salt",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اغلي الماء مع الزبدة والملح، ثم أضف الدقيق دفعة واحدة وقلب لحد ما تتكون عجينة متماسكة.",
+        "اترك العجينة تبرد قليلًا، ثم أضف البيض واحدة واحدة مع الفانيليا واعجن كويس.",
+        "حط العجينة في كيس حلواني ببلبلة مسننة.",
+        "شكل أصابع في زيت بارد أو دافئ قليلًا، ثم ارفع النار تدريجيًا.",
+        "اقلي لحد ما تاخد لون ذهبي غامق وتبقى مقرمشة.",
+        "ارفعها مباشرة على الشربات البارد وقلبها، ثم صفها وقدمها."
+      ],
+      "instructionsEn": [
+        "Boil water with butter and salt, add all the flour at once and stir into a firm dough.",
+        "Cool slightly, then beat in the eggs one by one with vanilla.",
+        "Pipe the dough through a star tip into cool oil.",
+        "Shape fingers, then raise the heat gradually.",
+        "Fry until deep golden and crisp.",
+        "Transfer straight into cold syrup, toss, drain and serve."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-balah-sham.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-balah-sham.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-zalabia",
+      "titleAr": "زلابية",
+      "titleEn": "Zalabia (Fried Dough Balls)",
+      "descriptionAr": "كرات عجينة مقلية ذهبية مقرمشة مرشوشة بالسكر البودرة، حلو بسيط بيفرح الكل.",
+      "descriptionEn": "Golden crispy fried dough balls dusted with powdered sugar — a simple sweet that delights everyone.",
+      "mealType": [
+        "dessert",
+        "snack"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 20,
+      "servings": 8,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "حلو",
+        "مقلي",
+        "للأطفال"
+      ],
+      "storyAr": "الزلابية من الحلويات الشعبية القديمة اللي بتتباع في الأسواق، وسر قرمشتها في القلي على مرتين.",
+      "storyEn": "Zalabia is an old street sweet sold in markets — its crispness secret is double frying.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "ماء دافئ",
+          "nameEn": "Warm Water",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "other"
+        },
+        {
+          "id": "r3",
+          "nameAr": "خميرة فورية",
+          "nameEn": "Instant Yeast",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "نشا ذرة",
+          "nameEn": "Cornstarch",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "سكر بودرة للتقديم",
+          "nameEn": "Powdered Sugar for serving",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط الدقيق والخميرة والسكر والنشا، ثم أضف الماء الدافئ واعجن لحد ما تبقى عجينة سائلة ثقيلة.",
+        "غطِّ العجينة واتركها تختمر 45 دقيقة لحد ما يتضاعف حجمها.",
+        "سخن الزيت وشكل كرات صغيرة بملعقة مبللة بالزيت.",
+        "اقلي الكرات نصف قلية وارفعها، ثم اقليها مرة ثانية لحد ما تحمر وتقرمش.",
+        "صفها ورش عليها السكر البودرة وقدمها ساخنة."
+      ],
+      "instructionsEn": [
+        "Mix flour, yeast, sugar and cornstarch; add warm water and knead into a thick batter.",
+        "Cover and proof 45 minutes until doubled.",
+        "Heat the oil and drop small balls with an oiled spoon.",
+        "Half-fry the balls, lift out, then fry again until golden and crisp.",
+        "Drain, dust with powdered sugar and serve hot."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-zalabia.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-zalabia.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-sawabeh-zeinab",
+      "titleAr": "صوابع زينب",
+      "titleEn": "Sawabeh Zeinab",
+      "descriptionAr": "أصابع سميد مقلية مخططة مسقية بالشربات، حلو شرقي مقرمش من بره وطري من جوه.",
+      "descriptionEn": "Ridged fried semolina fingers soaked in syrup — a crisp-outside, tender-inside oriental sweet.",
+      "mealType": [
+        "dessert",
+        "iftar"
+      ],
+      "prepTimeMinutes": 25,
+      "cookTimeMinutes": 20,
+      "servings": 8,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "حلو",
+        "حلويات شرقية",
+        "مقلي"
+      ],
+      "storyAr": "صوابع زينب من الحلويات الشرقية التقليدية اللي بتتشكل على المبشرة عشان تاخد الخطوط المميزة بتاعتها.",
+      "storyEn": "Sawabeh Zeinab is a traditional oriental sweet shaped on a grater for its signature ridges.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "دقيق سميد ناعم",
+          "nameEn": "Fine Semolina",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "دقيق أبيض",
+          "nameEn": "All-Purpose Flour",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "سمنة أو زيت",
+          "nameEn": "Ghee or Oil",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "خميرة فورية",
+          "nameEn": "Instant Yeast",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ماء دافئ للعجن",
+          "nameEn": "Warm Water for kneading",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "other"
+        },
+        {
+          "id": "r6",
+          "nameAr": "شربات (قطر) بارد",
+          "nameEn": "Cold Sugar Syrup",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اخلط السميد والدقيق والخميرة، ثم أضف السمنة وافركها كويس.",
+        "أضف الماء الدافئ تدريجيًا واعجن لحد ما تبقى عجينة متماسكة.",
+        "اتركها ترتاح 30 دقيقة.",
+        "شكل أصابع صغيرة ومررها على مبشرة أو مصفاة عشان تاخد الخطوط.",
+        "اقليها في زيت متوسط الحرارة لحد ما تحمر.",
+        "ارفعها على الشربات البارد مباشرة وقلبها، ثم صفها وقدمها."
+      ],
+      "instructionsEn": [
+        "Mix semolina, flour and yeast; rub in the ghee well.",
+        "Add warm water gradually and knead into a firm dough.",
+        "Rest 30 minutes.",
+        "Shape small fingers and roll over a grater for ridges.",
+        "Fry in medium-hot oil until golden.",
+        "Transfer straight into cold syrup, toss, drain and serve."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-sawabeh-zeinab.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-sawabeh-zeinab.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-kahk",
+      "titleAr": "كحك العيد",
+      "titleEn": "Kahk El Eid",
+      "descriptionAr": "كحك العيد بالسمنة البلدي محشي عجوة ومرشوش بالسكر البودرة، فرحة العيد في كل بيت مصري.",
+      "descriptionEn": "Eid butter cookies with baladi ghee, date filling and powdered sugar — the joy of Eid in every Egyptian home.",
+      "mealType": [
+        "dessert",
+        "breakfast"
+      ],
+      "prepTimeMinutes": 60,
+      "cookTimeMinutes": 25,
+      "servings": 12,
+      "difficulty": "medium",
+      "isRamadanSpecial": false,
+      "tags": [
+        "حلو",
+        "العيد",
+        "تراثي"
+      ],
+      "storyAr": "الكحك من أقدم حلويات مصر، وكان بيتنقش عليه رسومات فرعونية، ولسه لحد النهاردة بيتعمل في البيوت قبل العيد بأيام.",
+      "storyEn": "Kahk is among Egypt's oldest sweets — once stamped with Pharaonic designs — still home-baked days before Eid.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 1,
+          "unitAr": "كيلو",
+          "unitEn": "kg",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "سمنة بلدي",
+          "nameEn": "Baladi Ghee",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r3",
+          "nameAr": "عجوة (تمر مهروس)",
+          "nameEn": "Date Paste (agwa)",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "خميرة فورية",
+          "nameEn": "Instant Yeast",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "سمسم محمص",
+          "nameEn": "Toasted Sesame",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ريحة كحك (بهارات)",
+          "nameEn": "Kahk Spice Mix",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "سكر بودرة للتقديم",
+          "nameEn": "Powdered Sugar for serving",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r8",
+          "nameAr": "ماء دافئ للعجن",
+          "nameEn": "Warm Water for kneading",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "other"
+        }
+      ],
+      "instructionsAr": [
+        "اقدح السمنة واسكبها على الدقيق مع ريحة الكحك والسمسم وقلب بملعقة خشب.",
+        "اترك الخليط يبرد قليلًا، ثم أضف الخميرة المذابة في الماء الدافئ واعجن.",
+        "اترك العجينة تختمر ساعة.",
+        "كور العجوة كور صغيرة، واحشي كل قطعة عجينة بكورة عجوة.",
+        "نقش الكحك بالمنقاش أو القالب ورصه في صواني.",
+        "اخبزه في فرن متوسط 180 درجة 20-25 دقيقة لحد ما ياخد لون ذهبي فاتح.",
+        "اتركه يبرد تمامًا ثم رش السكر البودرة عند التقديم."
+      ],
+      "instructionsEn": [
+        "Heat the ghee until hot and pour over the flour with kahk spice and sesame; stir with a wooden spoon.",
+        "Cool slightly, add yeast dissolved in warm water, and knead.",
+        "Proof the dough one hour.",
+        "Roll date paste into small balls; fill each dough piece with one.",
+        "Stamp with kahk tongs or molds; arrange on trays.",
+        "Bake at 180°C for 20–25 minutes until light golden.",
+        "Cool completely, then dust with powdered sugar to serve."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-kahk.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-kahk.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-adas-begabba",
+      "titleAr": "عدس بجبة",
+      "titleEn": "Brown Lentils in Tomato Sauce",
+      "descriptionAr": "عدس بجبة مستوي في صلصة طماطم خفيفة مع طشة الثوم والكمون، وجبة نباتية اقتصادية ومشبعة.",
+      "descriptionEn": "Brown lentils braised in light tomato sauce with garlic-cumin tasha — an economical, filling vegetarian meal.",
+      "mealType": [
+        "lunch",
+        "dinner"
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 40,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "نباتي",
+        "اقتصادي",
+        "بقوليات"
+      ],
+      "storyAr": "العدس بجبة من البقوليات الأساسية في المطبخ المصري، وطبقه بالصلصة والطشة من أكلات الشتاء المحبوبة والرخيصة.",
+      "storyEn": "Brown lentils are a staple legume in Egyptian cooking; the sauced version with tasha is a beloved, budget-friendly winter dish.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "عدس بجبة (عدس بني)",
+          "nameEn": "Brown Lentils",
+          "amount": 500,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "عصير طماطم",
+          "nameEn": "Tomato Puree",
+          "amount": 300,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 1,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "ثوم مفروم للطشة",
+          "nameEn": "Minced Garlic for tasha",
+          "amount": 4,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "كمون",
+          "nameEn": "Cumin",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "زيت طعام",
+          "nameEn": "Vegetable Oil",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "ملح وفلفل",
+          "nameEn": "Salt & Pepper",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق العدس في ماء مغلي مع الكمون لحد ما يستوي ويبقى طري.",
+        "شوح البصل في الزيت لحد ما يذبل، ثم أضف عصير الطماطم واتركها تتسبك.",
+        "أضف العدس المسلوق مع قليل من ماء السلق للصلصة.",
+        "حمر الثوم في قليل من الزيت واسكبه على العدس (الطشة).",
+        "قلب كويس وقدمه مع الأرز الأبيض أو العيش البلدي."
+      ],
+      "instructionsEn": [
+        "Boil the lentils in water with cumin until tender.",
+        "Sauté onion in oil until soft, add tomato puree and simmer.",
+        "Add the boiled lentils with a little of their cooking water to the sauce.",
+        "Fry the garlic in a little oil and pour over the lentils (the tasha).",
+        "Stir well and serve with white rice or baladi bread."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-adas-begabba.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-adas-begabba.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-qarnabeet-maqli",
+      "titleAr": "قرنبيط مقلي",
+      "titleEn": "Fried Cauliflower",
+      "descriptionAr": "زهرات قرنبيط مغلفة بخلطة مقرمشة ومقلية ذهبية، بتتقدم مع الطحينة والعيش.",
+      "descriptionEn": "Cauliflower florets in a crispy batter, fried golden — served with tahini and bread.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 20,
+      "servings": 5,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "نباتي",
+        "مقرمش",
+        "شتوي"
+      ],
+      "storyAr": "القرنبيط المقلي من خضار الشتاء المحبوبة في مصر، وبيتقدم كمقبلات أو طبق رئيسي خفيف مع الطحينة.",
+      "storyEn": "Fried cauliflower is a beloved winter vegetable in Egypt, served as an appetizer or light main with tahini.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "قرنبيط مقطع زهرات",
+          "nameEn": "Cauliflower, cut into florets",
+          "amount": 1,
+          "unitAr": "حبة متوسطة",
+          "unitEn": "medium pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r2",
+          "nameAr": "دقيق",
+          "nameEn": "Flour",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "بيض",
+          "nameEn": "Eggs",
+          "amount": 2,
+          "unitAr": "حبة",
+          "unitEn": "pcs",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بقدونس مفروم",
+          "nameEn": "Chopped Parsley",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 2,
+          "unitAr": "فص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل وكمون",
+          "nameEn": "Salt, Pepper & Cumin",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق زهرات القرنبيط نصف سلقة في ماء مملح وصفها.",
+        "اخلط الدقيق والبيض والبقدونس والثوم والبهارات مع قليل من الماء لعمل خلطة سائلة ثقيلة.",
+        "غطِّ كل زهرة بالخلطة كويس.",
+        "اقلي الزهرات في زيت ساخن لحد ما تاخد لون ذهبي ومقرمش.",
+        "صفها على ورق مطبخ وقدمها مع الطحينة والليمون والعيش."
+      ],
+      "instructionsEn": [
+        "Parboil the florets in salted water; drain.",
+        "Mix flour, eggs, parsley, garlic and spices with a little water into a thick batter.",
+        "Coat each floret well in the batter.",
+        "Fry in hot oil until golden and crisp.",
+        "Drain on paper towels; serve with tahini, lemon and bread."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-qarnabeet-maqli.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-qarnabeet-maqli.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-samak-bolti-maqli",
+      "titleAr": "بلطي مقلي",
+      "titleEn": "Fried Tilapia",
+      "descriptionAr": "سمك بلطي كامل مقلي مقرمش متبل بالكمون والثوم والليمون، مع الأرز الصيادية والسلطة.",
+      "descriptionEn": "Whole crispy fried tilapia seasoned with cumin, garlic and lemon, served with sayadeya rice and salad.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 20,
+      "cookTimeMinutes": 20,
+      "servings": 4,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "سمك",
+        "مقرمش",
+        "وجبة مشبعة"
+      ],
+      "storyAr": "السمك البلطي المقلي من أشهر أكلات المدن الساحلية والنيلية في مصر، وبيتقدم يوم السمك الأسبوعي في كتير من البيوت.",
+      "storyEn": "Fried tilapia is a signature of Egypt's coastal and Nile cities, served on the weekly fish day in many homes.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "سمك بلطي متوسط منظف",
+          "nameEn": "Medium Tilapia, cleaned",
+          "amount": 4,
+          "unitAr": "سمكة",
+          "unitEn": "fish",
+          "aisle": "meat"
+        },
+        {
+          "id": "r2",
+          "nameAr": "ثوم مفروم",
+          "nameEn": "Minced Garlic",
+          "amount": 6,
+          "unitAr": "فصوص",
+          "unitEn": "cloves",
+          "aisle": "produce"
+        },
+        {
+          "id": "r3",
+          "nameAr": "كمون",
+          "nameEn": "Cumin",
+          "amount": 2,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "عصير ليمون",
+          "nameEn": "Lemon Juice",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "دقيق للتغليف",
+          "nameEn": "Flour for coating",
+          "amount": 1,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ملح وفلفل",
+          "nameEn": "Salt & Pepper",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت للقلي",
+          "nameEn": "Oil for Frying",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "تبل السمك بالثوم والكمون والليمون والملح والفلفل واتركه 30 دقيقة.",
+        "غطِّ كل سمكة بالدقيق من الجهتين ونفض الزيادة.",
+        "اقلي السمك في زيت غزير ساخن 5-6 دقائق لكل جهة لحد ما يبقى ذهبي ومقرمش.",
+        "صف السمك على ورق مطبخ.",
+        "قدمه ساخن مع الأرز الصيادية والسلطة الخضراء والطحينة."
+      ],
+      "instructionsEn": [
+        "Marinate the fish with garlic, cumin, lemon, salt and pepper for 30 minutes.",
+        "Dredge each fish in flour on both sides; shake off excess.",
+        "Deep-fry in hot oil 5–6 minutes per side until golden and crisp.",
+        "Drain on paper towels.",
+        "Serve hot with sayadeya rice, green salad and tahini."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-samak-bolti-maqli.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-samak-bolti-maqli.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-sahlab",
+      "titleAr": "سحلب",
+      "titleEn": "Sahlab (Hot Milk Drink)",
+      "descriptionAr": "مشروب اللبن الساخن الكريمي بالقرفة والمكسرات وجوز الهند، ملك مشروبات الشتاء المصري.",
+      "descriptionEn": "Creamy hot milk drink with cinnamon, nuts and coconut — the king of Egyptian winter beverages.",
+      "mealType": [
+        "snack",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 5,
+      "cookTimeMinutes": 10,
+      "servings": 4,
+      "difficulty": "easy",
+      "isRamadanSpecial": false,
+      "tags": [
+        "مشروب شتوي",
+        "دافئ",
+        "حلو"
+      ],
+      "storyAr": "السحلب مشروب الشتاء الأول في مصر، بيتباع على العربيات وفي الكافيهات، وريحته بالقرفة بتدفي القلب.",
+      "storyEn": "Sahlab is Egypt's number-one winter drink, sold from carts and cafés — its cinnamon aroma warms the heart.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لبن",
+          "nameEn": "Milk",
+          "amount": 4,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r2",
+          "nameAr": "نشا ذرة أو بودرة سحلب",
+          "nameEn": "Cornstarch or Sahlab Powder",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "قرفة مطحونة",
+          "nameEn": "Ground Cinnamon",
+          "amount": 1,
+          "unitAr": "ملعقة صغيرة",
+          "unitEn": "tsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "مكسرات مجروشة",
+          "nameEn": "Crushed Nuts",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "جوز هند مبشور",
+          "nameEn": "Shredded Coconut",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "ذوب النشا والسكر في كوب لبن بارد.",
+        "سخن باقي اللبن لحد ما يقرب يغلي.",
+        "أضف خليط النشا تدريجيًا مع التقليب المستمر.",
+        "اتركه على نار هادئة مع التقليب لحد ما يتقل ويبقى كريمي.",
+        "اسكبه في أكواب وزينه بالقرفة والمكسرات وجوز الهند وقدمه ساخنًا."
+      ],
+      "instructionsEn": [
+        "Dissolve the starch and sugar in a cup of cold milk.",
+        "Heat the remaining milk until almost boiling.",
+        "Gradually add the starch mixture, stirring constantly.",
+        "Cook on low, stirring, until thick and creamy.",
+        "Pour into cups, top with cinnamon, nuts and coconut; serve hot."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-sahlab.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-sahlab.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-khoshaf",
+      "titleAr": "خشاف",
+      "titleEn": "Khoshaf (Dried Fruit Compote)",
+      "descriptionAr": "خشاف الفواكه المجففة في عصير المشمش، مشروب الفطار الرمضاني الأول في مصر.",
+      "descriptionEn": "Dried fruits in apricot juice — Egypt's quintessential Ramadan iftar drink.",
+      "mealType": [
+        "iftar",
+        "suhoor"
+      ],
+      "prepTimeMinutes": 15,
+      "cookTimeMinutes": 10,
+      "servings": 8,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "رمضان",
+        "مشروب",
+        "حلو",
+        "Ramadan Favorite"
+      ],
+      "storyAr": "الخشاف على الفطار في رمضان عادة مصرية أصيلة: التمر والمشمش والتين المجفف في عصير قمر الدين بيعوض الجسم بعد الصيام.",
+      "storyEn": "Khoshaf at iftar is a deep Egyptian Ramadan tradition: dates, apricots and figs in amareddin juice replenish the body after fasting.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "مشمش مجفف",
+          "nameEn": "Dried Apricots",
+          "amount": 200,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "تمر منزوع النوى",
+          "nameEn": "Pitted Dates",
+          "amount": 200,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "تين مجفف",
+          "nameEn": "Dried Figs",
+          "amount": 100,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "زبيب",
+          "nameEn": "Raisins",
+          "amount": 100,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "عصير قمر الدين",
+          "nameEn": "Amareddin (Apricot) Juice",
+          "amount": 1.5,
+          "unitAr": "لتر",
+          "unitEn": "L",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r6",
+          "nameAr": "ماء ورد",
+          "nameEn": "Rose Water",
+          "amount": 1,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "مكسرات للتزيين",
+          "nameEn": "Nuts for garnish",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "انقع الفواكه المجففة في ماء دافئ 30 دقيقة ثم صفها.",
+        "سخن عصير قمر الدين لحد ما يبقى دافئ (مش مغلي).",
+        "أضف الفواكه المنقوعة للعصير الدافئ.",
+        "أضف ماء الورد وقلب كويس.",
+        "برد الخشاف في التلاجة ساعتين على الأقل.",
+        "قدمه باردًا مزينًا بالمكسرات."
+      ],
+      "instructionsEn": [
+        "Soak the dried fruits in warm water 30 minutes; drain.",
+        "Warm the amareddin juice until lukewarm (not boiling).",
+        "Add the soaked fruits to the warm juice.",
+        "Stir in the rose water.",
+        "Chill at least 2 hours.",
+        "Serve cold, garnished with nuts."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-khoshaf.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-khoshaf.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-muhallabia-amareddin",
+      "titleAr": "مهلبية قمر الدين",
+      "titleEn": "Amareddin Muhallabia",
+      "descriptionAr": "مهلبية اللبن بنكهة قمر الدين المشمشية، حلو رمضاني منعش بلون ذهبي جميل.",
+      "descriptionEn": "Milk pudding flavored with apricot amareddin — a refreshing Ramadan dessert with a beautiful golden color.",
+      "mealType": [
+        "dessert",
+        "iftar"
+      ],
+      "prepTimeMinutes": 10,
+      "cookTimeMinutes": 20,
+      "servings": 6,
+      "difficulty": "easy",
+      "isRamadanSpecial": true,
+      "tags": [
+        "رمضان",
+        "حلو",
+        "مشمش",
+        "Ramadan Favorite"
+      ],
+      "storyAr": "مهلبية قمر الدين من حلويات رمضان المفضلة في مصر، بتجمع بين المهلبية التقليدية وعصير المشمش المجفف.",
+      "storyEn": "Amareddin muhallabia is a favorite Ramadan sweet in Egypt, marrying traditional milk pudding with dried-apricot juice.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "لفة قمر الدين",
+          "nameEn": "Amareddin (Dried Apricot Sheets)",
+          "amount": 400,
+          "unitAr": "جرام",
+          "unitEn": "g",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r2",
+          "nameAr": "لبن",
+          "nameEn": "Milk",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "dairy"
+        },
+        {
+          "id": "r3",
+          "nameAr": "نشا ذرة",
+          "nameEn": "Cornstarch",
+          "amount": 4,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r4",
+          "nameAr": "سكر",
+          "nameEn": "Sugar",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r5",
+          "nameAr": "ماء",
+          "nameEn": "Water",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "other"
+        },
+        {
+          "id": "r6",
+          "nameAr": "فستق مجروش للتزيين",
+          "nameEn": "Crushed Pistachios for garnish",
+          "amount": 3,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "قطع قمر الدين وانقعه في الماء ساعتين لحد ما يذوب، ثم صفه.",
+        "اخلط عصير قمر الدين مع اللبن والسكر في حلة.",
+        "ذوب النشا في قليل من الماء البارد وأضفه مع التقليب المستمر.",
+        "اتركه على نار هادئة مع التقليب لحد ما يتقل.",
+        "اسكبه في أطباق وبرده في التلاجة ساعتين.",
+        "زينه بالفستق المجروش وقدمه باردًا."
+      ],
+      "instructionsEn": [
+        "Cut the amareddin, soak in water 2 hours until dissolved, then strain.",
+        "Combine the apricot juice with milk and sugar in a pot.",
+        "Dissolve cornstarch in a little cold water; add, stirring constantly.",
+        "Cook on low, stirring, until thickened.",
+        "Pour into dishes and chill 2 hours.",
+        "Garnish with crushed pistachios; serve cold."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-muhallabia-amareddin.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-muhallabia-amareddin.webp"
+      ],
+      "votesCount": {
+        "likes": 0,
+        "dislikes": 0
+      },
+      "rating": 0
+    },
+    {
+      "id": "egypt-mahshi-koromb",
+      "titleAr": "محشي كرنب",
+      "titleEn": "Stuffed Cabbage Rolls",
+      "descriptionAr": "ورق كرنب محشي أرز بالخضرة والطماطم، مستوي على نار هادئة، ملك المحاشي المصرية.",
+      "descriptionEn": "Cabbage leaves stuffed with herbed tomato rice, slow-cooked — the king of Egyptian mahshi.",
+      "mealType": [
+        "lunch",
+        "dinner",
+        "iftar"
+      ],
+      "prepTimeMinutes": 60,
+      "cookTimeMinutes": 60,
+      "servings": 8,
+      "difficulty": "medium",
+      "isRamadanSpecial": true,
+      "tags": [
+        "محاشي",
+        "عزومات",
+        "تراثي",
+        "Ramadan Favorite"
+      ],
+      "storyAr": "محشي الكرنب على رأس موائد العزومات المصرية، ولفه فن بتتورثه البنات عن الأمهات، وبيتقدم مع الفراخ أو البط.",
+      "storyEn": "Stuffed cabbage heads Egyptian feast tables; rolling it is an art passed from mothers to daughters, served with chicken or duck.",
+      "ingredients": [
+        {
+          "id": "r1",
+          "nameAr": "كرنبة متوسطة مسلوقة ومفككة",
+          "nameEn": "Medium Cabbage, blanched and separated",
+          "amount": 1,
+          "unitAr": "حبة",
+          "unitEn": "pc",
+          "aisle": "produce"
+        },
+        {
+          "id": "r2",
+          "nameAr": "أرز مصري مغسول",
+          "nameEn": "Egyptian Rice, washed",
+          "amount": 3,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r3",
+          "nameAr": "عصير طماطم",
+          "nameEn": "Tomato Puree",
+          "amount": 500,
+          "unitAr": "مل",
+          "unitEn": "ml",
+          "aisle": "produce"
+        },
+        {
+          "id": "r4",
+          "nameAr": "بقدونس وكزبرة وشبت مفرومين",
+          "nameEn": "Chopped Parsley, Coriander & Dill",
+          "amount": 2,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "produce"
+        },
+        {
+          "id": "r5",
+          "nameAr": "بصل مفروم",
+          "nameEn": "Minced Onion",
+          "amount": 2,
+          "unitAr": "حبة كبيرة",
+          "unitEn": "large pcs",
+          "aisle": "produce"
+        },
+        {
+          "id": "r6",
+          "nameAr": "شوربة لحمة أو فراخ",
+          "nameEn": "Meat or Chicken Broth",
+          "amount": 4,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r7",
+          "nameAr": "زيت أو سمنة",
+          "nameEn": "Oil or Ghee",
+          "amount": 0.5,
+          "unitAr": "كوب",
+          "unitEn": "cup",
+          "aisle": "pantry"
+        },
+        {
+          "id": "r8",
+          "nameAr": "ملح وفلفل وكمون وكزبرة ناشفة",
+          "nameEn": "Salt, Pepper, Cumin & Dry Coriander",
+          "amount": 2,
+          "unitAr": "ملعقة كبيرة",
+          "unitEn": "tbsp",
+          "aisle": "pantry"
+        }
+      ],
+      "instructionsAr": [
+        "اسلق ورق الكرنب في ماء مغلي مملح دقيقتين ثم برده وقطعه مربعات مناسبة للحشو.",
+        "اخلط الأرز مع عصير الطماطم والخضرة والبصل والزيت والبهارات كويس (الخلطة نية).",
+        "احشي كل ورقة بملعقة من الخلطة ولفها رول محكم.",
+        "رص المحشي في حلة مفروشة بورق كرنب أو شرائح بصل.",
+        "اسكب الشوربة المغلية لحد ما تغطي أول صف واتركها تغلي 10 دقائق.",
+        "هدّي النار واتركه 45-50 دقيقة لحد ما يستوي، ثم اقلبه في طبق التقديم."
+      ],
+      "instructionsEn": [
+        "Blanch cabbage leaves in salted boiling water 2 minutes; cool and cut into stuffing-sized squares.",
+        "Mix rice with tomato puree, herbs, onion, oil and spices (raw filling).",
+        "Fill each leaf with a spoonful and roll tightly.",
+        "Arrange rolls in a pot lined with cabbage leaves or onion slices.",
+        "Pour boiling broth to cover the first layer; boil 10 minutes.",
+        "Reduce heat and cook 45–50 minutes until done; invert onto a serving platter."
+      ],
+      "region": "egypt",
+      "image": "/recipe-images/wajba-egypt-mahshi-koromb.webp",
+      "galleryImages": [
+        "/recipe-images/wajba-egypt-mahshi-koromb.webp"
       ],
       "votesCount": {
         "likes": 0,

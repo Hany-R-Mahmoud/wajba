@@ -3,6 +3,7 @@ import { Language, WeeklyPlan, GroceryItem } from '../types';
 import { X, Users, Share2, Copy, Check, FileSpreadsheet, Download, RefreshCw, Link as LinkIcon } from 'lucide-react';
 import { createCurrentWajbaBackup, encodePlanToUrl } from '../utils/storage';
 import { syncPlanWithGoogleSheets, downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
+import { FEATURE_FLAGS } from '../config/features';
 
 interface FamilySyncModalProps {
   plan: WeeklyPlan;
@@ -148,6 +149,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         </div>
 
         {/* Google Sheets Remote Sync Option */}
+        {FEATURE_FLAGS.appsScriptSync && (
         <div className="p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700 space-y-2">
           <h3 className="text-xs font-bold text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
             <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
@@ -181,6 +183,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
             <p role={syncMessage.type === 'error' ? 'alert' : 'status'} className={`text-[11px] font-bold pt-1 ${syncMessage.type === 'error' ? 'text-rose-600' : syncMessage.type === 'info' ? 'text-amber-700' : 'text-emerald-600'}`}>{syncMessage.text}</p>
           )}
         </div>
+        )}
 
         {/* JSON Backup & Export Option */}
         <div className="p-4 rounded-2xl bg-amber-100/60 dark:bg-stone-800/60 border border-amber-300 dark:border-stone-700 space-y-2">

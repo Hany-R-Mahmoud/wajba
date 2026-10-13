@@ -20,8 +20,8 @@
   ],
   "features": [
     {
-      "en": "65 bilingual MENA recipes with cultural stories, ingredients, instructions, timers, and source-reviewed metadata.",
-      "ar": "65 وصفة ثنائية اللغة من مطابخ المنطقة، مع قصص تراثية ومكونات وخطوات ومؤقتات وبيانات تمت مراجعة مصادرها."
+      "en": "100 bilingual MENA recipes with cultural stories, ingredients, instructions, timers, and source-reviewed metadata.",
+      "ar": "100 وصفة ثنائية اللغة من مطابخ المنطقة، مع قصص تراثية ومكونات وخطوات ومؤقتات وبيانات تمت مراجعة مصادرها."
     },
     {
       "en": "Empty-first weekly and monthly meal planning with selectable meal visibility, local persistence, scope-aware clear controls, and Standard/Ramadan modes.",
@@ -45,13 +45,13 @@
     }
   ],
   "progress": {
-    "en": "Showcase-ready local-first product with a source-reviewed 65-recipe catalog and documented browser-only architecture.",
-    "ar": "منتج محلي جاهز للعرض، يضم كتالوجاً من 65 وصفة تمت مراجعة مصادرها، ومعمارية موثقة تعتمد على المتصفح فقط."
+    "en": "Showcase-ready local-first product with a 100-recipe catalog (65 source-reviewed + 35 documented Egyptian home dishes) and documented browser-only architecture.",
+    "ar": "منتج محلي جاهز للعرض، يضم كتالوجاً من 100 وصفة (65 تمت مراجعة مصادرها + 35 طبقاً بيتياً مصرياً موثقاً)، ومعمارية موثقة تعتمد على المتصفح فقط."
   },
   "issues": [
     {
-      "en": "Unknown / verify — image placeholders and repeated stock imagery remain in the recipe audit and need human visual review before production use.",
-      "ar": "غير معروف / يحتاج تحقق — يتضمن تدقيق الوصفات صوراً بديلة وصوراً مخزنة مكررة، وتحتاج إلى مراجعة بصرية بشرية قبل الاستخدام الإنتاجي."
+      "en": "Unknown / verify — the 35 new Egyptian home-dish recipes were documented 2026-10-13 but have not had the same source-review pass as the original 65.",
+      "ar": "غير معروف / يحتاج تحقق — الوصفات الـ35 الجديدة للأطباق البيتية المصرية وُثقت بتاريخ 2026-10-13 لكنها لم تخضع لنفس مراجعة المصادر التي خضعت لها الـ65 الأصلية."
     }
   ],
   "suggestions": [

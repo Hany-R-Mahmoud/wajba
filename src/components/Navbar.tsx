@@ -18,6 +18,7 @@ import {
 import { WajbaLogo } from './WajbaLogo';
 import {PwaInstallMenuAction} from './PwaInstallMenuAction';
 import { NavigationTab } from './MobileBottomNav';
+import { FEATURE_FLAGS } from '../config/features';
 
 interface NavbarProps {
   currentTab: NavigationTab;
@@ -80,12 +81,16 @@ export const Navbar: React.FC<NavbarProps> = ({
       labelEn: 'Pantry',
       icon: Warehouse,
     },
-    {
-      id: 'leaderboard' as const,
-      labelAr: 'أفضل ١٠ وجبات',
-      labelEn: 'Top 10 Meals',
-      icon: Trophy,
-    },
+    ...(FEATURE_FLAGS.leaderboard
+      ? [
+          {
+            id: 'leaderboard' as const,
+            labelAr: 'أفضل ١٠ وجبات',
+            labelEn: 'Top 10 Meals',
+            icon: Trophy,
+          },
+        ]
+      : []),
     {
       id: 'family' as const,
       labelAr: 'المشاركة العائلية',

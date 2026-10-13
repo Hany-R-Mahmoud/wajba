@@ -2,11 +2,11 @@
 
 ## Catalog Snapshot
 
-The reviewed catalog contains 65 stable recipe IDs:
+The reviewed catalog contains 65 stable recipe IDs (plus 35 documented Egyptian home dishes added 2026-10-13, for 100 total):
 
 | Region | Recipes |
 |---|---:|
-| Egypt | 22 |
+| Egypt | 22 + 35 new |
 | Levant | 15 |
 | Gulf | 14 |
 | Maghreb | 9 |

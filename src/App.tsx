@@ -55,6 +55,7 @@ import { Calendar, CalendarDays } from 'lucide-react';
 import {PwaInstallHelpDialog} from './components/PwaInstallHelpDialog';
 import {PwaStatusBar} from './components/PwaStatusBar';
 import { MobileBottomNav } from './components/MobileBottomNav';
+import { FEATURE_FLAGS } from './config/features';
 
 type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'settings';
 
@@ -70,6 +71,7 @@ const DASHBOARD_PATHS: Record<DashboardTab, string> = {
 function getDashboardTab(pathname: string): DashboardTab | null {
   if (pathname === '/dashboard' || pathname === '/dashboard/') return 'planner';
   const tab = pathname.match(/^\/dashboard\/(recipes|planner|grocery|pantry|leaderboard|settings)\/?$/)?.[1];
+  if (tab === 'leaderboard' && !FEATURE_FLAGS.leaderboard) return null;
   return (tab as DashboardTab | undefined) ?? null;
 }
 
@@ -87,8 +89,17 @@ export default function App() {
   const [currentTab, setCurrentTab] = useState<DashboardTab>(() => getDashboardTab(window.location.pathname) ?? 'planner');
 
   useEffect(() => {
-    if (dashboardTab) setCurrentTab(dashboardTab);
-  }, [dashboardTab]);
+    if (dashboardTab) {
+      setCurrentTab(dashboardTab);
+      return;
+    }
+
+    if (!FEATURE_FLAGS.leaderboard && /^\/dashboard\/leaderboard\/?$/.test(pathname)) {
+      window.history.replaceState(window.history.state, '', DASHBOARD_PATHS.planner);
+      setPathname(DASHBOARD_PATHS.planner);
+      setCurrentTab('planner');
+    }
+  }, [dashboardTab, pathname]);
 
   const navigateToTab = (tab: DashboardTab) => {
     const nextPath = DASHBOARD_PATHS[tab];
@@ -469,6 +480,7 @@ export default function App() {
                   <span>{language === 'ar' ? 'الجدول الأسبوعي' : 'Weekly Plan'}</span>
                 </button>
 
+                {FEATURE_FLAGS.monthlyPlanner && (
                 <button
                   onClick={() => setPlannerMode('monthly')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all ${
@@ -480,6 +492,7 @@ export default function App() {
                   <Calendar className="w-4 h-4" />
                   <span>{language === 'ar' ? 'التقويم الشهري' : 'Monthly Calendar'}</span>
                 </button>
+                )}
               </div>
 
               <div className="text-xs font-bold text-amber-900/70 dark:text-amber-200/70 hidden sm:block px-3">
@@ -494,19 +507,7 @@ export default function App() {
             </div>
 
             {/* Render Weekly or Monthly Planner View */}
-            {plannerMode === 'weekly' ? (
-              <WeeklyPlannerView
-                plan={weeklyPlan}
-                onUpdatePlan={handleUpdateWeeklyPlan}
-                recipes={allRecipes}
-                language={language}
-                onGoToGrocery={() => navigateToTab('grocery')}
-                onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
-                onOpenFamilySync={() => setFamilySyncModalOpen(true)}
-                onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
-                onClearWeek={handleClearWeek}
-              />
-            ) : (
+            {plannerMode === 'monthly' && FEATURE_FLAGS.monthlyPlanner ? (
               <MonthlyCalendarView
                 monthlyPlan={monthlyPlan}
                 onUpdateMonthlyPlan={handleUpdateMonthlyPlan}
@@ -518,6 +519,18 @@ export default function App() {
                 onChangeMonth={handleChangeMonth}
                 onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
                 onClearMonthAndWeek={handleClearMonthAndWeek}
+              />
+            ) : (
+              <WeeklyPlannerView
+                plan={weeklyPlan}
+                onUpdatePlan={handleUpdateWeeklyPlan}
+                recipes={allRecipes}
+                language={language}
+                onGoToGrocery={() => navigateToTab('grocery')}
+                onOpenRecipeDetail={(recipe) => setSelectedDetailRecipe(recipe)}
+                onOpenFamilySync={() => setFamilySyncModalOpen(true)}
+                onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
+                onClearWeek={handleClearWeek}
               />
             )}
           </div>
@@ -542,7 +555,7 @@ export default function App() {
           />
         )}
 
-        {currentTab === 'leaderboard' && (
+        {currentTab === 'leaderboard' && FEATURE_FLAGS.leaderboard && (
           <TopTenLeaderboard
             recipes={allRecipes}
             language={language}
