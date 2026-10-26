@@ -16,6 +16,7 @@ import {
   loadWeeklyPlan,
   saveActiveTimers,
   saveCustomRecipe,
+  saveFamilyWeek,
   saveFavorites,
   saveGroceryCheckedIds,
   saveGroceryExtras,
@@ -37,6 +38,9 @@ import {
 } from './utils/storage';
 
 import { Navbar } from './components/Navbar';
+import { AccountPanel } from './components/AccountPanel';
+import { readInvite } from './components/FamilyGroups';
+import { prepareFamilyImport } from './utils/family';
 import { LandingPage } from './components/LandingPage';
 import { RecipeExplorer } from './components/RecipeExplorer';
 import { WeeklyPlannerView } from './components/WeeklyPlannerView';
@@ -146,7 +150,7 @@ export default function App() {
 
   const [favorites, setFavorites] = useState<string[]>(loadFavorites());
   const [userVotes, setUserVotes] = useState<{ [recipeId: string]: 'like' | 'dislike' }>(loadVotes());
-  const [weeklyPlan, setWeeklyPlan] = useState<WeeklyPlan>(loadWeeklyPlan());
+  const [weeklyPlan, setWeeklyPlan] = useState<WeeklyPlan>(loadWeeklyPlan);
   const [monthlyPlan, setMonthlyPlan] = useState<MonthlyPlan>(() => loadMonthlyPlan());
   const [plannerMode, setPlannerMode] = useState<'weekly' | 'monthly'>('weekly');
 
@@ -158,7 +162,12 @@ export default function App() {
   // Modals
   const [selectedDetailRecipe, setSelectedDetailRecipe] = useState<Recipe | null>(null);
   const [createRecipeModalOpen, setCreateRecipeModalOpen] = useState(false);
-  const [familySyncModalOpen, setFamilySyncModalOpen] = useState(false);
+  const [familySyncModalOpen, setFamilySyncModalOpen] = useState(() => Boolean(readInvite()));
+  useEffect(() => {
+    const openInvite = () => { if (readInvite()) setFamilySyncModalOpen(true); };
+    window.addEventListener('hashchange', openInvite);
+    return () => window.removeEventListener('hashchange', openInvite);
+  }, []);
   const [recipeBeingEdited, setRecipeBeingEdited] = useState<Recipe | null>(null);
   const [lastDeletedRecipe, setLastDeletedRecipe] = useState<Recipe | null>(null);
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error' | 'info'; text: string } | null>(null);
@@ -201,8 +210,8 @@ export default function App() {
   };
 
   const handleUpdateWeeklyPlan = (newPlan: WeeklyPlan) => {
-    setWeeklyPlan(newPlan);
     saveWeeklyPlan(newPlan);
+    setWeeklyPlan(newPlan);
   };
 
   const handleUpdateMonthlyPlan = (newPlan: MonthlyPlan) => {
@@ -413,6 +422,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-stone-900 dark:bg-[#0c1220] dark:text-slate-100 flex flex-col font-sans transition-colors pb-24">
       {/* Top Main Navigation Header */}
+      <AccountPanel language={language} />
       <Navbar
         currentTab={currentTab}
         onTabChange={(tab) => {
@@ -657,6 +667,14 @@ export default function App() {
           onClose={() => setFamilySyncModalOpen(false)}
           language={language}
           onImportPlan={handleUpdateWeeklyPlan}
+          customRecipes={customRecipes}
+          onApplyFamilyPlan={shared => {
+            const imported = prepareFamilyImport(shared, () => crypto.randomUUID());
+            const recipes = [...imported.customRecipes, ...customRecipes];
+            saveFamilyWeek(imported.weeklyPlan, recipes);
+            setCustomRecipes(recipes);
+            setWeeklyPlan(imported.weeklyPlan);
+          }}
         />
       )}
       <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />

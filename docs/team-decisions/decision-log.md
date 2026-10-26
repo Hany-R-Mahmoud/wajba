@@ -1,5 +1,8 @@
 # Decision Log
 
+| 2026-10-26 | Accepted | Accounts | User requested Neon and Google sign-in, superseding account deferral. Preserve browser-local use and add explicit per-account cloud backup/restore. Own Google OAuth client connected, published for all users with owner approval, and deployed to Vercel. | hany | `docs/architecture.md` |
+| 2026-10-26 | Accepted | Family groups | User requested lasting family membership like Yalla Nakol, with invitation codes and URLs. Invitation expiry/rotation preserves membership. Publishing and applying shared plans remain explicit to protect device data; use revision checks for conflicting publishes. | hany | `api/groups.ts`, `src/components/FamilyGroups.tsx` |
+
 No durable decisions recorded yet.
 
 | 2026-07-25 | Accepted | Architecture | Keep Wajba local-first with browser storage; no database, backend, authentication, roles, or server runtime for the current scope. | Wajba team | `docs/architecture.md` |

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Language, WeeklyPlan, GroceryItem } from '../types';
+import { Language, WeeklyPlan, GroceryItem, Recipe } from '../types';
+import { FamilyGroups } from './FamilyGroups';
+import type { FamilyPlan } from '../utils/family';
 import { X, Users, Share2, Copy, Check, FileSpreadsheet, Download, RefreshCw, Link as LinkIcon } from 'lucide-react';
 import { createCurrentWajbaBackup, encodePlanToUrl } from '../utils/storage';
 import { syncPlanWithGoogleSheets, downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
@@ -11,6 +13,8 @@ interface FamilySyncModalProps {
   onClose: () => void;
   language: Language;
   onImportPlan: (plan: WeeklyPlan) => void;
+  customRecipes: Recipe[];
+  onApplyFamilyPlan: (plan: FamilyPlan) => void;
 }
 
 export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
@@ -19,6 +23,8 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
   onClose,
   language,
   onImportPlan,
+  customRecipes,
+  onApplyFamilyPlan,
 }) => {
   const isArabic = language === 'ar';
 
@@ -37,10 +43,14 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
 
   const sharedUrl = encodePlanToUrl(plan);
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(sharedUrl);
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2500);
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(sharedUrl);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2500);
+    } catch {
+      setSyncMessage({ type: 'error', text: isArabic ? 'تعذر النسخ. حدد الرابط وانسخه يدوياً.' : 'Copy failed. Select and copy the link manually.' });
+    }
   };
 
   const handleNativeShare = async () => {
@@ -94,7 +104,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="family-sync-title"
-        className="relative w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5 cursor-default"
+        className="relative w-full max-w-xl max-h-[90dvh] overflow-y-auto bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -102,13 +112,15 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
           <div className="flex items-center gap-2">
             <Users className="w-5 h-5 text-amber-700" />
             <h2 id="family-sync-title" className="text-base font-extrabold text-amber-950 dark:text-amber-100">
-              {isArabic ? 'المشاركة العائلية والمزامنة السحابية' : 'Family Share & Cloud Sync'}
+              {isArabic ? 'العائلة والمشاركة' : 'Family and Sharing'}
             </h2>
           </div>
-          <button onClick={onClose} className="p-2 rounded-full hover:bg-amber-100 dark:hover:bg-stone-800">
+          <button aria-label={isArabic ? 'إغلاق' : 'Close'} onClick={onClose} className="p-2 rounded-full hover:bg-amber-100 dark:hover:bg-stone-800">
             <X className="w-5 h-5" />
           </button>
         </div>
+
+        <FamilyGroups language={language} plan={plan} customRecipes={customRecipes} onApply={onApplyFamilyPlan} />
 
         {/* URL Link Sharing Option */}
         <div className="p-4 rounded-2xl bg-amber-50/80 dark:bg-stone-800/80 border border-amber-200 dark:border-stone-700 space-y-2">
@@ -118,8 +130,8 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
           </h3>
           <p className="text-[11px] text-stone-600 dark:text-stone-400">
             {isArabic
-              ? 'شارك هذا الرابط المباشر مع أفراد العائلة أو الشريك في المنزل لفتح نفس الجدول وقائمة التسوق فوراً بدون تسجيل دخول.'
-              : 'Share this live link with family members to open the exact meal plan & grocery list instantly.'}
+              ? 'أي شخص لديه الرابط يمكنه استيراد نسخة من جدولك الأسبوعي. لا ينشئ مجموعة متصلة ولا يزامن التغييرات. الوصفات الخاصة وعلامات التسوق لا تُرسل.'
+              : 'Anyone with the link can import a copy of your weekly plan. This does not create a connected group or sync later edits. Custom recipes and shopping checkmarks are not included.'}
           </p>
 
           <div className="flex flex-wrap items-center gap-2 pt-1">
@@ -146,6 +158,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
               </button>
             )}
           </div>
+          {syncMessage?.type === 'error' && <p role="alert" className="text-xs text-rose-600">{syncMessage.text}</p>}
         </div>
 
         {/* Google Sheets Remote Sync Option */}

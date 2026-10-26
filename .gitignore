@@ -12,3 +12,4 @@ coverage/
 .omo/
 wajba-landing-*.png
 package-lock.json
+.vercel
