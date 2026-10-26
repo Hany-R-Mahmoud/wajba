@@ -25,7 +25,7 @@ Open `http://localhost:3000`.
 | `bun run preview` | Preview the production build |
 | `python3 wajba_recipe_generator.py --help` | Show recipe generator options |
 
-There is no CI configuration in the repository. The test script covers core aggregation, pantry subtraction, dietary filtering, and backup validation. The application has no backend, database, authentication, or server runtime; durable user data stays in browser `localStorage` unless exported by the user.
+There is no CI configuration in the repository. The test script covers core aggregation, pantry subtraction, dietary filtering, backup validation, API credential rejection, and family-plan import safety. Browser-local use remains available. Optional Google sign-in through Neon Auth and explicit per-account cloud backup/restore through a Vercel API are deployed at https://wajjba.vercel.app. Wajba’s own Google OAuth client is connected and published for all Google users. Family groups support lasting membership, invitation codes and URLs, and explicit shared-week publishing and import. Apply `neon/001_family_groups.sql` before deploying group APIs; `tests/family-groups.sql` checks membership rules on an isolated database branch and rolls back its fixtures.
 
 When `VITE_SITE_URL` or `SITE_URL` is set to the real production origin, the build also generates crawlable `/recipes/<id>/` pages, `sitemap.xml`, `robots.txt`, and a curated `llms.txt`. Keep it unset for local builds until the production domain is known.
 

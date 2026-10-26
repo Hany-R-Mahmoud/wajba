@@ -16,7 +16,10 @@
     "Vite",
     "React",
     "TypeScript",
-    "Tailwind"
+    "Tailwind",
+    "Neon Postgres",
+    "Neon Auth",
+    "Vercel Functions"
   ],
   "features": [
     {
@@ -40,13 +43,17 @@
       "ar": "حفظ محلي مع نسخ احتياطي واستعادة بصيغة JSON، وتصدير CSV، ومشاركة الخطة الأسبوعية عبر رابط مشفر، ومزامنة اختيارية مع Google Apps Script يملكه المستخدم."
     },
     {
+      "en": "Optional Google sign-in, personal Neon cloud backups, and persistent family groups with invitation codes, URLs, and explicit shared-week publishing and import.",
+      "ar": "تسجيل دخول اختياري عبر Google ونسخ احتياطي شخصي على Neon ومجموعات عائلية دائمة مع رموز دعوة وروابط ونشر الجدول الأسبوعي المشترك واستيراده صراحةً."
+    },
+    {
       "en": "Responsive dashboard navigation, bilingual RTL/LTR layout, dark mode, and installable PWA support.",
       "ar": "تنقل متجاوب في لوحة التحكم، ودعم العربية والإنجليزية مع RTL/LTR، ووضع داكن، وإمكانية تثبيت التطبيق كتطبيق PWA."
     }
   ],
   "progress": {
-    "en": "Showcase-ready local-first product with a 100-recipe catalog (65 source-reviewed + 35 documented Egyptian home dishes) and documented browser-only architecture.",
-    "ar": "منتج محلي جاهز للعرض، يضم كتالوجاً من 100 وصفة (65 تمت مراجعة مصادرها + 35 طبقاً بيتياً مصرياً موثقاً)، ومعمارية موثقة تعتمد على المتصفح فقط."
+    "en": "Local-first meal planner with optional Google sign-in and per-account Neon cloud backup deployed on Vercel; own Google OAuth client published for all Google users.",
+    "ar": "تطبيق تخطيط وجبات بحفظ محلي، مع تسجيل الدخول عبر Google ونسخ احتياطي سحابي لكل حساب على Neon؛ منشور على Vercel ومتاح لجميع حسابات Google."
   },
   "issues": [
     {

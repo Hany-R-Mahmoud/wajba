@@ -8,7 +8,7 @@ import {
   WeeklyPlan,
   WajbaBackup,
   WajbaBackupState,
-} from '../types';
+} from '../types.js';
 
 export const STORAGE_KEYS = {
   LANGUAGE: 'wajba_language',
@@ -115,7 +115,23 @@ export function deleteCustomRecipe(recipeId: string): Recipe[] {
   return updated;
 }
 
+export function saveFamilyWeek(plan: WeeklyPlan, recipes: Recipe[]) {
+  const keys = [STORAGE_KEYS.CUSTOM_RECIPES, STORAGE_KEYS.WEEKLY_PLAN];
+  const previous = keys.map(key => localStorage.getItem(key));
+  try {
+    localStorage.setItem(keys[0], JSON.stringify(recipes));
+    saveWeeklyPlan(plan);
+  } catch (error) {
+    keys.forEach((key, index) => {
+      if (previous[index] === null) localStorage.removeItem(key);
+      else localStorage.setItem(key, previous[index]!);
+    });
+    throw error;
+  }
+}
+
 export function decodePlanFromUrl(encodedStr: string): WeeklyPlan | null {
+  if (encodedStr.length > 100_000) return null;
   try {
     const decodedParam = decodeURIComponent(encodedStr);
 
@@ -128,8 +144,8 @@ export function decodePlanFromUrl(encodedStr: string): WeeklyPlan | null {
       }
       const jsonStr = new TextDecoder().decode(bytes);
       const parsed = JSON.parse(jsonStr);
-      if (parsed && typeof parsed === 'object' && Array.isArray(parsed.days)) {
-        return parsed as WeeklyPlan;
+      if (isSharedWeeklyPlan(parsed)) {
+        return parsed;
       }
     } catch {
       // Ignore and try fallback
@@ -140,8 +156,8 @@ export function decodePlanFromUrl(encodedStr: string): WeeklyPlan | null {
       const binary = atob(decodedParam);
       const jsonStr = decodeURIComponent(binary);
       const parsed = JSON.parse(jsonStr);
-      if (parsed && typeof parsed === 'object' && Array.isArray(parsed.days)) {
-        return parsed as WeeklyPlan;
+      if (isSharedWeeklyPlan(parsed)) {
+        return parsed;
       }
     } catch {
       // Ignore and try fallback
@@ -150,8 +166,8 @@ export function decodePlanFromUrl(encodedStr: string): WeeklyPlan | null {
     // Attempt 3: Direct JSON parameter
     try {
       const parsed = JSON.parse(decodedParam);
-      if (parsed && typeof parsed === 'object' && Array.isArray(parsed.days)) {
-        return parsed as WeeklyPlan;
+      if (isSharedWeeklyPlan(parsed)) {
+        return parsed;
       }
     } catch {
       // Ignore
@@ -169,10 +185,14 @@ export function loadWeeklyPlan(): WeeklyPlan {
     const sharedPlan = urlParams.get('plan');
     if (sharedPlan) {
       const decoded = decodePlanFromUrl(sharedPlan);
-      if (decoded) {
+      urlParams.delete('plan');
+      const query = urlParams.toString();
+      window.history.replaceState({}, document.title, `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+      const accepted = decoded && window.confirm(loadStoredLanguage() === 'ar'
+        ? 'استيراد نسخة من هذا الجدول واستبدال جدولك الأسبوعي؟ التغييرات اللاحقة لن تتم مشاركتها تلقائياً.'
+        : 'Import a copy of this plan and replace your weekly plan? Later changes will not be shared automatically.');
+      if (decoded && accepted) {
         saveWeeklyPlan(decoded);
-        // clean URL param gracefully
-        window.history.replaceState({}, document.title, window.location.pathname);
         return decoded;
       }
     }
@@ -278,7 +298,7 @@ export function encodePlanToUrl(plan: WeeklyPlan): string {
       binary += String.fromCharCode(bytes[i]);
     }
     const b64 = btoa(binary);
-    const baseUrl = window.location.origin + window.location.pathname;
+    const baseUrl = window.location.origin + '/dashboard';
     return `${baseUrl}?plan=${encodeURIComponent(b64)}`;
   } catch (e) {
     console.error('Failed to encode plan to URL', e);
@@ -588,6 +608,12 @@ function isRecipe(value: unknown): value is Recipe {
     isVoteCounts(value.votesCount) &&
     isNonNegativeNumber(value.rating)
   );
+}
+
+function isSharedWeeklyPlan(value: unknown): value is WeeklyPlan {
+  if (!isWeeklyPlan(value) || value.days.length !== 7) return false;
+  return new Set(value.days.map(day => day.dayId)).size === 7 && value.days.every(day =>
+    ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri'].includes(day.dayId) && Object.keys(day.slots).every(isMealSlot));
 }
 
 function isWeeklyPlan(value: unknown): value is WeeklyPlan {

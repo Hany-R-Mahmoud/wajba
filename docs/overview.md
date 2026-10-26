@@ -18,6 +18,7 @@ The bundled catalog contains 100 recipes: 65 source-reviewed recipes across Egyp
 - Save custom recipes, favorites, votes, and active timers locally in the browser.
 - Edit/delete custom recipes with focused validation and one-step undo.
 - Share a weekly plan through an encoded URL, export/restore a full JSON backup, export CSV, or optionally POST to a user-provided Google Apps Script URL.
+- Create lasting family groups, invite by code or URL, and explicitly publish or apply a shared week with its custom recipes. Membership continues until leaving or owner removal; invitation expiry does not disconnect existing members.
 - Use Settings to change language/theme and Standard/Ramadan planning mode, export or restore data, and clear local state.
 
 ## Runtime Components
@@ -31,6 +32,6 @@ The bundled catalog contains 100 recipes: 65 source-reviewed recipes across Egyp
 
 - Recipe content is bundled into the frontend from `src/data/recipes.ts`.
 - User data is browser-local unless the user explicitly exports or syncs it.
-- No database, backend, authentication, roles, or server-side synchronization is implemented by agreement.
+- Optional Google sign-in and explicit cloud backup/restore now use Neon Auth and a Vercel API backed by Neon Postgres. Automatic synchronization is not implemented. Own Google OAuth client is published for all Google users; production runs at https://wajjba.vercel.app on Vercel.
 - Google Apps Script is an optional user-owned external boundary.
-- `Unknown / verify`: deployment host, server-side Gemini behavior, and any Express server are not defined by current source files.
+- `Unknown / verify`: server-side Gemini behavior and any Express server are not defined by current source files.

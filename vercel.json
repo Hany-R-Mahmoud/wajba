@@ -1,0 +1,4 @@
+{
+  "git": { "deploymentEnabled": { "*": false, "main": true } },
+  "rewrites": [{ "source": "/dashboard/:path*", "destination": "/index.html" }]
+}
