@@ -51,11 +51,11 @@ flowchart TD
 
 ## External Services
 
-- Optional Neon Auth Google sign-in: `src/auth/client.ts` and `src/components/AccountPanel.tsx`. Login does not upload device data automatically.
-- Explicit account cloud backup/restore: `api/backup.ts` verifies JWT signatures and issuer, checks the account exists, and scopes every query to its subject. `public.wajba_backups` stores one JSON backup per account. Restore validates data and asks before replacing local state.
+- Optional app-hosted Better Auth Google sign-in at `/api/auth`, using the existing Neon `neon_auth` schema: `src/auth/client.ts` and `src/components/AccountPanel.tsx`. Login does not upload device data automatically.
+- Explicit account cloud backup/restore: `api/backup.ts` uses `server/auth.ts` to verify active, unbanned database sessions and scopes queries to the account ID. Previously issued Neon JWTs remain accepted during their lifetime. `public.wajba_backups` stores one JSON backup per account. Restore validates data and asks before replacing local state.
 - Persistent family groups: `api/groups.ts` checks Google/Neon sessions and active membership for shared plans. `neon/001_family_groups.sql` defines groups, members, and invitation attempt limits. Invitations use random 10-character codes, expire after 30 days, and can be rotated or revoked without ending existing memberships. Owners can remove members; removed members cannot rejoin that group. Other members can leave.
 - `FamilyGroups.tsx` lists groups and refreshes shared data each minute while visible. Publishing explicitly sends the weekly plan and only referenced custom recipes; applying validates and confirms replacement of the local week. Imported custom recipes receive fresh IDs to preserve existing recipes. Revision checks reject conflicting publishes. Invitation URLs use a fragment, retained in session storage through Google login. Snapshot links remain separate, require confirmation, and do not create memberships.
-- `DATABASE_URL` and `NEON_AUTH_BASE_URL` are server configuration. `VITE_NEON_AUTH_URL` is the public Auth URL. Vite alone does not serve the Vercel API.
+- `DATABASE_URL`, `BETTER_AUTH_URL`, `BETTER_AUTH_SECRET`, `GOOGLE_CLIENT_ID`, and `GOOGLE_CLIENT_SECRET` are server configuration. `NEON_AUTH_BASE_URL` supports previously issued tokens; the browser now uses same-origin `/api/auth`. Vite alone does not serve the Vercel API.
 - Neon project: `winter-rice-52882717`, main branch `br-polished-mountain-b9wf1678`, AWS Frankfurt. Own Google OAuth client is connected and published for all Google users. Production runs on Vercel at https://wajjba.vercel.app.
 
 - Google Apps Script Web App URL, optional and user-supplied.

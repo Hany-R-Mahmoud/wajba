@@ -32,6 +32,6 @@ The bundled catalog contains 100 recipes: 65 source-reviewed recipes across Egyp
 
 - Recipe content is bundled into the frontend from `src/data/recipes.ts`.
 - User data is browser-local unless the user explicitly exports or syncs it.
-- Optional Google sign-in and explicit cloud backup/restore now use Neon Auth and a Vercel API backed by Neon Postgres. Automatic synchronization is not implemented. Own Google OAuth client is published for all Google users; production runs at https://wajjba.vercel.app on Vercel.
+- Optional Google sign-in and explicit cloud backup/restore now use app-hosted Better Auth at `/api/auth` and a Vercel API backed by the existing Neon Postgres accounts. Automatic synchronization is not implemented. Own Google OAuth client is published for all Google users; production runs at https://wajjba.vercel.app on Vercel.
 - Google Apps Script is an optional user-owned external boundary.
 - `Unknown / verify`: server-side Gemini behavior and any Express server are not defined by current source files.

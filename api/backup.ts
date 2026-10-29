@@ -1,10 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { neon } from '@neondatabase/serverless';
-import { createRemoteJWKSet, jwtVerify } from 'jose';
+import { authenticatedUser } from '../server/auth.js';
 import { parseWajbaBackup } from '../src/utils/storage.js';
-
-const authUrl = process.env.NEON_AUTH_BASE_URL;
-const jwks = authUrl ? createRemoteJWKSet(new URL(`${authUrl}/.well-known/jwks.json`)) : null;
 
 export default async function handler(req: IncomingMessage & { body?: unknown }, res: ServerResponse) {
   res.setHeader('Cache-Control', 'no-store');
@@ -14,17 +11,11 @@ export default async function handler(req: IncomingMessage & { body?: unknown },
     res.setHeader('Allow', 'GET, PUT');
     return reply(405, { error: 'Method not allowed' });
   }
-  if (!jwks || !authUrl || !process.env.DATABASE_URL) return reply(503, { error: 'Cloud backup is not configured' });
+  if (!process.env.DATABASE_URL) return reply(503, { error: 'Cloud backup is not configured' });
   const authorization = req.headers.authorization;
   if (!authorization?.startsWith('Bearer ')) return reply(401, { error: 'Sign in required' });
-  let userId: string;
-  try {
-    const { payload } = await jwtVerify(authorization.slice(7), jwks, { issuer: new URL(authUrl).origin, algorithms: ['EdDSA'] });
-    if (!payload.sub || payload.role === 'anonymous') return reply(401, { error: 'Sign in required' });
-    userId = payload.sub;
-  } catch {
-    return reply(401, { error: 'Invalid or expired session' });
-  }
+  const userId = await authenticatedUser(req);
+  if (!userId) return reply(401, { error: 'Invalid or expired session' });
   try {
     const sql = neon(process.env.DATABASE_URL);
     const users = await sql`SELECT id FROM neon_auth."user" WHERE id = ${userId}`;

@@ -18,7 +18,7 @@
     "TypeScript",
     "Tailwind",
     "Neon Postgres",
-    "Neon Auth",
+    "Better Auth",
     "Vercel Functions"
   ],
   "features": [

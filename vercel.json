@@ -1,5 +1,19 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "git": { "deploymentEnabled": { "*": false, "main": true } },
-  "rewrites": [{ "source": "/dashboard/:path*", "destination": "/index.html" }]
+  "git": {
+    "deploymentEnabled": {
+      "*": false,
+      "main": true
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/auth/:path*",
+      "destination": "/api/auth?authPath=:path*"
+    },
+    {
+      "source": "/dashboard/:path*",
+      "destination": "/index.html"
+    }
+  ]
 }

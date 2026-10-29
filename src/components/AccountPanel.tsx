@@ -28,7 +28,7 @@ function ConnectedAccount({ language }: { language: Language }) {
       if (currentSession.error || !token) throw new Error('Session unavailable');
       const response = await fetch('/api/backup', {
         method: restore ? 'GET' : 'PUT',
-        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        headers: { Authorization: `Bearer session:${token}`, 'Content-Type': 'application/json' },
         ...(restore ? {} : { body: JSON.stringify(createCurrentWajbaBackup()) }),
       });
       if (!response.ok) throw new Error('Backup unavailable');

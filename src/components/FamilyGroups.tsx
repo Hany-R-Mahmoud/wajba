@@ -38,7 +38,7 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
     const token = current.data?.session?.token;
     if (current.error || !token) throw new Error(t('Sign in required', 'يلزم تسجيل الدخول'));
     const response = await fetch(`/api/groups${id ? `?id=${encodeURIComponent(id)}` : ''}`, {
-      method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer session:${token}`, 'Content-Type': 'application/json' },
       ...(body ? { body: JSON.stringify(body) } : {}),
     });
     const result = await response.json();
