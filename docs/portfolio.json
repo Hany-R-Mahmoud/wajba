@@ -23,8 +23,8 @@
   ],
   "features": [
     {
-      "en": "Interactive ring-to-drum landing wheel featuring nine randomly selected existing meal images on each page load.",
-      "ar": "عجلة تفاعلية في الصفحة الرئيسية تتحول من حلقة إلى عرض ثلاثي الأبعاد، وتعرض صور تسع وصفات عشوائية عند كل تحميل."
+      "en": "Responsive landing page with a direct scrolling image drum featuring nine randomly selected meals, an introduction, and restored feature sections.",
+      "ar": "صفحة رئيسية متجاوبة تبدأ مباشرة بعرض صور متحرك لتسع وصفات عشوائية، مع مقدمة وأقسام المزايا المستعادة."
     },
     {
       "en": "100 bilingual MENA recipes with cultural stories, ingredients, instructions, timers, and source-reviewed metadata.",

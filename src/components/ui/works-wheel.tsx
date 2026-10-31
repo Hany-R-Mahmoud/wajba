@@ -33,6 +33,8 @@ export interface WorksWheelProps extends Omit<
   label?: string;
   /** Label on the card's hover affordance. Omit to drop it. @default undefined */
   action?: string;
+  /** Start directly with scrolling images and omit the title/index overlays. */
+  drumOnly?: boolean;
 }
 
 /* Geometry. The card is measured against the stage; everything else is measured
@@ -104,6 +106,7 @@ export function WorksWheel({
   items,
   label = "Works '26",
   action = "View",
+  drumOnly = false,
   className,
   ...props
 }: WorksWheelProps) {
@@ -115,8 +118,8 @@ export function WorksWheel({
 
   // The wheel's position, and where it is heading. Only `active` is state -
   // everything else is written to the DOM, so turning the wheel is not a render.
-  const turn = React.useRef(0);
-  const target = React.useRef(0);
+  const turn = React.useRef(drumOnly ? 1 : 0);
+  const target = React.useRef(drumOnly ? 1 : 0);
   const [active, setActive] = React.useState(0);
   const [stage, setStage] = React.useState<Stage>({ w: 0, h: 0 });
 
@@ -147,7 +150,7 @@ export function WorksWheel({
 
   const metrics = React.useMemo(() => {
     const { w, h } = stage;
-    const cardW = Math.min(h * CARD_H * CARD_RATIO, w * CARD_MAX_W);
+    const cardW = Math.min(h * CARD_H * CARD_RATIO, w * (drumOnly ? 0.82 : CARD_MAX_W));
     const cardH = cardW / CARD_RATIO;
     const drumR = cardH * DRUM;
     const ringR = cardH * RING_R;
@@ -167,7 +170,7 @@ export function WorksWheel({
       title: cardH * TITLE,
       index: cardH * INDEX,
     };
-  }, [stage, count]);
+  }, [stage, count, drumOnly]);
 
   // One pass per frame: ease toward the target, then write every transform.
   React.useEffect(() => {
@@ -227,9 +230,9 @@ export function WorksWheel({
 
   const to = React.useCallback(
     (next: number) => {
-      target.current = clamp(next, 0, last + 1);
+      target.current = clamp(next, drumOnly ? 1 : 0, last + 1);
     },
-    [last],
+    [last, drumOnly],
   );
 
   // Native listener, because the wheel has to be cancellable - and it only
@@ -240,7 +243,7 @@ export function WorksWheel({
     if (!el) return;
     const onWheel = (event: WheelEvent) => {
       const next = target.current + event.deltaY / WHEEL_UNITS;
-      if (next > 0 && next < last + 1) event.preventDefault();
+      if (next > (drumOnly ? 1 : 0) && next < last + 1) event.preventDefault();
       to(next);
       // A wheel gesture arrives as a burst of events with no end of its own, so
       // the rest position is whatever notch it happened to stop on. Left there
@@ -257,7 +260,7 @@ export function WorksWheel({
       el.removeEventListener("wheel", onWheel);
       window.clearTimeout(settling.current);
     };
-  }, [to, last]);
+  }, [to, last, drumOnly]);
 
   const drag = React.useRef<number | null>(null);
   const settling = React.useRef(0);
@@ -313,6 +316,7 @@ export function WorksWheel({
                   id={`works-wheel-${i}`}
                   role="option"
                   aria-selected={i === active}
+                  tabIndex={i === active ? 0 : -1}
                   href={item.href}
                   ref={(node: HTMLElement | null) => {
                     cardRefs.current[i] = node;
@@ -365,13 +369,15 @@ export function WorksWheel({
           proportions inside a card as well as at full bleed. */}
       <div
         ref={labelRef}
+        hidden={drumOnly}
         className="pointer-events-none absolute inset-0 grid place-items-center tracking-tight"
-        style={{ fontSize: metrics.title }}
+        style={{ fontSize: metrics.title, display: drumOnly ? "none" : undefined }}
       >
         {label}
       </div>
       <div
         ref={titleRef}
+        hidden={drumOnly}
         className="pointer-events-none absolute top-1/2 left-[8%] -translate-y-1/2 tracking-tight opacity-0"
         style={{ fontSize: metrics.title }}
       >
@@ -379,6 +385,7 @@ export function WorksWheel({
       </div>
 
       <ol
+        hidden={drumOnly}
         className="text-stone-500 dark:text-stone-300 absolute top-[7.5%] right-[2.5%] text-right leading-[1.75]"
         style={{ fontSize: metrics.index }}
       >

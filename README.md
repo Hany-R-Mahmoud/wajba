@@ -4,7 +4,7 @@ Wajba is a local-first bilingual Arabic/English MENA meal-planning web app. It c
 
 ## Quick Start
 
-The landing page uses a ring-to-drum meal wheel adapted from the supplied Works Wheel reference. Each mount selects nine distinct recipes at random from the existing catalog; reloading selects a fresh random sample, while language and theme changes preserve the current selection. Cards link to public recipe pages. Scroll, vertical drag, arrow keys, and the meal index control the wheel.
+The landing page opens directly with a scrolling meal-image drum adapted from the supplied Works Wheel reference, without the opening ring or recipe-name index. Each mount selects nine distinct recipes at random from the existing catalog; reloading selects a fresh random sample, while language and theme changes preserve the current selection. Cards link to public recipe pages. Scroll, vertical drag, and arrow keys control the images. The original introduction appears beside the images on desktop and below them on mobile, followed by the restored recipe, Ramadan, planning, grocery, final action, and footer sections.
 
 The repository tracks `bun.lock`, so Bun is the intended package manager.
 
