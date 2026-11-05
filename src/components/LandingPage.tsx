@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Language } from '../types';
 import {
   Utensils,
@@ -16,12 +16,16 @@ import {
   Sun,
   ShieldCheck,
 } from 'lucide-react';
-import { WorksWheel } from './ui/works-wheel';
+import { DishOrbitCarousel } from './ui/dish-orbit-carousel';
+import { LandingActions } from './LandingActions';
 import { INITIAL_RECIPES } from '../data/recipes';
 import { WajbaLogo } from './WajbaLogo';
 import {PwaInstallMenuAction} from './PwaInstallMenuAction';
 import StandaloneVisitorCounter from './StandaloneVisitorCounter';
 import { FEATURE_FLAGS } from '../config/features';
+
+const LANDING_RECIPES = ['egypt-koshary', 'egypt-macarona-beamel', 'egypt-molokhia', 'egypt-mahshi-meshkel', 'egypt-fatteh']
+  .flatMap(id => INITIAL_RECIPES.filter(recipe => recipe.id === id));
 
 interface LandingPageProps {
   language: Language;
@@ -39,19 +43,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onThemeToggle,
 }) => {
   const isArabic = language === 'ar';
-  const [meals] = useState(() => {
-    const shuffled = [...INITIAL_RECIPES];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled.slice(0, 9);
-  });
-  const items = meals.map((meal) => ({
-    title: isArabic ? meal.titleAr : meal.titleEn,
-    image: meal.image,
-    href: '/recipes/' + encodeURIComponent(meal.id),
-  }));
 
   return (
     <div className="min-h-screen bg-[#f8f7f4] dark:bg-[#0c1220] text-[#18181b] dark:text-[#f8fafc] font-sans transition-colors flex flex-col justify-between selection:bg-[#ff7759] selection:text-white">
@@ -90,46 +81,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-1 sm:pt-2 pb-12 space-y-10 sm:space-y-14">
 
         {/* HERO SECTION WITH 3D CAROUSEL FIRST & TEXT CONTENT BELOW */}
-        <section className="grid grid-cols-1 items-center gap-6 py-0 lg:grid-cols-2 lg:gap-12">
-          {/* 3D Photo Carousel Container */}
-          <div dir="ltr" className="h-[24rem] w-full min-w-0 sm:h-[30rem] lg:order-2 lg:h-[36rem]">
-            <WorksWheel items={items} label={isArabic ? 'تصفح الوصفات' : 'Browse recipes'} action={isArabic ? 'الوصفة' : 'View recipe'} drumOnly />
-          </div>
-
-          {/* Headline & Action Controls Below Carousel */}
-          <div className="text-center w-full min-w-0 max-w-3xl mx-auto space-y-4 sm:space-y-5 pb-4 lg:order-1 lg:text-start">
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#17171c] dark:text-white leading-snug">
-              {isArabic ? (
-                <>
-                  خطط لوجبات عائلتك <span className="text-[#D86540]">بلمسة تراثية أصيلة</span>
-                </>
-              ) : (
-                <>
-                  Middle Eastern Culinary Planning <span className="text-[#D86540]">Crafted with Precision</span>
-                </>
-              )}
-            </h1>
-
-            <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 font-sans leading-relaxed max-w-xl mx-auto">
-              {isArabic
-                ? 'استكشف أشهر الأطباق العربية والرمضانية، نظم جدولك الأسبوعي، وأنشئ قائمة تسوق مجمّعة تلقائياً مقسمة حسب أقسام السوبرماركت.'
-                : 'Discover traditional MENA dishes, create custom weekly meal calendars, and aggregate your grocery items into organized store aisle checklists.'}
-            </p>
-
-            <div className="pt-1 flex items-center justify-center gap-2.5 flex-wrap lg:justify-start">
-              <button
-                onClick={onEnterDashboard}
-                className="py-2.5 px-6 rounded-full bg-[#17171c] hover:bg-stone-800 dark:bg-white dark:hover:bg-stone-200 text-white dark:text-[#17171c] font-mono font-bold text-xs sm:text-sm transition-all shadow-md flex items-center gap-2 cursor-pointer"
-              >
-                <span>{isArabic ? 'ابدأ التخطيط الآن ➔' : 'Start Meal Planning ➔'}</span>
-              </button>
-
-            </div>
-          </div>
-        </section>
+        <DishOrbitCarousel recipes={LANDING_RECIPES} language={language} onEnterDashboard={onEnterDashboard} />
 
         {/* SECTION 1: Authentic MENA Heritage Recipe Treasury */}
-        <section className="bg-white dark:bg-[#162032] rounded-3xl p-6 sm:p-10 lg:p-14 border border-[#e2e0d8] dark:border-[#2b3a54] shadow-xs space-y-8">
+        <section id="wajba-features" className="bg-white dark:bg-[#162032] rounded-3xl p-6 sm:p-10 lg:p-14 border border-[#e2e0d8] dark:border-[#2b3a54] shadow-xs space-y-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold">
@@ -410,7 +365,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         </section>
 
         {/* FINAL CALL TO ACTION BANNER */}
-        <section className="rounded-3xl bg-[#17171c] dark:bg-[#162032] text-white p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden border border-stone-800 dark:border-[#2b3a54]">
+        <section className="landing-final rounded-3xl bg-[#17171c] dark:bg-[#162032] text-white p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden border border-stone-800 dark:border-[#2b3a54]">
           <div className="max-w-2xl mx-auto space-y-4 relative z-10 font-mono">
             <span className="text-xs font-mono text-[#ff7759] uppercase tracking-widest block font-bold">
               {isArabic ? 'منظومة طهي وجبة 2026' : 'Wajba Culinary System'}
@@ -425,12 +380,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </p>
 
             <div className="pt-4 flex items-center justify-center gap-4 flex-wrap">
-              <button
-                onClick={onEnterDashboard}
-                className="py-4 px-10 rounded-full bg-[#ff7759] hover:bg-[#ff552e] text-white font-mono font-bold text-xs sm:text-sm shadow-xl transition-all cursor-pointer hover:scale-105"
-              >
-                <span>{isArabic ? 'دخول التطبيق الآن ➔' : 'Enter App Now ➔'}</span>
-              </button>
+              <LandingActions language={language} onEnterDashboard={onEnterDashboard} />
             </div>
           </div>
         </section>

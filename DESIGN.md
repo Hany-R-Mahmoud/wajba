@@ -72,6 +72,10 @@ Spacing follows a 4px base unit. Existing Tailwind spacing values are preserved.
 
 Use existing short transitions for tabs, cards, and modals. Animate only transform and opacity. Respect `prefers-reduced-motion` by disabling non-essential transitions, pulse, bounce, and confetti.
 
+### Landing food-menu orbit
+
+The landing hero extends the warm kitchen identity with a paper surface, Egyptian recipe photography, a restrained kitchen backdrop (`public/landing-kitchen.webp`, extracted from the supplied reference), and an overhead pastel arc. Recipe photos remain honest framed photographs, rather than simulated transparent plate cutouts. The finite scroll sequence releases into the existing feature sections; thumbnails, horizontal swipes, and focused arrow keys offer direct navigation without a visible arrow pager, numeric counter, or autoplay toggle. Automatic cycling starts on load and runs every five seconds without scrolling the page, with pauses for pointer interaction, focus, hidden/offscreen content, and reduced-motion preferences. Short viewports use normal flow. Reduced-motion mode removes pinning, orbital transitions, and copy entrances. Google sign-in and guest entry remain visible primary choices, with a recoverable connection-error state.
+
 ## 7. Depth & Surface
 
 Wajba uses mixed depth: thin borders for structure, tonal shifts for panels, and restrained shadows for modals and active planning controls. Avoid adding new decorative gradients or unrelated surface treatments.
