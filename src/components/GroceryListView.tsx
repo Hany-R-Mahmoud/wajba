@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GroceryItem, IngredientAisle, Language } from '../types';
 import { AISLE_LABELS } from '../utils/aggregator';
+import { CONFIDENCE_TAGS } from '../data/substitutions';
 import { ShoppingBag, CheckSquare, Square, Plus, Share2, Copy, Download, Printer, Trash2, CheckCircle2, Search, Filter, RotateCcw, X } from 'lucide-react';
 import { downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
 
@@ -472,50 +473,79 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                     <div
                       key={item.id}
                       onClick={() => { if (!item.isCovered) onToggleCheckItem(item.id); }}
-                      className={`flex items-center justify-between p-2.5 rounded-xl transition-all cursor-pointer select-none ${
+                      className={`p-2.5 rounded-xl transition-all cursor-pointer select-none ${
                         item.isChecked
                           ? 'bg-stone-100/60 dark:bg-stone-800/40 text-stone-400 line-through'
                           : 'hover:bg-amber-50/60 dark:hover:bg-stone-800/60 text-stone-800 dark:text-stone-200'
                       }`}
                     >
-                      <div className="flex items-center gap-3">
-                        <button type="button" disabled={item.isCovered} className="text-amber-700 disabled:cursor-default disabled:opacity-70 dark:text-amber-400" aria-label={item.isCovered ? (isArabic ? 'متوفر في المخزن' : 'Covered by pantry') : (isArabic ? 'تبديل حالة الشراء' : 'Toggle purchased')}>
-                          {item.isChecked ? (
-                            <CheckSquare className="w-5 h-5 text-emerald-600 fill-emerald-100 dark:fill-emerald-950" />
-                          ) : (
-                            <Square className="w-5 h-5 text-stone-400" />
-                          )}
-                        </button>
-                        <div>
-                          <p className="text-xs font-bold">
-                            {isArabic ? item.nameAr : item.nameEn}
-                          </p>
-                          {item.recipeSources.length > 0 && (
-                            <p className="text-[10px] text-stone-400 truncate max-w-xs">
-                              {isArabic ? 'من: ' : 'From: '} {item.recipeSources.join(', ')}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <button type="button" disabled={item.isCovered} className="text-amber-700 disabled:cursor-default disabled:opacity-70 dark:text-amber-400" aria-label={item.isCovered ? (isArabic ? 'متوفر في المخزن' : 'Covered by pantry') : (isArabic ? 'تبديل حالة الشراء' : 'Toggle purchased')}>
+                            {item.isChecked ? (
+                              <CheckSquare className="w-5 h-5 text-emerald-600 fill-emerald-100 dark:fill-emerald-950" />
+                            ) : (
+                              <Square className="w-5 h-5 text-stone-400" />
+                            )}
+                          </button>
+                          <div>
+                            <p className="text-xs font-bold">
+                              {isArabic ? item.nameAr : item.nameEn}
                             </p>
+                            {item.recipeSources.length > 0 && (
+                              <p className="text-[10px] text-stone-400 truncate max-w-xs">
+                                {isArabic ? 'من: ' : 'From: '} {item.recipeSources.join(', ')}
+                              </p>
+                            )}
+                            {item.isCovered ? <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-300">{isArabic ? 'متوفر بالكامل في المخزن' : 'Fully covered by pantry'}</p> : item.pantryAmount && item.pantryAmount > 0 ? <p className="text-[10px] font-bold text-amber-700 dark:text-amber-300">{isArabic ? `متوفر من المخزن: ${item.pantryAmount}` : `Pantry covers: ${item.pantryAmount}`}</p> : null}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                          <span className="text-xs font-bold font-mono text-amber-900 dark:text-amber-300">
+                            {item.amount} {isArabic ? item.unitAr : item.unitEn}
+                          </span>
+
+                          {item.isCustomExtra && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onRemoveCustomExtra(item.id);
+                              }}
+                              className="text-stone-400 hover:text-rose-600 p-1"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
                           )}
-                          {item.isCovered ? <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-300">{isArabic ? 'متوفر بالكامل في المخزن' : 'Fully covered by pantry'}</p> : item.pantryAmount && item.pantryAmount > 0 ? <p className="text-[10px] font-bold text-amber-700 dark:text-amber-300">{isArabic ? `متوفر من المخزن: ${item.pantryAmount}` : `Pantry covers: ${item.pantryAmount}`}</p> : null}
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-bold font-mono text-amber-900 dark:text-amber-300">
-                          {item.amount} {isArabic ? item.unitAr : item.unitEn}
-                        </span>
-
-                        {item.isCustomExtra && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onRemoveCustomExtra(item.id);
-                            }}
-                            className="text-stone-400 hover:text-rose-600 p-1"
+                      {item.suggestion && (
+                        <div className="mt-1 ps-8 text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
+                          <span>
+                            {item.suggestion.confidence === 'تجريبي'
+                              ? (isArabic ? 'تلميح نكهة: ' : 'Flavour hint: ')
+                              : (isArabic ? 'بديل متوفر: ' : 'Substitute available: ')}
+                          </span>
+                          <bdi className="font-semibold text-stone-800 dark:text-stone-200">
+                            {isArabic ? item.suggestion.substituteNameAr : item.suggestion.substituteNameEn}
+                          </bdi>
+                          <span> — </span>
+                          <bdi>
+                            {isArabic ? item.suggestion.reasonAr : item.suggestion.reasonEn}
+                          </bdi>
+                          <span> · </span>
+                          <span
+                            className={
+                              item.suggestion.confidence === 'تجريبي'
+                                ? 'inline-block px-1.5 py-0.5 text-[10px] font-bold rounded bg-[#071829] text-[#ffffff] align-middle'
+                                : 'inline-block px-1.5 py-0.5 text-[10px] font-medium rounded border border-[#d9d9dd] dark:border-stone-700 bg-white dark:bg-stone-900 text-[#212121] dark:text-stone-300 align-middle'
+                            }
                           >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        )}
-                      </div>
+                            {CONFIDENCE_TAGS[item.suggestion.confidence][isArabic ? 'ar' : 'en']}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
