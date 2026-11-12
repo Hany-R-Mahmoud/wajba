@@ -142,11 +142,11 @@ export function generateGroceryListFromPlan(
 
 type UnitDimension = 'mass' | 'volume' | 'count' | 'spoon' | 'unknown';
 
-function normalizeIngredientName(name: string): string {
+export function normalizeIngredientName(name: string): string {
   return name.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
-function getUnitDimension(unit: string): UnitDimension {
+export function getUnitDimension(unit: string): UnitDimension {
   const lowerUnit = unit.trim().toLowerCase();
   if (['g', 'gram', 'grams', 'جرام', 'kg', 'kilogram', 'كيلو', 'كجم'].includes(lowerUnit)) return 'mass';
   if (['ml', 'milliliter', 'لتر', 'l', 'liter', 'مل'].includes(lowerUnit)) return 'volume';
@@ -155,7 +155,7 @@ function getUnitDimension(unit: string): UnitDimension {
   return 'unknown';
 }
 
-function convertAmount(amount: number, fromUnit: string, toUnit: string): number | null {
+export function convertAmount(amount: number, fromUnit: string, toUnit: string): number | null {
   const from = fromUnit.trim().toLowerCase();
   const to = toUnit.trim().toLowerCase();
   const fromDimension = getUnitDimension(from);

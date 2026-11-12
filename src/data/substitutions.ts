@@ -1,0 +1,432 @@
+import { Substitution } from '../types';
+
+export const SUBSTITUTION_SCOPE = 'egypt' as const;
+
+export const CONFIDENCE_TAGS = {
+  مرتفع: { ar: 'ثقة مرتفعة', en: 'High confidence' },
+  متوسط: { ar: 'ثقة متوسطة', en: 'Medium confidence' },
+  تجريبي: { ar: 'تجريبي — جرّب بحذر', en: 'Experimental — try with care' },
+} as const satisfies Record<'مرتفع' | 'متوسط' | 'تجريبي', { ar: string; en: string }>;
+
+export const SUBSTITUTIONS: Substitution[] = [
+  {
+    id: 'S01',
+    from: 'ghee',
+    to: 'vegetable oil',
+    reasonAr: 'الزيت يقلي ويشوح زي السمنة بالظبط في الطبخ، والطعم قريب من غير ما يغير الطبق.',
+    reasonEn: 'Oil fries and sautés just like ghee for cooking, with a close flavour that leaves the dish unchanged.',
+    confidence: 'مرتفع',
+    appliesTo: [
+      'egypt-hamam-mahshi',
+      'egypt-roz-meammar',
+      'egypt-fatteh',
+      'egypt-feteer-meshaltet',
+      'egypt-goulash-lahma',
+      'egypt-molokhia',
+      'egypt-oloas-selk',
+      'egypt-weika',
+    ],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S02',
+    from: 'butter',
+    to: 'vegetable oil',
+    reasonAr: 'الزيت يعمل صوص البشاميل زي الزبدة بس الطعم أخف والدسامة أقل.',
+    reasonEn: 'Oil makes the béchamel sauce like butter, but lighter in flavour and less rich.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-negresco', 'egypt-kousa-bechamel'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S03',
+    from: 'ghee',
+    to: 'butter',
+    reasonAr: 'الزبدة بديل السمنة في الحلويات والمعجنات، بس الطعم أخف والريحة أقل.',
+    reasonEn: 'Butter stands in for ghee in sweets and baking, but tastes lighter and smells milder.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-basbousa', 'egypt-kahk', 'egypt-feteer-meshaltet', 'egypt-roz-meammar'],
+    dietary: {
+      preserves: ['vegetarian', 'gluten-free', 'nut-free', 'spicy'],
+      breaks: ['vegan', 'dairy-free'],
+    },
+  },
+  {
+    id: 'S04',
+    from: 'butter',
+    to: 'ghee',
+    reasonAr: 'السمنة تدي البشاميل طعم مصري أغنى من الزبدة، والكمية هي هي.',
+    reasonEn: 'Ghee gives the béchamel a richer Egyptian flavour than butter, in the same amount.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-negresco', 'egypt-kousa-bechamel'],
+    dietary: {
+      preserves: ['vegetarian', 'gluten-free', 'nut-free', 'spicy'],
+      breaks: ['vegan', 'dairy-free'],
+    },
+  },
+  {
+    id: 'S05',
+    from: 'cornstarch',
+    to: 'flour',
+    reasonAr: 'الدقيق يربط المهلبية والرز بلبن زي النشا، بس القوام أتقل واللون مش صافي.',
+    reasonEn: 'Flour thickens muhallabia and rice pudding like cornstarch, but the texture is heavier and less clear.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-roz-bel-laban', 'egypt-muhallabia', 'egypt-ashura', 'egypt-muhallabia-amareddin'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: ['gluten-free'],
+    },
+  },
+  {
+    id: 'S06',
+    from: 'flour',
+    to: 'cornstarch',
+    reasonAr: 'النشا يربط البشاميل زي الدقيق، والقوام أنعم بس الصوص أخف.',
+    reasonEn: 'Cornstarch binds béchamel like flour, with a smoother but lighter sauce.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-kousa-bechamel', 'egypt-macarona-beamel', 'egypt-negresco'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S07',
+    from: 'sugar',
+    to: 'honey',
+    reasonAr: 'العسل يحلي السحلب والحلويات الخفيفة زي السكر، بس الطعم مختلف.',
+    reasonEn: 'Honey sweetens sahlab and light puddings like sugar, but the taste differs.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-sahlab', 'egypt-ashura', 'egypt-roz-bel-laban'],
+    dietary: {
+      preserves: ['vegetarian', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: ['vegan'],
+    },
+  },
+  {
+    id: 'S08',
+    from: 'lemon juice',
+    to: 'vinegar',
+    reasonAr: 'الخل يدي الحموضة اللي الليمون كان هيديها في التتبيلة والفول، بس النكهة مختلفة.',
+    reasonEn: 'Vinegar gives the acidity lemon would give in marinades and ful, but the flavour is different.',
+    confidence: 'متوسط',
+    appliesTo: [
+      'egypt-farakh-mashweya',
+      'egypt-kebda-radda',
+      'egypt-ful-beid',
+      'egypt-hummus-sham',
+      'egypt-samak-bolti-maqli',
+      'egypt-ful-medames',
+    ],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S09',
+    from: 'vinegar',
+    to: 'lemon juice',
+    reasonAr: 'عصير الليمون يدي الحموضة المطلوبة في الفتة والفسيخ بدل الخل.',
+    reasonEn: 'Lemon juice gives the acidity needed in fatteh and feseekh instead of vinegar.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-feseekh', 'egypt-fatteh'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S10',
+    from: 'fresh tomato puree',
+    to: 'tomato paste',
+    reasonAr: 'الصلصة المركزة بديل عصير الطماطم في الطبخ، والطعم أقوى شوية.',
+    reasonEn: 'Concentrated tomato paste replaces tomato puree in cooking, with a slightly stronger taste.',
+    confidence: 'متوسط',
+    appliesTo: [
+      'egypt-koshary',
+      'egypt-sineyet-batates-farakh',
+      'egypt-lobia-lahma',
+      'egypt-fasolia-khadra',
+      'egypt-kofta-roz',
+      'egypt-daoud-basha',
+      'egypt-macarona-salsa',
+      'egypt-adas-begabba',
+      'egypt-mahshi-koromb',
+    ],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S11',
+    from: 'tomato paste',
+    to: 'fresh tomato puree',
+    reasonAr: 'عصير الطماطم الطازج بديل الصلصة في المكرونة، بس الصوص أخف ولونه أفتح.',
+    reasonEn: 'Fresh tomato puree replaces paste in pasta sauce, but the sauce is lighter and paler.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-macarona-salsa'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S12',
+    from: 'onion',
+    to: 'spring onions',
+    reasonAr: 'البصل الأخضر يدي نكهة البصل في البصارة والسجق، بس الطعم أخف.',
+    reasonEn: 'Spring onions give the onion flavour in bessara and sausage, but milder.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-bessara', 'egypt-sogoq', 'egypt-sayadieh'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S13',
+    from: 'brown lentils',
+    to: 'red lentils',
+    reasonAr: 'العدس الأحمر بديل العدس البجبة في العدس المطبوخ، بس بيستوي أسرع وبيتهري.',
+    reasonEn: 'Red lentils replace brown lentils in the cooked lentil dish, but they cook faster and go soft.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-adas-begabba'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S14',
+    from: 'vermicelli',
+    to: 'orzo pasta',
+    reasonAr: 'لسان العصفور يتحمر في الرز زي الشعرية بالظبط، والطعم قريب.',
+    reasonEn: 'Orzo toasts in the rice just like vermicelli, with a close taste.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-rozz-shaareya'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: ['gluten-free'],
+    },
+  },
+  {
+    id: 'S15',
+    from: 'orzo pasta',
+    to: 'vermicelli',
+    reasonAr: 'الشعرية بديل لسان العصفور في الشوربة، وبتستوي أسرع فحطها في الآخر.',
+    reasonEn: 'Vermicelli replaces orzo in the soup, but it cooks faster, so add it at the end.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-shorbet-lisan-asfour'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: ['gluten-free'],
+    },
+  },
+  {
+    id: 'S16',
+    from: 'tahini',
+    to: 'cumin',
+    reasonAr: 'الكمون يدي نكهة بس، مش بديل لقوام الطحينة ولا للصوص.',
+    reasonEn: "Cumin gives flavour only; it does not replace tahini's body or the sauce.",
+    confidence: 'تجريبي',
+    appliesTo: ['egypt-feseekh'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S17',
+    from: 'vegetable oil',
+    to: 'olive oil',
+    reasonAr: 'زيت الزيتون بديل زيت الطعام في التشويح، بس طعمه باين ومينفعش للقلي الغزير.',
+    reasonEn: 'Olive oil replaces cooking oil for sautéing, but its taste shows and it does not suit deep frying.',
+    confidence: 'متوسط',
+    appliesTo: [
+      'egypt-koshary',
+      'egypt-alex-liver',
+      'egypt-bessara',
+      'egypt-sineyet-batates-farakh',
+      'egypt-daoud-basha',
+      'egypt-sogoq',
+      'egypt-macarona-salsa',
+      'egypt-adas-begabba',
+      'egypt-sayadieh',
+      'egypt-kofta-roz',
+      'egypt-kebda-radda',
+      'egypt-samak-bolti-maqli',
+    ],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S18',
+    from: 'olive oil',
+    to: 'vegetable oil',
+    reasonAr: 'زيت الطعام بديل زيت الزيتون في الفول، بس نكهة الزيتون الأصلية هتغيب.',
+    reasonEn: 'Cooking oil replaces olive oil in ful, but the original olive flavour will be missing.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-ful-medames'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S19',
+    from: 'minced beef',
+    to: 'minced lamb',
+    reasonAr: 'اللحم الضأن المفروم بديل البقري في الكفتة، بس أدسم ونكهته أقوى.',
+    reasonEn: 'Minced lamb replaces minced beef in kofta, but it is fattier and stronger in flavour.',
+    confidence: 'متوسط',
+    appliesTo: [
+      'egypt-kofta-haty',
+      'egypt-kofta-roz',
+      'egypt-daoud-basha',
+      'egypt-goulash-lahma',
+      'egypt-hawawshi',
+      'egypt-sabanekh',
+      'egypt-mesakaa',
+    ],
+    dietary: {
+      preserves: ['gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: ['vegetarian', 'vegan'],
+    },
+  },
+  {
+    id: 'S20',
+    from: 'beef cubes',
+    to: 'cubed lamb',
+    reasonAr: 'الضأن المكعبات بديل اللحمة المكعبات في اللوبيا والفاصوليا، والطعم أغنى.',
+    reasonEn: 'Cubed lamb replaces beef cubes in lobia and green beans, with a richer taste.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-lobia-lahma', 'egypt-fasolia-khadra'],
+    dietary: {
+      preserves: ['gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: ['vegetarian', 'vegan'],
+    },
+  },
+  {
+    id: 'S21',
+    from: 'rose water',
+    to: 'vanilla',
+    reasonAr: 'الفانيليا تنكه الخشاف بدل ماء الورد، بس الريحة مختلفة تمامًا.',
+    reasonEn: 'Vanilla flavours khoshaf instead of rose water, but the aroma is quite different.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-khoshaf'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+  {
+    id: 'S22',
+    from: 'vanilla',
+    to: 'rose water',
+    reasonAr: 'ماء الورد بديل الفانيليا في الرز بلبن وعاشوراء، ودي النكهة المصرية الأصلية.',
+    reasonEn: 'Rose water replaces vanilla in rice pudding and ashura; it is the classic Egyptian flavouring.',
+    confidence: 'متوسط',
+    appliesTo: ['egypt-roz-bel-laban', 'egypt-ashura'],
+    dietary: {
+      preserves: ['vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 'spicy'],
+      breaks: [],
+    },
+  },
+];
+
+export const SUBSTITUTION_VARIANT_MAP: Record<string, string[]> = {
+  ghee: [
+    'ghee',
+    'baladi ghee',
+    'melted ghee',
+    'melted baladi ghee',
+    'melted ghee (samen)',
+    'egyptian ghee (samen)',
+    'egyptian samen (ghee)',
+  ],
+  butter: ['butter', 'melted butter'],
+  cornstarch: ['cornstarch'],
+  flour: ['flour', 'all-purpose flour', 'bread flour', 'flour for coating', 'toasted flour'],
+  sugar: ['sugar', 'granulated sugar', 'powdered sugar for serving'],
+  'lemon juice': ['lemon juice', 'lemon juice for serving', 'lemon', 'lemons'],
+  vinegar: ['vinegar', 'pure white vinegar'],
+  'fresh tomato puree': ['fresh tomato puree', 'tomato puree'],
+  'tomato paste': ['tomato paste'],
+  onion: [
+    'onion',
+    'onions',
+    'minced onion',
+    'chopped onion',
+    'chopped onions',
+    'grated onion',
+    'grated onions',
+    'finely minced onion',
+    'sliced onions',
+    'sliced onions (for crispy topping)',
+    'onion, sliced',
+    'grated, drained onion',
+    'finely chopped onions',
+  ],
+  'brown lentils': ['brown lentils'],
+  vermicelli: ['vermicelli', 'fine vermicelli'],
+  'orzo pasta': ['orzo pasta'],
+  tahini: ['tahini'],
+  'vegetable oil': [
+    'vegetable oil',
+    'oil for frying',
+    'frying oil',
+    'vegetable oil for frying',
+    'cooking oil',
+    'oil',
+    'oil for deep frying',
+  ],
+  'olive oil': ['olive oil', 'extra virgin olive oil', 'extra virgin palestinian olive oil'],
+  'minced beef': [
+    'minced beef',
+    'cooked minced beef',
+    'minced beef (20% fat content)',
+    'minced beef (for meat sauce)',
+    'minced beef filling',
+    'spiced cooked minced beef',
+  ],
+  'beef cubes': ['beef cubes'],
+  'rose water': ['rose water', 'rosewater'],
+  vanilla: ['vanilla'],
+  honey: ['honey', 'honey, to serve'],
+  'red lentils': ['red lentils'],
+  'minced lamb': ['minced lamb'],
+  'cubed lamb': ['cubed lamb'],
+  'spring onions': ['spring onions', 'chopped green onion'],
+  cumin: ['cumin'],
+};
+
+export function formatSubstitutionLine(
+  suggestion: {
+    substituteNameAr: string;
+    substituteNameEn: string;
+    reasonAr: string;
+    reasonEn: string;
+    confidence: 'مرتفع' | 'متوسط' | 'تجريبي';
+  },
+  language: 'ar' | 'en'
+): string {
+  const isExperimental = suggestion.confidence === 'تجريبي';
+  const tag = CONFIDENCE_TAGS[suggestion.confidence][language];
+  if (language === 'ar') {
+    const label = isExperimental ? 'تلميح نكهة' : 'بديل متوفر';
+    return `${label}: ${suggestion.substituteNameAr} — ${suggestion.reasonAr} · ${tag}`;
+  } else {
+    const label = isExperimental ? 'Flavour hint' : 'Substitute available';
+    return `${label}: ${suggestion.substituteNameEn} — ${suggestion.reasonEn} · ${tag}`;
+  }
+}

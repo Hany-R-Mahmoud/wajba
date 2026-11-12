@@ -27,6 +27,20 @@ export interface Ingredient {
   aisle: IngredientAisle;
 }
 
+export interface Substitution {
+  id: string;
+  from: string;
+  to: string;
+  reasonAr: string;
+  reasonEn: string;
+  confidence: 'مرتفع' | 'متوسط' | 'تجريبي';
+  appliesTo: string[];
+  dietary: {
+    preserves: DietaryTag[];
+    breaks: DietaryTag[];
+  };
+}
+
 export interface CookingTimerStep {
   stepIndex: number;
   titleAr: string;
@@ -117,6 +131,14 @@ export interface GroceryItem {
   requiredAmount?: number;
   pantryAmount?: number;
   isCovered?: boolean;
+  suggestion?: {
+    rowId: string;
+    substituteNameAr: string;
+    substituteNameEn: string;
+    reasonAr: string;
+    reasonEn: string;
+    confidence: 'مرتفع' | 'متوسط' | 'تجريبي';
+  };
 }
 
 export interface PantryItem {
