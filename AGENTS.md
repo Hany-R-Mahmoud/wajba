@@ -18,8 +18,9 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 |---|---|
 | `bun install` | Install dependencies from `bun.lock` |
 | `bun run dev` | Start local Vite server on port 3000 |
-| `bun run lint` | TypeScript check |
-| `bun run build` | Production build |
+| `bun run lint` | TypeScript check (`tsc --noEmit`) |
+| `bun run test` | Node test runner (`tsx --test tests/*.test.ts`) |
+| `bun run build` | Production build (`vite build && tsx scripts/prerender_seo.ts`) |
 
 ## Repo Map
 
@@ -29,9 +30,11 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 | `src/App.tsx` | Top-level state, navigation, and feature composition |
 | `src/components/` | UI views and modals |
 | `src/data/recipes.ts` | Runtime recipe catalog (`INITIAL_RECIPES`) |
+| `src/data/substitutions.ts` | Curated pantry substitutions (`SUBSTITUTIONS`), variant map, scope, and tags |
 | `src/utils/storage.ts` | Browser persistence, seed plans, URL plan sharing |
-| `src/utils/aggregator.ts` | Grocery-list aggregation and unit normalization |
+| `src/utils/aggregator.ts` | Grocery-list aggregation, pantry coverage, and substitution resolver pass |
 | `src/utils/sheets.ts` | CSV download and optional Apps Script POST |
+| `tests/core.test.ts` | Core domain tests, aggregator rules, and substitution data invariants |
 | `wajba_recipe_generator.py` | Recipe JSON generation and validation utility |
 
 ## Conventions
@@ -40,6 +43,7 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 - Keep RTL/LTR behavior driven by the `Language` state in `App.tsx`.
 - Keep recipe IDs stable; plans reference recipes by ID.
 - Keep runtime recipe changes in `src/data/recipes.ts`; JSON artifacts are not imported by the app.
+- Pantry substitutions: annotate-only on uncovered grocery rows; resolve in `aggregator.ts` via canonical keys and dietary breaks guard. S16 `تجريبي` attaches on any presence of substitute.
 - Match existing functional React component and TypeScript style.
 
 ## Safety Rules
@@ -53,7 +57,7 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 
 ## Verification
 
-Run the smallest relevant check, normally `bun run lint` and `bun run build`. No automated test script exists; report that explicitly when relevant.
+Run `bun run lint`, `bun run test`, and `bun run build`. All 24 core tests must pass locally.
 
 ## Unknowns
 

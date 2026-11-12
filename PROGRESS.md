@@ -40,8 +40,10 @@
 - [x] Gap 3: Render suggestion line in `src/components/GroceryListView.tsx`
 - [x] Gap 4: Bilingual strings via inline ternaries & locked Appendix B strings
 - [x] Gap 5: Tests in `tests/core.test.ts` (TDD order per gap)
-- [ ] Verification & Build / Lint / Test execution
-- [ ] Self-review, audit, and handoff files (`REPORT.md`, `PROGRESS.md`, `AGENTS.md`, `DESIGN.md`)
+- [x] Verification & Build / Lint / Test execution
+- [x] Self-review, audit, and handoff files (`REPORT.md`, `PROGRESS.md`, `AGENTS.md`, `DESIGN.md`)
 
 ## Appendix D — Deferred Blockers
-None.
+- **Blocker 1: Impeccable CLI unavailable**
+  - *Evidence*: `which impeccable` returns command not found on system.
+  - *Exact Unlock*: Per SB-9 Step 3, this step is labelled "not checked" and `PRODUCT.md` is NOT created by this run; handoff is complete without it and will be evaluated when Impeccable CLI is installed in environment.

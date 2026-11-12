@@ -6,19 +6,18 @@ Wajba is a warm, practical kitchen companion: calm enough for planning, rich eno
 
 ## 2. Color
 
-| Role | Token | Light | Dark | Usage |
-|------|------|------|------|------|
-| Surface/primary | `--surface-primary` | `#f8f7f4` | `#0c1220` | App background |
-| Surface/secondary | `--surface-secondary` | `#ffffff` | `#162032` | Cards and panels |
-| Surface/muted | `--surface-muted` | `#eeece7` | `#1c2637` | Inputs and inactive controls |
-| Text/primary | `--text-primary` | `#17171c` | `#f8fafc` | Main content |
-| Text/secondary | `--text-secondary` | `#616161` | `#d6d3d1` | Supporting copy |
-| Border/default | `--border-default` | `#d9d9dd` | `#2b3a54` | Card and control borders |
-| Accent/primary | `--accent-primary` | `#ff7759` | `#ff7759` | Interactive emphasis |
-| Accent/warm | `--accent-warm` | `#b45309` | `#f59e0b` | Planning and food actions |
-| Status/success | `--status-success` | `#059669` | `#34d399` | Saved and covered states |
-| Status/warning | `--status-warning` | `#d97706` | `#fbbf24` | Pantry and sync cautions |
-| Status/error | `--status-error` | `#be123c` | `#fb7185` | Validation and destructive states |
+| Role | Token | Hex | Usage |
+|------|------|------|------|
+| Canvas / Background | `--cohere-canvas` | `#ffffff` | Primary background, cards, outline chip fill |
+| Primary / Headers | `--cohere-primary` | `#17171c` | Top nav, search button, primary chrome |
+| Ink / Body Text | `--cohere-ink` | `#212121` | Main text, outline tag text |
+| Dark Navy / Chip | `--cohere-dark-navy` | `#071829` | Experimental (`تجريبي`) filled chip background |
+| Soft Stone / Muted | `--cohere-soft-stone` | `#eeece7` | Subtle background and panel accents |
+| Hairline / Borders | `--cohere-hairline` | `#d9d9dd` | Tag borders, delicate dividers |
+| Border Light | `--cohere-border-light` | `#e5e7eb` | Standard card and input borders |
+| Coral / Accent | `--cohere-coral` | `#ff7759` | Primary action highlights, focus-visible outline |
+| Action Blue | `--cohere-action-blue` | `#1863dc` | Links and informative highlights |
+| Pure Black | `--cohere-black` | `#000000` | Deep contrast accents |
 
 Accent colors are reserved for actions, status, and meaningful food/planning emphasis.
 
