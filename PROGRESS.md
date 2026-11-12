@@ -39,7 +39,7 @@
 - [x] Gap 2: Resolver pass in `src/utils/aggregator.ts` & `suggestion` field on `GroceryItem`
 - [x] Gap 3: Render suggestion line in `src/components/GroceryListView.tsx`
 - [x] Gap 4: Bilingual strings via inline ternaries & locked Appendix B strings
-- [ ] Gap 5: Tests in `tests/core.test.ts` (TDD order per gap)
+- [x] Gap 5: Tests in `tests/core.test.ts` (TDD order per gap)
 - [ ] Verification & Build / Lint / Test execution
 - [ ] Self-review, audit, and handoff files (`REPORT.md`, `PROGRESS.md`, `AGENTS.md`, `DESIGN.md`)
 
