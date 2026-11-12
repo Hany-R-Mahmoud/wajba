@@ -454,3 +454,333 @@ test('Gap 1: substitutions data integrity and invariant checks', () => {
     "Flavour hint: Cumin — Cumin gives flavour only; it does not replace tahini's body or the sauce. · Experimental — try with care"
   );
 });
+
+test('Gap 2: resolver rules and suggestion generation in aggregator', () => {
+  const koshary = INITIAL_RECIPES.find((r) => r.id === 'egypt-koshary')!;
+  const bessara = INITIAL_RECIPES.find((r) => r.id === 'egypt-bessara')!;
+  const feseekh = INITIAL_RECIPES.find((r) => r.id === 'egypt-feseekh')!;
+  const feteer = INITIAL_RECIPES.find((r) => r.id === 'egypt-feteer-meshaltet')!;
+  const kofta = INITIAL_RECIPES.find((r) => r.id === 'egypt-kofta-haty')!;
+
+  // 1. Happy path: egypt-koshary needs vegetable oil, olive oil in pantry covering quantity
+  const kosharyPlan: WeeklyPlan = {
+    id: 'koshary-plan',
+    name: 'Koshary Week',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [
+      {
+        dayId: 'sat',
+        dayNameAr: 'السبت',
+        dayNameEn: 'Saturday',
+        slots: { dinner: { recipeId: 'egypt-koshary', servings: 4 } },
+      },
+    ],
+  };
+
+  const oliveOilPantry: PantryItem[] = [
+    {
+      id: 'pantry-olive-oil',
+      nameAr: 'زيت زيتون',
+      nameEn: 'Olive Oil',
+      amount: 200,
+      unitAr: 'مل',
+      unitEn: 'ml',
+      aisle: 'pantry',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+
+  const listHappy = generateGroceryListFromPlan(kosharyPlan, INITIAL_RECIPES, [], [], oliveOilPantry);
+  const vegOilItemHappy = listHappy.find((i) => i.nameEn.toLowerCase() === 'vegetable oil');
+  assert.ok(vegOilItemHappy, 'Vegetable oil item should be in grocery list');
+  assert.equal(vegOilItemHappy?.isCovered, false);
+  assert.ok(vegOilItemHappy?.suggestion, 'Suggestion should be attached');
+  assert.equal(vegOilItemHappy?.suggestion?.rowId, 'S17');
+  assert.equal(vegOilItemHappy?.suggestion?.confidence, 'متوسط');
+  assert.equal(vegOilItemHappy?.suggestion?.substituteNameEn, 'Olive oil');
+  assert.equal('amount' in (vegOilItemHappy?.suggestion || {}), false, 'No substitute quantity stated');
+
+  // 2. Failure: Substitute not on hand -> no line
+  const listNoPantry = generateGroceryListFromPlan(kosharyPlan, INITIAL_RECIPES, [], [], []);
+  const vegOilItemNoPantry = listNoPantry.find((i) => i.nameEn.toLowerCase() === 'vegetable oil');
+  assert.equal(vegOilItemNoPantry?.suggestion, undefined, 'No suggestion when substitute not in pantry');
+
+  // 3. Insufficient quantity -> no line
+  const oliveOilShortPantry: PantryItem[] = [
+    {
+      id: 'pantry-olive-oil-short',
+      nameAr: 'زيت زيتون',
+      nameEn: 'Olive Oil',
+      amount: 10, // far less than required ~150ml
+      unitAr: 'مل',
+      unitEn: 'ml',
+      aisle: 'pantry',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+  const listShort = generateGroceryListFromPlan(kosharyPlan, INITIAL_RECIPES, [], [], oliveOilShortPantry);
+  const vegOilItemShort = listShort.find((i) => i.nameEn.toLowerCase() === 'vegetable oil');
+  assert.equal(vegOilItemShort?.suggestion, undefined, 'No suggestion when substitute quantity is insufficient');
+
+  // 4. Incompatible unit -> no line (convertAmount returns null)
+  const oliveOilIncompatPantry: PantryItem[] = [
+    {
+      id: 'pantry-olive-oil-incompat',
+      nameAr: 'زيت زيتون',
+      nameEn: 'Olive Oil',
+      amount: 5,
+      unitAr: 'حزمة',
+      unitEn: 'bunches',
+      aisle: 'pantry',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+  const listIncompat = generateGroceryListFromPlan(kosharyPlan, INITIAL_RECIPES, [], [], oliveOilIncompatPantry);
+  const vegOilItemIncompat = listIncompat.find((i) => i.nameEn.toLowerCase() === 'vegetable oil');
+  assert.equal(vegOilItemIncompat?.suggestion, undefined, 'No suggestion when unit conversion is null');
+
+  // 5. Variant match: egypt-bessara with onions (3 pcs), pantry has spring onions (5 pcs) -> S12 attaches
+  const bessaraPlan: WeeklyPlan = {
+    id: 'bessara-plan',
+    name: 'Bessara Plan',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [{ dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: { dinner: { recipeId: 'egypt-bessara', servings: 4 } } }],
+  };
+  const springOnionsPantry: PantryItem[] = [
+    {
+      id: 'pantry-spring-onions',
+      nameAr: 'بصل أخضر',
+      nameEn: 'Spring Onions',
+      amount: 5,
+      unitAr: 'حبة',
+      unitEn: 'pcs',
+      aisle: 'produce',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+  const listBessara = generateGroceryListFromPlan(bessaraPlan, INITIAL_RECIPES, [], [], springOnionsPantry);
+  const onionItem = listBessara.find((i) => i.nameEn.toLowerCase() === 'onions');
+  assert.ok(onionItem?.suggestion, 'Onion row should match variant and attach suggestion');
+  assert.equal(onionItem?.suggestion?.rowId, 'S12');
+
+  // 6. Pantry identity: "oil for frying" in pantry canonicalizes to "vegetable oil" for S01 (ghee -> vegetable oil)
+  const feteerPlan: WeeklyPlan = {
+    id: 'feteer-plan',
+    name: 'Feteer Plan',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [{ dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: { dinner: { recipeId: 'egypt-feteer-meshaltet', servings: 4 } } }],
+  };
+  const fryingOilPantry: PantryItem[] = [
+    {
+      id: 'pantry-frying-oil',
+      nameAr: 'زيت للقلي',
+      nameEn: 'Oil for frying',
+      amount: 1000,
+      unitAr: 'جرام',
+      unitEn: 'g',
+      aisle: 'pantry',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+  const listFeteer = generateGroceryListFromPlan(feteerPlan, INITIAL_RECIPES, [], [], fryingOilPantry);
+  const gheeItem = listFeteer.find((i) => i.nameEn.toLowerCase().includes('ghee'));
+  assert.ok(gheeItem?.suggestion, 'Ghee item should recognize oil for frying as vegetable oil');
+  assert.equal(gheeItem?.suggestion?.rowId, 'S01');
+
+  // 7. Experimental (تجريبي) S16 exemption: cumin on hand in tiny amount (1 tsp) vs tahini 0.5 cup
+  const feseekhPlan: WeeklyPlan = {
+    id: 'feseekh-plan',
+    name: 'Feseekh Plan',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [{ dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: { dinner: { recipeId: 'egypt-feseekh', servings: 4 } } }],
+  };
+  const cuminPantry: PantryItem[] = [
+    {
+      id: 'pantry-cumin',
+      nameAr: 'كمون',
+      nameEn: 'Cumin',
+      amount: 1,
+      unitAr: 'ملعقة صغيرة',
+      unitEn: 'tsp',
+      aisle: 'pantry',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+  const listFeseekh = generateGroceryListFromPlan(feseekhPlan, INITIAL_RECIPES, [], [], cuminPantry);
+  const tahiniItem = listFeseekh.find((i) => i.nameEn.toLowerCase() === 'tahini');
+  assert.ok(tahiniItem?.suggestion, 'S16 experimental hint attaches on any presence of cumin');
+  assert.equal(tahiniItem?.suggestion?.rowId, 'S16');
+  assert.equal(tahiniItem?.suggestion?.confidence, 'تجريبي');
+
+  // 8. Scope: Lebanese/non-Egyptian recipe never attaches substitution
+  const fakeLebaneseRecipe: Recipe = {
+    id: 'lebanon-mujadara',
+    titleAr: 'مجدرة لبنانية',
+    titleEn: 'Lebanese Mujadara',
+    descriptionAr: '',
+    descriptionEn: '',
+    region: 'levant',
+    mealType: ['dinner'],
+    prepTimeMinutes: 10,
+    cookTimeMinutes: 30,
+    servings: 4,
+    difficulty: 'easy',
+    tags: [],
+    dietaryTags: ['vegetarian'],
+    image: '',
+    ingredients: [
+      {
+        id: 'ing-onion',
+        nameAr: 'بصل',
+        nameEn: 'Onion',
+        amount: 2,
+        unitAr: 'حبة',
+        unitEn: 'pcs',
+        aisle: 'produce',
+      },
+    ],
+    instructionsAr: [],
+    instructionsEn: [],
+    votesCount: { likes: 0, dislikes: 0 },
+    rating: 0,
+  };
+  const lebanesePlan: WeeklyPlan = {
+    id: 'lebanese-plan',
+    name: 'Lebanese Plan',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [{ dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: { dinner: { recipeId: 'lebanon-mujadara', servings: 4 } } }],
+  };
+  const listLebanon = generateGroceryListFromPlan(lebanesePlan, [...INITIAL_RECIPES, fakeLebaneseRecipe], [], [], springOnionsPantry);
+  const lebanonOnion = listLebanon.find((i) => i.nameEn.toLowerCase() === 'onion');
+  assert.equal(lebanonOnion?.suggestion, undefined, 'Non-Egyptian recipe should never attach a suggestion');
+
+  // 9. Dietary guard: S19 (minced beef -> minced lamb, breaks: vegetarian, vegan)
+  // Seeded test: override egypt-kofta-haty with dietaryTags: ['vegetarian']
+  const lambPantry: PantryItem[] = [
+    {
+      id: 'pantry-lamb',
+      nameAr: 'لحم ضأن مفروم',
+      nameEn: 'Minced lamb',
+      amount: 1000,
+      unitAr: 'جرام',
+      unitEn: 'g',
+      aisle: 'meat',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+  const koftaPlan: WeeklyPlan = {
+    id: 'kofta-plan',
+    name: 'Kofta Plan',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [{ dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: { dinner: { recipeId: 'egypt-kofta-haty', servings: 4 } } }],
+  };
+
+  // 9a. Normal kofta (no dietaryTags that conflict): S19 attaches
+  const listKoftaNormal = generateGroceryListFromPlan(koftaPlan, INITIAL_RECIPES, [], [], lambPantry);
+  const beefItemNormal = listKoftaNormal.find((i) => i.nameEn.toLowerCase() === 'minced beef');
+  assert.ok(beefItemNormal?.suggestion, 'S19 attaches when no dietary conflict');
+  assert.equal(beefItemNormal?.suggestion?.rowId, 'S19');
+
+  // 9b. Seeded override with vegetarian: S19 suppressed
+  const seededRecipes = INITIAL_RECIPES.map((r) =>
+    r.id === 'egypt-kofta-haty' ? { ...r, dietaryTags: ['vegetarian' as const] } : r
+  );
+  const listKoftaGuarded = generateGroceryListFromPlan(koftaPlan, seededRecipes, [], [], lambPantry);
+  const beefItemGuarded = listKoftaGuarded.find((i) => i.nameEn.toLowerCase() === 'minced beef');
+  assert.equal(beefItemGuarded?.suggestion, undefined, 'Dietary guard suppresses S19 when recipe is tagged vegetarian');
+
+  // 10. First-match-wins: egypt-feteer-meshaltet has ghee. Pantry has both vegetable oil (S01) and butter (S03)
+  const bothSubstitutesPantry: PantryItem[] = [
+    {
+      id: 'pantry-veg-oil',
+      nameAr: 'زيت طعام',
+      nameEn: 'Vegetable Oil',
+      amount: 1000,
+      unitAr: 'جرام',
+      unitEn: 'g',
+      aisle: 'pantry',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+    {
+      id: 'pantry-butter',
+      nameAr: 'زبدة',
+      nameEn: 'Butter',
+      amount: 1000,
+      unitAr: 'جرام',
+      unitEn: 'g',
+      aisle: 'dairy',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+    },
+  ];
+  const listFirstWins = generateGroceryListFromPlan(feteerPlan, INITIAL_RECIPES, [], [], bothSubstitutesPantry);
+  const gheeFirst = listFirstWins.find((i) => i.nameEn.toLowerCase().includes('ghee'));
+  assert.equal(gheeFirst?.suggestion?.rowId, 'S01', 'First match in file order (S01 before S03) wins');
+
+  // 11. Ambiguous title: two custom recipes sharing titleAr match nothing
+  const ambiguousPlan: WeeklyPlan = {
+    id: 'ambig-plan',
+    name: 'Ambig Plan',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [{ dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: { dinner: { recipeId: 'custom-1', servings: 2 } } }],
+  };
+  const ambigRecipes: Recipe[] = [
+    ...INITIAL_RECIPES,
+    {
+      ...recipe,
+      id: 'custom-1',
+      titleAr: 'عنوان مكرر',
+      titleEn: 'Duplicate Title 1',
+      ingredients: [{ id: 'ing1', nameAr: 'سمن بلدي', nameEn: 'Ghee', amount: 50, unitAr: 'جرام', unitEn: 'g', aisle: 'pantry' }],
+    },
+    {
+      ...recipe,
+      id: 'custom-2',
+      titleAr: 'عنوان مكرر',
+      titleEn: 'Duplicate Title 2',
+      ingredients: [{ id: 'ing2', nameAr: 'سمن بلدي', nameEn: 'Ghee', amount: 50, unitAr: 'جرام', unitEn: 'g', aisle: 'pantry' }],
+    },
+  ];
+  const listAmbig = generateGroceryListFromPlan(ambiguousPlan, ambigRecipes, [], [], fryingOilPantry);
+  const ambigGhee = listAmbig.find((i) => i.nameEn.toLowerCase() === 'ghee');
+  assert.equal(ambigGhee?.suggestion, undefined, 'Ambiguous recipe title should match nothing');
+
+  // 12. Combined lines and disjunctive lines never fire
+  const combinedPlan: WeeklyPlan = {
+    id: 'comb-plan',
+    name: 'Comb Plan',
+    isRamadanMode: false,
+    updatedAt: '2026-01-01T00:00:00.000Z',
+    days: [{ dayId: 'sat', dayNameAr: 'السبت', dayNameEn: 'Saturday', slots: { dinner: { recipeId: 'custom-comb', servings: 2 } } }],
+  };
+  const combRecipes: Recipe[] = [
+    ...INITIAL_RECIPES,
+    {
+      ...recipe,
+      id: 'custom-comb',
+      titleAr: 'وصفة بهارات',
+      titleEn: 'Spices Recipe',
+      ingredients: [
+        { id: 'ing-c1', nameAr: 'ملح وفلفل وكمون', nameEn: 'salt, pepper & cumin', amount: 10, unitAr: 'جرام', unitEn: 'g', aisle: 'pantry' },
+        { id: 'ing-c2', nameAr: 'سمن أو زيت', nameEn: 'ghee or oil', amount: 2, unitAr: 'ملعقة كبيرة', unitEn: 'tbsp', aisle: 'pantry' },
+      ],
+    },
+  ];
+  const listComb = generateGroceryListFromPlan(combinedPlan, combRecipes, [], [], bothSubstitutesPantry);
+  const combItem1 = listComb.find((i) => i.nameEn.includes('cumin'));
+  const combItem2 = listComb.find((i) => i.nameEn.includes('ghee or oil'));
+  assert.equal(combItem1?.suggestion, undefined, 'Combined line never fires');
+  assert.equal(combItem2?.suggestion, undefined, 'Disjunctive line never fires');
+
+  // 13. Regression: uncovered item with no row has suggestion === undefined, unaffected fields
+  const riceItem = listHappy.find((i) => i.nameEn.toLowerCase().includes('rice'));
+  assert.ok(riceItem, 'Rice item exists in koshary');
+  assert.equal(riceItem?.suggestion, undefined);
+  assert.equal(riceItem?.isCovered, false);
+});

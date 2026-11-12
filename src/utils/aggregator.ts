@@ -1,4 +1,44 @@
 import { GroceryItem, Ingredient, IngredientAisle, Language, PantryItem, WeeklyPlan, MonthlyPlan, Recipe, DayMealSlotAssignment } from '../types';
+import { SUBSTITUTIONS, SUBSTITUTION_VARIANT_MAP, SUBSTITUTION_SCOPE } from '../data/substitutions';
+import { INITIAL_RECIPES } from '../data/recipes';
+
+const REVERSE_VARIANT_MAP: Map<string, string> = new Map();
+for (const [canonicalKey, variants] of Object.entries(SUBSTITUTION_VARIANT_MAP)) {
+  for (const variant of variants) {
+    REVERSE_VARIANT_MAP.set(variant, canonicalKey);
+  }
+}
+
+function canonicalizeName(normalizedName: string): string {
+  return REVERSE_VARIANT_MAP.get(normalizedName) ?? normalizedName;
+}
+
+function getSubstituteDisplayNames(
+  canonicalTo: string,
+  allRecipes: Recipe[]
+): { substituteNameAr: string; substituteNameEn: string } | null {
+  for (const r of allRecipes) {
+    for (const ing of r.ingredients) {
+      if (normalizeIngredientName(ing.nameEn) === canonicalTo) {
+        return {
+          substituteNameAr: ing.nameAr,
+          substituteNameEn: ing.nameEn,
+        };
+      }
+    }
+  }
+  for (const r of INITIAL_RECIPES) {
+    for (const ing of r.ingredients) {
+      if (normalizeIngredientName(ing.nameEn) === canonicalTo) {
+        return {
+          substituteNameAr: ing.nameAr,
+          substituteNameEn: ing.nameEn,
+        };
+      }
+    }
+  }
+  return null;
+}
 
 export function normalizeUnit(amount: number, unit: string): { amount: number; unitAr: string; unitEn: string } {
   const lowerUnit = unit.trim().toLowerCase();
@@ -104,6 +144,13 @@ export function generateGroceryListFromPlan(
     });
   }
 
+  const recipesByTitleAr = new Map<string, Recipe[]>();
+  for (const r of allRecipes) {
+    const list = recipesByTitleAr.get(r.titleAr) || [];
+    list.push(r);
+    recipesByTitleAr.set(r.titleAr, list);
+  }
+
   // Convert map to array and normalize amounts/units
   const aggregatedList: GroceryItem[] = Object.values(mapKeyToGrocery).map((item) => {
     const normalized = normalizeUnit(item.amount, item.unitAr);
@@ -117,15 +164,90 @@ export function generateGroceryListFromPlan(
       return converted === null ? total : total + converted;
     }, 0);
     const remainingAmount = Math.max(0, requiredAmount - pantryAmount);
+    const roundedRemaining = Math.round(remainingAmount * 10) / 10;
+    const isCovered = roundedRemaining === 0;
+
+    let suggestion: GroceryItem['suggestion'] = undefined;
+
+    if (!isCovered && roundedRemaining > 0 && item.recipeSources.length > 0) {
+      const itemNormName = normalizeIngredientName(item.nameEn || item.nameAr);
+      const canonicalItemKey = canonicalizeName(itemNormName);
+
+      const sourceRecipes: Recipe[] = [];
+      for (const title of item.recipeSources) {
+        const matches = recipesByTitleAr.get(title);
+        if (matches && matches.length === 1) {
+          sourceRecipes.push(matches[0]);
+        }
+      }
+
+      for (const row of SUBSTITUTIONS) {
+        if (row.from !== canonicalItemKey) {
+          continue;
+        }
+
+        const hasAppliesToMatch = sourceRecipes.some(
+          (r) => r.id.startsWith(SUBSTITUTION_SCOPE + '-') && row.appliesTo.includes(r.id)
+        );
+        if (!hasAppliesToMatch) {
+          continue;
+        }
+
+        const breaksDietary = sourceRecipes.some((r) => {
+          if (!r.dietaryTags || r.dietaryTags.length === 0) return false;
+          return row.dietary.breaks.some((breakTag) => r.dietaryTags?.includes(breakTag));
+        });
+        if (breaksDietary) {
+          continue;
+        }
+
+        let quantityCovered = false;
+        if (row.confidence === 'تجريبي') {
+          quantityCovered = pantryItems.some((pItem) => {
+            const pNorm = normalizeIngredientName(pItem.nameEn || pItem.nameAr);
+            return canonicalizeName(pNorm) === row.to && pItem.amount > 0;
+          });
+        } else {
+          const substituteOnHand = pantryItems.reduce((total, pItem) => {
+            const pNorm = normalizeIngredientName(pItem.nameEn || pItem.nameAr);
+            if (canonicalizeName(pNorm) !== row.to) {
+              return total;
+            }
+            const converted = convertAmount(pItem.amount, pItem.unitEn || pItem.unitAr, normalized.unitEn);
+            return converted === null ? total : total + converted;
+          }, 0);
+
+          quantityCovered = substituteOnHand >= roundedRemaining;
+        }
+
+        if (!quantityCovered) {
+          continue;
+        }
+
+        const displayNames = getSubstituteDisplayNames(row.to, allRecipes);
+        if (displayNames) {
+          suggestion = {
+            rowId: row.id,
+            substituteNameAr: displayNames.substituteNameAr,
+            substituteNameEn: displayNames.substituteNameEn,
+            reasonAr: row.reasonAr,
+            reasonEn: row.reasonEn,
+            confidence: row.confidence,
+          };
+          break;
+        }
+      }
+    }
 
     return {
       ...item,
-      amount: Math.round(remainingAmount * 10) / 10,
+      amount: roundedRemaining,
       unitAr: normalized.unitAr,
       unitEn: normalized.unitEn,
       requiredAmount: Math.round(requiredAmount * 10) / 10,
       pantryAmount: Math.round(Math.min(requiredAmount, pantryAmount) * 10) / 10,
-      isCovered: remainingAmount === 0,
+      isCovered,
+      ...(suggestion ? { suggestion } : {}),
     };
   });
 
