@@ -57,20 +57,20 @@ export const Navbar: React.FC<NavbarProps> = ({
   const primaryNavItems = [
     {
       id: 'planner' as const,
-      labelAr: 'جدول الوجبات',
-      labelEn: 'Weekly Plan',
+      labelAr: 'الجدول',
+      labelEn: 'Plan',
       icon: CalendarDays,
     },
     {
       id: 'recipes' as const,
-      labelAr: 'وصفات الطعام',
+      labelAr: 'الوصفات',
       labelEn: 'Recipes',
       icon: BookOpen,
     },
     {
       id: 'grocery' as const,
-      labelAr: 'قائمة التسوق',
-      labelEn: 'Grocery List',
+      labelAr: 'التسوق',
+      labelEn: 'Grocery',
       icon: ShoppingBag,
     },
     {
@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const secondaryNavItems = [
     {
       id: 'pantry' as const,
-      labelAr: 'مخزن المنزل',
+      labelAr: 'المخزن',
       labelEn: 'Pantry',
       icon: Warehouse,
     },
@@ -100,8 +100,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       : []),
     {
       id: 'family' as const,
-      labelAr: 'المشاركة العائلية',
-      labelEn: 'Family Sync',
+      labelAr: 'العائلة',
+      labelEn: 'Family',
       icon: Users,
     },
     {
@@ -164,7 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 ) : (
                   <>
                     <SlidersHorizontal className="w-3.5 h-3.5 shrink-0" />
-                    <span>{isArabic ? 'أدوات أخرى' : 'More'}</span>
+                    <span>{isArabic ? 'المزيد' : 'More'}</span>
                   </>
                 )}
                 <ChevronDown

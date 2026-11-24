@@ -1,17 +1,15 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Check, ChevronDown, ChevronUp, Flame, Leaf, Plus, ShoppingBag } from 'lucide-react';
+import { ChevronDown, ChevronUp, Flame, Leaf, Plus, ShoppingBag } from 'lucide-react';
 import { GroceryItem, Language, ProduceCategory, ProduceItem, Recipe, SeasonMonth } from '../types';
 import {
-  ENGLISH_IS_DRAFT,
-  DATASET_DATE,
   GUIDE_NOTE_AR,
   GUIDE_NOTE_EN,
+  SOURCE_NOTE_AR,
+  SOURCE_NOTE_EN,
   PRODUCE,
   PRODUCE_CATEGORY_LABELS,
   SEASON_MONTHS_AR,
   SEASON_MONTHS_EN,
-  SOURCE_NOTE_AR,
-  SOURCE_NOTE_EN,
   getMonthList,
 } from '../data/seasons';
 import { cairoMonth, isPeak, isYearRound, recipesUsing, seasonRanges } from '../utils/season';
@@ -27,7 +25,7 @@ interface SeasonalViewProps {
   onOpenSeasonalRecipes: () => void;
 }
 
-const RECIPES_SHOWN = 3;
+const RECIPES_SHOWN = 2;
 const CATEGORY_IDS: Array<ProduceCategory | 'all'> = ['all', 'vegetable', 'fruit', 'herbs'];
 
 export const seasonGroceryId = (produceId: string) => `season_${produceId}`;
@@ -79,13 +77,20 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
   }, [month, isArabic]);
 
   const inMonth = useMemo(() => getMonthList(month), [month]);
-  const visible = useMemo(() => getMonthList(month, category), [month, category]);
   const peakCount = inMonth.filter((p) => isPeak(p, month)).length;
   const recipesByProduce = useMemo(() => {
     const map = new Map<string, Recipe[]>();
     for (const p of PRODUCE) map.set(p.id, recipesUsing(p.id, recipes));
     return map;
   }, [recipes]);
+  // Items with recipes first; getMonthList already puts peak first and sort is stable.
+  const visible = useMemo(
+    () =>
+      getMonthList(month, category).sort(
+        (a, b) => Number((recipesByProduce.get(b.id) ?? []).length > 0) - Number((recipesByProduce.get(a.id) ?? []).length > 0),
+      ),
+    [month, category, recipesByProduce],
+  );
   const seasonalRecipeCount = useMemo(
     () => new Set(inMonth.flatMap((p) => (!isYearRound(p) ? (recipesByProduce.get(p.id) ?? []).map((r) => r.id) : []))).size,
     [inMonth, recipesByProduce],
@@ -103,10 +108,13 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
       .map(([a, b]) => (a === b ? monthNames[a - 1] : `${monthNames[a - 1]} – ${monthNames[b - 1]}`))
       .join(isArabic ? '، ' : ', ');
 
+  const seasonLine = (item: ProduceItem) =>
+    `${rangeText(item)}${isArabic ? '، عز الموسم ' : ', peak '}${peakText(item)}`;
+
   const chip =
     'min-h-11 rounded-xl px-3.5 text-xs font-bold transition-colors inline-flex items-center justify-center';
   const chipIdle =
-    'border border-[#d9d9dd] bg-[#eeece7] text-[#212121] hover:border-[#ff7759] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300';
+    'border border-[#d9d9dd] bg-[#eeece7] text-[#212121] hover:border-[#ff7759] dark:border-[#2b3a54] dark:bg-[#071829] dark:text-stone-300';
   const chipActive = 'bg-[#17171c] text-white dark:bg-white dark:text-[#17171c]';
 
   return (
@@ -122,8 +130,8 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
             </h1>
             <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">
               {isArabic
-                ? 'خضار وفاكهة مصر في موسمها، مع أفكار للطبخ وإضافة سريعة إلى قائمة التسوق.'
-                : 'Egyptian produce at its best, with cooking ideas and a quick add to your grocery list.'}
+                ? 'خضار وفاكهة مصر في موسمها. أضف أي صنف إلى قائمة التسوق.'
+                : 'Egyptian produce in season. Add any item to your grocery list.'}
             </p>
           </div>
         </div>
@@ -137,7 +145,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
             ref={stripRef}
             role="group"
             aria-labelledby="season-month-label"
-            className="flex gap-1.5 overflow-x-auto pb-1 lg:grid lg:grid-cols-12 lg:overflow-visible"
+            className="flex gap-1.5 overflow-x-auto px-4 pb-1 [mask-image:linear-gradient(to_right,transparent,#000_16px,#000_calc(100%-16px),transparent)] lg:grid lg:grid-cols-12 lg:overflow-visible lg:px-0 lg:[mask-image:none]"
           >
             {monthNames.map((name, index) => {
               const m = (index + 1) as SeasonMonth;
@@ -187,7 +195,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#d9d9dd] pt-3 dark:border-stone-800">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#d9d9dd] pt-3 dark:border-[#2b3a54]">
           <p role="status" className="text-xs text-stone-600 dark:text-stone-400">
             {isArabic
               ? `${inMonth.length} صنف في موسمه في ${monthNames[month - 1]}، منها ${peakCount} في عز موسمه`
@@ -217,7 +225,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
           </button>
         </div>
       ) : (
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {visible.map((item) => {
             const peak = isPeak(item, month);
             const added = groceryExtraIds.includes(seasonGroceryId(item.id));
@@ -239,52 +247,43 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                       {PRODUCE_CATEGORY_LABELS[item.category][isArabic ? 'ar' : 'en']}
                     </p>
                   </div>
-                  {peak ? (
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#071829] px-2.5 py-1 text-[11px] font-bold text-white">
-                      <Flame className="h-3 w-3 text-[#ff7759]" aria-hidden="true" />
+                  {peak && (
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#ff7759]/60 px-2.5 py-1 text-xs font-bold text-[#8f2f14] dark:border-[#ff7759]/70 dark:text-[#ff9a82]">
+                      <Flame className="h-3 w-3" aria-hidden="true" />
                       {isArabic ? 'في عز موسمه' : 'Peak season'}
-                    </span>
-                  ) : (
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#d9d9dd] bg-white px-2.5 py-1 text-[11px] font-bold text-[#212121] dark:border-stone-700 dark:bg-stone-900 dark:text-stone-300">
-                      <Check className="h-3 w-3" aria-hidden="true" />
-                      {isArabic ? 'في الموسم' : 'In season'}
                     </span>
                   )}
                 </div>
 
-                <dl className="space-y-1.5 text-xs text-stone-700 dark:text-stone-300">
+                <dl className="space-y-1.5 text-sm text-stone-700 dark:text-stone-300">
                   <div className="flex flex-wrap gap-x-1.5">
                     <dt className="font-bold">{isArabic ? 'الموسم:' : 'Season:'}</dt>
-                    <dd><bdi>{rangeText(item)}</bdi></dd>
+                    <dd><bdi>{seasonLine(item)}</bdi></dd>
                   </div>
                   <div className="flex flex-wrap gap-x-1.5">
-                    <dt className="font-bold">{isArabic ? 'عز الموسم:' : 'Peak:'}</dt>
-                    <dd><bdi>{peakText(item)}</bdi></dd>
-                  </div>
-                  <div className="flex flex-wrap gap-x-1.5">
-                    <dt className="font-bold">{isArabic ? 'ينفع في:' : 'Cook with:'}</dt>
+                    <dt className="font-bold">{isArabic ? 'يناسب:' : 'Cook with:'}</dt>
                     <dd><bdi>{isArabic ? item.cookHintAr : item.cookHintEn}</bdi></dd>
                   </div>
                 </dl>
 
-                <div className="border-t border-[#d9d9dd] pt-3 dark:border-stone-800">
-                  <p className="mb-1.5 text-xs font-bold text-stone-700 dark:text-stone-300">
-                    {isArabic ? 'وصفات تستخدمه' : 'Recipes using this'}
-                    {usedBy.length > 0 && <span className="font-mono text-stone-500"> ({usedBy.length})</span>}
-                  </p>
+                <div className="border-t border-[#d9d9dd] pt-3 dark:border-[#2b3a54]">
                   {usedBy.length === 0 ? (
                     <p className="text-xs text-stone-500 dark:text-stone-400">
-                      {isArabic ? 'لا توجد وصفة في وجبة تستخدمه بعد.' : 'No Wajba recipe uses this yet.'}
+                      {isArabic ? 'لا توجد وصفة تستخدمه بعد.' : 'No recipe uses this yet.'}
                     </p>
                   ) : (
                     <>
+                      <p className="mb-1.5 text-xs font-bold text-stone-700 dark:text-stone-300">
+                        {isArabic ? 'وصفات تستخدمه' : 'Recipes using this'}
+                        <span className="font-mono text-stone-500 dark:text-stone-400"> ({usedBy.length})</span>
+                      </p>
                       <ul className="flex flex-wrap gap-1.5">
                         {shown.map((recipe) => (
                           <li key={recipe.id} className="max-w-full">
                             <button
                               type="button"
                               onClick={() => onSelectRecipe(recipe)}
-                              className="min-h-11 max-w-full truncate rounded-xl border border-[#d9d9dd] bg-[#eeece7] px-3 text-xs font-medium text-[#212121] hover:border-[#ff7759] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
+                              className="min-h-11 max-w-full truncate rounded-xl border border-[#d9d9dd] bg-[#eeece7] px-3 text-xs font-medium text-[#212121] hover:border-[#ff7759] dark:border-[#2b3a54] dark:bg-[#071829] dark:text-stone-200"
                             >
                               {isArabic ? recipe.titleAr : recipe.titleEn}
                             </button>
@@ -296,7 +295,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                           type="button"
                           aria-expanded={isOpen}
                           onClick={() => setExpanded((prev) => ({ ...prev, [item.id]: !isOpen }))}
-                          className="mt-1 inline-flex min-h-11 items-center gap-1 text-xs font-bold text-[#d86540] hover:underline"
+                          className="mt-1 inline-flex min-h-11 items-center gap-1 text-xs font-bold text-[#b9401f] hover:underline dark:text-[#ff7759]"
                         >
                           {isOpen ? <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" /> : <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
                           <span>
@@ -334,15 +333,9 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
       )}
 
       {/* Guide note and source */}
-      <footer className="space-y-1 rounded-2xl border border-[#d9d9dd] bg-[#eeece7] p-4 text-xs text-stone-700 dark:border-[#2b3a54] dark:bg-[#162032] dark:text-stone-300">
+      <footer className="rounded-2xl border border-[#d9d9dd] bg-[#eeece7] p-4 text-xs text-stone-700 dark:border-[#2b3a54] dark:bg-[#162032] dark:text-stone-300">
         <p className="font-bold">{isArabic ? GUIDE_NOTE_AR : GUIDE_NOTE_EN}</p>
-        <p>{isArabic ? SOURCE_NOTE_AR : SOURCE_NOTE_EN}</p>
-        <p className="font-mono text-stone-500 dark:text-stone-400">
-          {isArabic ? `تاريخ البيانات: ${DATASET_DATE}` : `Dataset date: ${DATASET_DATE}`}
-        </p>
-        {!isArabic && ENGLISH_IS_DRAFT && (
-          <p className="text-stone-500 dark:text-stone-400">English wording is a draft pending review.</p>
-        )}
+        <p className="mt-1 text-xs opacity-80">{isArabic ? SOURCE_NOTE_AR : SOURCE_NOTE_EN}</p>
       </footer>
     </div>
   );

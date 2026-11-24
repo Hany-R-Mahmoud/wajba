@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { authClient } from '../auth/client';
 import { useAppSession } from '../auth/SessionProvider';
 import { ApiError, apiErrorMessage, apiRequest } from '../lib/api';
@@ -8,6 +8,8 @@ import type { Language } from '../types';
 
 export function AccountPanel({ language }: { language: Language }) {
   const { userId, displayName, token, isPending, hasError } = useAppSession();
+  const tokenRef = useRef(token);
+  tokenRef.current = token; // retries re-run an old closure, so they read the latest token here
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState('');
   const [failure, setFailure] = useState<{ message: string; retry: () => void } | null>(null);
@@ -30,6 +32,7 @@ export function AccountPanel({ language }: { language: Language }) {
   };
 
   const saveBackup = () => run(async () => {
+    const token = tokenRef.current;
     if (!token) throw new ApiError('auth', 401);
     // PUT is an upsert, so repeating it after a timeout cannot create a second copy.
     await apiRequest('/api/backup', { method: 'PUT', token, body: createCurrentWajbaBackup(), idempotent: true, timeoutMs: 15_000 });
@@ -39,6 +42,7 @@ export function AccountPanel({ language }: { language: Language }) {
   const restoreBackup = () => {
     if (!window.confirm(ar ? 'استبدال البيانات على هذا الجهاز بالنسخة السحابية؟ صدّر نسخة محلية أولاً من الإعدادات.' : 'Replace this device’s data with your cloud backup? Export a local backup in Settings first.')) return;
     void run(async () => {
+      const token = tokenRef.current;
       if (!token) throw new ApiError('auth', 401);
       const result = await apiRequest<{ backup: unknown }>('/api/backup', { token, timeoutMs: 15_000 });
       if (!result.backup) { setNotice(ar ? 'لا توجد نسخة سحابية بعد.' : 'No cloud backup yet.'); return; }

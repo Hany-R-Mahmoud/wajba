@@ -110,6 +110,11 @@ export default function App() {
     }
   }, [dashboardTab, pathname]);
 
+  // Every tab change (nav click or back/forward) starts at the top of the new view.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentTab]);
+
   const navigateToTab = (tab: DashboardTab) => {
     const nextPath = DASHBOARD_PATHS[tab];
     if (window.location.pathname !== nextPath) {
@@ -144,9 +149,10 @@ export default function App() {
 
   // 2. Data State
   const [customRecipes, setCustomRecipes] = useState<Recipe[]>(loadCustomRecipes());
+  const [seedRecipes, setSeedRecipes] = useState<Recipe[]>(INITIAL_RECIPES);
   const allRecipes = useMemo(() => {
-    return [...customRecipes, ...INITIAL_RECIPES];
-  }, [customRecipes]);
+    return [...customRecipes, ...seedRecipes];
+  }, [customRecipes, seedRecipes]);
   const publicRecipeRoute = useMemo(() => getPublicRecipeRoute(allRecipes, pathname), [allRecipes, pathname]);
 
   useEffect(() => {
@@ -160,6 +166,10 @@ export default function App() {
   // One-shot: the In Season view opens recipes with the seasonal filter on.
   const [openRecipesSeasonal, setOpenRecipesSeasonal] = useState(false);
   const [plannerMode, setPlannerMode] = useState<'weekly' | 'monthly'>('weekly');
+  // Recipes opened by back/forward or any non-seasonal route must not keep the one-shot filter.
+  useEffect(() => {
+    if (currentTab !== 'recipes') setOpenRecipesSeasonal(false);
+  }, [currentTab]);
 
   const [groceryCheckedIds, setGroceryCheckedIds] = useState<string[]>(loadGroceryCheckedIds());
   const [groceryExtras, setGroceryExtras] = useState<GroceryItem[]>(loadGroceryExtras());
@@ -205,15 +215,19 @@ export default function App() {
     saveVote(recipeId, type);
     setUserVotes({ ...userVotes, [recipeId]: type });
 
-    const recipeIndex = INITIAL_RECIPES.findIndex((r) => r.id === recipeId);
-    if (recipeIndex !== -1) {
-      const recipe = INITIAL_RECIPES[recipeIndex];
-      if (type === 'like') {
-        recipe.votesCount.likes += 1;
-      } else {
-        recipe.votesCount.dislikes += 1;
-      }
-    }
+    setSeedRecipes((prev) =>
+      prev.map((recipe) =>
+        recipe.id === recipeId
+          ? {
+              ...recipe,
+              votesCount: {
+                likes: recipe.votesCount.likes + (type === 'like' ? 1 : 0),
+                dislikes: recipe.votesCount.dislikes + (type === 'dislike' ? 1 : 0),
+              },
+            }
+          : recipe,
+      ),
+    );
   };
 
   const handleUpdateWeeklyPlan = (newPlan: WeeklyPlan) => {
@@ -497,6 +511,7 @@ export default function App() {
         {currentTab === 'planner' && (
           <div className="space-y-6">
             {/* View Mode Toggle Switcher */}
+            {FEATURE_FLAGS.monthlyPlanner && (
             <div className="flex items-center justify-between bg-white dark:bg-stone-900 p-2.5 rounded-2xl border border-amber-200/80 dark:border-stone-800 shadow-xs">
               <div className="flex items-center gap-1.5 bg-amber-100/70 dark:bg-stone-800 p-1.5 rounded-xl">
                 <button
@@ -536,6 +551,7 @@ export default function App() {
                   : 'Showing full monthly calendar grid'}
               </div>
             </div>
+            )}
 
             {/* Render Weekly or Monthly Planner View */}
             {plannerMode === 'monthly' && FEATURE_FLAGS.monthlyPlanner ? (

@@ -3,7 +3,6 @@ import { DIETARY_TAGS, DietaryTag, Language, Recipe, Region } from '../types';
 import { DIETARY_LABELS, filterRecipesByDietaryTag } from '../utils/recipes';
 import { RecipeCard } from './RecipeCard';
 import { cairoMonth, isSeasonalRecipe, recipeSeasonality } from '../utils/season';
-import { SEASON_MONTHS_AR, SEASON_MONTHS_EN } from '../data/seasons';
 import { Search, Plus, Filter, Bookmark, RotateCcw, ChevronDown, Leaf } from 'lucide-react';
 
 interface RecipeExplorerProps {
@@ -41,7 +40,6 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
   const [onlyFavorites, setOnlyFavorites] = useState(false);
   const [onlySeasonal, setOnlySeasonal] = useState(initialSeasonalOnly);
   const month = useMemo(() => cairoMonth(), []);
-  const monthName = (isArabic ? SEASON_MONTHS_AR : SEASON_MONTHS_EN)[month - 1];
 
   const filteredRecipes = useMemo(() => {
     const matches = filterRecipesByDietaryTag(recipes, selectedDietaryTag).filter((recipe) => {
@@ -248,13 +246,13 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             }`}
           >
             <Leaf className="h-3.5 w-3.5" aria-hidden="true" />
-            <span>{isArabic ? `في موسمه هذا الشهر (${monthName})` : `Seasonal this month (${monthName})`}</span>
+            <span>{isArabic ? 'في موسمه الآن' : 'In season now'}</span>
           </button>
           {onlySeasonal && (
             <p className="mt-2 text-xs text-stone-600 dark:text-stone-400">
               {isArabic
-                ? 'وصفات تستخدم خضارًا أو فاكهة في موسمها الآن ولا تتضمن صنفًا خارج موسمه، مرتبة بالأكثر موسمية. التقدير مبني على مكونات الخضار والفواكه فقط.'
-                : 'Recipes that use produce in season now and none that is out of season, most seasonal first. Based on fresh-produce ingredients only.'}
+                ? 'وصفات مكوناتها الطازجة كلها في موسمها الآن، الأكثر موسمية أولاً'
+                : 'Recipes whose fresh produce is all in season now, most seasonal first'}
             </p>
           )}
         </div>

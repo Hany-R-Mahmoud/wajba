@@ -18,6 +18,7 @@ export function readInvite(): string {
 }
 
 type Props = { language: Language; plan: WeeklyPlan; customRecipes: Recipe[]; onApply: (plan: FamilyPlan) => void };
+type GroupsResponse = { groups: FamilyGroup[]; group?: FamilyGroup; members?: FamilyMember[]; invite?: Details['invite']; id?: string };
 type Details = { group: FamilyGroup; members: FamilyMember[]; invite: { invite_code: string | null; invite_expires_at: string } | null };
 export function FamilyGroups(props: Props) {
   return <ConnectedGroups {...props} />;
@@ -39,7 +40,7 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
   const [loadError, setLoadError] = useState('');
   async function request(body?: Record<string, unknown>, id?: string) {
     if (!token) throw new ApiError('auth', 401);
-    return apiRequest<any>(`/api/groups${id ? `?id=${encodeURIComponent(id)}` : ''}`, {
+    return apiRequest<GroupsResponse>(`/api/groups${id ? `?id=${encodeURIComponent(id)}` : ''}`, {
       method: body ? 'POST' : 'GET', token, ...(body ? { body } : {}), timeoutMs: 12_000,
     });
   }
@@ -49,21 +50,23 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
     if (!userId) { setGroups([]); return; }
     let active = true;
     let running = false;
-    const load = async () => {
+    // Only the first load and manual refreshes show the loader; background polls stay silent.
+    const load = async (visible: boolean) => {
       if (running || document.hidden) return;
       running = true;
-      if (active) { setLoading(true); setLoadError(''); }
+      if (active && visible) { setLoading(true); setLoadError(''); }
       try {
         const list = await request();
-        const detail = selected ? await request(undefined, selected) : null;
-        if (active) { setGroups(list.groups); setDetails(detail); }
-      } catch (error) { if (active) { setDetails(null); setLoadError(fail(error)); } }
-      finally { running = false; if (active) setLoading(false); }
+        const detail = selected ? await request(undefined, selected) as Details : null;
+        if (active) { setGroups(list.groups); setDetails(detail); setLoadError(''); }
+      } catch (error) { if (active) setLoadError(fail(error)); }
+      finally { running = false; if (active && visible) setLoading(false); }
     };
-    void load();
-    const timer = window.setInterval(load, 60_000);
-    document.addEventListener('visibilitychange', load);
-    return () => { active = false; clearInterval(timer); document.removeEventListener('visibilitychange', load); };
+    const poll = () => void load(false);
+    void load(true);
+    const timer = window.setInterval(poll, 60_000);
+    document.addEventListener('visibilitychange', poll);
+    return () => { active = false; clearInterval(timer); document.removeEventListener('visibilitychange', poll); };
   }, [userId, token, selected, refresh, language]);
 
   async function act(action: string, extra: Record<string, unknown> = {}) {

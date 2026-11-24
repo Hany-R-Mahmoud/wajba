@@ -1,4 +1,5 @@
-import { GroceryItem, WeeklyPlan } from '../types';
+import { GroceryItem, IngredientAisle, WeeklyPlan } from '../types';
+import { AISLE_LABELS, localizeRecipeSource } from './aggregator';
 
 export interface SheetsSyncStatus {
   lastSync?: string;
@@ -12,14 +13,14 @@ export function exportPlanAndGroceryToCSV(_plan: WeeklyPlan | null, groceryList:
     : ['Aisle Category', 'Item Name', 'Quantity', 'Unit', 'Recipe Sources'];
 
   const rows = groceryList.map((item) => [
-    isArabic ? item.aisle : item.aisle,
+    (AISLE_LABELS[item.aisle as IngredientAisle] ?? AISLE_LABELS.other)[isArabic ? 'ar' : 'en'],
     isArabic ? item.nameAr : item.nameEn,
     item.amount,
     isArabic ? item.unitAr : item.unitEn,
-    item.recipeSources.join(' | '),
+    item.recipeSources.map((src) => localizeRecipeSource(src, isArabic)).join(' | '),
   ]);
 
-  const csvContent = [headers.join(','), ...rows.map((row) => row.map((cell) => `"${cell}"`).join(','))].join('\n');
+  const csvContent = [headers.join(','), ...rows.map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(','))].join('\n');
 
   return csvContent;
 }

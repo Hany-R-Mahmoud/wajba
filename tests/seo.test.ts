@@ -22,10 +22,11 @@ test('public seasons page lists every month, every entry and the guide note', ()
   assert.ok(html.includes('href="/dashboard/seasons"'));
 });
 
-test('draft English never reaches the public Arabic page', () => {
-  assert.equal(ENGLISH_IS_DRAFT, true, 'if the owner approved English, update this test and allow English names');
+test('public Arabic page shows English names only once the owner approved them', () => {
   const html = page('ar');
-  for (const p of PRODUCE) assert.ok(!html.includes(p.nameEn), `${p.nameEn} must not be public while draft`);
+  const shown = PRODUCE.filter((p) => html.includes(p.nameEn)).length;
+  if (ENGLISH_IS_DRAFT) assert.equal(shown, 0, 'draft English must not be public');
+  else assert.ok(shown > 0, 'approved English names appear on the public page');
 });
 
 test('seasons route has its own indexable metadata', () => {

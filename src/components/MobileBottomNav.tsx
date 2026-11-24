@@ -35,15 +35,15 @@ const primaryItems = [
   { id: 'planner' as const, labelAr: 'الجدول', labelEn: 'Plan', icon: CalendarDays },
   { id: 'recipes' as const, labelAr: 'الوصفات', labelEn: 'Recipes', icon: BookOpen },
   { id: 'grocery' as const, labelAr: 'التسوق', labelEn: 'Grocery', icon: ShoppingBag },
-  { id: 'seasons' as const, labelAr: 'في موسمه', labelEn: 'Season', icon: Leaf },
-  { id: 'pantry' as const, labelAr: 'المخزن', labelEn: 'Pantry', icon: Warehouse },
+  { id: 'seasons' as const, labelAr: 'في موسمه', labelEn: 'In Season', icon: Leaf },
 ];
 
 const secondaryItems = [
+  { id: 'pantry' as const, labelAr: 'المخزن', labelEn: 'Pantry', icon: Warehouse },
   ...(FEATURE_FLAGS.leaderboard
     ? [{ id: 'leaderboard' as const, labelAr: 'أفضل الوجبات', labelEn: 'Top 10 Meals', icon: Trophy }]
     : []),
-  { id: 'family' as const, labelAr: 'مشاركة العائلة', labelEn: 'Family Sync', icon: Users },
+  { id: 'family' as const, labelAr: 'العائلة', labelEn: 'Family', icon: Users },
   { id: 'settings' as const, labelAr: 'الإعدادات', labelEn: 'Settings', icon: Settings },
 ];
 

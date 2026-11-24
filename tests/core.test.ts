@@ -784,3 +784,14 @@ test('Gap 2: resolver rules and suggestion generation in aggregator', () => {
   assert.equal(riceItem?.suggestion, undefined);
   assert.equal(riceItem?.isCovered, false);
 });
+
+test('backup parser clears custom recipe images with unsafe schemes and keeps the recipe', () => {
+  const state = (image: string) => ({
+    language: 'en' as const, theme: 'dark' as const, favorites: [], votes: {}, customRecipes: [{ ...recipe, image }],
+    weeklyPlan: plan, monthlyPlans: [], groceryCheckedIds: [], groceryExtras: [], pantryItems: [],
+  });
+  const imageOf = (image: string) => parseWajbaBackup(createWajbaBackup(state(image)))?.state.customRecipes[0]?.image;
+  assert.equal(imageOf('https://example.com/a.jpg'), 'https://example.com/a.jpg');
+  assert.equal(imageOf('http://tracker.example/a.jpg'), '');
+  assert.equal(imageOf('javascript:alert(1)'), '');
+});

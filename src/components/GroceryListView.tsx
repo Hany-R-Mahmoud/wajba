@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { GroceryItem, IngredientAisle, Language } from '../types';
-import { AISLE_LABELS } from '../utils/aggregator';
+import { AISLE_LABELS, localizeRecipeSource } from '../utils/aggregator';
+import { copyText } from '../pwa/pwa';
 import { CONFIDENCE_TAGS } from '../data/substitutions';
 import { ShoppingBag, CheckSquare, Square, Plus, Share2, Copy, Download, Printer, Trash2, CheckCircle2, Search, Filter, RotateCcw, X } from 'lucide-react';
 import { downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
@@ -38,7 +39,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
 
   const [extraName, setExtraName] = useState('');
   const [extraAmount, setExtraAmount] = useState(1);
-  const [extraUnit, setExtraUnit] = useState('حبة');
+  const [extraUnit, setExtraUnit] = useState(isArabic ? 'حبة' : 'pcs');
   const [copiedText, setCopiedText] = useState(false);
   const [extraError, setExtraError] = useState('');
   const [actionError, setActionError] = useState('');
@@ -86,7 +87,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
       const q = activeSearchQuery.toLowerCase();
       const matchesNameAr = item.nameAr.toLowerCase().includes(q);
       const matchesNameEn = item.nameEn.toLowerCase().includes(q);
-      const matchesSource = item.recipeSources.some((src) => src.toLowerCase().includes(q));
+      const matchesSource = item.recipeSources.some((src) => src.toLowerCase().includes(q) || localizeRecipeSource(src, isArabic).toLowerCase().includes(q));
       if (!matchesNameAr && !matchesNameEn && !matchesSource) {
         return false;
       }
@@ -154,8 +155,8 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
 
   const handleShareWhatsApp = () => {
     let text = isArabic
-      ? `🛒 *قائمة تسوق المقادير لجدول الوجبات - وجبة Wajba*\n\n`
-      : `🛒 *Grocery Checklist - Wajba Meal Planner*\n\n`;
+      ? `🛒 *قائمة التسوق - وجبة*\n\n`
+      : `🛒 *Grocery list - Wajba Meal Planner*\n\n`;
 
     Object.entries(groupedByAisle).forEach(([aisleKey, items]) => {
       const labelInfo = AISLE_LABELS[aisleKey as IngredientAisle] || AISLE_LABELS.other;
@@ -172,15 +173,19 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
   };
 
-  const handleCopyText = () => {
-    let text = isArabic ? `🛒 قائمة تسوق المقادير - وجبة:\n\n` : `🛒 Grocery Checklist - Wajba:\n\n`;
+  const handleCopyText = async () => {
+    let text = isArabic ? `🛒 قائمة التسوق - وجبة:\n\n` : `🛒 Grocery list - Wajba:\n\n`;
     groceryList.forEach((item) => {
       text += `[${item.isChecked ? 'X' : ' '}] ${item.amount} ${isArabic ? item.unitAr : item.unitEn} - ${isArabic ? item.nameAr : item.nameEn}\n`;
     });
 
-    navigator.clipboard.writeText(text);
-    setCopiedText(true);
-    setTimeout(() => setCopiedText(false), 2000);
+    if (await copyText(text)) {
+      setActionError('');
+      setCopiedText(true);
+      setTimeout(() => setCopiedText(false), 2000);
+    } else {
+      setActionError(isArabic ? 'تعذر النسخ. انسخ القائمة يدوياً.' : 'Could not copy. Please copy the list manually.');
+    }
   };
 
   const handleDownloadCSV = () => {
@@ -207,7 +212,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
             </div>
             <div>
               <h1 className="text-2xl font-extrabold text-amber-950 dark:text-amber-100">
-                {isArabic ? 'قائمة التسوق الذكية المجمعة' : 'Smart Aggregated Grocery List'}
+                {isArabic ? 'قائمة التسوق' : 'Grocery list'}
               </h1>
               <p className="text-sm font-medium text-stone-600 dark:text-stone-300 mt-1">
                 {isArabic
@@ -425,14 +430,14 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
       {/* Aisle Grouped Grocery Sections */}
       {groceryList.length === 0 ? (
         <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-amber-200/80 dark:border-stone-800 p-8 space-y-3">
-          <div className="text-4xl">🛒</div>
+          <ShoppingBag className="mx-auto h-9 w-9 text-stone-400" aria-hidden="true" />
           <h3 className="text-base font-bold text-stone-800 dark:text-stone-200">
-            {isArabic ? 'قائمة التسوق فارغة حالياً' : 'Your grocery checklist is empty'}
+            {isArabic ? 'قائمة التسوق فارغة' : 'Your grocery list is empty'}
           </h3>
           <p className="text-xs text-stone-500 max-w-sm mx-auto">
             {isArabic
-              ? 'قم بإضافة وجبات إلى جدول الأسبوع لتوليد مقادير التسوق تلقائياً.'
-              : 'Add meals to your weekly planner to generate your shopping list automatically.'}
+              ? 'أضف وجبات إلى جدول الأسبوع وتظهر المكونات هنا.'
+              : 'Add meals to your plan and the ingredients appear here.'}
           </p>
         </div>
       ) : filteredList.length === 0 ? (
@@ -506,7 +511,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                             </p>
                             {item.recipeSources.length > 0 && (
                               <p className="text-[10px] text-stone-400 truncate max-w-xs">
-                                {isArabic ? 'من: ' : 'From: '} {item.recipeSources.join(', ')}
+                                {isArabic ? 'من: ' : 'From: '} {item.recipeSources.map((src) => localizeRecipeSource(src, isArabic)).join(', ')}
                               </p>
                             )}
                             {(() => {

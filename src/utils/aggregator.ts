@@ -40,6 +40,22 @@ function getSubstituteDisplayNames(
   return null;
 }
 
+// recipeSources stores Arabic titles (backup format, substitution lookup); this maps them to English for display.
+const SOURCE_TITLE_PAIRS = new Map<string, { ar: string; en: string }>();
+const registerSourceTitle = (ar: string, en: string) => {
+  if (ar && en) SOURCE_TITLE_PAIRS.set(ar, { ar, en });
+};
+INITIAL_RECIPES.forEach((r) => registerSourceTitle(r.titleAr, r.titleEn));
+registerSourceTitle('إضافة شخصية', 'Custom Add');
+registerSourceTitle('إضافة من الوصفة', 'Recipe Add');
+registerSourceTitle('دليل المواسم', 'Seasonal guide');
+
+/** Localized recipe-source title; unknown titles are returned unchanged. */
+export function localizeRecipeSource(title: string, isArabic: boolean): string {
+  const pair = SOURCE_TITLE_PAIRS.get(title) ?? [...SOURCE_TITLE_PAIRS.values()].find((p) => p.en === title);
+  return pair ? (isArabic ? pair.ar : pair.en) : title;
+}
+
 export function normalizeUnit(amount: number, unit: string): { amount: number; unitAr: string; unitEn: string } {
   const lowerUnit = unit.trim().toLowerCase();
 
@@ -91,7 +107,10 @@ export function generateGroceryListFromPlan(
   const mapKeyToGrocery: { [key: string]: GroceryItem } = {};
 
   const recipeMap = new Map<string, Recipe>();
-  allRecipes.forEach((r) => recipeMap.set(r.id, r));
+  allRecipes.forEach((r) => {
+    recipeMap.set(r.id, r);
+    registerSourceTitle(r.titleAr, r.titleEn);
+  });
 
   const processSlotAssignment = (slotAssignment?: DayMealSlotAssignment) => {
     if (!slotAssignment) return;
@@ -243,7 +262,8 @@ export function generateGroceryListFromPlan(
       ...item,
       amount: roundedRemaining,
       unitAr: normalized.unitAr,
-      unitEn: normalized.unitEn,
+      // normalizeUnit echoes unknown units into both fields; keep the recipe's own English unit.
+      unitEn: normalized.unitEn === item.unitAr ? item.unitEn : normalized.unitEn,
       requiredAmount: Math.round(requiredAmount * 10) / 10,
       pantryAmount: Math.round(Math.min(requiredAmount, pantryAmount) * 10) / 10,
       isCovered,

@@ -16,6 +16,7 @@
     --cohere-hairline: #d9d9dd;
     --cohere-border-light: #e5e7eb;
     --cohere-coral: #ff7759;
+    --focus-ring: #b9401f;
     --cohere-action-blue: #1863dc;
   }
 
@@ -92,8 +93,13 @@
 }
 
 :focus-visible {
-  outline: 3px solid var(--cohere-coral);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
+}
+
+/* #ff7759 is 6.8:1 on dark surfaces; #b9401f is 5.3:1 on white */
+.dark :focus-visible {
+  outline-color: var(--cohere-coral);
 }
 
 html {

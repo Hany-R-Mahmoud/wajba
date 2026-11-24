@@ -86,9 +86,9 @@ export const PantryView: React.FC<PantryViewProps> = ({ items, language, onUpdat
         <div className="flex items-start gap-3">
           <Warehouse className="mt-1 h-6 w-6 text-[#ff7759]" aria-hidden="true" />
           <div>
-            <p className="text-xs font-mono uppercase tracking-wider text-stone-300">{isArabic ? 'مخزن المنزل' : 'Home Pantry'}</p>
+            <p className="text-xs font-mono text-stone-300">{isArabic ? 'المخزن' : 'Pantry'}</p>
             <h1 className="mt-1 text-2xl font-bold">{isArabic ? 'اعرف ما لديك قبل التسوق' : 'Know what you have before you shop'}</h1>
-            <p className="mt-2 max-w-2xl text-sm text-stone-300">{isArabic ? 'تخصم وجبة كميات المخزن من قائمة التسوق تلقائياً. لا يتم استهلاك المخزون عند وضع علامة الشراء.' : 'Wajba subtracts pantry quantities from your grocery list. Checking a grocery item never consumes pantry stock.'}</p>
+            <p className="mt-2 max-w-2xl text-sm text-stone-300">{isArabic ? 'ما في المخزن يُخصم من قائمة التسوق. تحديد عنصر كمشترى لا يغيّر المخزن.' : 'Pantry items are subtracted from your grocery list. Checking an item off does not change your pantry.'}</p>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ export const PantryView: React.FC<PantryViewProps> = ({ items, language, onUpdat
       </form>
 
       {items.length === 0 ? (
-        <div className="rounded-3xl border border-dashed border-[#d9d9dd] p-10 text-center dark:border-[#2b3a54]"><Warehouse className="mx-auto h-8 w-8 text-stone-400" /><p className="mt-3 font-bold">{isArabic ? 'المخزن فارغ' : 'Your pantry is empty'}</p><p className="mt-1 text-sm text-stone-500">{isArabic ? 'أضف المكونات الموجودة لديك لتقليل قائمة التسوق.' : 'Add ingredients you already have to reduce your shopping list.'}</p></div>
+        <div className="rounded-3xl border border-dashed border-[#d9d9dd] p-10 text-center dark:border-[#2b3a54]"><Warehouse className="mx-auto h-8 w-8 text-stone-400" /><p className="mt-3 font-bold">{isArabic ? 'المخزن فارغ' : 'Your pantry is empty'}</p><p className="mt-1 text-sm text-stone-500">{isArabic ? 'أضف المكونات الموجودة لديك لتقليل قائمة التسوق.' : 'Add ingredients you already have to shorten your grocery list.'}</p></div>
       ) : (
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{items.map((item) => <article key={item.id} className="rounded-2xl border border-[#d9d9dd] bg-white p-4 dark:border-[#2b3a54] dark:bg-[#162032]"><div className="flex items-start justify-between gap-3"><div><h3 className="font-bold">{isArabic ? item.nameAr : item.nameEn}</h3><p className="mt-1 text-sm text-stone-500">{item.amount} {isArabic ? item.unitAr : item.unitEn}</p><p className="mt-2 text-xs text-stone-400">{isArabic ? AISLE_LABELS[item.aisle].ar : AISLE_LABELS[item.aisle].en}</p></div><div className="flex gap-1"><button type="button" onClick={() => handleEdit(item)} className="rounded-lg p-2 text-stone-500 hover:bg-stone-100 dark:hover:bg-stone-800" aria-label={isArabic ? 'تعديل' : 'Edit'}><Pencil className="h-4 w-4" /></button><button type="button" onClick={() => handleDelete(item)} className="rounded-lg p-2 text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950" aria-label={isArabic ? 'حذف' : 'Delete'}><Trash2 className="h-4 w-4" /></button></div></div></article>)}</div>
       )}

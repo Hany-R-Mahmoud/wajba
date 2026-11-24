@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ActiveTimer, Language, MealSlot, Recipe } from '../types';
 import { X, Clock, Users, Timer, Share2, Check, Plus, Minus, CalendarPlus, ShoppingBag, BookOpen, ThumbsUp, Pencil, Trash2 } from 'lucide-react';
 import { REGION_BADGES } from './RecipeCard';
 import { DIETARY_LABELS } from '../utils/recipes';
+import { copyText } from '../pwa/pwa';
 
 interface RecipeDetailModalProps {
   recipe: Recipe | null;
@@ -27,6 +28,8 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 }) => {
   const [currentServings, setCurrentServings] = useState<number>(recipe?.servings || 4);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
+  const pickerRef = useRef<HTMLDivElement>(null);
   const [addedGrocery, setAddedGrocery] = useState(false);
   const [plannerOpen, setPlannerOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string>('sat');
@@ -40,6 +43,12 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose, recipe]);
+
+  useEffect(() => {
+    if (!plannerOpen || !pickerRef.current) return;
+    pickerRef.current.scrollIntoView({ block: 'center' });
+    pickerRef.current.focus();
+  }, [plannerOpen]);
 
   if (!recipe) return null;
 
@@ -59,10 +68,14 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
   };
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(new URL(`/recipes/${encodeURIComponent(recipe.id)}`, window.location.origin).href);
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2000);
+  const handleCopyLink = async () => {
+    const copied = await copyText(new URL(`/recipes/${encodeURIComponent(recipe.id)}`, window.location.origin).href);
+    setCopiedLink(copied);
+    setCopyFailed(!copied);
+    setTimeout(() => {
+      setCopiedLink(false);
+      setCopyFailed(false);
+    }, 2000);
   };
 
   const handleAddGrocery = () => {
@@ -290,7 +303,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 
           {/* Slot Assignment Drawer Form */}
           {plannerOpen && (
-            <div className="p-4 rounded-2xl bg-amber-100 dark:bg-stone-800 border border-amber-300 dark:border-stone-700 space-y-3">
+            <div ref={pickerRef} tabIndex={-1} className="p-4 rounded-2xl bg-amber-100 dark:bg-stone-800 border border-amber-300 dark:border-stone-700 space-y-3 outline-none">
               <h4 className="text-xs font-extrabold text-amber-950 dark:text-amber-200">
                 {isArabic ? 'اختر اليوم والوجبة في الجدول:' : 'Assign Day & Meal Slot:'}
               </h4>
@@ -361,7 +374,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
               className="px-3 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5"
             >
               {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5" />}
-              <span>{copiedLink ? (isArabic ? 'تم النسخ!' : 'Copied!') : (isArabic ? 'نسخ الرابط' : 'Copy Link')}</span>
+              <span>{copiedLink ? (isArabic ? 'تم النسخ!' : 'Copied!') : copyFailed ? (isArabic ? 'تعذر النسخ' : 'Copy failed') : (isArabic ? 'نسخ الرابط' : 'Copy Link')}</span>
             </button>
           </div>
 

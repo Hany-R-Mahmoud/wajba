@@ -68,7 +68,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <button
                 onClick={onThemeToggle}
                 className="p-2 rounded-full bg-[#eeece7] dark:bg-stone-800 text-[#17171c] dark:text-stone-200 hover:border-[#17171c] transition-colors border border-[#d9d9dd] dark:border-stone-700 cursor-pointer"
-                title={isArabic ? 'تغيير المظهر' : 'Toggle Theme'}
+                title={isArabic ? 'تغيير المظهر' : 'Toggle theme'}
               >
                 {theme === 'light' ? <Moon className="w-4 h-4 text-[#17171c]" /> : <Sun className="w-4 h-4 text-amber-400" />}
               </button>
@@ -89,29 +89,29 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold">
                 <BookOpen className="w-3.5 h-3.5 text-[#ff7759]" />
-                <span>{isArabic ? 'الميزة ١: مكتبة الوصفات الأصيلة' : 'Feature 1: Heritage Recipe Treasury'}</span>
+                <span>{isArabic ? 'الوصفات' : 'Recipes'}</span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-bold font-mono text-[#17171c] dark:text-white leading-tight">
                 {isArabic
-                  ? 'وصفات موثوقة من مصر والشام والخليج والمغرب العربي'
-                  : 'Authentic Regional MENA Recipes & Image Catalogs'}
+                  ? 'وصفات من مصر والشام والخليج والمغرب'
+                  : 'Recipes from Egypt, the Levant, the Gulf and the Maghreb'}
               </h2>
 
               <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
-                  ? 'استمتع بوصفات تقليدية موثوقة مثل المكرونة البشاميل المصرية، المنسف الشامي، الكبسة الملكية، والفتة المصرية. تحتوي كل وصفة على قصص تراثية، وكتالوج صور متعدد، ومؤقتات طهي تفاعلية تتيح لك تشغيل التنبيهات أثناء إعداد الطعام.'
-                  : 'Enjoy rich heritage recipes with multi-photo image catalogs, step-by-step cooking timers, cultural background stories, and family voting systems.'}
+                  ? 'قصة لكل وصفة، وصور، ومؤقت طبخ.'
+                  : 'A story, photos and a cooking timer with each recipe.'}
               </p>
 
               <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono">
                 <div className="p-3 rounded-2xl bg-[#f8f7f4] dark:bg-[#212e47] border border-[#e2e0d8] dark:border-[#384966] flex items-center gap-2">
                   <Flame className="w-4 h-4 text-[#ff7759]" />
-                  <span className="font-bold">{isArabic ? 'مؤقتات طهي صوتية' : 'Cooking Timers'}</span>
+                  <span className="font-bold">{isArabic ? 'مؤقتات الطبخ' : 'Cooking timers'}</span>
                 </div>
                 <div className="p-3 rounded-2xl bg-[#f8f7f4] dark:bg-[#212e47] border border-[#e2e0d8] dark:border-[#384966] flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-[#ff7759]" />
-                  <span className="font-bold">{isArabic ? 'تصويت العائلة TOP 10' : 'Family Top 10'}</span>
+                  <span className="font-bold">{isArabic ? 'أفضل ١٠ وصفات للعائلة' : 'Family top 10'}</span>
                 </div>
               </div>
             </div>
@@ -161,17 +161,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <div className="flex items-center gap-2">
                     <Moon className="w-5 h-5 text-[#ff7759] fill-[#ff7759]" />
                     <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#17171c] dark:text-white">
-                      {isArabic ? 'حاسبة الصيام الرمضانية' : 'RAMADAN FASTING ENGINE'}
+                      {isArabic ? 'رمضان' : 'RAMADAN'}
                     </span>
                   </div>
                   <span className="px-2.5 py-0.5 rounded-full bg-[#ff7759] text-[10px] font-mono text-white font-bold">
-                    Active Mode
+                    {isArabic ? 'وضع رمضان' : 'Ramadan mode'}
                   </span>
                 </div>
 
                 <div className="text-center py-4 bg-white dark:bg-[#162032] rounded-xl border border-[#e2e0d8] dark:border-[#2b3a54]">
                   <span className="text-[10px] font-mono text-stone-500 dark:text-stone-300 block mb-1">
-                    {isArabic ? 'الوقت المتبقي حتى أذان المغرب (الإفطار)' : 'Countdown to Iftar Fast-Breaking'}
+                    {isArabic ? 'الوقت المتبقي على أذان المغرب (الإفطار)' : 'Time left until iftar'}
                   </span>
                   <span className="text-3xl sm:text-4xl font-mono font-bold text-[#ff7759] tracking-widest">
                     04 : 28 : 15
@@ -194,19 +194,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="lg:col-span-7 space-y-5 order-1 lg:order-2">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold">
                 <Moon className="w-3.5 h-3.5 text-[#ff7759]" />
-                <span>{isArabic ? 'الميزة ٢: وضع شهر رمضان المخصص' : 'Feature 2: Ramadan Special Engine'}</span>
+                <span>{isArabic ? 'رمضان' : 'Ramadan'}</span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-bold font-mono text-[#17171c] dark:text-white leading-tight">
                 {isArabic
-                  ? 'جدولة مخصصة للسحور والإفطار مع حاسبة ساعات الصيام'
-                  : 'Dedicated Suhoor & Iftar Planners with Fasting Countdowns'}
+                  ? 'سحور وإفطار في رمضان'
+                  : 'Suhoor and iftar in Ramadan'}
               </h2>
 
               <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
-                  ? 'تحول بنقرة واحدة إلى وضع رمضان المخصص. يمنحك الجدول خانات محددة للإفطار والسحور، وحاسبة تنازلية لمواقيت الصيام، بالإضافة إلى توصيات للحلويات والمشروبات الرمضانية مثل القطايف والكنافة والعصائر التراثية.'
-                  : 'Seamlessly toggle to Ramadan mode. Enjoy specialized Suhoor & Iftar meal slots, fasting countdown timers, hydration counters, and traditional Ramadan dessert recipes.'}
+                  ? 'خانات للسحور والإفطار، وعدّاد لوقت المغرب.'
+                  : 'Meal slots for suhoor and iftar, plus an iftar countdown.'}
               </p>
 
             </div>
@@ -219,33 +219,33 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold">
                 <CalendarDays className="w-3.5 h-3.5 text-[#ff7759]" />
-                <span>{isArabic ? 'الميزة ٣: التقويم المرن وحاسبة الحصص' : 'Feature 3: Flexible Calendar & Portion Scaler'}</span>
+                <span>{isArabic ? 'الجدول' : 'Plan'}</span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-bold font-mono text-[#17171c] dark:text-white leading-tight">
                 {isArabic
-                  ? 'تخطيط أسبوعي وشهري مع ضبط تلقائي لحصص العائلة'
-                  : 'Interactive 7-Day & 30-Day Calendar Planners'}
+                  ? 'خطة أسبوع أو شهر'
+                  : 'A week or a month planned'}
               </h2>
 
               <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
-                  ? 'نظم أسبوعك بالكامل أو خطط لشهر كامل مسبقاً. اضبط عدد الأفراد (مثلاً ٤ أو ٨ أو ١٢ فرداً) ليقوم النظام بتعديل كميات المكونات تلقائياً في قائمة التسوق.'
-                  : 'Plan your weekly meals or full 30-day month ahead. Dynamically scale portion sizes for small or large family gatherings with zero effort.'}
+                  ? 'اختر عدد الأفراد وتُضبط الكميات.'
+                  : 'Set family size and quantities adjust.'}
               </p>
 
               <div className="space-y-2 pt-2 text-xs font-mono text-[#17171c] dark:text-stone-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#ff7759]" />
-                  <span>{isArabic ? 'عرض الجدول الأسبوعي (٧ أيام كاملة)' : 'Weekly 7-Day Slot Grid'}</span>
+                  <span>{isArabic ? 'عرض الأسبوع (٧ أيام)' : 'Week view (7 days)'}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#ff7759]" />
-                  <span>{isArabic ? 'عرض التقويم الشهري (٣٠ يوماً)' : 'Monthly 30-Day Full Calendar'}</span>
+                  <span>{isArabic ? 'عرض الشهر (٣٠ يوماً)' : 'Month view (30 days)'}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#ff7759]" />
-                  <span>{isArabic ? 'مكبر ومصغر الحصص الديناميكي' : 'Dynamic Family Serving Scaler'}</span>
+                  <span>{isArabic ? 'الكميات تتغير مع عدد الأفراد' : 'Quantities follow family size'}</span>
                 </div>
               </div>
             </div>
@@ -255,7 +255,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <div className="bg-[#f8f7f4] dark:bg-[#212e47] rounded-2xl p-6 border border-[#e2e0d8] dark:border-[#384966] shadow-xl space-y-3 font-mono">
                 <div className="flex items-center justify-between pb-2 border-b border-[#e2e0d8] dark:border-[#384966] text-xs">
                   <span className="font-bold text-[#17171c] dark:text-white">
-                    {isArabic ? 'جدول الأسبوع (الجمعة - الخميس)' : 'Weekly Schedule (Fri - Thu)'}
+                    {isArabic ? 'جدول الأسبوع (الجمعة - الخميس)' : 'Weekly plan (Fri - Thu)'}
                   </span>
                   <span className="px-2.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-[#ff7759] dark:text-[#17171c] text-[11px] font-bold">
                     👥 6 {isArabic ? 'أفراد' : 'Servings'}
@@ -291,11 +291,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <div className="flex items-center gap-2">
                     <ShoppingBag className="w-5 h-5 text-[#ff7759]" />
                     <span className="font-bold text-xs uppercase tracking-wider">
-                      {isArabic ? 'قائمة التسوق التلقائية' : 'SMART GROCERY LIST'}
+                      {isArabic ? 'قائمة التسوق' : 'GROCERY LIST'}
                     </span>
                   </div>
                   <span className="px-2 py-0.5 rounded-md bg-[#17171c] text-[#ff7759] font-bold text-[10px]">
-                    Auto-Aggregated
+                    {isArabic ? 'تجميع تلقائي' : 'Auto-grouped'}
                   </span>
                 </div>
 
@@ -324,9 +324,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 </div>
 
                 <div className="pt-2 flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-300 border-t border-[#e2e0d8] dark:border-[#384966]">
-                  <span>{isArabic ? 'مشاركة بنقرة واحدة:' : 'One-click sync:'}</span>
+                  <span>{isArabic ? 'مشاركة بنقرة واحدة:' : 'Share in one tap:'}</span>
                   <span className="text-[#17171c] dark:text-white font-bold flex items-center gap-1">
-                    <Share2 className="w-3.5 h-3.5 text-[#ff7759]" /> WhatsApp Export
+                    <Share2 className="w-3.5 h-3.5 text-[#ff7759]" /> {isArabic ? 'واتساب' : 'WhatsApp'}
                   </span>
                 </div>
               </div>
@@ -335,29 +335,29 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="lg:col-span-7 space-y-5 order-1 lg:order-2">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold">
                 <ShoppingBag className="w-3.5 h-3.5 text-[#ff7759]" />
-                <span>{isArabic ? 'الميزة ٤: قائمة التسوق الذكية والمشاركة' : 'Feature 4: Smart Grocery & Sharing'}</span>
+                <span>{isArabic ? 'قائمة التسوق' : 'Grocery list'}</span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-bold font-mono text-[#17171c] dark:text-white leading-tight">
                 {isArabic
-                  ? 'قائمة تسوق مجمّعة ومصنفة تلقائياً حسب ممرات السوبرماركت'
-                  : 'Auto-Aggregated Grocery Lists Categorized by Store Aisles'}
+                  ? 'قائمة تسوق جاهزة'
+                  : 'A ready grocery list'}
               </h2>
 
               <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans leading-relaxed">
                 {isArabic
-                  ? 'لا داعي لحساب المقادير يدوياً. يجمع النظام كافة المكونات المطلوبة للأسبوع ويصنفها في ممرات واضحة (خضروات، لحوم، ألبان، بهارات)، مع إمكانية التصدير بنقرة واحدة عبر واتساب أو طباعة القائمة.'
-                  : 'Automatically aggregates and groups ingredients into organized supermarket aisles. Export to WhatsApp or print your checklist instantly for hassle-free grocery trips.'}
+                  ? 'نجمّع المكونات حسب الأقسام، وتقدر تبعتها واتساب أو تطبعها.'
+                  : 'Ingredients grouped by aisle. Send to WhatsApp or print.'}
               </p>
 
               <div className="pt-2 flex items-center gap-4 text-xs font-mono text-[#17171c] dark:text-white">
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-[#ff7759]" />
-                  {isArabic ? 'دعم النسخ الاحتياطي JSON/CSV' : 'JSON & CSV Backup'}
+                  {isArabic ? 'نسخة احتياطية JSON/CSV' : 'JSON and CSV backup'}
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Share2 className="w-4 h-4 text-[#ff7759]" />
-                  {isArabic ? 'تصدير للواتساب' : 'WhatsApp Export'}
+                  {isArabic ? 'إرسال عبر واتساب' : 'Send to WhatsApp'}
                 </span>
               </div>
             </div>
@@ -367,16 +367,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* FINAL CALL TO ACTION BANNER */}
         <section className="landing-final rounded-3xl bg-[#17171c] dark:bg-[#162032] text-white p-8 sm:p-14 text-center space-y-6 shadow-2xl relative overflow-hidden border border-stone-800 dark:border-[#2b3a54]">
           <div className="max-w-2xl mx-auto space-y-4 relative z-10 font-mono">
-            <span className="text-xs font-mono text-[#ff7759] uppercase tracking-widest block font-bold">
-              {isArabic ? 'منظومة طهي وجبة 2026' : 'Wajba Culinary System'}
-            </span>
             <h2 className="text-2xl sm:text-4xl font-bold tracking-tight">
-              {isArabic ? 'جاهز لتنظيم مائدة عائلتك بكل يسر وسهولة؟' : 'Ready to Elevate Your Family Meal Planning?'}
+              {isArabic ? 'ابدأ خطة الأسبوع' : 'Plan your week'}
             </h2>
             <p className="text-xs sm:text-sm font-sans text-stone-300 leading-relaxed max-w-xl mx-auto">
               {isArabic
-                ? 'انضم الآن وابدأ في استكشاف أشهى الوصفات العربية وتخطيط جدول الأسبوع وإنشاء قائمة التسوق مجاناً.'
-                : 'Start exploring authentic Middle Eastern recipes, plan your weekly schedule, and export smart grocery lists today.'}
+                ? 'اختر وصفاتك، وخذ قائمة التسوق جاهزة. مجاناً.'
+                : 'Pick your recipes and get the grocery list ready. Free.'}
             </p>
 
             <div className="pt-4 flex items-center justify-center gap-4 flex-wrap">
@@ -394,13 +391,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             <div className="w-8 h-8 rounded-lg bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1">
               <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
             </div>
-            <span className="font-extrabold text-[#17171c] dark:text-white font-mono">WAJBA SYSTEM</span>
+            <span className="font-extrabold text-[#17171c] dark:text-white font-mono">WAJBA</span>
           </div>
           <a href="/seasons" className="underline hover:text-[#ff7759]">{isArabic ? 'دليل المواسم: ماذا في موسمه في مصر' : 'Seasonal produce guide'}</a>
           <p>
             {isArabic
-              ? '© 2026 وجبة WAJBA • محرك التخطيط العائلي والمطابخ العربية'
-              : '© 2026 Wajba • Enterprise MENA Culinary & Grocery Planner'}
+              ? '© 2026 وجبة'
+              : '© 2026 Wajba'}
           </p>
         </div>
         {FEATURE_FLAGS.visitorCounter && <StandaloneVisitorCounter />}

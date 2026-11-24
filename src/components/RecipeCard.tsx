@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language, Recipe } from '../types';
-import { Clock, ThumbsUp, ThumbsDown, Star, CalendarPlus, Flame } from 'lucide-react';
+import { Clock, ThumbsUp, ThumbsDown, Star, BookOpen, Flame } from 'lucide-react';
 import { DIETARY_LABELS } from '../utils/recipes';
 
 interface RecipeCardProps {
@@ -162,8 +162,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             onClick={() => onQuickAddToPlanner(recipe)}
             className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#17171c] hover:bg-[#212121] dark:bg-white dark:text-[#17171c] text-white text-xs sm:text-sm font-mono font-bold shadow-xs transition-all cursor-pointer"
           >
-            <CalendarPlus className="w-4 h-4 text-[#ff7759]" />
-            <span>{isArabic ? 'للجدول' : '+ Plan'}</span>
+            <BookOpen className="w-4 h-4 text-[#ff7759]" />
+            <span>{isArabic ? 'التفاصيل' : 'Details'}</span>
           </button>
         </div>
       </div>

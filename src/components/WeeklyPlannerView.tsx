@@ -117,6 +117,17 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
   };
 
   const handleRandomizeArabPlan = () => {
+    const hasMeals = plan.days.some((d) => Object.values(d.slots).some(Boolean));
+    if (
+      hasMeals &&
+      !window.confirm(
+        isArabic
+          ? 'سيستبدل الاقتراح الأسبوعي كل وجبات هذا الأسبوع. هل تريد المتابعة؟'
+          : 'Auto Fill will replace every meal in this week. Continue?',
+      )
+    ) {
+      return;
+    }
     const shuffled = [...recipes].sort(() => 0.5 - Math.random());
     let idx = 0;
 
@@ -177,7 +188,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
             title={isArabic ? 'اقتراح جدول عربي متنوع تلقائياً' : 'Randomize Arab Plan'}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">{isArabic ? 'اقتراح أسبوعي' : 'Auto Fill'}</span>
+            <span>{isArabic ? 'اقتراح أسبوعي' : 'Auto Fill'}</span>
           </button>
 
           {/* Family Share Link */}
