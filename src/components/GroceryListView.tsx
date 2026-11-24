@@ -4,6 +4,7 @@ import { AISLE_LABELS } from '../utils/aggregator';
 import { CONFIDENCE_TAGS } from '../data/substitutions';
 import { ShoppingBag, CheckSquare, Square, Plus, Share2, Copy, Download, Printer, Trash2, CheckCircle2, Search, Filter, RotateCcw, X } from 'lucide-react';
 import { downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
+import { cairoMonth, isInSeason, isPeak, isYearRound, matchProduce } from '../utils/season';
 
 interface GroceryListViewProps {
   groceryList: GroceryItem[];
@@ -12,6 +13,16 @@ interface GroceryListViewProps {
   onAddCustomExtra: (extraItem: GroceryItem) => void;
   onRemoveCustomExtra: (itemId: string) => void;
   onClearChecked: () => void;
+}
+
+/** In-season hint for an uncovered fresh-produce row: only limited-season items, never year-round ones. */
+function seasonHintFor(item: GroceryItem, month: number): 'peak' | 'season' | null {
+  if (item.aisle !== 'produce' || item.isCovered) return null;
+  const matches = matchProduce(item.nameAr);
+  if (matches.length === 0 || !matches.every((m) => isInSeason(m, month))) return null;
+  const limited = matches.filter((m) => !isYearRound(m));
+  if (limited.length === 0) return null;
+  return limited.some((m) => isPeak(m, month)) ? 'peak' : 'season';
 }
 
 export const GroceryListView: React.FC<GroceryListViewProps> = ({
@@ -23,6 +34,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
   onClearChecked,
 }) => {
   const isArabic = language === 'ar';
+  const month = cairoMonth();
 
   const [extraName, setExtraName] = useState('');
   const [extraAmount, setExtraAmount] = useState(1);
@@ -497,6 +509,17 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                                 {isArabic ? 'من: ' : 'From: '} {item.recipeSources.join(', ')}
                               </p>
                             )}
+                            {(() => {
+                              const hint = seasonHintFor(item, month);
+                              if (!hint) return null;
+                              return (
+                                <p className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300">
+                                  {hint === 'peak'
+                                    ? (isArabic ? 'في عز موسمه الآن' : 'Peak season now')
+                                    : (isArabic ? 'في موسمه الآن' : 'In season now')}
+                                </p>
+                              );
+                            })()}
                             {item.isCovered ? <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-300">{isArabic ? 'متوفر بالكامل في المخزن' : 'Fully covered by pantry'}</p> : item.pantryAmount && item.pantryAmount > 0 ? <p className="text-[10px] font-bold text-amber-700 dark:text-amber-300">{isArabic ? `متوفر من المخزن: ${item.pantryAmount}` : `Pantry covers: ${item.pantryAmount}`}</p> : null}
                           </div>
                         </div>
