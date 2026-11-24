@@ -43,7 +43,7 @@ Deploy `dist/recipes/<id>/index.html` as real public paths and serve `dist/404.h
 
 ## Environment
 
-`.env.example` lists `GEMINI_API_KEY` and `APP_URL` for the AI Studio/Cloud Run setup. Current frontend source does not reference either variable; actual deployment requirements are `Unknown / verify`.
+`.env.example` lists the server variables the app uses (database, Better Auth, Google OAuth). Never give them a `VITE_` prefix.
 
 `VITE_SITE_URL` is used only for production SEO output: canonical URLs, Open Graph URLs, sitemap, robots, and `llms.txt`.
 

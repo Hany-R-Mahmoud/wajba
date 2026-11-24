@@ -76,7 +76,7 @@ Run `bun run lint`, `bun run test`, and `bun run build`. All tests must pass loc
 ## Unknowns
 
 - `Unknown / verify`: deployment target and CI requirements.
-- `Unknown / verify`: whether `@google/genai`, `express`, `GEMINI_API_KEY`, and `APP_URL` belong to a future server integration; no current app source imports or uses them.
+- `@google/genai`, `express`, `GEMINI_API_KEY`, and `APP_URL` were unused leftovers from the AI Studio template and have been removed.
 
 ## Apex Yard documentation
 

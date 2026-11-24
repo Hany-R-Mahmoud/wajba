@@ -18,7 +18,7 @@
 - `lucide-react`: icons.
 - `canvas-confetti`: celebration effects.
 - `clsx`, `tailwind-merge`: class-name composition.
-- `@google/genai`, `express`: installed dependencies with no current app-source imports; intended use is `Unknown / verify`.
+- `@google/genai` and `express` were removed as unused template leftovers.
 
 ## Recipe Utility
 
