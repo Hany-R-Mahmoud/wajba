@@ -149,9 +149,9 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
             {typeof navigator !== 'undefined' && 'share' in navigator && (
               <button
                 onClick={handleNativeShare}
-                className="px-4 py-2.5 rounded-xl bg-[#17171c] hover:bg-stone-800 dark:bg-white dark:text-[#17171c] text-white text-xs font-bold flex items-center gap-1.5 flex-shrink-0 cursor-pointer transition-colors shadow-xs"
+                className="px-4 py-2.5 rounded-xl bg-ink hover:bg-stone-800 dark:bg-white dark:text-ink text-white text-xs font-bold flex items-center gap-1.5 flex-shrink-0 cursor-pointer transition-colors shadow-xs"
               >
-                <Share2 className="w-4 h-4 text-[#ff7759]" />
+                <Share2 className="w-4 h-4 text-coral" />
                 <span>{isArabic ? 'مشاركة عبر التطبيقات' : 'Share Link'}</span>
               </button>
             )}

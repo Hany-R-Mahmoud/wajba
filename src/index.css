@@ -2,6 +2,24 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Design tokens as Tailwind colors (bg-ink, text-coral-deep, ...). Light values come from the
+   --cohere-* variables below; the night-* values are the dark-mode surfaces from DESIGN.md. */
+@theme inline {
+  --color-ink: var(--cohere-primary);
+  --color-body: var(--cohere-ink);
+  --color-navy: var(--cohere-dark-navy);
+  --color-soft: var(--cohere-soft-stone);
+  --color-hairline: var(--cohere-hairline);
+  --color-coral: var(--cohere-coral);
+  /* Coral for text on light surfaces: 5.1:1 on paper, 5.5:1 on white. Plain coral is for dark surfaces. */
+  --color-coral-deep: var(--focus-ring);
+  --color-paper: #f8f7f4;
+  --color-line: #e2e0d8;
+  --color-night: #0c1220;
+  --color-night-card: #162032;
+  --color-night-line: #2b3a54;
+}
+
 @layer base {
   :root {
     --font-almarai: 'Almarai', 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;

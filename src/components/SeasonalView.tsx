@@ -114,18 +114,18 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
   const chip =
     'min-h-11 rounded-xl px-3.5 text-xs font-bold transition-colors inline-flex items-center justify-center';
   const chipIdle =
-    'border border-[#d9d9dd] bg-[#eeece7] text-[#212121] hover:border-[#ff7759] dark:border-[#2b3a54] dark:bg-[#071829] dark:text-stone-300';
-  const chipActive = 'bg-[#17171c] text-white dark:bg-white dark:text-[#17171c]';
+    'border border-hairline bg-soft text-body hover:border-coral dark:border-night-line dark:bg-navy dark:text-stone-300';
+  const chipActive = 'bg-ink text-white dark:bg-white dark:text-ink';
 
   return (
     <div className="space-y-6">
-      <section className="space-y-4 rounded-3xl border border-[#d9d9dd] bg-white p-4 shadow-xs dark:border-[#2b3a54] dark:bg-[#162032] sm:p-5">
+      <section className="space-y-4 rounded-3xl border border-hairline bg-white p-4 shadow-xs dark:border-night-line dark:bg-night-card sm:p-5">
         <div className="flex items-start gap-3">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#17171c] text-[#ff7759] dark:bg-white">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-ink text-coral dark:bg-white">
             <Leaf className="h-6 w-6" aria-hidden="true" />
           </div>
           <div className="min-w-0">
-            <h1 className="text-2xl font-extrabold text-[#17171c] dark:text-white">
+            <h1 className="text-2xl font-extrabold text-ink dark:text-white">
               {isArabic ? 'في موسمه' : 'In Season'}
             </h1>
             <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">
@@ -195,7 +195,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#d9d9dd] pt-3 dark:border-[#2b3a54]">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-hairline pt-3 dark:border-night-line">
           <p role="status" className="text-xs text-stone-600 dark:text-stone-400">
             {isArabic
               ? `${inMonth.length} صنف في موسمه في ${monthNames[month - 1]}، منها ${peakCount} في عز موسمه`
@@ -205,9 +205,9 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
             <button
               type="button"
               onClick={onOpenSeasonalRecipes}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#17171c] px-4 text-xs font-mono font-bold text-white hover:bg-[#212121] dark:bg-white dark:text-[#17171c]"
+              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-xs font-mono font-bold text-white hover:bg-body dark:bg-white dark:text-ink"
             >
-              <Leaf className="h-4 w-4 text-[#ff7759]" aria-hidden="true" />
+              <Leaf className="h-4 w-4 text-coral" aria-hidden="true" />
               <span>{isArabic ? 'وصفات هذا الشهر' : 'Recipes for this month'}</span>
             </button>
           )}
@@ -216,7 +216,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
 
       {/* Produce cards */}
       {visible.length === 0 ? (
-        <div className="rounded-3xl border border-[#d9d9dd] bg-white p-8 text-center dark:border-[#2b3a54] dark:bg-[#162032]">
+        <div className="rounded-3xl border border-hairline bg-white p-8 text-center dark:border-night-line dark:bg-night-card">
           <p className="text-sm font-bold text-stone-800 dark:text-stone-200">
             {isArabic ? 'لا توجد أصناف من هذا النوع في الشهر المختار.' : 'No items of this type in the chosen month.'}
           </p>
@@ -236,11 +236,11 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
             return (
               <li
                 key={item.id}
-                className="flex min-w-0 flex-col gap-3 rounded-3xl border border-[#d9d9dd] bg-white p-4 shadow-xs dark:border-[#2b3a54] dark:bg-[#162032]"
+                className="flex min-w-0 flex-col gap-3 rounded-3xl border border-hairline bg-white p-4 shadow-xs dark:border-night-line dark:bg-night-card"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <h2 className="text-lg font-bold text-[#17171c] dark:text-white">
+                    <h2 className="text-lg font-bold text-ink dark:text-white">
                       <bdi>{name}</bdi>
                     </h2>
                     <p className="text-xs text-stone-500 dark:text-stone-400">
@@ -248,7 +248,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                     </p>
                   </div>
                   {peak && (
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#ff7759]/60 px-2.5 py-1 text-xs font-bold text-[#8f2f14] dark:border-[#ff7759]/70 dark:text-[#ff9a82]">
+                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-coral/60 px-2.5 py-1 text-xs font-bold text-[#8f2f14] dark:border-coral/70 dark:text-[#ff9a82]">
                       <Flame className="h-3 w-3" aria-hidden="true" />
                       {isArabic ? 'في عز موسمه' : 'Peak season'}
                     </span>
@@ -266,7 +266,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                   </div>
                 </dl>
 
-                <div className="border-t border-[#d9d9dd] pt-3 dark:border-[#2b3a54]">
+                <div className="border-t border-hairline pt-3 dark:border-night-line">
                   {usedBy.length === 0 ? (
                     <p className="text-xs text-stone-500 dark:text-stone-400">
                       {isArabic ? 'لا توجد وصفة تستخدمه بعد.' : 'No recipe uses this yet.'}
@@ -283,7 +283,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                             <button
                               type="button"
                               onClick={() => onSelectRecipe(recipe)}
-                              className="min-h-11 max-w-full truncate rounded-xl border border-[#d9d9dd] bg-[#eeece7] px-3 text-xs font-medium text-[#212121] hover:border-[#ff7759] dark:border-[#2b3a54] dark:bg-[#071829] dark:text-stone-200"
+                              className="min-h-11 max-w-full truncate rounded-xl border border-hairline bg-soft px-3 text-xs font-medium text-body hover:border-coral dark:border-night-line dark:bg-navy dark:text-stone-200"
                             >
                               {isArabic ? recipe.titleAr : recipe.titleEn}
                             </button>
@@ -295,7 +295,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                           type="button"
                           aria-expanded={isOpen}
                           onClick={() => setExpanded((prev) => ({ ...prev, [item.id]: !isOpen }))}
-                          className="mt-1 inline-flex min-h-11 items-center gap-1 text-xs font-bold text-[#b9401f] hover:underline dark:text-[#ff7759]"
+                          className="mt-1 inline-flex min-h-11 items-center gap-1 text-xs font-bold text-coral-deep hover:underline dark:text-coral"
                         >
                           {isOpen ? <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" /> : <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />}
                           <span>
@@ -316,10 +316,10 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                   className={`mt-auto inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 text-xs font-bold transition-colors ${
                     added
                       ? 'cursor-default border border-emerald-300 bg-emerald-50 text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-100'
-                      : 'bg-[#17171c] text-white hover:bg-[#212121] dark:bg-white dark:text-[#17171c]'
+                      : 'bg-ink text-white hover:bg-body dark:bg-white dark:text-ink'
                   }`}
                 >
-                  {added ? <ShoppingBag className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4 text-[#ff7759]" aria-hidden="true" />}
+                  {added ? <ShoppingBag className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4 text-coral" aria-hidden="true" />}
                   <span>
                     {added
                       ? isArabic ? 'في قائمة التسوق' : 'In your grocery list'
@@ -333,7 +333,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
       )}
 
       {/* Guide note and source */}
-      <footer className="rounded-2xl border border-[#d9d9dd] bg-[#eeece7] p-4 text-xs text-stone-700 dark:border-[#2b3a54] dark:bg-[#162032] dark:text-stone-300">
+      <footer className="rounded-2xl border border-hairline bg-soft p-4 text-xs text-stone-700 dark:border-night-line dark:bg-night-card dark:text-stone-300">
         <p className="font-bold">{isArabic ? GUIDE_NOTE_AR : GUIDE_NOTE_EN}</p>
         <p className="mt-1 text-xs opacity-80">{isArabic ? SOURCE_NOTE_AR : SOURCE_NOTE_EN}</p>
       </footer>

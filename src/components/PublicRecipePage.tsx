@@ -17,16 +17,16 @@ export const PublicRecipePage: React.FC<PublicRecipePageProps> = ({recipe, langu
   const story = isArabic ? recipe.storyAr || recipe.storyEn : recipe.storyEn || recipe.storyAr;
 
   return (
-    <main className="min-h-screen bg-[#f8f7f4] px-4 py-8 text-stone-900 dark:bg-[#0c1220] dark:text-slate-100 sm:px-8">
+    <main className="min-h-screen bg-paper px-4 py-8 text-stone-900 dark:bg-night dark:text-slate-100 sm:px-8">
       <article className="mx-auto max-w-4xl space-y-8">
         <nav aria-label={isArabic ? 'مسار التنقل' : 'Breadcrumb'} className="text-sm">
-          <a href="/" className="font-bold text-[#c74f31] hover:underline">Wajba</a>
+          <a href="/" className="font-bold text-coral-deep dark:text-coral hover:underline">Wajba</a>
           <span aria-hidden="true" className="mx-2">/</span>
           <span>{isArabic ? 'وصفة' : 'Recipe'}</span>
         </nav>
 
         <header className="space-y-4">
-          <p className="text-xs font-bold uppercase tracking-wider text-[#c74f31]">{isArabic ? 'وصفة عربية أصيلة' : 'Authentic MENA recipe'}</p>
+          <p className="text-xs font-bold uppercase tracking-wider text-coral-deep dark:text-coral">{isArabic ? 'وصفة عربية أصيلة' : 'Authentic MENA recipe'}</p>
           <h1 className="text-3xl font-black leading-tight sm:text-5xl">{title}</h1>
           <p className="text-lg text-stone-600 dark:text-stone-300">{alternateTitle}</p>
           <p className="max-w-3xl text-base leading-8">{description}</p>
@@ -67,7 +67,7 @@ export const PublicRecipePage: React.FC<PublicRecipePageProps> = ({recipe, langu
             <ol className="space-y-3">
               {instructions.map((step, index) => (
                 <li key={`${index}-${step}`} className="rounded-lg border border-stone-200 bg-white p-3 leading-7 dark:border-stone-700 dark:bg-stone-900">
-                  <span className="me-2 font-bold text-[#c74f31]">{index + 1}.</span>{step}
+                  <span className="me-2 font-bold text-coral-deep dark:text-coral">{index + 1}.</span>{step}
                   <span lang={isArabic ? 'en' : 'ar'} className="mt-1 block text-sm text-stone-600 dark:text-stone-300">{alternateInstructions[index]}</span>
                 </li>
               ))}
@@ -76,9 +76,9 @@ export const PublicRecipePage: React.FC<PublicRecipePageProps> = ({recipe, langu
         </div>
 
         <footer className="flex flex-wrap gap-3 border-t border-stone-200 pt-6 dark:border-stone-700">
-          <a href="/" className="rounded-lg bg-[#17171c] px-4 py-2 text-sm font-bold text-white hover:bg-stone-700">{isArabic ? 'فتح مخطط الوجبات' : 'Open meal planner'}</a>
-          <a href="/" className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-bold hover:border-[#c74f31]">{isArabic ? 'استكشاف وصفات أخرى' : 'Explore more recipes'}</a>
-          <a href="/seasons" className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-bold hover:border-[#c74f31]">{isArabic ? 'ماذا في موسمه الآن' : 'What is in season'}</a>
+          <a href="/" className="rounded-lg bg-ink px-4 py-2 text-sm font-bold text-white hover:bg-stone-700">{isArabic ? 'فتح مخطط الوجبات' : 'Open meal planner'}</a>
+          <a href="/" className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-bold hover:border-coral-deep">{isArabic ? 'استكشاف وصفات أخرى' : 'Explore more recipes'}</a>
+          <a href="/seasons" className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-bold hover:border-coral-deep">{isArabic ? 'ماذا في موسمه الآن' : 'What is in season'}</a>
         </footer>
       </article>
     </main>
@@ -89,6 +89,6 @@ export const PublicRecipeNotFound: React.FC<{language: 'ar' | 'en'}> = ({languag
   <main className="min-h-screen px-4 py-16 text-center">
     <h1 className="text-3xl font-black">{language === 'ar' ? 'الوصفة غير موجودة' : 'Recipe not found'}</h1>
     <p className="mt-3 text-stone-600">{language === 'ar' ? 'ارجع إلى وجبة لاستكشاف الوصفات.' : 'Return to Wajba to explore the recipe library.'}</p>
-    <a href="/" className="mt-6 inline-block rounded-lg bg-[#17171c] px-4 py-2 font-bold text-white">{language === 'ar' ? 'العودة إلى وجبة' : 'Back to Wajba'}</a>
+    <a href="/" className="mt-6 inline-block rounded-lg bg-ink px-4 py-2 font-bold text-white">{language === 'ar' ? 'العودة إلى وجبة' : 'Back to Wajba'}</a>
   </main>
 );

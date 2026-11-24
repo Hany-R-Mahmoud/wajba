@@ -38,9 +38,9 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
   const totalTime = recipe.prepTimeMinutes + recipe.cookTimeMinutes;
 
   return (
-    <div className="group bg-white dark:bg-[#162032] rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-xs hover:border-[#17171c] dark:hover:border-[#ff7759] transition-all duration-300 overflow-hidden flex flex-col justify-between">
+    <div className="group bg-white dark:bg-night-card rounded-3xl border border-hairline dark:border-night-line shadow-xs hover:border-ink dark:hover:border-coral transition-all duration-300 overflow-hidden flex flex-col justify-between">
       {/* Top Image Banner */}
-      <div className="relative h-48 w-full overflow-hidden bg-[#eeece7] dark:bg-[#0c1220] cursor-pointer" onClick={() => onSelectRecipe(recipe)}>
+      <div className="relative h-48 w-full overflow-hidden bg-soft dark:bg-night cursor-pointer" onClick={() => onSelectRecipe(recipe)}>
         <img
           src={recipe.image}
           alt={isArabic ? recipe.titleAr : recipe.titleEn}
@@ -68,7 +68,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             className="p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md text-white transition-colors cursor-pointer"
             title={isArabic ? 'إضافة للمفضلة' : 'Favorite'}
           >
-            <Star className={`w-4 h-4 ${isFavorite ? 'fill-[#ff7759] text-[#ff7759]' : 'text-stone-300'}`} />
+            <Star className={`w-4 h-4 ${isFavorite ? 'fill-coral text-coral' : 'text-stone-300'}`} />
           </button>
         </div>
 
@@ -103,14 +103,14 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         )}
 
         {/* Info Pills (Time, Difficulty, Ramadan tag) */}
-        <div className="flex items-center justify-between gap-2 text-xs sm:text-sm font-mono font-medium text-[#616161] dark:text-stone-300 pt-2 border-t border-[#d9d9dd] dark:border-[#2b3a54]">
+        <div className="flex items-center justify-between gap-2 text-xs sm:text-sm font-mono font-medium text-[#616161] dark:text-stone-300 pt-2 border-t border-hairline dark:border-night-line">
           <div className="flex items-center gap-1">
-            <Clock className="w-4 h-4 text-[#ff7759]" />
+            <Clock className="w-4 h-4 text-coral" />
             <span>{totalTime} {isArabic ? 'دقيقة' : 'min'}</span>
           </div>
 
           <div className="flex items-center gap-1">
-            <Flame className="w-4 h-4 text-[#ff7759]" />
+            <Flame className="w-4 h-4 text-coral" />
             <span>
               {recipe.difficulty === 'easy'
                 ? isArabic ? 'سهل' : 'Easy'
@@ -121,7 +121,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           </div>
 
           {recipe.isRamadanSpecial && (
-            <span className="text-[#ff7759] font-bold bg-[#17171c] text-white px-2.5 py-0.5 rounded-full text-xs font-mono border border-white/10">
+            <span className="text-coral font-bold bg-ink text-white px-2.5 py-0.5 rounded-full text-xs font-mono border border-white/10">
               🌙 {isArabic ? 'رمضاني' : 'Ramadan'}
             </span>
           )}
@@ -130,13 +130,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         {/* Interactive Likes/Dislikes & Quick Add */}
         <div className="flex items-center justify-between gap-2 pt-1">
           {/* Voting Controls */}
-          <div className="flex items-center gap-1 bg-[#eeece7] dark:bg-stone-800 p-1 rounded-full border border-[#d9d9dd] dark:border-stone-700">
+          <div className="flex items-center gap-1 bg-soft dark:bg-stone-800 p-1 rounded-full border border-hairline dark:border-stone-700">
             <button
               onClick={() => onVote(recipe.id, 'like')}
               className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
                 userVote === 'like'
-                  ? 'bg-[#17171c] text-white shadow-xs'
-                  : 'text-[#212121] dark:text-stone-300 hover:text-[#ff7759]'
+                  ? 'bg-ink text-white shadow-xs'
+                  : 'text-body dark:text-stone-300 hover:text-coral'
               }`}
               title={isArabic ? 'أعجبني' : 'Like'}
             >
@@ -149,7 +149,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
                 userVote === 'dislike'
                   ? 'bg-rose-700 text-white shadow-xs'
-                  : 'text-[#212121] dark:text-stone-300 hover:text-rose-700'
+                  : 'text-body dark:text-stone-300 hover:text-rose-700'
               }`}
               title={isArabic ? 'لم يعجبني' : 'Dislike'}
             >
@@ -160,9 +160,9 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           {/* Quick Add to Planner */}
           <button
             onClick={() => onQuickAddToPlanner(recipe)}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#17171c] hover:bg-[#212121] dark:bg-white dark:text-[#17171c] text-white text-xs sm:text-sm font-mono font-bold shadow-xs transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-ink hover:bg-body dark:bg-white dark:text-ink text-white text-xs sm:text-sm font-mono font-bold shadow-xs transition-all cursor-pointer"
           >
-            <BookOpen className="w-4 h-4 text-[#ff7759]" />
+            <BookOpen className="w-4 h-4 text-coral" />
             <span>{isArabic ? 'التفاصيل' : 'Details'}</span>
           </button>
         </div>

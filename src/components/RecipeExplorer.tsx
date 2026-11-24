@@ -141,7 +141,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
         <select
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="min-h-11 w-full appearance-none rounded-xl border border-[#d9d9dd] bg-[#eeece7] px-3 text-xs font-mono text-[#212121] transition-colors hover:border-[#ff7759] focus:border-[#ff7759] focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
+          className="min-h-11 w-full appearance-none rounded-xl border border-hairline bg-soft px-3 text-xs font-mono text-body transition-colors hover:border-coral focus:border-coral focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
         >
           {options.map((option) => (
             <option key={option.id} value={option.id}>
@@ -157,7 +157,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
   return (
     <div className="space-y-6">
       {/* Search Bar & Comprehensive Filters */}
-      <div className="bg-white dark:bg-[#162032] p-4 sm:p-5 rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-xs space-y-4">
+      <div className="bg-white dark:bg-night-card p-4 sm:p-5 rounded-3xl border border-hairline dark:border-night-line shadow-xs space-y-4">
         {/* Search & Custom Recipe Button */}
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
@@ -171,21 +171,21 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
                   ? 'ابحث باسم الوصفة، المكونات (بشاميل، كنافة، لحم)...'
                   : 'Search by recipe name or ingredient...'
               }
-              className="w-full py-2.5 px-10 rounded-full bg-[#eeece7] dark:bg-stone-800 border border-[#d9d9dd] dark:border-stone-700 text-sm font-mono focus:outline-none focus:border-[#17171c]"
+              className="w-full py-2.5 px-10 rounded-full bg-soft dark:bg-stone-800 border border-hairline dark:border-stone-700 text-sm font-mono focus:outline-none focus:border-ink"
             />
           </div>
 
           <button
             onClick={onOpenCreateRecipeModal}
-            className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-[#17171c] hover:bg-[#212121] dark:bg-white dark:text-[#17171c] text-white text-xs sm:text-sm font-mono font-bold transition-all flex-shrink-0 cursor-pointer"
+            className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-ink hover:bg-body dark:bg-white dark:text-ink text-white text-xs sm:text-sm font-mono font-bold transition-all flex-shrink-0 cursor-pointer"
           >
-            <Plus className="w-4 h-4 text-[#ff7759]" />
+            <Plus className="w-4 h-4 text-coral" />
             <span>{isArabic ? 'إضافة وصفة خاصة' : 'Add Custom Recipe'}</span>
           </button>
         </div>
 
         {/* Compact filter controls */}
-        <div className="border-t border-[#d9d9dd] pt-4 dark:border-stone-800">
+        <div className="border-t border-hairline pt-4 dark:border-stone-800">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-xs font-bold text-stone-500 dark:text-stone-400">
               <Filter className="h-4 w-4" aria-hidden="true" />
@@ -195,7 +195,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="inline-flex min-h-11 items-center gap-1 rounded-lg px-2.5 text-xs font-bold text-[#d86540] hover:underline"
+                className="inline-flex min-h-11 items-center gap-1 rounded-lg px-2.5 text-xs font-bold text-coral-deep dark:text-coral hover:underline"
               >
                 <RotateCcw className="h-3 w-3" aria-hidden="true" />
                 <span>{isArabic ? 'إعادة ضبط الفلاتر' : 'Reset filters'}</span>
@@ -228,8 +228,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             onClick={() => setOnlyFavorites(!onlyFavorites)}
             className={`mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-xs font-bold transition-colors ${
               onlyFavorites
-                ? 'bg-[#ff7759] text-white'
-                : 'border border-[#d9d9dd] bg-[#eeece7] text-[#212121] hover:border-[#ff7759] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+                ? 'bg-coral text-white'
+                : 'border border-hairline bg-soft text-body hover:border-coral dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
             }`}
           >
             <Bookmark className={`h-3.5 w-3.5 ${onlyFavorites ? 'fill-white' : ''}`} aria-hidden="true" />
@@ -241,8 +241,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             onClick={() => setOnlySeasonal(!onlySeasonal)}
             className={`mt-3 ms-2 inline-flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-xs font-bold transition-colors ${
               onlySeasonal
-                ? 'bg-[#ff7759] text-white'
-                : 'border border-[#d9d9dd] bg-[#eeece7] text-[#212121] hover:border-[#ff7759] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+                ? 'bg-coral text-white'
+                : 'border border-hairline bg-soft text-body hover:border-coral dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
             }`}
           >
             <Leaf className="h-3.5 w-3.5" aria-hidden="true" />
@@ -268,7 +268,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
         {isFiltered && (
           <button
             onClick={handleResetFilters}
-            className="inline-flex min-h-11 items-center rounded-lg px-2.5 text-[#ff7759] hover:underline cursor-pointer"
+            className="inline-flex min-h-11 items-center rounded-lg px-2.5 text-coral hover:underline cursor-pointer"
           >
             {isArabic ? 'إلغاء البحث والفلاتر' : 'Clear search & filters'}
           </button>
@@ -289,7 +289,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
           </p>
           <button
             onClick={handleResetFilters}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#17171c] dark:bg-white text-white dark:text-[#17171c] text-xs font-mono font-bold cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-ink dark:bg-white text-white dark:text-ink text-xs font-mono font-bold cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>{isArabic ? 'إعادة ضبط الفلاتر' : 'Reset All Filters'}</span>

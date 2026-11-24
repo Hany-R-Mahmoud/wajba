@@ -204,7 +204,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
       {/* Header & Progress Bar */}
-      <div className="bg-white dark:bg-[#162032] p-6 rounded-3xl border border-[#d9d9dd] dark:border-[#2b3a54] shadow-sm space-y-4">
+      <div className="bg-white dark:bg-night-card p-6 rounded-3xl border border-hairline dark:border-night-line shadow-sm space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-2xl bg-amber-700 text-white flex items-center justify-center shadow-md">
@@ -337,7 +337,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                     ? 'ابحث باسم المكون أو المصدر (اضغط بحث للتطبيق)...'
                     : 'Search by ingredient or source name (click Search)...'
                 }
-                className="w-full ps-10 pe-9 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50/60 dark:bg-stone-800/60 font-medium focus:outline-none focus:border-[#17171c]"
+                className="w-full ps-10 pe-9 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50/60 dark:bg-stone-800/60 font-medium focus:outline-none focus:border-ink"
               />
               {searchInput && (
                 <button
@@ -351,9 +351,9 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
             </div>
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-[#17171c] hover:bg-stone-800 dark:bg-white dark:hover:bg-stone-100 text-white dark:text-[#17171c] text-xs sm:text-sm font-bold flex items-center gap-1.5 cursor-pointer transition-colors shrink-0 shadow-xs"
+              className="px-5 py-2.5 rounded-xl bg-ink hover:bg-stone-800 dark:bg-white dark:hover:bg-stone-100 text-white dark:text-ink text-xs sm:text-sm font-bold flex items-center gap-1.5 cursor-pointer transition-colors shrink-0 shadow-xs"
             >
-              <Search className="w-4 h-4 text-[#ff7759]" />
+              <Search className="w-4 h-4 text-coral" />
               <span>{isArabic ? 'بحث' : 'Search'}</span>
             </button>
           </form>
@@ -566,8 +566,8 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                           <span
                             className={
                               item.suggestion.confidence === 'تجريبي'
-                                ? 'inline-block px-1.5 py-0.5 text-[10px] font-bold rounded bg-[#071829] text-[#ffffff] align-middle'
-                                : 'inline-block px-1.5 py-0.5 text-[10px] font-medium rounded border border-[#d9d9dd] dark:border-stone-700 bg-white dark:bg-stone-900 text-[#212121] dark:text-stone-300 align-middle'
+                                ? 'inline-block px-1.5 py-0.5 text-[10px] font-bold rounded bg-navy text-[#ffffff] align-middle'
+                                : 'inline-block px-1.5 py-0.5 text-[10px] font-medium rounded border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 text-body dark:text-stone-300 align-middle'
                             }
                           >
                             {CONFIDENCE_TAGS[item.suggestion.confidence][isArabic ? 'ar' : 'en']}

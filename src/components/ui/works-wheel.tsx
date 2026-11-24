@@ -269,7 +269,7 @@ export function WorksWheel({
     <section
       aria-label={label}
       className={cn(
-        "bg-[#f8f7f4] text-[#17171c] dark:bg-[#0c1220] dark:text-white relative h-full min-h-[24rem] w-full overflow-hidden select-none",
+        "bg-paper text-ink dark:bg-night dark:text-white relative h-full min-h-[24rem] w-full overflow-hidden select-none",
         className,
       )}
       {...props}
@@ -396,7 +396,7 @@ export function WorksWheel({
               onClick={() => to(i + 1)}
               className={cn(
                 "focus-visible:outline-current cursor-pointer transition-colors outline-none focus-visible:outline-1",
-                i === active && "text-[#17171c] dark:text-white font-medium",
+                i === active && "text-ink dark:text-white font-medium",
               )}
             >
               {item.title}

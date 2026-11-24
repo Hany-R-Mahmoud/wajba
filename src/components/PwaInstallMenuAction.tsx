@@ -15,7 +15,7 @@ export function PwaInstallMenuAction({language, dark}: PwaInstallMenuActionProps
       onClick={() => canInstall ? void install() : openHelp()}
       aria-label={label}
       title={label}
-      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-3 text-[10px] font-bold tracking-[0.08em] transition-colors cursor-pointer ${dark ? 'border-[#ff7759]/70 text-[#ffb09e] hover:bg-[#ff7759]/10' : 'border-[#d86540]/70 text-[#b3482b] hover:bg-[#ff7759]/10'}`}
+      className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-3 text-[10px] font-bold tracking-[0.08em] transition-colors cursor-pointer ${dark ? 'border-coral/70 text-[#ffb09e] hover:bg-coral/10' : 'border-coral-deep/70 text-[#b3482b] hover:bg-coral/10'}`}
     >
       <Download className="h-4 w-4" aria-hidden="true" />
       <span className="hidden sm:inline">{label}</span>

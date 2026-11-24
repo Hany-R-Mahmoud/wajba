@@ -84,12 +84,12 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
     <nav
       ref={navRef}
       aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}
-      className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-[#e2e0d8] bg-white/95 px-2 pt-2 shadow-[0_-8px_24px_rgba(23,23,28,0.08)] backdrop-blur-md dark:border-[#2b3a54] dark:bg-[#162032]/95"
+      className="fixed inset-x-0 bottom-0 z-40 lg:hidden border-t border-line bg-white/95 px-2 pt-2 shadow-[0_-8px_24px_rgba(23,23,28,0.08)] backdrop-blur-md dark:border-night-line dark:bg-night-card/95"
       style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
     >
       {isMoreOpen && (
         <div
-          className={`absolute bottom-full mb-2 w-[min(18rem,calc(100vw-1rem))] rounded-2xl border border-[#e2e0d8] bg-white p-2 shadow-xl dark:border-[#2b3a54] dark:bg-[#162032] ${
+          className={`absolute bottom-full mb-2 w-[min(18rem,calc(100vw-1rem))] rounded-2xl border border-line bg-white p-2 shadow-xl dark:border-night-line dark:bg-night-card ${
             isArabic ? 'right-2' : 'left-2'
           }`}
           role="menu"
@@ -111,8 +111,8 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 onClick={() => handleTabChange(item.id)}
                 className={`flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-start text-xs font-mono font-medium transition-colors ${
                   isActive
-                    ? 'bg-[#17171c] text-white dark:bg-white dark:text-[#17171c]'
-                    : 'text-[#17171c] hover:bg-[#f0eee8] hover:text-[#ff7759] dark:text-stone-300 dark:hover:bg-[#0c1220]'
+                    ? 'bg-ink text-white dark:bg-white dark:text-ink'
+                    : 'text-ink hover:bg-[#f0eee8] hover:text-coral dark:text-stone-300 dark:hover:bg-night'
                 }`}
               >
                 <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -135,8 +135,8 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
               onClick={() => handleTabChange(item.id)}
               className={`flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-mono font-medium transition-colors ${
                 isActive
-                  ? 'bg-[#17171c] text-white shadow-xs dark:bg-white dark:text-[#17171c]'
-                  : 'text-[#616161] hover:bg-[#f0eee8] hover:text-[#ff7759] dark:text-stone-400 dark:hover:bg-[#0c1220] dark:hover:text-stone-200'
+                  ? 'bg-ink text-white shadow-xs dark:bg-white dark:text-ink'
+                  : 'text-[#616161] hover:bg-[#f0eee8] hover:text-coral dark:text-stone-400 dark:hover:bg-night dark:hover:text-stone-200'
               }`}
             >
               <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
@@ -153,8 +153,8 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           onClick={() => setIsMoreOpen((open) => !open)}
           className={`flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-mono font-medium transition-colors ${
             isSecondaryActive || isMoreOpen
-              ? 'bg-[#17171c] text-white shadow-xs dark:bg-white dark:text-[#17171c]'
-              : 'text-[#616161] hover:bg-[#f0eee8] hover:text-[#ff7759] dark:text-stone-400 dark:hover:bg-[#0c1220] dark:hover:text-stone-200'
+              ? 'bg-ink text-white shadow-xs dark:bg-white dark:text-ink'
+              : 'text-[#616161] hover:bg-[#f0eee8] hover:text-coral dark:text-stone-400 dark:hover:bg-night dark:hover:text-stone-200'
           }`}
         >
           {isMoreOpen ? <ChevronDown className="h-[18px] w-[18px]" aria-hidden="true" /> : <MoreHorizontal className="h-[18px] w-[18px]" aria-hidden="true" />}

@@ -459,7 +459,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f7f4] text-stone-900 dark:bg-[#0c1220] dark:text-slate-100 flex flex-col font-sans transition-colors pb-24">
+    <div className="min-h-screen bg-paper text-stone-900 dark:bg-night dark:text-slate-100 flex flex-col font-sans transition-colors pb-24">
       {/* Top Main Navigation Header */}
       <Navbar
         currentTab={currentTab}

@@ -55,7 +55,7 @@ export class ErrorBoundary extends Component<BoundaryProps, BoundaryState> {
         <p className="text-sm">{ar ? 'بياناتك المحلية محفوظة. حاول مرة أخرى أو أعد تحميل الصفحة.' : 'Your local data is safe. Try again or reload the page.'}</p>
         <div className="flex flex-wrap justify-center gap-2">
           <button type="button" onClick={this.reset} className="min-h-11 rounded-xl border border-current px-4 text-xs font-bold">{ar ? 'حاول مجدداً' : 'Try again'}</button>
-          <button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-xl bg-[#17171c] px-4 text-xs font-bold text-white dark:bg-white dark:text-[#17171c]">{ar ? 'إعادة التحميل' : 'Reload'}</button>
+          <button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-xl bg-ink px-4 text-xs font-bold text-white dark:bg-white dark:text-ink">{ar ? 'إعادة التحميل' : 'Reload'}</button>
         </div>
       </div>
     );

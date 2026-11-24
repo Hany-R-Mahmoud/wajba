@@ -27,7 +27,7 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
     return (
       <div
         onClick={onClick}
-        className={`relative rounded-xl bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] p-1 flex items-center justify-center shadow-xs overflow-hidden ${symbolSizes} ${
+        className={`relative rounded-xl bg-[#f8f6f0] border border-line dark:border-[#384966] p-1 flex items-center justify-center shadow-xs overflow-hidden ${symbolSizes} ${
           onClick ? 'cursor-pointer hover:scale-105 transition-transform' : ''
         } ${className}`}
       >
@@ -44,12 +44,12 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
           onClick ? 'cursor-pointer group' : ''
         } ${className}`}
       >
-        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#f8f6f0] border border-[#e2e0d8] dark:border-[#384966] flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
+        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#f8f6f0] border border-line dark:border-[#384966] flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
           <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
         </div>
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-[#162032] dark:text-white font-mono">
+            <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-night-card dark:text-white font-mono">
               WAJBA
             </span>
           </div>
@@ -65,7 +65,7 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
     return (
       <div
         onClick={onClick}
-        className={`p-4 sm:p-6 rounded-2xl bg-[#f8f6f0] dark:bg-[#162032] border border-[#e2e0d8] dark:border-[#2b3a54] shadow-md hover:shadow-lg transition-all text-center flex flex-col items-center gap-3 ${
+        className={`p-4 sm:p-6 rounded-2xl bg-[#f8f6f0] dark:bg-night-card border border-line dark:border-night-line shadow-md hover:shadow-lg transition-all text-center flex flex-col items-center gap-3 ${
           onClick ? 'cursor-pointer' : ''
         } ${className}`}
       >
@@ -95,7 +95,7 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
       } ${className}`}
     >
       {/* Outer ambient glow effect */}
-      <div className="absolute -inset-1.5 bg-gradient-to-r from-[#D86540]/20 via-[#E59A2A]/25 to-[#162032]/20 rounded-3xl blur-md opacity-75 group-hover:opacity-100 transition duration-500" />
+      <div className="absolute -inset-1.5 bg-gradient-to-r from-coral-deep/20 via-[#E59A2A]/25 to-night-card/20 rounded-3xl blur-md opacity-75 group-hover:opacity-100 transition duration-500" />
 
       {/* Main Luxury Emblem Card */}
       <div className="relative rounded-3xl bg-[#F8F6F0] p-4 sm:p-6 md:p-8 border-2 border-[#D8C5A4] shadow-xl text-center overflow-hidden transition-all duration-300 group-hover:scale-[1.01]">

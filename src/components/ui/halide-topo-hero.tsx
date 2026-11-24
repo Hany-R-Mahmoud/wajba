@@ -187,11 +187,11 @@ export const HalideLanding: React.FC<HalideLandingProps> = ({
         {/* Top Data Bar */}
         <div className="flex items-start justify-between text-[11px] tracking-wider text-[#93939f]">
           <div className="flex items-center gap-2 pointer-events-auto">
-            <span className="w-2 h-2 rounded-full bg-[#ff7759] animate-ping" />
+            <span className="w-2 h-2 rounded-full bg-coral animate-ping" />
             <span className="font-bold text-white tracking-widest uppercase">WAJBA_TOPO_SYSTEM_2026</span>
           </div>
 
-          <div className="text-right font-mono text-[10px] text-[#ff7759] space-y-0.5">
+          <div className="text-right font-mono text-[10px] text-coral space-y-0.5">
             <div>LATITUDE: 30.0444° N [CAIRO]</div>
             <div>CULINARY DEPTH: 100% HERITAGE</div>
           </div>
@@ -199,8 +199,8 @@ export const HalideLanding: React.FC<HalideLandingProps> = ({
 
         {/* Center Monumental Headline */}
         <div className="my-auto py-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[#ff7759] text-[11px] font-mono tracking-widest uppercase mb-4 pointer-events-auto">
-            <Sparkles className="w-3.5 h-3.5 text-[#ff7759]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-coral text-[11px] font-mono tracking-widest uppercase mb-4 pointer-events-auto">
+            <Sparkles className="w-3.5 h-3.5 text-coral" />
             <span>{isArabic ? 'هندسة الموائد العربية' : 'ARAB CULINARY ARCHITECTURE'}</span>
           </div>
 
@@ -208,12 +208,12 @@ export const HalideLanding: React.FC<HalideLandingProps> = ({
             {isArabic ? (
               <>
                 خارطة الموائد <br />
-                <span className="text-[#ff7759]">العربية التراثية</span>
+                <span className="text-coral">العربية التراثية</span>
               </>
             ) : (
               <>
                 CULINARY <br />
-                <span className="text-[#ff7759]">TOPOGRAPHY</span>
+                <span className="text-coral">TOPOGRAPHY</span>
               </>
             )}
           </h1>
@@ -236,18 +236,18 @@ export const HalideLanding: React.FC<HalideLandingProps> = ({
                 onClick={onToggleRamadanMode}
                 className={`px-4 py-2 rounded-full text-xs font-mono border transition-all cursor-pointer ${
                   isRamadanMode
-                    ? 'bg-[#ff7759] text-white border-[#ff7759]'
+                    ? 'bg-coral text-white border-coral'
                     : 'bg-white/10 text-white border-white/30 hover:bg-white/20'
                 }`}
               >
-                <Moon className="w-3.5 h-3.5 inline me-1 text-[#ff7759]" />
+                <Moon className="w-3.5 h-3.5 inline me-1 text-coral" />
                 <span>{isRamadanMode ? (isArabic ? 'رمضان مفرّد' : 'Ramadan Active') : (isArabic ? 'وضع رمضان' : 'Ramadan Mode')}</span>
               </button>
             )}
 
             <button
               onClick={onEnterDashboard}
-              className="px-6 py-2.5 rounded-full bg-[#ff7759] hover:bg-[#ff552e] text-white text-xs font-mono font-bold tracking-wider transition-all shadow-lg hover:translate-y-[-2px] cursor-pointer flex items-center gap-2"
+              className="px-6 py-2.5 rounded-full bg-coral hover:bg-[#ff552e] text-white text-xs font-mono font-bold tracking-wider transition-all shadow-lg hover:translate-y-[-2px] cursor-pointer flex items-center gap-2"
               style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 90% 100%, 0 100%)' }}
             >
               <span>{isArabic ? 'استكشف الجدول ➔' : 'EXPLORE PLANNER ➔'}</span>

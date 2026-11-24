@@ -195,7 +195,7 @@ const Carousel = memo(
               >
                 {/* Fixed Aspect Image - Clicking image opens recipe overlay */}
                 <div
-                  className="relative w-full h-[150px] sm:h-[180px] rounded-xl overflow-hidden bg-stone-900 border border-black/10 dark:border-white/10 cursor-pointer group/img transition-all duration-300 hover:ring-2 hover:ring-[#ff7759]/80"
+                  className="relative w-full h-[150px] sm:h-[180px] rounded-xl overflow-hidden bg-stone-900 border border-black/10 dark:border-white/10 cursor-pointer group/img transition-all duration-300 hover:ring-2 hover:ring-coral/80"
                   onClick={(e) => {
                     e.stopPropagation();
                     if (isDraggingRef.current) return;
@@ -210,13 +210,13 @@ const Carousel = memo(
                     }}
                     className="w-full h-full object-cover rounded-xl group-hover/img:scale-105 transition-transform duration-500 pointer-events-none"
                   />
-                  <div className="absolute top-2 right-2 bg-[#121216]/95 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-mono text-[#ff7759] border border-white/15 font-bold shadow-md">
+                  <div className="absolute top-2 right-2 bg-[#121216]/95 backdrop-blur-md px-2 py-0.5 rounded-full text-[10px] font-mono text-coral border border-white/15 font-bold shadow-md">
                     {isArabic ? dish.regionAr : dish.regionEn}
                   </div>
 
                   {/* Tap/Click image badge */}
-                  <div className="absolute bottom-2 left-2 bg-stone-900/85 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-mono text-white/90 border border-white/15 flex items-center gap-1 opacity-80 group-hover/img:opacity-100 group-hover/img:border-[#ff7759] transition-all shadow-sm">
-                    <Sparkles className="w-2.5 h-2.5 text-[#ff7759]" />
+                  <div className="absolute bottom-2 left-2 bg-stone-900/85 backdrop-blur-md px-2 py-0.5 rounded-full text-[9px] font-mono text-white/90 border border-white/15 flex items-center gap-1 opacity-80 group-hover/img:opacity-100 group-hover/img:border-coral transition-all shadow-sm">
+                    <Sparkles className="w-2.5 h-2.5 text-coral" />
                     <span>{isArabic ? "اضغط الصورة" : "Tap image"}</span>
                   </div>
                 </div>
@@ -228,11 +228,11 @@ const Carousel = memo(
                   </h4>
                   <div className="flex items-center justify-center gap-2 text-[10px] text-stone-600 dark:text-stone-300">
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-[#ff7759]" />
+                      <Clock className="w-3 h-3 text-coral" />
                       {dish.prepTime + dish.cookTime} {isArabic ? "د" : "m"}
                     </span>
                     <span>•</span>
-                    <span className="text-[#ff7759] font-bold">
+                    <span className="text-coral font-bold">
                       {isArabic ? "وصفة موثوقة" : "Heritage"}
                     </span>
                   </div>
@@ -287,7 +287,7 @@ export function ThreeDPhotoCarousel({
             transition={transitionOverlay}
           >
             <div
-              className="relative bg-[#f0eee8] dark:bg-[#162032] text-stone-900 dark:text-white rounded-3xl p-6 pt-12 sm:p-8 sm:pt-14 max-w-lg w-full border border-[#e2e0d8] dark:border-[#2b3a54] shadow-2xl space-y-4 cursor-default"
+              className="relative bg-[#f0eee8] dark:bg-night-card text-stone-900 dark:text-white rounded-3xl p-6 pt-12 sm:p-8 sm:pt-14 max-w-lg w-full border border-line dark:border-night-line shadow-2xl space-y-4 cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -309,7 +309,7 @@ export function ThreeDPhotoCarousel({
               </div>
 
               <div className="space-y-2 font-mono">
-                <span className="px-3 py-1 rounded-full bg-stone-200/80 dark:bg-stone-800 text-[#ff7759] text-xs font-bold inline-block border border-stone-300 dark:border-white/10">
+                <span className="px-3 py-1 rounded-full bg-stone-200/80 dark:bg-stone-800 text-coral text-xs font-bold inline-block border border-stone-300 dark:border-white/10">
                   {isArabic ? activeDish.regionAr : activeDish.regionEn}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-stone-900 dark:text-white">
@@ -317,12 +317,12 @@ export function ThreeDPhotoCarousel({
                 </h3>
                 <div className="flex items-center gap-4 text-xs text-stone-600 dark:text-stone-300 pt-2 border-t border-stone-300/80 dark:border-stone-800">
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4 text-[#ff7759]" />
+                    <Clock className="w-4 h-4 text-coral" />
                     {activeDish.prepTime + activeDish.cookTime}{" "}
                     {isArabic ? "دقيقة" : "mins"}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Flame className="w-4 h-4 text-[#ff7759]" />
+                    <Flame className="w-4 h-4 text-coral" />
                     {isArabic ? "وصفة موثوقة" : "Verified Recipe"}
                   </span>
                 </div>
@@ -334,7 +334,7 @@ export function ThreeDPhotoCarousel({
                     handleClose();
                     if (onSelectDish) onSelectDish(activeDish);
                   }}
-                  className="flex-1 py-3 px-5 rounded-full bg-[#ff7759] hover:bg-[#ff552e] text-white font-mono font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  className="flex-1 py-3 px-5 rounded-full bg-coral hover:bg-[#ff552e] text-white font-mono font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                 >
                   <CalendarPlus className="w-4 h-4" />
                   <span>
@@ -349,7 +349,7 @@ export function ThreeDPhotoCarousel({
         )}
       </AnimatePresence>
 
-      <div className="relative h-[390px] sm:h-[440px] lg:h-[470px] w-full overflow-hidden rounded-3xl bg-[#f0eee8] dark:bg-[#162032] border border-[#e2e0d8] dark:border-[#2b3a54] shadow-sm flex items-center justify-center">
+      <div className="relative h-[390px] sm:h-[440px] lg:h-[470px] w-full overflow-hidden rounded-3xl bg-[#f0eee8] dark:bg-night-card border border-line dark:border-night-line shadow-sm flex items-center justify-center">
         <Carousel
           handleClick={handleClick}
           cards={dishes}
