@@ -35,6 +35,8 @@ Google uses callback `https://wajjba.vercel.app/api/auth/callback/google`. Confi
 
 **In Season (`/dashboard/seasons`)**: a bilingual guide to Egyptian produce by month, built from the Mawsimha dataset (`src/data/seasons.ts`, version `mawsimha-v1-2026-11-02`, 36 items, 223 month entries). It opens on the Cairo month (`Africa/Cairo`), filters by type, shows a peak-season badge in words, a cook hint, recipes that use the item (opening the normal recipe view), and an "add to grocery list" button that uses the existing custom-extra mechanism. Uncovered fresh-produce grocery rows show a small "in season now" line, and the recipe list has a "Seasonal this month" filter that ranks recipes by in-season produce. Matching is by Arabic ingredient name on produce-aisle lines (`src/utils/season.ts`). It is a seasonal guide, not a price list. The English wording is a draft: see [Seasons translation review](docs/seasons-translation-review.md).
 
+Public `/seasons` is a prerendered Arabic month-by-month produce guide (indexed). `/dashboard/*` and `/api/*` are `noindex` by header. Cloud calls use `src/lib/api.ts` (10 s timeout, one retry for reads, typed errors) with loading and error states and a root plus per-view error boundary. Apply `neon/002_wajba_backups.sql` and `neon/003_wajba_backups_user_fk.sql` on a Neon branch first; `003` is not yet applied to production.
+
 When `VITE_SITE_URL` or `SITE_URL` is set to the real production origin, the build also generates crawlable `/recipes/<id>/` pages, `sitemap.xml`, `robots.txt`, and a curated `llms.txt`. Keep it unset for local builds until the production domain is known.
 
 ## Documentation
@@ -47,6 +49,8 @@ When `VITE_SITE_URL` or `SITE_URL` is set to the real production origin, the bui
 - [Key Flows](docs/key-flows.md)
 - [Recipe Content Review](docs/content-review.md)
 - [Seasons translation and dataset review](docs/seasons-translation-review.md)
+- [SEO and Search Console](docs/SEO.md)
+- [Plan: catalog data to Neon](docs/catalog-to-neon-plan.md)
 - [NotebookLM Recipe Expansion](docs/notebooklm-recipe-expansion.md)
 - [Onboarding](docs/onboarding.md)
 - [AI Agent Guide](docs/ai-agent-guide.md)

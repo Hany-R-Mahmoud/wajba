@@ -34,6 +34,12 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 | `src/data/seasons.ts` | Seasonal produce dataset (`PRODUCE`, 36 items from Mawsimha, Arabic verbatim, English draft), notes, and `getMonthList` |
 | `src/utils/season.ts` | Cairo month, produce alias matcher, `isInSeason`/`isPeak`, recipe seasonal score, season ranges |
 | `src/components/SeasonalView.tsx` | In Season view (`/dashboard/seasons`) |
+| `src/lib/api.ts` | Fetch wrapper for `/api/*`: timeout, retry, typed `ApiError`, bilingual messages. Use it for every new API call |
+| `src/components/AsyncState.tsx` | `LoadingState`, `ErrorState` (with retry), `ErrorBoundary` |
+| `src/auth/SessionProvider.tsx` | Single session subscription; read with `useAppSession()` |
+| `src/components/PublicSeasonsPage.tsx` | Public prerendered `/seasons` page |
+| `neon/` | SQL migrations (`001` groups, `002`/`003` backups). Run on a Neon branch before production |
+| `docs/SEO.md`, `docs/catalog-to-neon-plan.md` | SEO state and Search Console record; plan to move catalog data to Neon |
 | `src/utils/storage.ts` | Browser persistence, seed plans, URL plan sharing |
 | `src/utils/aggregator.ts` | Grocery-list aggregation, pantry coverage, and substitution resolver pass |
 | `src/utils/sheets.ts` | CSV download and optional Apps Script POST |
@@ -50,6 +56,8 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 - Keep runtime recipe changes in `src/data/recipes.ts`; JSON artifacts are not imported by the app.
 - Pantry substitutions: annotate-only on uncovered grocery rows; resolve in `aggregator.ts` via canonical keys and dietary breaks guard. S16 `تجريبي` attaches on any presence of substitute.
 - Seasonal data: Arabic names, months, and hints in `src/data/seasons.ts` are copied verbatim from Mawsimha; do not edit them (raise doubts in `docs/seasons-translation-review.md`; a change needs a new `DATASET_VERSION`/`DATASET_DATE`). English strings are draft until `ENGLISH_IS_DRAFT` is set to false by the owner. Seasonal hints are view-only: never add them to `GroceryItem`, CSV, or backup state.
+- API calls: go through `apiRequest` (timeout, typed errors) and show `LoadingState`/`ErrorState`; never print server text to users.
+- SEO: public pages are prerendered in `scripts/prerender_seo.ts`; private routes stay `noindex` (header in `vercel.json`).
 - Match existing functional React component and TypeScript style.
 
 ## Safety Rules
@@ -63,7 +71,7 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 
 ## Verification
 
-Run `bun run lint`, `bun run test`, and `bun run build`. All tests must pass locally (41 tests: 40 pass, 1 skipped OAuth callback test).
+Run `bun run lint`, `bun run test`, and `bun run build`. All tests must pass locally (54 tests: 53 pass, 1 skipped OAuth callback test).
 
 ## Unknowns
 

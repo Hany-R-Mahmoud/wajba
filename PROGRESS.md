@@ -71,3 +71,12 @@ Branch: `claude/wajba-seasons-46a76c`, cut from `improve-wajba-npf020-substituti
 
 ## Verification
 See the final report: `bun run lint`, `bun run test`, `bun run build`, and browser checks at 390px and desktop in Arabic and English.
+
+## Foundation and SEO pass (2026-11-24)
+- [x] `src/lib/api.ts` with tests, `AsyncState`, `SessionProvider`, `AccountPanel` and `FamilyGroups` moved onto them
+- [x] `neon/002`, `neon/003` validated on branch `validate-backups-fk-20261124` (left in place, not deleted)
+- [x] Live check on the owner's signed-in account: Google sign-in 200, `GET /api/groups` 200, backup save `PUT` 200, restore `GET` 200
+- [x] `/seasons` public page, noindex headers, JSON-LD cleanup, robots and sitemap, `docs/SEO.md`
+- [ ] Owner: apply `neon/003` to production, merge and deploy, then verify the Search Console property
+- [ ] Not tested: joining a family group from a second account (only one user exists in production)
+- [ ] Catalog to Neon: see `docs/catalog-to-neon-plan.md`
