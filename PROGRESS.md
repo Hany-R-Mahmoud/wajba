@@ -47,3 +47,27 @@
 - **Blocker 1: Impeccable CLI unavailable**
   - *Evidence*: `which impeccable` returns command not found on system.
   - *Exact Unlock*: Per SB-9 Step 3, this step is labelled "not checked" and `PRODUCT.md` is NOT created by this run; handoff is complete without it and will be evaluated when Impeccable CLI is installed in environment.
+
+---
+
+# Seasonal produce (Mawsimha merge)
+
+Branch: `claude/wajba-seasons-46a76c`, cut from `improve-wajba-npf020-substitutions` (not merged to main).
+
+## Tasks
+- [x] `src/data/seasons.ts`: 36 rows verbatim from Mawsimha, plus draft English names, hints, notes
+- [x] `src/utils/season.ts`: Cairo month, alias matcher with exclusions, `isInSeason`, `isPeak`, recipe score, season ranges
+- [x] `tests/seasons.test.ts`: dataset invariants, matcher guards, real-recipe checks
+- [x] In Season view, Navbar and MobileBottomNav entries, route `/dashboard/seasons`
+- [x] Grocery row hint and RecipeExplorer "Seasonal this month" filter
+- [x] `docs/seasons-translation-review.md`, README, AGENTS.md, architecture, decision log
+- [ ] Owner: approve English wording, dataset source, answer dataset doubts
+
+## Decisions
+- Recipe "seasonal this month" = uses at least one limited-season item in season and no known produce out of season. Year-round items (tomato, onion, garlic, potato, herbs, banana) never count as seasonal.
+- Matching uses the Arabic ingredient name on produce-aisle lines only; processed or different products are excluded by phrase; ambiguous words (bare فلفل, فاصوليا, تمر) match nothing.
+- Hints are computed in the view; `GroceryItem`, CSV export and backup state are unchanged.
+- No Mawsimha images ported: its assets are screenshots, no real use in Wajba.
+
+## Verification
+See the final report: `bun run lint`, `bun run test`, `bun run build`, and browser checks at 390px and desktop in Arabic and English.

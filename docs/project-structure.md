@@ -31,6 +31,9 @@ wajba/
 | `src/components/WeeklyPlannerView.tsx` | Seven-day planner |
 | `src/components/MonthlyCalendarView.tsx` | Month calendar planner |
 | `src/components/GroceryListView.tsx` | Aggregated grocery list |
+| `src/components/SeasonalView.tsx` | In Season produce guide |
+| `src/data/seasons.ts` | Seasonal produce dataset |
+| `src/utils/season.ts` | Seasonal matching and scoring |
 | `src/components/FamilySyncModal.tsx` | URL share, export, optional sync |
 | `src/components/RecipeDetailModal.tsx` | Details, timers, planner/grocery actions |
 | `src/index.css` | Global styles and theme rules |

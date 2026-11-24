@@ -29,9 +29,11 @@ Open `http://localhost:3000`.
 | `bun run preview` | Preview the production build |
 | `python3 wajba_recipe_generator.py --help` | Show recipe generator options |
 
-There is no CI configuration in the repository. The test script covers core aggregation, pantry subtraction, dietary filtering, backup validation, API credential rejection, and family-plan import safety. Browser-local use remains available. Optional Google sign-in through app-hosted Better Auth and explicit per-account cloud backup/restore through a Vercel API are deployed at https://wajjba.vercel.app. Wajba’s own Google OAuth client is connected and published for all Google users. Family groups support lasting membership, invitation codes and URLs, and explicit shared-week publishing and import. Apply `neon/001_family_groups.sql` before deploying group APIs; `tests/family-groups.sql` checks membership rules on an isolated database branch and rolls back its fixtures.
+There is no CI configuration in the repository. The test script covers core aggregation, pantry subtraction, substitutions, seasonal dataset invariants and ingredient matching, dietary filtering, backup validation, API credential rejection, and family-plan import safety. Browser-local use remains available. Optional Google sign-in through app-hosted Better Auth and explicit per-account cloud backup/restore through a Vercel API are deployed at https://wajjba.vercel.app. Wajba’s own Google OAuth client is connected and published for all Google users. Family groups support lasting membership, invitation codes and URLs, and explicit shared-week publishing and import. Apply `neon/001_family_groups.sql` before deploying group APIs; `tests/family-groups.sql` checks membership rules on an isolated database branch and rolls back its fixtures.
 
 Google uses callback `https://wajjba.vercel.app/api/auth/callback/google`. Configure server-only `DATABASE_URL`, `BETTER_AUTH_URL`, `BETTER_AUTH_SECRET`, `GOOGLE_CLIENT_ID`, and `GOOGLE_CLIENT_SECRET` in the ignored `.env.local` and Vercel production environment. Existing Neon user IDs, backups, and family memberships are retained; users must sign in again. Never commit these values or expose them through `VITE_` variables.
+
+**In Season (`/dashboard/seasons`)**: a bilingual guide to Egyptian produce by month, built from the Mawsimha dataset (`src/data/seasons.ts`, version `mawsimha-v1-2026-11-02`, 36 items, 223 month entries). It opens on the Cairo month (`Africa/Cairo`), filters by type, shows a peak-season badge in words, a cook hint, recipes that use the item (opening the normal recipe view), and an "add to grocery list" button that uses the existing custom-extra mechanism. Uncovered fresh-produce grocery rows show a small "in season now" line, and the recipe list has a "Seasonal this month" filter that ranks recipes by in-season produce. Matching is by Arabic ingredient name on produce-aisle lines (`src/utils/season.ts`). It is a seasonal guide, not a price list. The English wording is a draft: see [Seasons translation review](docs/seasons-translation-review.md).
 
 When `VITE_SITE_URL` or `SITE_URL` is set to the real production origin, the build also generates crawlable `/recipes/<id>/` pages, `sitemap.xml`, `robots.txt`, and a curated `llms.txt`. Keep it unset for local builds until the production domain is known.
 
@@ -44,6 +46,7 @@ When `VITE_SITE_URL` or `SITE_URL` is set to the real production origin, the bui
 - [Local Development](docs/local-development.md)
 - [Key Flows](docs/key-flows.md)
 - [Recipe Content Review](docs/content-review.md)
+- [Seasons translation and dataset review](docs/seasons-translation-review.md)
 - [NotebookLM Recipe Expansion](docs/notebooklm-recipe-expansion.md)
 - [Onboarding](docs/onboarding.md)
 - [AI Agent Guide](docs/ai-agent-guide.md)

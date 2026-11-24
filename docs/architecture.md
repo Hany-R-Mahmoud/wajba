@@ -14,6 +14,9 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 | `src/pwa/` | Platform detection, install state, help/fallback flows, and service-worker source |
 | `src/components/Pwa*.tsx` | In-flow install promotion, persistent recovery action, and installation help dialog |
 | `src/data/recipes.ts` | Bundled runtime recipe catalog |
+| `src/data/seasons.ts` | Seasonal produce dataset ported from Mawsimha (read-only data, no network) |
+| `src/utils/season.ts` | Cairo month, Arabic ingredient alias matcher, recipe seasonal score |
+| `src/components/SeasonalView.tsx` | In Season view; adds produce to grocery through the custom-extra handler |
 | `src/utils/storage.ts` | `localStorage`, seed data, shared-plan URL decoding/encoding, pantry and backup state |
 | `src/utils/aggregator.ts` | Convert planned recipes into normalized grocery items and subtract compatible pantry quantities |
 | `src/utils/sheets.ts` | CSV generation/download and optional remote POST |
@@ -27,7 +30,8 @@ Wajba is a client-rendered React application built and served by Vite. `App.tsx`
 5. `App` combines custom recipes with `INITIAL_RECIPES` from `src/data/recipes.ts`.
 6. Planner views update weekly/monthly plans; the aggregator derives grocery items from assigned recipe IDs and servings.
 7. UI actions save updated state back to `localStorage`; the planner starts empty, and its clear actions target the current local week or displayed month without deleting unrelated schedule periods.
-8. Family sync actions encode a weekly plan into a URL, download files, or send a JSON payload to a user-provided Apps Script URL.
+8. `/dashboard/seasons` renders `SeasonalView` from the static `PRODUCE` dataset. It stores nothing new: "add to grocery" calls the existing custom-extra handler (id `season_<produceId>`), and the in-season grocery hint and the recipe "Seasonal this month" filter are computed at render time from `src/utils/season.ts` using the Cairo month.
+9. Family sync actions encode a weekly plan into a URL, download files, or send a JSON payload to a user-provided Apps Script URL.
 
 ## PWA Installation
 

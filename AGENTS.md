@@ -31,10 +31,15 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 | `src/components/` | UI views and modals |
 | `src/data/recipes.ts` | Runtime recipe catalog (`INITIAL_RECIPES`) |
 | `src/data/substitutions.ts` | Curated pantry substitutions (`SUBSTITUTIONS`), variant map, scope, and tags |
+| `src/data/seasons.ts` | Seasonal produce dataset (`PRODUCE`, 36 items from Mawsimha, Arabic verbatim, English draft), notes, and `getMonthList` |
+| `src/utils/season.ts` | Cairo month, produce alias matcher, `isInSeason`/`isPeak`, recipe seasonal score, season ranges |
+| `src/components/SeasonalView.tsx` | In Season view (`/dashboard/seasons`) |
 | `src/utils/storage.ts` | Browser persistence, seed plans, URL plan sharing |
 | `src/utils/aggregator.ts` | Grocery-list aggregation, pantry coverage, and substitution resolver pass |
 | `src/utils/sheets.ts` | CSV download and optional Apps Script POST |
 | `tests/core.test.ts` | Core domain tests, aggregator rules, and substitution data invariants |
+| `tests/seasons.test.ts` | Seasonal dataset invariants, ingredient matcher guards, and recipe seasonality |
+| `docs/seasons-translation-review.md` | English draft table, dataset doubts, owner gates for the seasonal feature |
 | `wajba_recipe_generator.py` | Recipe JSON generation and validation utility |
 
 ## Conventions
@@ -44,6 +49,7 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 - Keep recipe IDs stable; plans reference recipes by ID.
 - Keep runtime recipe changes in `src/data/recipes.ts`; JSON artifacts are not imported by the app.
 - Pantry substitutions: annotate-only on uncovered grocery rows; resolve in `aggregator.ts` via canonical keys and dietary breaks guard. S16 `تجريبي` attaches on any presence of substitute.
+- Seasonal data: Arabic names, months, and hints in `src/data/seasons.ts` are copied verbatim from Mawsimha; do not edit them (raise doubts in `docs/seasons-translation-review.md`; a change needs a new `DATASET_VERSION`/`DATASET_DATE`). English strings are draft until `ENGLISH_IS_DRAFT` is set to false by the owner. Seasonal hints are view-only: never add them to `GroceryItem`, CSV, or backup state.
 - Match existing functional React component and TypeScript style.
 
 ## Safety Rules
@@ -57,7 +63,7 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 
 ## Verification
 
-Run `bun run lint`, `bun run test`, and `bun run build`. All 24 core tests must pass locally.
+Run `bun run lint`, `bun run test`, and `bun run build`. All tests must pass locally (41 tests: 40 pass, 1 skipped OAuth callback test).
 
 ## Unknowns
 
