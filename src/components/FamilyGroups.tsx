@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import { authClient } from '../auth/client';
+import { useAppSession } from '../auth/SessionProvider';
+import { ApiError, apiErrorMessage, apiRequest } from '../lib/api';
+import { ErrorState, LoadingState } from './AsyncState';
 import { parseFamilyPlan, referencedFamilyPlan } from '../utils/family';
 import type { FamilyGroup, FamilyMember, FamilyPlan } from '../utils/family';
 import type { Language, Recipe, WeeklyPlan } from '../types';
@@ -17,11 +20,11 @@ export function readInvite(): string {
 type Props = { language: Language; plan: WeeklyPlan; customRecipes: Recipe[]; onApply: (plan: FamilyPlan) => void };
 type Details = { group: FamilyGroup; members: FamilyMember[]; invite: { invite_code: string | null; invite_expires_at: string } | null };
 export function FamilyGroups(props: Props) {
-  return authClient ? <ConnectedGroups {...props} /> : null;
+  return <ConnectedGroups {...props} />;
 }
 
 function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
-  const { data: session, isPending } = authClient!.useSession();
+  const { userId, token, isPending } = useAppSession();
   const ar = language === 'ar';
   const t = (en: string, arabic: string) => ar ? arabic : en;
   const [code, setCode] = useState(readInvite);
@@ -32,22 +35,15 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [refresh, setRefresh] = useState(0);
-  const userId = session?.user.id;
+  const [loading, setLoading] = useState(false);
+  const [loadError, setLoadError] = useState('');
   async function request(body?: Record<string, unknown>, id?: string) {
-    const current = await authClient!.getSession();
-    const token = current.data?.session?.token;
-    if (current.error || !token) throw new Error(t('Sign in required', 'يلزم تسجيل الدخول'));
-    const response = await fetch(`/api/groups${id ? `?id=${encodeURIComponent(id)}` : ''}`, {
-      method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer session:${token}`, 'Content-Type': 'application/json' },
-      ...(body ? { body: JSON.stringify(body) } : {}),
+    if (!token) throw new ApiError('auth', 401);
+    return apiRequest<any>(`/api/groups${id ? `?id=${encodeURIComponent(id)}` : ''}`, {
+      method: body ? 'POST' : 'GET', token, ...(body ? { body } : {}), timeoutMs: 12_000,
     });
-    const result = await response.json();
-    if (!response.ok) throw new Error(response.status === 409
-      ? t('The shared plan changed. Refresh before publishing again.', 'تغير الجدول المشترك. حدّثه قبل النشر مرة أخرى.')
-      : response.status === 429 ? t('Too many attempts. Try in 10 minutes.', 'محاولات كثيرة. حاول بعد ١٠ دقائق.')
-      : t('Request failed. Check membership or invitation and try again.', 'تعذر الطلب. تحقق من العضوية أو الدعوة وحاول مجدداً.'));
-    return result;
   }
+  const fail = (error: unknown) => apiErrorMessage(error, ar);
   useEffect(() => {
     setDetails(null);
     if (!userId) { setGroups([]); return; }
@@ -56,18 +52,19 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
     const load = async () => {
       if (running || document.hidden) return;
       running = true;
+      if (active) { setLoading(true); setLoadError(''); }
       try {
         const list = await request();
         const detail = selected ? await request(undefined, selected) : null;
         if (active) { setGroups(list.groups); setDetails(detail); }
-      } catch (error) { if (active) { setDetails(null); setMessage((error as Error).message); } }
-      finally { running = false; }
+      } catch (error) { if (active) { setDetails(null); setLoadError(fail(error)); } }
+      finally { running = false; if (active) setLoading(false); }
     };
     void load();
     const timer = window.setInterval(load, 60_000);
     document.addEventListener('visibilitychange', load);
     return () => { active = false; clearInterval(timer); document.removeEventListener('visibilitychange', load); };
-  }, [userId, selected, refresh, language]);
+  }, [userId, token, selected, refresh, language]);
 
   async function act(action: string, extra: Record<string, unknown> = {}) {
     setBusy(true); setMessage('');
@@ -81,7 +78,7 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
       if (action === 'leave') setSelected('');
       setRefresh(value => value + 1);
       setMessage(t('Done.', 'تم.'));
-    } catch (error) { setMessage((error as Error).message); }
+    } catch (error) { setMessage(fail(error)); }
     finally { setBusy(false); }
   }
   const button = 'rounded-xl border border-amber-300 px-3 py-2 text-xs font-bold disabled:opacity-50 dark:border-stone-600';
@@ -91,7 +88,7 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
   return <section className="space-y-3 rounded-2xl border border-amber-300 bg-amber-50/60 p-4 dark:bg-stone-800" aria-label={t('Connected family groups', 'مجموعات العائلة المتصلة')}>
     <h3 className="font-bold">{t('Connected family groups', 'مجموعات العائلة المتصلة')}</h3>
     <p className="text-xs">{t('Members stay connected. Publish your week, then others can apply it. Local changes are never uploaded automatically.', 'تظل العضوية متصلة. انشر أسبوعك ليطبقه الآخرون. لا تُرفع التغييرات المحلية تلقائياً.')}</p>
-    {isPending ? <p role="status">{t('Loading account…', 'جارٍ تحميل الحساب…')}</p> : !session?.user ? <button className={button} disabled={busy} onClick={async () => {
+    {isPending ? <LoadingState language={language} label={t('Loading account…', 'جارٍ تحميل الحساب…')} /> : !userId ? <button className={button} disabled={busy} onClick={async () => {
       setBusy(true);
       try {
         if (code) sessionStorage.setItem(pendingInviteKey, code);
@@ -113,7 +110,9 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
           {groups.map(group => <option key={group.id} value={group.id}>{group.name} ({group.member_count})</option>)}
         </select>
       </label>
-      <button className={button} disabled={busy} onClick={() => setRefresh(value => value + 1)}>{t('Refresh shared plans', 'تحديث الجداول المشتركة')}</button>
+      <button className={button} disabled={busy || loading} onClick={() => setRefresh(value => value + 1)}>{t('Refresh shared plans', 'تحديث الجداول المشتركة')}</button>
+      {loading && <LoadingState language={language} label={t('Loading groups…', 'جارٍ تحميل المجموعات…')} />}
+      {loadError && <ErrorState language={language} message={loadError} onRetry={() => setRefresh(value => value + 1)} />}
       {details && <div className="space-y-3 border-t border-amber-200 pt-3">
         <p className="text-sm font-semibold">{details.group.name} · {t('Version', 'الإصدار')} {details.group.revision}</p>
         <div className="flex flex-wrap gap-2">

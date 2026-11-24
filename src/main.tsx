@@ -5,6 +5,8 @@ import App from './App.tsx';
 import './index.css';
 import {PwaProvider} from './pwa/PwaContext';
 import {restoreHashFromLocation} from './pwa/pwa';
+import {SessionProvider} from './auth/SessionProvider';
+import {ErrorBoundary} from './components/AsyncState';
 
 restoreHashFromLocation();
 
@@ -12,7 +14,11 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <>
       <PwaProvider>
-        <App />
+        <ErrorBoundary>
+          <SessionProvider>
+            <App />
+          </SessionProvider>
+        </ErrorBoundary>
       </PwaProvider>
       <Analytics />
     </>
