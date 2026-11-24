@@ -78,6 +78,7 @@ export const PublicRecipePage: React.FC<PublicRecipePageProps> = ({recipe, langu
         <footer className="flex flex-wrap gap-3 border-t border-stone-200 pt-6 dark:border-stone-700">
           <a href="/" className="rounded-lg bg-[#17171c] px-4 py-2 text-sm font-bold text-white hover:bg-stone-700">{isArabic ? 'فتح مخطط الوجبات' : 'Open meal planner'}</a>
           <a href="/" className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-bold hover:border-[#c74f31]">{isArabic ? 'استكشاف وصفات أخرى' : 'Explore more recipes'}</a>
+          <a href="/seasons" className="rounded-lg border border-stone-300 px-4 py-2 text-sm font-bold hover:border-[#c74f31]">{isArabic ? 'ماذا في موسمه الآن' : 'What is in season'}</a>
         </footer>
       </article>
     </main>

@@ -1,0 +1,93 @@
+import React from 'react';
+import { Language } from '../types';
+import {
+  DATASET_DATE,
+  ENGLISH_IS_DRAFT,
+  GUIDE_NOTE_AR,
+  GUIDE_NOTE_EN,
+  SEASON_MONTHS_AR,
+  SEASON_MONTHS_EN,
+  SOURCE_NOTE_AR,
+  SOURCE_NOTE_EN,
+  getMonthList,
+} from '../data/seasons';
+
+/**
+ * Public, crawlable seasonal guide at `/seasons`. Static text only, so it can be
+ * prerendered. English names appear only after the owner approves the English
+ * wording (`ENGLISH_IS_DRAFT`), so unapproved text never reaches search results.
+ */
+export const PublicSeasonsPage: React.FC<{ language: Language }> = ({ language }) => {
+  const isArabic = language === 'ar';
+  const showEnglish = !isArabic || !ENGLISH_IS_DRAFT;
+  const months = isArabic ? SEASON_MONTHS_AR : SEASON_MONTHS_EN;
+
+  return (
+    <main className="min-h-screen bg-[#f8f7f4] px-4 py-8 text-stone-900 dark:bg-[#0c1220] dark:text-slate-100 sm:px-8">
+      <article className="mx-auto max-w-4xl space-y-8">
+        <nav aria-label={isArabic ? 'مسار التنقل' : 'Breadcrumb'} className="text-sm">
+          <a href="/" className="font-bold text-[#c74f31] hover:underline">Wajba</a>
+          <span aria-hidden="true" className="mx-2">/</span>
+          <span>{isArabic ? 'في موسمه' : 'In season'}</span>
+        </nav>
+
+        <header className="space-y-3">
+          <h1 className="text-3xl font-black leading-tight sm:text-5xl">
+            {isArabic ? 'ماذا في موسمه في مصر؟ خضار وفاكهة كل شهر' : 'What is in season in Egypt? Produce by month'}
+          </h1>
+          <p className="max-w-3xl text-base leading-8">
+            {isArabic
+              ? 'دليل لأصناف الخضار والفاكهة المصرية في موسمها شهراً بشهر، مع علامة «في عز موسمه» وأفكار للطبخ. اختر الشهر وشاهد ما يناسب مائدتك.'
+              : 'A month-by-month guide to Egyptian vegetables and fruit in season, with a peak-season mark and cooking ideas.'}
+          </p>
+          <p className="text-sm font-bold">{isArabic ? GUIDE_NOTE_AR : GUIDE_NOTE_EN}</p>
+        </header>
+
+        <nav aria-label={isArabic ? 'الشهور' : 'Months'}>
+          <ul className="flex flex-wrap gap-2">
+            {months.map((name, index) => (
+              <li key={name}>
+                <a href={`#month-${index + 1}`} className="inline-flex min-h-11 items-center rounded-xl border border-stone-300 bg-white px-3 text-sm font-bold hover:border-[#c74f31] dark:border-stone-700 dark:bg-stone-900">{name}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {months.map((monthName, index) => {
+          const month = index + 1;
+          const items = getMonthList(month);
+          return (
+            <section key={month} id={`month-${month}`} aria-labelledby={`month-heading-${month}`} className="space-y-3">
+              <h2 id={`month-heading-${month}`} className="text-2xl font-bold">
+                {isArabic ? `في موسمه في ${monthName}` : `In season in ${monthName}`}
+                <span className="ms-2 text-sm font-medium text-stone-500">({items.length})</span>
+              </h2>
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {items.map((item) => {
+                  const peak = item.peakMonths.includes(month as never);
+                  return (
+                    <li key={item.id} className="rounded-xl border border-stone-200 bg-white p-3 dark:border-stone-700 dark:bg-stone-900">
+                      <strong>{isArabic ? item.nameAr : item.nameEn}</strong>
+                      {peak && <span className="ms-2 rounded-full bg-[#071829] px-2 py-0.5 text-xs font-bold text-white">{isArabic ? 'في عز موسمه' : 'Peak season'}</span>}
+                      {showEnglish && isArabic && <span lang="en" className="block text-sm text-stone-600 dark:text-stone-300">{item.nameEn}</span>}
+                      <span className="mt-1 block text-sm leading-7 text-stone-700 dark:text-stone-300">{isArabic ? item.cookHintAr : item.cookHintEn}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          );
+        })}
+
+        <footer className="space-y-3 border-t border-stone-200 pt-6 text-sm dark:border-stone-700">
+          <p>{isArabic ? SOURCE_NOTE_AR : SOURCE_NOTE_EN}</p>
+          <p className="text-stone-600 dark:text-stone-400">{isArabic ? `تاريخ البيانات: ${DATASET_DATE}` : `Dataset date: ${DATASET_DATE}`}</p>
+          <div className="flex flex-wrap gap-3">
+            <a href="/dashboard/seasons" className="rounded-lg bg-[#17171c] px-4 py-2 font-bold text-white hover:bg-stone-700">{isArabic ? 'افتح الدليل التفاعلي' : 'Open the interactive guide'}</a>
+            <a href="/" className="rounded-lg border border-stone-300 px-4 py-2 font-bold hover:border-[#c74f31]">{isArabic ? 'الصفحة الرئيسية' : 'Home'}</a>
+          </div>
+        </footer>
+      </article>
+    </main>
+  );
+};

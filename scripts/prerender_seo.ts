@@ -4,7 +4,8 @@ import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {INITIAL_RECIPES} from '../src/data/recipes';
 import {PublicRecipeNotFound, PublicRecipePage} from '../src/components/PublicRecipePage';
-import {getRecipeJsonLd} from '../src/utils/seo';
+import {PublicSeasonsPage} from '../src/components/PublicSeasonsPage';
+import {SEASONS_SEO, getRecipeJsonLd} from '../src/utils/seo';
 
 const distDir = path.resolve('dist');
 const siteUrl = process.env.SITE_URL || process.env.VITE_SITE_URL;
@@ -28,6 +29,9 @@ function validSiteUrl(value: string): string {
   return parsed.toString().replace(/\/$/, '');
 }
 
+/** The homepage JSON-LD that Vite injects into index.html must not leak into other pages. */
+const HOME_SCHEMA = /<script type="application\/ld\+json">[\s\S]*?<\/script>\n?/g;
+
 function replaceTag(source: string, pattern: RegExp, replacement: string): string {
   return source.replace(pattern, replacement);
 }
@@ -40,6 +44,7 @@ function routeHtml(template: string, recipe: (typeof INITIAL_RECIPES)[number], b
   let result = template
     .replace('<html lang="ar" dir="rtl">', '<html lang="en" dir="ltr">')
     .replace(/<noscript>[\s\S]*?<\/noscript>\n?/g, '')
+    .replace(HOME_SCHEMA, '')
     .replace('<div id="root"></div>', `<div id="root">${renderToStaticMarkup(React.createElement(PublicRecipePage, {recipe, language: 'en'}))}</div>`);
 
   result = replaceTag(result, /<title>[\s\S]*?<\/title>/, `<title>${html(`${recipe.titleEn} | Wajba`)}</title>`);
@@ -59,9 +64,32 @@ function routeHtml(template: string, recipe: (typeof INITIAL_RECIPES)[number], b
   return result;
 }
 
+function seasonsHtml(template: string, baseUrl?: string): string {
+  const canonical = baseUrl ? `${baseUrl}${SEASONS_SEO.path}` : undefined;
+  const socialImage = baseUrl ? `${baseUrl}/wajba-logo.png` : '/wajba-logo.png';
+  let result = template
+    .replace(/<noscript>[\s\S]*?<\/noscript>\n?/g, '')
+    .replace(HOME_SCHEMA, '')
+    .replace('<div id="root"></div>', `<div id="root">${renderToStaticMarkup(React.createElement(PublicSeasonsPage, {language: 'ar'}))}</div>`);
+  result = replaceTag(result, /<title>[\s\S]*?<\/title>/, `<title>${html(SEASONS_SEO.title)}</title>`);
+  result = replaceTag(result, /<meta name="description"[^>]*>/, `<meta name="description" content="${html(SEASONS_SEO.description)}" />`);
+  result = replaceTag(result, /<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${html(SEASONS_SEO.title)}" />`);
+  result = replaceTag(result, /<meta property="og:description"[^>]*>/, `<meta property="og:description" content="${html(SEASONS_SEO.description)}" />`);
+  result = replaceTag(result, /<meta property="og:image"[^>]*>/, `<meta property="og:image" content="${html(socialImage)}" />`);
+  result = replaceTag(result, /<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${html(SEASONS_SEO.title)}" />`);
+  result = replaceTag(result, /<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${html(SEASONS_SEO.description)}" />`);
+  result = replaceTag(result, /<meta name="twitter:image"[^>]*>/, `<meta name="twitter:image" content="${html(socialImage)}" />`);
+  result = result.replace(/<link rel="canonical"[^>]*>\n?/g, '').replace(/<meta property="og:url"[^>]*>\n?/g, '');
+  if (canonical) {
+    result = result.replace('</head>', `    <link rel="canonical" href="${html(canonical)}" />\n    <meta property="og:url" content="${html(canonical)}" />\n  </head>`);
+  }
+  return result;
+}
+
 function notFoundHtml(template: string): string {
   let result = template
     .replace(/<noscript>[\s\S]*?<\/noscript>\n?/g, '')
+    .replace(HOME_SCHEMA, '')
     .replace('<div id="root"></div>', `<div id="root">${renderToStaticMarkup(React.createElement(PublicRecipeNotFound, {language: 'en'}))}</div>`)
     .replace('<title>خطط لوجبات عائلتك بلمسة تراثية أصيلة | Wajba</title>', '<title>Page not found | Wajba</title>')
     .replace(/<meta name="description"[^>]*>/, '<meta name="description" content="The requested Wajba page was not found." />')
@@ -75,10 +103,10 @@ function notFoundHtml(template: string): string {
 
 async function writeCrawlerFiles(baseUrl: string) {
   const recipeUrls = INITIAL_RECIPES.map((recipe) => `${baseUrl}/recipes/${encodeURIComponent(recipe.id)}`);
-  const urls = [`${baseUrl}/`, ...recipeUrls];
+  const urls = [`${baseUrl}/`, `${baseUrl}${SEASONS_SEO.path}`, ...recipeUrls];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${xml(url)}</loc></url>`).join('\n')}\n</urlset>\n`;
   await writeFile(path.join(distDir, 'sitemap.xml'), sitemap, 'utf8');
-  await writeFile(path.join(distDir, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${baseUrl}/sitemap.xml\n`, 'utf8');
+  await writeFile(path.join(distDir, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\nSitemap: ${baseUrl}/sitemap.xml\n`, 'utf8');
 
   const curatedRecipes = INITIAL_RECIPES.slice(0, 10);
   const llms = [
@@ -88,6 +116,7 @@ async function writeCrawlerFiles(baseUrl: string) {
     '',
     '## Important pages',
     `- Home: ${baseUrl}/`,
+    `- Seasonal produce guide (Egypt, by month): ${baseUrl}${SEASONS_SEO.path}`,
     '',
     '## Selected recipe pages',
     ...curatedRecipes.map((recipe) => `- ${recipe.titleEn}: ${baseUrl}/recipes/${encodeURIComponent(recipe.id)}`),
@@ -102,6 +131,10 @@ async function main() {
   const template = await readFile(path.join(distDir, 'index.html'), 'utf8');
   const baseUrl = siteUrl ? validSiteUrl(siteUrl) : undefined;
   await writeFile(path.join(distDir, '404.html'), notFoundHtml(template), 'utf8');
+
+  const seasonsDir = path.join(distDir, 'seasons');
+  await mkdir(seasonsDir, {recursive: true});
+  await writeFile(path.join(seasonsDir, 'index.html'), seasonsHtml(template, baseUrl), 'utf8');
 
   for (const recipe of INITIAL_RECIPES) {
     const routeDir = path.join(distDir, 'recipes', recipe.id);

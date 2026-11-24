@@ -396,6 +396,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </div>
             <span className="font-extrabold text-[#17171c] dark:text-white font-mono">WAJBA SYSTEM</span>
           </div>
+          <a href="/seasons" className="underline hover:text-[#ff7759]">{isArabic ? 'دليل المواسم: ماذا في موسمه في مصر' : 'Seasonal produce guide'}</a>
           <p>
             {isArabic
               ? '© 2026 وجبة WAJBA • محرك التخطيط العائلي والمطابخ العربية'

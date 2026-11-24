@@ -52,7 +52,9 @@ import { CreateRecipeModal } from './components/CreateRecipeModal';
 import { FamilySyncModal } from './components/FamilySyncModal';
 import { CookingTimerBar } from './components/CookingTimerBar';
 import { PantryView } from './components/PantryView';
+import { PublicSeasonsPage } from './components/PublicSeasonsPage';
 import { SeasonalView } from './components/SeasonalView';
+import { ErrorBoundary } from './components/AsyncState';
 import { SettingsView } from './components/SettingsView';
 import { PublicRecipeNotFound, PublicRecipePage } from './components/PublicRecipePage';
 import { getPublicRecipeRoute, updateSeo } from './utils/seo';
@@ -92,6 +94,7 @@ export default function App() {
 
   const dashboardTab = useMemo(() => getDashboardTab(pathname), [pathname]);
   const isDashboardRoute = pathname === '/dashboard' || pathname.startsWith('/dashboard/');
+  const isSeasonsRoute = /^\/seasons\/?$/.test(pathname);
   const [currentTab, setCurrentTab] = useState<DashboardTab>(() => getDashboardTab(window.location.pathname) ?? 'planner');
 
   useEffect(() => {
@@ -147,8 +150,8 @@ export default function App() {
   const publicRecipeRoute = useMemo(() => getPublicRecipeRoute(allRecipes, pathname), [allRecipes, pathname]);
 
   useEffect(() => {
-    updateSeo(publicRecipeRoute.recipe, publicRecipeRoute.isRecipePath && !publicRecipeRoute.recipe, isDashboardRoute);
-  }, [isDashboardRoute, publicRecipeRoute]);
+    updateSeo(publicRecipeRoute.recipe, publicRecipeRoute.isRecipePath && !publicRecipeRoute.recipe, isDashboardRoute, isSeasonsRoute);
+  }, [isDashboardRoute, isSeasonsRoute, publicRecipeRoute]);
 
   const [favorites, setFavorites] = useState<string[]>(loadFavorites());
   const [userVotes, setUserVotes] = useState<{ [recipeId: string]: 'like' | 'dislike' }>(loadVotes());
@@ -407,6 +410,16 @@ export default function App() {
     );
   }
 
+  if (isSeasonsRoute) {
+    return (
+      <>
+        <PwaStatusBar language={language} dark={theme === 'dark'} />
+        <PublicSeasonsPage language={language} />
+        <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />
+      </>
+    );
+  }
+
   if (pathname === '/') {
     return (
       <>
@@ -465,6 +478,7 @@ export default function App() {
             <button type="button" onClick={() => { navigateToTab('settings'); setStorageIssue(null); }} className="rounded-lg border border-current px-3 py-1 text-xs font-bold">{language === 'ar' ? 'فتح الإعدادات' : 'Open Settings'}</button>
           </div>
         )}
+        <ErrorBoundary key={currentTab} language={language}>
         {currentTab === 'recipes' && (
           <RecipeExplorer
             recipes={allRecipes}
@@ -613,6 +627,7 @@ export default function App() {
             onClearUserData={handleClearUserData}
           />
         )}
+        </ErrorBoundary>
       </main>
 
       {statusMessage && (

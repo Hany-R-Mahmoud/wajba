@@ -10,6 +10,12 @@ const DASHBOARD_SEO = {
   description: 'لوحة Wajba الخاصة بتخطيط الوجبات والوصفات وقائمة التسوق العائلية.',
 };
 
+export const SEASONS_SEO = {
+  title: 'ماذا في موسمه في مصر؟ خضار وفاكهة كل شهر | Wajba',
+  description: 'دليل شهري للخضار والفاكهة المصرية في موسمها، مع علامة عز الموسم وأفكار للطبخ. دليل مواسم وليس قائمة أسعار.',
+  path: '/seasons',
+};
+
 export interface SeoMetadata {
   title: string;
   description: string;
@@ -29,13 +35,13 @@ function siteBaseUrl(siteUrl?: string): string | undefined {
   return parsed.toString().replace(/\/$/, '');
 }
 
-export function getSeoMetadata(recipe?: Recipe, siteUrl?: string, notFound = false, dashboard = false): SeoMetadata {
+export function getSeoMetadata(recipe?: Recipe, siteUrl?: string, notFound = false, dashboard = false, seasons = false): SeoMetadata {
   siteBaseUrl(siteUrl);
-  const path = recipe ? `/recipes/${encodeURIComponent(recipe.id)}` : dashboard ? '/dashboard' : '/';
+  const path = recipe ? `/recipes/${encodeURIComponent(recipe.id)}` : dashboard ? '/dashboard' : seasons ? SEASONS_SEO.path : '/';
 
   return {
-    title: recipe ? `${recipe.titleEn} | Wajba` : dashboard ? DASHBOARD_SEO.title : DEFAULT_SEO.title,
-    description: recipe?.descriptionEn || (dashboard ? DASHBOARD_SEO.description : DEFAULT_SEO.description),
+    title: recipe ? `${recipe.titleEn} | Wajba` : dashboard ? DASHBOARD_SEO.title : seasons ? SEASONS_SEO.title : DEFAULT_SEO.title,
+    description: recipe?.descriptionEn || (dashboard ? DASHBOARD_SEO.description : seasons ? SEASONS_SEO.description : DEFAULT_SEO.description),
     path,
     type: recipe ? 'article' : 'website',
     image: '/wajba-logo.png',
@@ -105,8 +111,8 @@ function recipeJsonLd(recipe: Recipe, url: string, image: string) {
   };
 }
 
-export function updateSeo(recipe?: Recipe, notFound = false, dashboard = false) {
-  const metadata = getSeoMetadata(recipe, window.location.origin, notFound, dashboard);
+export function updateSeo(recipe?: Recipe, notFound = false, dashboard = false, seasons = false) {
+  const metadata = getSeoMetadata(recipe, window.location.origin, notFound, dashboard, seasons);
   const canonicalUrl = notFound || dashboard ? null : new URL(metadata.path, window.location.origin).href;
   const socialImageUrl = new URL(metadata.image, window.location.origin).href;
   const recipeImageUrl = recipe ? new URL(recipe.image, window.location.origin).href : socialImageUrl;
