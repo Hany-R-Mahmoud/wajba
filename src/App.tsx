@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { lazy, Suspense, useState, useEffect, useMemo, useCallback } from 'react';
 import { ActiveTimer, GroceryItem, Language, MealSlot, MonthlyPlan, PantryItem, Recipe, WeeklyPlan, WajbaBackup } from './types';
 import { INITIAL_RECIPES } from './data/recipes';
 import { generateGroceryListFromPlan } from './utils/aggregator';
@@ -41,20 +41,9 @@ import { Navbar } from './components/Navbar';
 import { readInvite } from './components/FamilyGroups';
 import { prepareFamilyImport } from './utils/family';
 import { LandingPage } from './components/LandingPage';
-import { RecipeExplorer } from './components/RecipeExplorer';
-import { WeeklyPlannerView } from './components/WeeklyPlannerView';
-import { MonthlyCalendarView } from './components/MonthlyCalendarView';
-import { GroceryListView } from './components/GroceryListView';
-import { TopTenLeaderboard } from './components/TopTenLeaderboard';
-import { RecipeDetailModal } from './components/RecipeDetailModal';
-import { CreateRecipeModal } from './components/CreateRecipeModal';
-import { FamilySyncModal } from './components/FamilySyncModal';
 import { CookingTimerBar } from './components/CookingTimerBar';
-import { PantryView } from './components/PantryView';
 import { PublicSeasonsPage } from './components/PublicSeasonsPage';
-import { SeasonalView } from './components/SeasonalView';
-import { ErrorBoundary } from './components/AsyncState';
-import { SettingsView } from './components/SettingsView';
+import { ErrorBoundary, LoadingState } from './components/AsyncState';
 import { PublicRecipeNotFound, PublicRecipePage } from './components/PublicRecipePage';
 import { getPublicRecipeRoute, updateSeo } from './utils/seo';
 import { Calendar, CalendarDays } from 'lucide-react';
@@ -62,6 +51,26 @@ import {PwaInstallHelpDialog} from './components/PwaInstallHelpDialog';
 import {PwaStatusBar} from './components/PwaStatusBar';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { FEATURE_FLAGS } from './config/features';
+
+// Dashboard views and modals load on first use, so the landing page and public pages do not pay for them.
+const lazyNamed = <T extends React.ComponentType<any>>(load: () => Promise<Record<string, unknown>>, name: string) =>
+  lazy(async () => ({ default: (await load())[name] as T }));
+const RecipeExplorer = lazyNamed(() => import('./components/RecipeExplorer'), 'RecipeExplorer');
+const WeeklyPlannerView = lazyNamed(() => import('./components/WeeklyPlannerView'), 'WeeklyPlannerView');
+const MonthlyCalendarView = lazyNamed(() => import('./components/MonthlyCalendarView'), 'MonthlyCalendarView');
+const GroceryListView = lazyNamed(() => import('./components/GroceryListView'), 'GroceryListView');
+const TopTenLeaderboard = lazyNamed(() => import('./components/TopTenLeaderboard'), 'TopTenLeaderboard');
+const RecipeDetailModal = lazyNamed(() => import('./components/RecipeDetailModal'), 'RecipeDetailModal');
+const CreateRecipeModal = lazyNamed(() => import('./components/CreateRecipeModal'), 'CreateRecipeModal');
+const FamilySyncModal = lazyNamed(() => import('./components/FamilySyncModal'), 'FamilySyncModal');
+const PantryView = lazyNamed(() => import('./components/PantryView'), 'PantryView');
+const SeasonalView = lazyNamed(() => import('./components/SeasonalView'), 'SeasonalView');
+const SettingsView = lazyNamed(() => import('./components/SettingsView'), 'SettingsView');
+
+/** Lazy modal host: a failed chunk load shows the standard error card instead of breaking the app. */
+function LazyModal({ language, children }: { language: Language; children: React.ReactNode }) {
+  return <ErrorBoundary language={language}><Suspense fallback={null}>{children}</Suspense></ErrorBoundary>;
+}
 
 type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'seasons' | 'pantry' | 'leaderboard' | 'settings';
 
@@ -492,6 +501,7 @@ export default function App() {
           </div>
         )}
         <ErrorBoundary key={currentTab} language={language}>
+        <Suspense fallback={<div className="py-16 flex justify-center"><LoadingState language={language} /></div>}>
         {currentTab === 'recipes' && (
           <RecipeExplorer
             recipes={allRecipes}
@@ -642,6 +652,7 @@ export default function App() {
             onClearUserData={handleClearUserData}
           />
         )}
+        </Suspense>
         </ErrorBoundary>
       </main>
 
@@ -681,6 +692,7 @@ export default function App() {
 
       {/* Recipe Detail View Modal */}
       {selectedDetailRecipe && (
+        <LazyModal language={language}>
         <RecipeDetailModal
           recipe={selectedDetailRecipe}
           onClose={() => setSelectedDetailRecipe(null)}
@@ -695,10 +707,12 @@ export default function App() {
           } : undefined}
           onDeleteRecipe={selectedDetailRecipe.isCustom ? () => handleDeleteCustomRecipe(selectedDetailRecipe) : undefined}
         />
+        </LazyModal>
       )}
 
       {/* Create Custom Recipe Modal */}
       {createRecipeModalOpen && (
+        <LazyModal language={language}>
         <CreateRecipeModal
           onClose={() => {
             setCreateRecipeModalOpen(false);
@@ -708,10 +722,12 @@ export default function App() {
           onSaveRecipe={handleSaveCustomRecipe}
           initialRecipe={recipeBeingEdited}
         />
+        </LazyModal>
       )}
 
       {/* Family Sync Modal */}
       {familySyncModalOpen && (
+        <LazyModal language={language}>
         <FamilySyncModal
           plan={weeklyPlan}
           groceryList={groceryList}
@@ -727,6 +743,7 @@ export default function App() {
             setWeeklyPlan(imported.weeklyPlan);
           }}
         />
+        </LazyModal>
       )}
       <PwaInstallHelpDialog language={language} dark={theme === 'dark'} />
     </div>

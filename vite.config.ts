@@ -10,7 +10,7 @@ function pwaServiceWorkerPlugin() {
     generateBundle(_options: unknown, bundle: Record<string, {type: string}>) {
       const precacheEntries = new Set(['/index.html']);
       for (const fileName of Object.keys(bundle)) {
-        if (/^assets\/index-[^/]+\.(?:js|css)$/.test(fileName)) precacheEntries.add(`/${fileName}`);
+        if (/^assets\/[^/]+\.(?:js|css)$/.test(fileName)) precacheEntries.add(`/${fileName}`);
       }
       for (const publicFile of ['manifest.webmanifest', 'favicon.svg', 'wajba-icon-192.png', 'wajba-icon-512.png', 'wajba-icon-maskable-512.png', 'apple-touch-icon.png']) {
         if (existsSync(path.resolve(__dirname, 'public', publicFile))) precacheEntries.add(`/${publicFile}`);
@@ -74,6 +74,17 @@ function seoIndexTags() {
 export default defineConfig(() => {
   return {
     plugins: [pwaServiceWorkerPlugin(), react(), tailwindcss(), seoIndexTags()],
+    build: {
+      rollupOptions: {
+        output: {
+          // The recipe catalog changes rarely, so it gets its own long-lived cache entry.
+          manualChunks(id: string) {
+            if (id.includes('/src/data/recipes.ts')) return 'catalog';
+            if (/node_modules\/(react|react-dom|scheduler)\//.test(id)) return 'react';
+          },
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

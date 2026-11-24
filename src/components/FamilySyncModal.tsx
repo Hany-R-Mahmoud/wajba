@@ -160,10 +160,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         </div>
 
         {/* Connected family groups (Google sign-in) */}
-        <section aria-label={isArabic ? 'العائلة المتصلة' : 'Connected family'} className="space-y-2">
-          <h3 className="text-xs font-bold text-stone-900 dark:text-stone-100">{isArabic ? 'العائلة المتصلة' : 'Connected family'}</h3>
-          <FamilyGroups language={language} plan={plan} customRecipes={customRecipes} onApply={onApplyFamilyPlan} />
-        </section>
+        <FamilyGroups language={language} plan={plan} customRecipes={customRecipes} onApply={onApplyFamilyPlan} />
 
         {/* Google Sheets Remote Sync Option */}
         {FEATURE_FLAGS.appsScriptSync && (
