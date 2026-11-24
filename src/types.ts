@@ -41,6 +41,25 @@ export interface Substitution {
   };
 }
 
+export type SeasonMonth = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+export type ProduceCategory = 'vegetable' | 'fruit' | 'herbs';
+
+export interface ProduceItem {
+  id: string;
+  nameAr: string;
+  /** DRAFT English name, pending owner review. */
+  nameEn: string;
+  category: ProduceCategory;
+  seasonMonths: SeasonMonth[];
+  peakMonths: SeasonMonth[];
+  cookHintAr: string;
+  /** DRAFT English hint, pending owner review. */
+  cookHintEn: string;
+  seasonStartMonth: SeasonMonth;
+  seasonEndMonth: SeasonMonth;
+}
+
 export interface CookingTimerStep {
   stepIndex: number;
   titleAr: string;
