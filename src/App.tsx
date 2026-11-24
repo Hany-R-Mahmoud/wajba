@@ -38,7 +38,6 @@ import {
 } from './utils/storage';
 
 import { Navbar } from './components/Navbar';
-import { AccountPanel } from './components/AccountPanel';
 import { readInvite } from './components/FamilyGroups';
 import { prepareFamilyImport } from './utils/family';
 import { LandingPage } from './components/LandingPage';
@@ -453,7 +452,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-stone-900 dark:bg-[#0c1220] dark:text-slate-100 flex flex-col font-sans transition-colors pb-24">
       {/* Top Main Navigation Header */}
-      <AccountPanel language={language} />
       <Navbar
         currentTab={currentTab}
         onTabChange={(tab) => {
@@ -469,6 +467,7 @@ export default function App() {
         theme={theme}
         onThemeToggle={toggleTheme}
         activeTimers={activeTimers}
+        onOpenAccount={() => { setOpenRecipesSeasonal(false); navigateToTab('settings'); }}
       />
       <PwaStatusBar language={language} dark={theme === 'dark'} />
       <MobileBottomNav

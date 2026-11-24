@@ -3,7 +3,7 @@ import { Language, WeeklyPlan, GroceryItem, Recipe } from '../types';
 import { FamilyGroups } from './FamilyGroups';
 import type { FamilyPlan } from '../utils/family';
 import { X, Users, Share2, Copy, Check, FileSpreadsheet, Download, RefreshCw, Link as LinkIcon } from 'lucide-react';
-import { createCurrentWajbaBackup, encodePlanToUrl } from '../utils/storage';
+import { encodePlanToUrl } from '../utils/storage';
 import { syncPlanWithGoogleSheets, downloadCSV, exportPlanAndGroceryToCSV } from '../utils/sheets';
 import { FEATURE_FLAGS } from '../config/features';
 
@@ -120,8 +120,6 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
           </button>
         </div>
 
-        <FamilyGroups language={language} plan={plan} customRecipes={customRecipes} onApply={onApplyFamilyPlan} />
-
         {/* URL Link Sharing Option */}
         <div className="p-4 rounded-2xl bg-amber-50/80 dark:bg-stone-800/80 border border-amber-200 dark:border-stone-700 space-y-2">
           <h3 className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
@@ -161,6 +159,12 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
           {syncMessage?.type === 'error' && <p role="alert" className="text-xs text-rose-600">{syncMessage.text}</p>}
         </div>
 
+        {/* Connected family groups (Google sign-in) */}
+        <section aria-label={isArabic ? 'العائلة المتصلة' : 'Connected family'} className="space-y-2">
+          <h3 className="text-xs font-bold text-stone-900 dark:text-stone-100">{isArabic ? 'العائلة المتصلة' : 'Connected family'}</h3>
+          <FamilyGroups language={language} plan={plan} customRecipes={customRecipes} onApply={onApplyFamilyPlan} />
+        </section>
+
         {/* Google Sheets Remote Sync Option */}
         {FEATURE_FLAGS.appsScriptSync && (
         <div className="p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700 space-y-2">
@@ -198,47 +202,22 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         </div>
         )}
 
-        {/* JSON Backup & Export Option */}
-        <div className="p-4 rounded-2xl bg-amber-100/60 dark:bg-stone-800/60 border border-amber-300 dark:border-stone-700 space-y-2">
-          <h3 className="text-xs font-bold text-amber-950 dark:text-amber-100 flex items-center gap-1.5">
-            <Download className="w-4 h-4 text-amber-700" />
-            <span>{isArabic ? 'تصدير نسخة احتياطية لكافة بيانات التطبيق (JSON):' : 'Export Full Data Backup (JSON):'}</span>
+        {/* Plan CSV (full-data backup lives in Settings) */}
+        <div className="p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700 space-y-2">
+          <h3 className="text-xs font-bold text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
+            <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+            <span>{isArabic ? 'تصدير الخطة وقائمة التسوق (CSV):' : 'Export plan and grocery list (CSV):'}</span>
           </h3>
           <p className="text-[11px] text-stone-600 dark:text-stone-400">
-            {isArabic
-              ? 'تنزيل نسخة احتياطية شاملة لجميع الجداول الأسبوعية والشهرية، وقوائم التسوق، والوصفات المحفوظة.'
-              : 'Download a complete JSON backup of all weekly/monthly meal plans, grocery lists, and saved recipes.'}
+            {isArabic ? 'للنسخة الاحتياطية الكاملة افتح الإعدادات.' : 'For a full data backup, open Settings.'}
           </p>
-
-          <div className="flex flex-wrap items-center gap-2 pt-1">
-            <button
-              onClick={() => {
-                try {
-                  const blob = new Blob([JSON.stringify(createCurrentWajbaBackup(), null, 2)], { type: 'application/json' });
-                  const url = URL.createObjectURL(blob);
-                  const a = document.createElement('a');
-                  a.href = url;
-                  a.download = `wajba_full_backup_${new Date().toISOString().slice(0, 10)}.json`;
-                  a.click();
-                  URL.revokeObjectURL(url);
-                } catch (error) {
-                  setSyncMessage({ type: 'error', text: error instanceof Error ? error.message : (isArabic ? 'تعذر تصدير النسخة.' : 'Backup export failed.') });
-                }
-              }}
-              className="px-3.5 py-2 rounded-xl bg-amber-800 hover:bg-amber-900 text-white text-xs font-bold flex items-center gap-1.5"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>{isArabic ? 'تحميل النسخة الاحتياطية (JSON)' : 'Download JSON Backup'}</span>
-            </button>
-
-            <button
-              onClick={handleDownloadCSV}
-              className="px-3.5 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5 hover:bg-stone-300 transition-colors"
-            >
-              <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
-              <span>{isArabic ? 'تحميل جدول CSV' : 'Export CSV File'}</span>
-            </button>
-          </div>
+          <button
+            onClick={handleDownloadCSV}
+            className="px-3.5 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5 hover:bg-stone-300 transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>{isArabic ? 'تحميل جدول CSV' : 'Export CSV File'}</span>
+          </button>
         </div>
 
         {/* Modal Footer */}

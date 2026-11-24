@@ -19,6 +19,7 @@ import {
 import { WajbaLogo } from './WajbaLogo';
 import {PwaInstallMenuAction} from './PwaInstallMenuAction';
 import { NavigationTab } from './MobileBottomNav';
+import { AccountEntry } from './AccountEntry';
 import { FEATURE_FLAGS } from '../config/features';
 
 interface NavbarProps {
@@ -29,6 +30,7 @@ interface NavbarProps {
   theme: 'light' | 'dark';
   onThemeToggle: () => void;
   activeTimers: ActiveTimer[];
+  onOpenAccount: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -39,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   theme,
   onThemeToggle,
   activeTimers,
+  onOpenAccount,
 }) => {
   const isArabic = language === 'ar';
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -235,6 +238,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {theme === 'light' ? <Moon className="w-4 h-4 text-[#17171c]" /> : <Sun className="w-4 h-4 text-amber-400" />}
             </button>
+
+            <AccountEntry language={language} onOpen={onOpenAccount} />
           </div>
         </div>
 

@@ -21,6 +21,11 @@ export default async function handler(req: IncomingMessage & { body?: unknown },
     const users = await sql`SELECT id FROM neon_auth."user" WHERE id = ${userId}`;
     if (users.length === 0) return reply(401, { error: 'Sign in required' });
     if (req.method === 'GET') {
+      // `?meta=1` returns only the save time, so the UI can show "last saved" without downloading the backup.
+      if (new URL(req.url ?? '/', 'http://localhost').searchParams.get('meta') === '1') {
+        const meta = await sql`SELECT updated_at FROM public.wajba_backups WHERE user_id = ${userId}`;
+        return reply(200, { updated_at: meta[0]?.updated_at ?? null });
+      }
       const rows = await sql`SELECT backup, updated_at FROM public.wajba_backups WHERE user_id = ${userId}`;
       return reply(200, rows[0] ?? { backup: null });
     }
