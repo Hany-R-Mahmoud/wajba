@@ -5,8 +5,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-koshary",
     "titleAr": "الكشري المصري الأصيل",
     "titleEn": "Authentic Egyptian Koshary",
-    "descriptionAr": "طبق مصر الشعبي الأول! مزيج متناغم من الأرز، العدس الأسود، المكرونة، الحمص، الصلصة الحارة والدقة، مع البصل المقرمش.",
-    "descriptionEn": "Egypt's ultimate national comfort food! A harmonious mix of rice, brown lentils, pasta, chickpeas, garlic vinegar sauce, spicy tomato sauce, and crispy fried onions.",
+    "descriptionAr": "الطبق الشعبي الأول في مصر: أرز وعدس أسود ومكرونة وحمص مع الدقة والصلصة الحارة والبصل المقرمش.",
+    "descriptionEn": "Egypt's national dish: rice, brown lentils, pasta, chickpeas, garlic vinegar sauce, spicy tomato sauce and crispy fried onions.",
     "region": "egypt",
     "mealType": [
       "lunch",
@@ -171,8 +171,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-fatteh",
     "titleAr": "الفتة المصرية بالخل والثوم واللحم",
     "titleEn": "Egyptian Fatteh with Garlic Vinegar & Beef",
-    "descriptionAr": "سيدة الموائد المصرية في الأعياد والمناسبات! طبقات من الخبز البلدي المحمص، الأرز الأبيض المعطر، شوربة اللحم المكثفة، وصلصة الخل والثوم الرائعة مع قطع اللحم المحمر.",
-    "descriptionEn": "The centerpiece of Egyptian festive dining! Layers of toasted crispy baladi bread, fragrant white rice, rich beef broth, and a tangy garlic-vinegar sauce topped with browned beef.",
+    "descriptionAr": "طبق الأعياد والمناسبات المصرية: طبقات من الخبز البلدي المحمص والأرز الأبيض وشوربة اللحم، مع صلصة الخل والثوم وقطع اللحم المحمّر.",
+    "descriptionEn": "Egyptian festive dish: layers of toasted baladi bread and white rice with beef broth, a tangy garlic-vinegar sauce and browned beef.",
     "region": "egypt",
     "mealType": [
       "lunch",
@@ -319,8 +319,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-molokhia",
     "titleAr": "الملوخية المصرية بالدجاج وطشة الثوم",
     "titleEn": "Egyptian Molokhia with Chicken & Garlic Ta'shah",
-    "descriptionAr": "أم الأطباق المصرية! ملوخية خضراء طازجة مخروطة مطبوخة بمرق الدجاج الغني، وتعلوها الطشة الخضراء الشهيرة بالثوم والكزبرة الجافة الساخنة بالسمن البلدي.",
-    "descriptionEn": "The queen of Egyptian home cooking! Finely minced fresh jute mallow leaves cooked in savory chicken stock, finished with a sizzling garlic coriander Ghee Ta'shah.",
+    "descriptionAr": "ملوخية خضراء طازجة مفرومة ناعماً ومطبوخة بمرق الدجاج، وتعلوها الطشة بالثوم والكزبرة الجافة المحمّرة في السمن البلدي.",
+    "descriptionEn": "Finely minced fresh jute mallow leaves cooked in chicken stock and finished with a sizzling garlic and coriander ta'shah in ghee.",
     "region": "egypt",
     "mealType": [
       "lunch",
@@ -566,8 +566,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-taameya-ful",
     "titleAr": "الفول المدمس والطعمية المصرية (الفلافل)",
     "titleEn": "Egyptian Ful Medames & Ta'ameya (Fava Falafel)",
-    "descriptionAr": "إفطار الجمعة واليوم الرمضاني الأصيل! طعمية مصرية هشة مصنوعة من الفول المدشوش والخضرة الطازجة مع الفول المدمس بالسمن البلدي والليمون والزيت الحار.",
-    "descriptionEn": "The traditional Friday & Suhoor breakfast spread! Ultra-crispy Egyptian fava bean falafel (Ta'ameya) paired with slow-cooked fava beans with olive oil, cumin, and lemon.",
+    "descriptionAr": "إفطار الجمعة والسحور التقليدي: طعمية مصرية هشة من الفول المدشوش والخضرة الطازجة، مع الفول المدمس بالطحينة والزيت والليمون والكمون.",
+    "descriptionEn": "Traditional Friday and Suhoor breakfast: crispy Egyptian fava bean falafel (ta'ameya) with slow-cooked fava beans, tahini, oil, lemon and cumin.",
     "region": "egypt",
     "mealType": [
       "breakfast",
@@ -794,8 +794,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-macarona-beamel",
     "titleAr": "المكرونة البشاميل المصرية",
     "titleEn": "Egyptian Macarona Beamel (Baked Béchamel Pasta)",
-    "descriptionAr": "الملكة غير المتوجة للعزائم! مكرونة بنة بصلصة البشاميل الذهبية الناعمة الغنية، وحشوة اللحم المفروم المعصج بالبصل والبهارات دافئة النكهة.",
-    "descriptionEn": "The undisputed queen of Egyptian dinner parties! Penne pasta baked with a rich seasoned beef filling and topped with a golden, silky béchamel layer.",
+    "descriptionAr": "طبق العزائم المصري: مكرونة بنّة بحشوة اللحم المفروم المتبل بالبصل والبهارات، تعلوها طبقة بشاميل ذهبية ناعمة.",
+    "descriptionEn": "Egyptian dinner-party dish: penne baked with a seasoned minced beef filling and topped with a golden béchamel layer.",
     "region": "egypt",
     "mealType": [
       "lunch",
@@ -927,8 +927,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-sayadieh",
     "titleAr": "صيادية السمك والأرز الأحمَر الإسكندراني",
     "titleEn": "Alexandrian Fish Sayadieh with Amber Rice",
-    "descriptionAr": "طبق مدن القناة والإسكندرية! سمك قاروص أو دنيس مقلي مطبوخ بمرق البصل المكرمل والبني الداكن مع أرز الصيادية العطري بالكمون والليمون.",
-    "descriptionEn": "The Coastal Egyptian jewel! Pan-seared sea bass cooked in a deeply caramelized dark onion broth served over aromatic caramelized Sayadieh spice rice.",
+    "descriptionAr": "طبق مدن القناة والإسكندرية: سمك قاروص أو بلطي مقلي في مرق البصل المكرمل الداكن، يُقدَّم فوق أرز الصيادية بالكمون والليمون.",
+    "descriptionEn": "Coastal Egyptian dish: pan-seared sea bass or tilapia cooked in a dark caramelized onion broth, served over Sayadieh rice spiced with cumin and lemon.",
     "region": "egypt",
     "mealType": [
       "lunch",
@@ -1037,8 +1037,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-mahshi-meshkel",
     "titleAr": "المحشي المصري المشكل (كوسة وفلفل وبتنجان)",
     "titleEn": "Egyptian Stuffed Veggies (Mahshi Meshkel)",
-    "descriptionAr": "سلطان السفرة الرمضانية! كوسة وباذنجان وفلفل رومي محشو بخلطة الأرز المعطرة بالأعشاب الطازجة والطماطم المسبكة والمطبوخة بمرق الدجاج البلدي.",
-    "descriptionEn": "The absolute ruler of Arab feasts! Zucchini, eggplant, and bell peppers stuffed with herbaceous tomato-seasoned rice slow-simmered in savory broth.",
+    "descriptionAr": "كوسة وباذنجان وفلفل رومي محشوة بأرز بالأعشاب الطازجة والطماطم، ومطبوخة في المرق؛ طبق حاضر على السفرة الرمضانية.",
+    "descriptionEn": "Zucchini, eggplant and bell peppers stuffed with herbed tomato rice and simmered in broth; a regular on the Ramadan table.",
     "region": "egypt",
     "mealType": [
       "lunch",
@@ -1153,8 +1153,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-om-ali",
     "titleAr": "أم علي بالفطير بلدي والمكسرات والقشطة",
     "titleEn": "Classic Royal Egyptian Om Ali Dessert",
-    "descriptionAr": "حلوى مصر الملكية! رقائق الفطير المشلتت أو الـ Puff Pastry المحمصة والغارقة في الحليب الساخن المعطر بالفانيليا والمكسرات المحمصة والقشطة البلدي.",
-    "descriptionEn": "Egypt's royal dessert! Crispy puff pastry baked in sweetened warm vanilla milk, topped with toasted nuts, raisins, coconut, and rich Egyptian clotted cream.",
+    "descriptionAr": "حلوى مصرية: رقائق الفطير المشلتت أو الباف باستري المخبوزة في حليب ساخن محلّى بالفانيليا، تعلوها المكسرات المحمصة والزبيب والقشطة البلدي.",
+    "descriptionEn": "Egyptian dessert: puff pastry baked in sweetened hot milk with vanilla, topped with roasted nuts, raisins and clotted cream (ashta).",
     "region": "egypt",
     "mealType": [
       "dessert"
@@ -1267,8 +1267,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "levant-mansaf",
     "titleAr": "المنسف الأردني بالجميد واللحم",
     "titleEn": "Jordanian Mansaf with Jameed & Lamb",
-    "descriptionAr": "درة المطبخ الشامي! لحم ضأن طري مطبوخ بصلصة الجميد الكركي الأصيلة والمقدم فوق خبز الشراك والأرز الأصفر المعطر والمكسرات المحمصة.",
-    "descriptionEn": "The pride of Levantine hospitality! Tender lamb slow-cooked in rich Jameed yogurt sauce served over Shrak bread and saffron rice garnished with fried pine nuts.",
+    "descriptionAr": "لحم ضأن مطبوخ ببطء في صلصة الجميد الكركي، يُقدَّم فوق خبز الشراك والأرز الأصفر مع الصنوبر واللوز المقليين في السمن.",
+    "descriptionEn": "Lamb slow-cooked in jameed yogurt sauce, served over shrak bread and yellow rice with pine nuts and almonds fried in ghee.",
     "region": "levant",
     "mealType": [
       "lunch",
@@ -1383,8 +1383,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "gulf-kabsa",
     "titleAr": "الكبسة السعودية باللحم والمكسرات",
     "titleEn": "Royal Saudi Beef & Rice Kabsa",
-    "descriptionAr": "الأكلة الوطنية للمملكة! أرز بسمتي طويل الحبة مطبوخ ببهارات الكبسة العطرية وقطع اللحم الطري، والمزين بالزبيب والسنوبر وبصل المكرمل.",
-    "descriptionEn": "Saudi Arabia's iconic dish! Long-grain Basmati rice infused with whole aromatic spices, tender spiced meat, crispy onions, raisins, and toasted almonds.",
+    "descriptionAr": "الأكلة الوطنية في السعودية: أرز بسمتي طويل الحبة مطبوخ ببهارات الكبسة مع اللحم الطري، ومزيّن بالزبيب واللوز.",
+    "descriptionEn": "Saudi Arabia's national dish: long-grain basmati rice cooked with kabsa spices and tender meat, topped with raisins and almonds.",
     "region": "gulf",
     "mealType": [
       "lunch",
@@ -1496,8 +1496,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "arabic-shakshuka",
     "titleAr": "الشكشوكة العربية بالأعشاب والبيض",
     "titleEn": "Authentic Arab Herbs & Tomato Shakshuka",
-    "descriptionAr": "إفطار عربي مبدع! بيض مسلوق داخل صلصة طماطم مسبكة بالفلفل الملون والبصل والثوم والكزبرة والكمون وتقدم مع الخبز البلدي الدافئ.",
-    "descriptionEn": "The beloved Arab skillet breakfast! Eggs gently poached in a bubbling spiced tomato, bell pepper, garlic, cumin, and cilantro sauce.",
+    "descriptionAr": "إفطار عربي: بيض مسلوق في صلصة طماطم متبلة بالفلفل الملون والبصل والثوم والكمون، يُقدَّم مع الجبنة الفيتا والبقدونس.",
+    "descriptionEn": "Arab skillet breakfast: eggs poached in a spiced tomato sauce with bell pepper, onion, garlic and cumin, served with feta and parsley.",
     "region": "general",
     "mealType": [
       "breakfast",
@@ -1617,8 +1617,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "ramadan-qatayef",
     "titleAr": "القطايف الرمضانية بالمكسرات والقشطة",
     "titleEn": "Ramadan Stuffed Qatayef (Nuts & Cream)",
-    "descriptionAr": "رمز البهجة الرمضانية! أقراص العجين الذهبية المحشوة بخلطة المكسرات مع القرفة أو القشطة البلدية والمقلية حتى التقرمش ثم المسقية بالشربات المعطر بماء الورد.",
-    "descriptionEn": "The supreme icon of Ramadan sweet nights! Golden folded pancakes stuffed with spiced nuts or rich cream, fried crisp, and drenched in scented orange blossom syrup.",
+    "descriptionAr": "حلوى رمضانية: أقراص القطايف المحشوة بالمكسرات وجوز الهند والزبيب أو بالقشطة، والمسقية بشربات ماء الورد.",
+    "descriptionEn": "Ramadan dessert: qatayef pancakes stuffed with nuts, coconut and raisins or ashta cream, and soaked in rose-water syrup.",
     "region": "general",
     "mealType": [
       "dessert"
@@ -2389,7 +2389,7 @@ export const INITIAL_RECIPES: Recipe[] = [
     "titleAr": "الكنافة الرمضانية النابلسية بالقشطة والفسدق",
     "titleEn": "Royal Ramadan Kunafa with Ashta Cream",
     "descriptionAr": "خيوط العجين الذهبية المحمصة بالسمن البلدي والمحشوة بالقشطة البلدية أو الجبن النابلسي والمسقية بالشربات الدافئ والمكسرات.",
-    "descriptionEn": "Golden crispy shredded pastry layered with rich clotted cream or cheese, drenched in scented rose blossom syrup and pistachios.",
+    "descriptionEn": "Golden crispy shredded pastry layered with clotted cream or cheese, drenched in scented rose blossom syrup and pistachios.",
     "region": "general",
     "mealType": [
       "dessert"
@@ -2600,7 +2600,7 @@ export const INITIAL_RECIPES: Recipe[] = [
     "titleAr": "السمبوسك الرمضانية الهشة بالجبن واللحم",
     "titleEn": "Crisp Ramadan Sambousak (Cheese & Meat)",
     "descriptionAr": "مثلثات العجين المقرمشة المحشوة بالأجبان المعطرة بحبة البركة أو اللحم المفروم المتبل، والمقلية أو المخبوزة بالفرن.",
-    "descriptionEn": "Golden crispy pastry triangles stuffed with spiced minced meat or rich melting cheese with black cumin seeds.",
+    "descriptionEn": "Golden crispy pastry triangles stuffed with spiced minced meat or melting cheese with black cumin seeds.",
     "region": "general",
     "mealType": [
       "snack",
@@ -2781,7 +2781,7 @@ export const INITIAL_RECIPES: Recipe[] = [
     "titleAr": "الممبار المصري المحشي بالأرز المسبك",
     "titleEn": "Egyptian Stuffed Beef Tripe (Mombar)",
     "descriptionAr": "أمعاء البقر الدقيقة المحشوة بخلطة الأرز المصرية المعطرة بالأعشاب والصلصة والمغلي ثم المقلي حتي يصبح مقرمشاً وذهبياً.",
-    "descriptionEn": "Beef sausage casing stuffed with seasoned herbs and rice filling, boiled in fragrant broth and fried crispy golden.",
+    "descriptionEn": "Beef sausage casing stuffed with seasoned herbs and rice filling, boiled in herbed broth and fried until golden and crisp.",
     "region": "egypt",
     "mealType": [
       "lunch",
@@ -7536,8 +7536,8 @@ export const INITIAL_RECIPES: Recipe[] = [
     "id": "egypt-sineyet-batates-farakh",
     "titleAr": "صينية بطاطس بالفراخ",
     "titleEn": "Chicken and Potato Tray Bake",
-    "descriptionAr": "طبق البيوت المصرية الأصيل: شرائح بطاطس وفراخ متبلة متستوية في صلصة طماطم غنية وتتحمر في الفرن لحد ما وشها يبقى ذهبي.",
-    "descriptionEn": "A beloved Egyptian home classic: potato wedges and marinated chicken baked together in a rich tomato sauce until golden on top.",
+    "descriptionAr": "طبق من البيوت المصرية: شرائح بطاطس وفراخ متبلة متستوية في صلصة طماطم غنية وتتحمر في الفرن لحد ما وشها يبقى ذهبي.",
+    "descriptionEn": "Egyptian home cooking: potato wedges and marinated chicken baked together in a rich tomato sauce until golden on top.",
     "mealType": [
       "lunch",
       "dinner",
