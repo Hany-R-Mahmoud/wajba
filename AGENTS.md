@@ -38,7 +38,7 @@ Wajba is a Vite + React bilingual MENA meal planner. The browser owns UI state a
 | `src/components/AsyncState.tsx` | `LoadingState`, `ErrorState` (with retry), `ErrorBoundary` |
 | `src/auth/SessionProvider.tsx` | Single session subscription; read with `useAppSession()` |
 | `src/components/PublicSeasonsPage.tsx` | Public prerendered `/seasons` page |
-| `neon/` | SQL migrations (`001` groups, `002`/`003` backups). Run on a Neon branch before production |
+| `neon/` | SQL migrations (`001` groups, `002`/`003` backups, `004` RLS and user-delete cascade, `005` shared rate limit). Run on a Neon branch before production; `004`/`005` are written but not applied. SQL checks in `tests/*.sql` run on a validation branch |
 | `docs/SEO.md`, `docs/catalog-to-neon-plan.md` | SEO state and Search Console record; plan to move catalog data to Neon |
 | `src/utils/storage.ts` | Browser persistence, seed plans, URL plan sharing |
 | `src/utils/aggregator.ts` | Grocery-list aggregation, pantry coverage, and substitution resolver pass |
