@@ -14,7 +14,7 @@ Audited 2026-11-24 from the repo, the build output (`SITE_URL=https://wajjba.ver
 | Route | Indexed | Notes |
 |---|---|---|
 | `/` | yes | Arabic, canonical, WebSite and WebApplication JSON-LD |
-| `/seasons` | yes | New. Static month-by-month guide (12 sections, 223 entries), Arabic only until English is approved |
+| `/seasons` | yes | Static month-by-month guide (12 sections, 223 entries), Arabic with approved English produce names |
 | `/recipes/<id>` | yes (100) | English prerendered page, canonical, Recipe JSON-LD |
 | `/dashboard/*` | no | Private app shell: meta `noindex,follow` from the client and `X-Robots-Tag` header |
 | `/api/*` | no | Header `noindex`, and `Disallow: /api/` in robots.txt |
@@ -30,7 +30,7 @@ Audited 2026-11-24 from the repo, the build output (`SITE_URL=https://wajjba.ver
 ## Decisions and limits
 
 - Language: pages are not split into separate Arabic and English URLs, so no `hreflang`. Recipe pages are English; the home page and `/seasons` are Arabic.
-- Draft English text (`ENGLISH_IS_DRAFT`) is not published on `/seasons`. After the owner approves the English wording, set the flag to false and update `tests/seo.test.ts`.
+- English produce names were approved on 2026-11-24 (`ENGLISH_IS_DRAFT = false`), so they are published on `/seasons`; `tests/seo.test.ts` checks both states.
 - No `lastmod` in the sitemap: there is no real per-page modified date to report.
 - No FAQ, rating, or price schema: nothing visible on the pages supports it.
 - `llms.txt` is a map for AI and coding agents, not a Google Search feature.
@@ -43,19 +43,15 @@ Audited 2026-11-24 from the repo, the build output (`SITE_URL=https://wajjba.ver
 | Production URL | https://wajjba.vercel.app/ |
 | Intended public pages | `/`, `/seasons`, `/recipes/<id>` |
 | Property type | URL prefix `https://wajjba.vercel.app/` (a `vercel.app` subdomain: no DNS control, so no Domain property) |
-| Account access | The owner's Google account is signed in to Search Console and owns other properties. Checked 2026-11-24 |
-| Property for this site | **Not present.** Opening it shows "you don't have access to this property" (observed 2026-11-24) |
-| Verification method | HTML file `public/googled5027b1ee88bdadf.html`, the same file the owner's `eldakheel` and `mahfazzti` projects use. Status: **prepared** (committed on the branch), not deployed |
-| URL Inspection, sitemap | Not done: needs the property |
-| Blocker | The file must be live at `https://wajjba.vercel.app/googled5027b1ee88bdadf.html` before Verify. That needs this branch merged and deployed to production, which is the owner's step |
+| Property for this site | **Active.** Added 2026-11-24 as URL prefix `https://wajjba.vercel.app/` in the owner's Search Console account |
+| Verification method | HTML file `public/googled5027b1ee88bdadf.html` (also used by the owner's `eldakheel` and `mahfazzti` projects). Live since the 2026-11-24 deploy; Search Console auto-verified ownership with it |
+| Sitemap | `sitemap.xml` submitted 2026-11-24, accepted ("Sitemap submitted successfully") |
+| URL Inspection | Not done yet (optional) |
 
-Steps after the deploy:
+Remaining steps:
 
-1. Check `https://wajjba.vercel.app/googled5027b1ee88bdadf.html` returns the one-line token text.
-2. In Search Console choose Add property, then URL prefix, enter `https://wajjba.vercel.app/`, choose the HTML file method, and click Verify.
-3. Open Sitemaps and submit `sitemap.xml`.
-4. Use URL Inspection on `/`, `/seasons` and one recipe URL, and request indexing for them once. Do not repeat requests.
-5. Keep the token file deployed.
-6. Read the first Performance data after a few days; Search Console needs time to accrue it.
+1. Optional: use URL Inspection on `/`, `/seasons` and one recipe URL, and request indexing for each once. Do not repeat requests.
+2. Keep the token file deployed. Removing it ends verification.
+3. Read the first Performance and Pages data after a few days; Search Console needs time to accrue it.
 
 Verification gives report access. It does not index pages or improve ranking.
