@@ -479,7 +479,8 @@ export function parseWajbaBackup(value: unknown): WajbaBackup | null {
       theme: state.theme,
       favorites: state.favorites,
       votes: state.votes,
-      customRecipes: state.customRecipes,
+      // Unsafe image URLs are cleared, not rejected, so old backups still restore.
+      customRecipes: state.customRecipes.map((recipe) => (isSafeImageUrl(recipe.image) ? recipe : { ...recipe, image: '' })),
       weeklyPlan: state.weeklyPlan,
       monthlyPlans: state.monthlyPlans,
       groceryCheckedIds: state.groceryCheckedIds,
@@ -690,6 +691,11 @@ function isSlotMap(value: unknown): boolean {
 
 function isDayMealSlotAssignment(value: unknown): boolean {
   return isRecord(value) && isString(value.recipeId) && isPositiveNumber(value.servings) && (value.customNote === undefined || isString(value.customNote));
+}
+
+// Custom recipe images load in other members' browsers, so only https, same-site paths and inline images are accepted.
+function isSafeImageUrl(value: unknown): value is string {
+  return isString(value) && (value === '' || /^https:\/\/[^\s]+$/i.test(value) || /^\/(?!\/)[^\s]*$/.test(value) || /^data:image\/(png|jpe?g|webp|gif|avif);/i.test(value));
 }
 
 function isString(value: unknown): value is string {

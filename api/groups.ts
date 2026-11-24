@@ -13,7 +13,7 @@ export default async function handler(req: IncomingMessage & { body?: unknown },
   res.setHeader('Content-Type', 'application/json');
   const reply = (status: number, value: unknown) => { res.statusCode = status; res.end(JSON.stringify(value)); };
   if (!['GET','POST'].includes(req.method ?? '')) { res.setHeader('Allow', 'GET, POST'); return reply(405, { error: 'Method not allowed' }); }
-  if (!process.env.DATABASE_URL || !process.env.NEON_AUTH_BASE_URL) return reply(503, { error: 'Not configured' });
+  if (!process.env.DATABASE_URL) return reply(503, { error: 'Not configured' });
   const user = await authenticatedUser(req);
   if (!user) return reply(401, { error: 'Sign in required' });
   try {

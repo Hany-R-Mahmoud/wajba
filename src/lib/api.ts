@@ -71,6 +71,7 @@ async function attempt<T>(url: string, options: ApiRequestOptions): Promise<T> {
   let timedOut = false;
   const timer = setTimeout(() => { timedOut = true; controller.abort(); }, timeoutMs);
   const onAbort = () => controller.abort();
+  if (signal?.aborted) controller.abort();
   signal?.addEventListener('abort', onAbort, { once: true });
   try {
     const response = await fetchImpl(url, {

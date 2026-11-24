@@ -10,6 +10,11 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
   const url = new URL(req.url ?? '/', 'https://wajjba.vercel.app');
   const path = url.searchParams.get('authPath');
   if (path) {
+    if (!/^[A-Za-z0-9/_-]+$/.test(path) || path.includes('//')) {
+      res.statusCode = 404;
+      res.end();
+      return;
+    }
     url.pathname = `/api/auth/${path}`;
     url.searchParams.delete('authPath');
     req.url = url.pathname + url.search;

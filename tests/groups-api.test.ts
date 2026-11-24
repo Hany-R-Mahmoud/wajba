@@ -2,7 +2,6 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 
-process.env.NEON_AUTH_BASE_URL = 'https://example.invalid/neondb/auth';
 process.env.DATABASE_URL = 'postgresql://example.invalid/neondb';
 const { default: handler } = await import('../api/groups');
 

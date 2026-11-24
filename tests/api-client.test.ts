@@ -93,3 +93,15 @@ test('error messages are bilingual and never expose server text', () => {
   assert.match(apiErrorMessage(new ApiError('auth', 401), true), /انتهت الجلسة/);
   assert.match(apiErrorMessage(new Error('boom: SELECT * FROM'), false), /Request failed/);
 });
+
+test('an already-aborted caller signal never reaches fetch', async () => {
+  const controller = new AbortController();
+  controller.abort();
+  let aborted = false;
+  const fetchImpl = ((_url: string, init?: RequestInit) => {
+    aborted = !!init?.signal?.aborted;
+    return Promise.reject(new DOMException('aborted', 'AbortError'));
+  }) as unknown as typeof fetch;
+  await assert.rejects(apiRequest('/api/x', { signal: controller.signal, fetchImpl, retries: 0 }));
+  assert.equal(aborted, true);
+});
