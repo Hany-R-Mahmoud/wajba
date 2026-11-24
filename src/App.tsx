@@ -521,14 +521,14 @@ export default function App() {
           <div className="space-y-6">
             {/* View Mode Toggle Switcher */}
             {FEATURE_FLAGS.monthlyPlanner && (
-            <div className="flex items-center justify-between bg-white dark:bg-stone-900 p-2.5 rounded-2xl border border-amber-200/80 dark:border-stone-800 shadow-xs">
-              <div className="flex items-center gap-1.5 bg-amber-100/70 dark:bg-stone-800 p-1.5 rounded-xl">
+            <div className="flex items-center justify-between bg-white dark:bg-stone-900 p-2.5 rounded-2xl border border-hairline/80 dark:border-stone-800 shadow-xs">
+              <div className="flex items-center gap-1.5 bg-soft/70 dark:bg-stone-800 p-1.5 rounded-xl">
                 <button
                   onClick={() => setPlannerMode('weekly')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all ${
                     plannerMode === 'weekly'
-                      ? 'bg-amber-700 text-white shadow-md shadow-amber-800/20'
-                      : 'text-amber-950 dark:text-stone-300 hover:bg-amber-200/60 dark:hover:bg-stone-700/60'
+                      ? 'bg-ink dark:bg-white text-white dark:text-ink shadow-md shadow-ink/20'
+                      : 'text-ink dark:text-stone-300 hover:bg-soft dark:hover:bg-stone-700/60'
                   }`}
                 >
                   <CalendarDays className="w-4 h-4" />
@@ -540,8 +540,8 @@ export default function App() {
                   onClick={() => setPlannerMode('monthly')}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all ${
                     plannerMode === 'monthly'
-                      ? 'bg-amber-700 text-white shadow-md shadow-amber-800/20'
-                      : 'text-amber-950 dark:text-stone-300 hover:bg-amber-200/60 dark:hover:bg-stone-700/60'
+                      ? 'bg-ink dark:bg-white text-white dark:text-ink shadow-md shadow-ink/20'
+                      : 'text-ink dark:text-stone-300 hover:bg-soft dark:hover:bg-stone-700/60'
                   }`}
                 >
                   <Calendar className="w-4 h-4" />
@@ -550,7 +550,7 @@ export default function App() {
                 )}
               </div>
 
-              <div className="text-xs font-bold text-amber-900/70 dark:text-amber-200/70 hidden sm:block px-3">
+              <div className="text-xs font-bold text-ink dark:text-stone-100/70 hidden sm:block px-3">
                 {plannerMode === 'weekly'
                   ? language === 'ar'
                     ? 'عرض الأيام السبعة للأسبوع'

@@ -277,7 +277,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
 
       {/* Recipes Grid */}
       {filteredRecipes.length === 0 ? (
-        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-amber-200/80 dark:border-stone-800 p-8 space-y-3">
+        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-hairline dark:border-night-line p-8 space-y-3">
           <div className="text-4xl">🔍</div>
           <h3 className="text-base font-bold text-stone-800 dark:text-stone-200">
             {isArabic ? 'لم نجد وصفات تطابق بحثك' : 'No recipes matched your search'}

@@ -84,11 +84,11 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
     } catch (error) { setMessage(fail(error)); }
     finally { setBusy(false); }
   }
-  const button = 'rounded-xl border border-amber-300 px-3 py-2 text-xs font-bold disabled:opacity-50 dark:border-stone-600';
+  const button = 'rounded-xl border border-hairline px-3 py-2 text-xs font-bold disabled:opacity-50 dark:border-stone-600';
   const input = 'min-w-0 flex-1 rounded-xl border border-stone-300 bg-white p-2 text-sm dark:bg-stone-900 dark:border-stone-600';
   const invite = details?.invite?.invite_code;
   const inviteUrl = invite ? `${window.location.origin}/dashboard#join=${invite}` : '';
-  return <section className="space-y-3 rounded-2xl border border-amber-300 bg-amber-50/60 p-4 dark:bg-stone-800" aria-label={t('Connected family groups', 'مجموعات العائلة المتصلة')}>
+  return <section className="space-y-3 rounded-2xl border border-hairline bg-soft/60 p-4 dark:bg-stone-800" aria-label={t('Connected family groups', 'مجموعات العائلة المتصلة')}>
     <h3 className="font-bold">{t('Connected family groups', 'مجموعات العائلة المتصلة')}</h3>
     <p className="text-xs">{t('Members stay connected. Publish your week, then others can apply it. Local changes are never uploaded automatically.', 'تظل العضوية متصلة. انشر أسبوعك ليطبقه الآخرون. لا تُرفع التغييرات المحلية تلقائياً.')}</p>
     {isPending ? <LoadingState language={language} label={t('Loading account…', 'جارٍ تحميل الحساب…')} /> : !userId ? <button className={button} disabled={busy} onClick={async () => {
@@ -116,7 +116,7 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
       <button className={button} disabled={busy || loading} onClick={() => setRefresh(value => value + 1)}>{t('Refresh shared plans', 'تحديث الجداول المشتركة')}</button>
       {loading && <LoadingState language={language} label={t('Loading groups…', 'جارٍ تحميل المجموعات…')} />}
       {loadError && <ErrorState language={language} message={loadError} onRetry={() => setRefresh(value => value + 1)} />}
-      {details && <div className="space-y-3 border-t border-amber-200 pt-3">
+      {details && <div className="space-y-3 border-t border-hairline pt-3">
         <p className="text-sm font-semibold">{details.group.name} · {t('Version', 'الإصدار')} {details.group.revision}</p>
         <div className="flex flex-wrap gap-2">
           <button className={button} disabled={busy} onClick={() => {

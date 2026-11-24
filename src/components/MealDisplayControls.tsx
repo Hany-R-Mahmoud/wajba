@@ -29,9 +29,9 @@ export const MealDisplayControls: React.FC<MealDisplayControlsProps> = ({
   const isArabic = language === 'ar';
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-amber-200/80 bg-amber-50/70 px-4 py-3 dark:border-stone-800 dark:bg-stone-900/70">
-      <div className="flex items-center gap-2 text-xs font-black text-amber-950 dark:text-amber-100">
-        <Eye className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-hairline/80 bg-soft/70 px-4 py-3 dark:border-stone-800 dark:bg-stone-900/70">
+      <div className="flex items-center gap-2 text-xs font-black text-ink dark:text-stone-100">
+        <Eye className="h-4 w-4 text-coral-deep dark:text-coral" />
         <span>{isArabic ? 'عرض الوجبات' : 'Meal display'}</span>
       </div>
 
@@ -40,14 +40,14 @@ export const MealDisplayControls: React.FC<MealDisplayControlsProps> = ({
           type="checkbox"
           checked={showAllMeals}
           onChange={(event) => onShowAllMealsChange(event.target.checked)}
-          className="h-4 w-4 accent-amber-700"
+          className="h-4 w-4 accent-coral-deep"
         />
         <span>{isArabic ? 'عرض الوجبات الثلاث' : 'Show all 3 meals'}</span>
       </label>
 
       {!showAllMeals && (
         <div
-          className="flex flex-wrap items-center gap-x-3 gap-y-2 border-s border-amber-200 ps-3 dark:border-stone-700"
+          className="flex flex-wrap items-center gap-x-3 gap-y-2 border-s border-hairline ps-3 dark:border-stone-700"
           role="group"
           aria-label={isArabic ? 'اختر الوجبات الظاهرة' : 'Select visible meals'}
         >
@@ -65,10 +65,10 @@ export const MealDisplayControls: React.FC<MealDisplayControlsProps> = ({
                   checked={isSelected}
                   disabled={isOnlySelected}
                   onChange={() => onToggleMealSlot(option.key)}
-                  className="h-4 w-4 accent-amber-700 disabled:opacity-60"
+                  className="h-4 w-4 accent-coral-deep disabled:opacity-60"
                 />
                 <span>
-                  {option.icon} {isArabic ? option.labelAr : option.labelEn}
+                  {isArabic ? option.labelAr : option.labelEn}
                 </span>
               </label>
             );

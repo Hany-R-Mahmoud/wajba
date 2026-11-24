@@ -95,18 +95,18 @@ export const CookingTimerBar: React.FC<CookingTimerBarProps> = ({
   };
 
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-2xl bg-amber-900/95 text-amber-50 dark:bg-stone-900/95 dark:text-stone-100 backdrop-blur-md rounded-2xl p-3 shadow-2xl border border-amber-600/30 flex flex-col gap-2 transition-all">
-      <div className="flex items-center justify-between px-2 text-xs text-amber-200/80 font-medium">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-2xl bg-ink/95 text-stone-100 dark:bg-night-card/95 backdrop-blur-md rounded-2xl p-3 shadow-2xl border border-coral/30 flex flex-col gap-2 transition-all">
+      <div className="flex items-center justify-between px-2 text-xs text-stone-100/80 font-medium">
         <div className="flex items-center gap-1.5">
-          <Timer className="w-4 h-4 text-amber-400 animate-pulse" />
+          <Timer className="w-4 h-4 text-coral animate-pulse" />
           <span>{isArabic ? 'مؤقتات الطهي النشطة' : 'Active Cooking Timers'}</span>
-          <span className="bg-amber-600/40 text-amber-200 px-2 py-0.5 rounded-full text-[10px]">
+          <span className="bg-coral/40 text-stone-100 px-2 py-0.5 rounded-full text-[10px]">
             {timers.length}
           </span>
         </div>
         <button
           onClick={() => onUpdateTimers([])}
-          className="hover:text-amber-100 text-amber-300/70 text-[11px] underline underline-offset-2"
+          className="hover:text-stone-100 text-coral/70 text-[11px] underline underline-offset-2"
         >
           {isArabic ? 'إغلاق الكل' : 'Dismiss All'}
         </button>
@@ -121,14 +121,14 @@ export const CookingTimerBar: React.FC<CookingTimerBarProps> = ({
               className={`flex items-center justify-between gap-3 p-2.5 rounded-xl transition-colors ${
                 isDone
                   ? 'bg-emerald-900/60 border border-emerald-500/50 text-emerald-100'
-                  : 'bg-amber-950/60 border border-amber-800/40'
+                  : 'bg-white/10 border border-white/15'
               }`}
             >
               <div className="min-w-0 flex-1">
-                <p className="text-xs font-bold truncate text-amber-100 dark:text-amber-200">
+                <p className="text-xs font-bold truncate text-stone-100 dark:text-stone-100">
                   {isArabic ? timer.recipeTitleAr : timer.recipeTitleEn}
                 </p>
-                <p className="text-[11px] text-amber-300/80 dark:text-stone-300 truncate">
+                <p className="text-[11px] text-coral/80 dark:text-stone-300 truncate">
                   {isArabic ? timer.stepTitleAr : timer.stepTitleEn}
                 </p>
               </div>
@@ -139,7 +139,7 @@ export const CookingTimerBar: React.FC<CookingTimerBarProps> = ({
                     isDone
                       ? 'bg-emerald-500 text-stone-950 animate-bounce'
                       : timer.isRunning
-                      ? 'bg-amber-500/20 text-amber-300'
+                      ? 'bg-coral/20 text-coral'
                       : 'bg-stone-800 text-stone-400'
                   }`}
                 >
@@ -156,7 +156,7 @@ export const CookingTimerBar: React.FC<CookingTimerBarProps> = ({
                 {!isDone && (
                   <button
                     onClick={() => togglePause(timer.id)}
-                    className="p-1.5 rounded-lg bg-amber-700/50 hover:bg-amber-600 text-amber-100 transition-colors"
+                    className="p-1.5 rounded-lg bg-white/10 hover:bg-coral text-stone-100 transition-colors"
                     title={timer.isRunning ? (isArabic ? 'إيقاف مؤقت' : 'Pause') : (isArabic ? 'تشغيل' : 'Start')}
                   >
                     {timer.isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
@@ -165,7 +165,7 @@ export const CookingTimerBar: React.FC<CookingTimerBarProps> = ({
 
                 <button
                   onClick={() => resetTimer(timer.id)}
-                  className="p-1.5 rounded-lg bg-amber-800/40 hover:bg-amber-700/60 text-amber-200 transition-colors"
+                  className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-stone-100 transition-colors"
                   title={isArabic ? 'إعادة ضبط' : 'Reset'}
                 >
                   <RotateCcw className="w-3.5 h-3.5" />

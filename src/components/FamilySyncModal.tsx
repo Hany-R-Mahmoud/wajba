@@ -104,26 +104,26 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="family-sync-title"
-        className="relative w-full max-w-xl max-h-[90dvh] overflow-y-auto bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-amber-200/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5 cursor-default"
+        className="relative w-full max-w-xl max-h-[90dvh] overflow-y-auto bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-hairline/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-amber-200 dark:border-stone-800">
+        <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-stone-800">
           <div className="flex items-center gap-2">
-            <Users className="w-5 h-5 text-amber-700" />
-            <h2 id="family-sync-title" className="text-base font-extrabold text-amber-950 dark:text-amber-100">
+            <Users className="w-5 h-5 text-coral-deep" />
+            <h2 id="family-sync-title" className="text-base font-extrabold text-ink dark:text-stone-100">
               {isArabic ? 'العائلة والمشاركة' : 'Family and Sharing'}
             </h2>
           </div>
-          <button aria-label={isArabic ? 'إغلاق' : 'Close'} onClick={onClose} className="p-2 rounded-full hover:bg-amber-100 dark:hover:bg-stone-800">
+          <button aria-label={isArabic ? 'إغلاق' : 'Close'} onClick={onClose} className="p-2 rounded-full hover:bg-soft dark:hover:bg-stone-800">
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* URL Link Sharing Option */}
-        <div className="p-4 rounded-2xl bg-amber-50/80 dark:bg-stone-800/80 border border-amber-200 dark:border-stone-700 space-y-2">
-          <h3 className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
-            <LinkIcon className="w-4 h-4 text-amber-700" />
+        <div className="p-4 rounded-2xl bg-soft/80 dark:bg-stone-800/80 border border-hairline dark:border-stone-700 space-y-2">
+          <h3 className="text-xs font-bold text-ink dark:text-stone-100 flex items-center gap-1.5">
+            <LinkIcon className="w-4 h-4 text-coral-deep" />
             <span>{isArabic ? 'رابط الخطة المباشر للعائلة:' : 'Direct Family Share URL:'}</span>
           </h3>
           <p className="text-[11px] text-stone-600 dark:text-stone-400">
@@ -137,11 +137,11 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
               readOnly
               type="text"
               value={sharedUrl}
-              className="flex-1 min-w-[200px] p-2.5 text-xs rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-stone-600 dark:text-stone-300 select-all"
+              className="flex-1 min-w-[200px] p-2.5 text-xs rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-stone-600 dark:text-stone-300 select-all"
             />
             <button
               onClick={handleCopyLink}
-              className="px-4 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold flex items-center gap-1.5 flex-shrink-0 cursor-pointer transition-colors shadow-xs"
+              className="px-4 py-2.5 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold flex items-center gap-1.5 flex-shrink-0 cursor-pointer transition-colors shadow-xs"
             >
               {copiedLink ? <Check className="w-4 h-4 text-emerald-300" /> : <Copy className="w-4 h-4" />}
               <span>{copiedLink ? (isArabic ? 'تم النسخ!' : 'Copied!') : (isArabic ? 'نسخ الرابط' : 'Copy Link')}</span>
@@ -186,7 +186,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
             <button
               disabled={syncing}
               onClick={handleSyncSheets}
-              className="px-3 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold flex items-center gap-1 flex-shrink-0"
+              className="px-3 py-2 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold flex items-center gap-1 flex-shrink-0"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${syncing ? 'animate-spin' : ''}`} />
               <span>{isArabic ? 'مزامنة' : 'Sync'}</span>
@@ -194,7 +194,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
           </div>
 
           {syncMessage && (
-            <p role={syncMessage.type === 'error' ? 'alert' : 'status'} className={`text-[11px] font-bold pt-1 ${syncMessage.type === 'error' ? 'text-rose-600' : syncMessage.type === 'info' ? 'text-amber-700' : 'text-emerald-600'}`}>{syncMessage.text}</p>
+            <p role={syncMessage.type === 'error' ? 'alert' : 'status'} className={`text-[11px] font-bold pt-1 ${syncMessage.type === 'error' ? 'text-rose-600' : syncMessage.type === 'info' ? 'text-coral-deep' : 'text-emerald-600'}`}>{syncMessage.text}</p>
           )}
         </div>
         )}
@@ -221,7 +221,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         <div className="flex items-center justify-end pt-2">
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold shadow-md"
+            className="px-5 py-2 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold shadow-md"
           >
             {isArabic ? 'إغلاق' : 'Close'}
           </button>

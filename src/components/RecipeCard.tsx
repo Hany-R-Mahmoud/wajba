@@ -17,7 +17,7 @@ interface RecipeCardProps {
 export const REGION_BADGES: { [key in Recipe['region']]: { ar: string; en: string; flag: string; bg: string } } = {
   egypt: { ar: 'مصر 🇪🇬', en: 'Egypt 🇪🇬', flag: '🇪🇬', bg: 'bg-red-900/10 text-red-900 dark:text-red-300 border-red-200' },
   levant: { ar: 'بلاد الشام 🇱🇧', en: 'Levant 🇱🇧', flag: '🇱🇧', bg: 'bg-emerald-900/10 text-emerald-900 dark:text-emerald-300 border-emerald-200' },
-  gulf: { ar: 'الخليج العربي 🇸🇦', en: 'Arab Gulf 🇸🇦', flag: '🇸🇦', bg: 'bg-amber-900/10 text-amber-900 dark:text-amber-300 border-amber-200' },
+  gulf: { ar: 'الخليج العربي 🇸🇦', en: 'Arab Gulf 🇸🇦', flag: '🇸🇦', bg: 'bg-ink/10 text-ink dark:text-coral border-hairline' },
   maghreb: { ar: 'المغرب العربي 🇲🇦', en: 'Maghreb 🇲🇦', flag: '🇲🇦', bg: 'bg-rose-900/10 text-rose-900 dark:text-rose-300 border-rose-200' },
   general: { ar: 'عربي عام 🌍', en: 'Arab World 🌍', flag: '🌍', bg: 'bg-stone-900/10 text-stone-800 dark:text-stone-300 border-stone-200' },
 };

@@ -207,11 +207,11 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
       <div className="bg-white dark:bg-night-card p-6 rounded-3xl border border-hairline dark:border-night-line shadow-sm space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-amber-700 text-white flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-2xl bg-ink dark:bg-white text-white dark:text-ink flex items-center justify-center shadow-md">
               <ShoppingBag className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-2xl font-extrabold text-amber-950 dark:text-amber-100">
+              <h1 className="text-2xl font-extrabold text-ink dark:text-stone-100">
                 {isArabic ? 'قائمة التسوق' : 'Grocery list'}
               </h1>
               <p className="text-sm font-medium text-stone-600 dark:text-stone-300 mt-1">
@@ -226,7 +226,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
           <div className="flex flex-wrap items-center gap-2 no-print">
             <button
               onClick={handleShareWhatsApp}
-              className="px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm"
+              className="px-3.5 py-2 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold flex items-center gap-1.5 shadow-sm"
             >
               <Share2 className="w-3.5 h-3.5" />
               <span>{isArabic ? 'إرسال بالواتساب' : 'WhatsApp'}</span>
@@ -266,12 +266,12 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                 ? `تقدم التسوق: تم شراء ${checkedCount} من إجمالي ${totalCount} عنصر`
                 : `Shopping Progress: ${checkedCount} of ${totalCount} items completed`}
             </span>
-            <span className="font-mono text-amber-800 dark:text-amber-400">{progressPercent}%</span>
+            <span className="font-mono text-ink dark:text-coral">{progressPercent}%</span>
           </div>
 
           <div className="w-full h-3 rounded-full bg-stone-100 dark:bg-stone-800 overflow-hidden p-0.5 border border-stone-200/60 dark:border-stone-700">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-amber-600 to-emerald-600 transition-all duration-300"
+              className="h-full rounded-full bg-coral transition-all duration-300"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
@@ -281,10 +281,10 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
       {/* Add Custom Extra Item Form */}
       <form
         onSubmit={handleAddExtraSubmit}
-        className="bg-amber-50/80 dark:bg-stone-800/60 p-4 rounded-2xl border border-amber-200/60 dark:border-stone-700 flex flex-wrap items-center gap-3 no-print"
+        className="bg-soft/80 dark:bg-stone-800/60 p-4 rounded-2xl border border-hairline/60 dark:border-stone-700 flex flex-wrap items-center gap-3 no-print"
       >
-        <span className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1">
-          <Plus className="w-4 h-4 text-amber-700" />
+        <span className="text-xs font-bold text-ink dark:text-stone-100 flex items-center gap-1">
+          <Plus className="w-4 h-4 text-coral-deep" />
           {isArabic ? 'إضافة عنصر إضافي:' : 'Add Extra Item:'}
         </span>
 
@@ -293,14 +293,14 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
           value={extraName}
           onChange={(e) => setExtraName(e.target.value)}
           placeholder={isArabic ? 'مثال: مناديل ورقية، صابون أطباق...' : 'e.g. Paper towels, dish soap'}
-          className="flex-1 min-w-[180px] p-2 text-xs rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-semibold"
+          className="flex-1 min-w-[180px] p-2 text-xs rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-semibold"
         />
 
         <input
           type="number"
           value={extraAmount}
           onChange={(e) => setExtraAmount(Number(e.target.value))}
-          className="w-16 p-2 text-xs rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-bold font-mono text-center"
+          className="w-16 p-2 text-xs rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-bold font-mono text-center"
         />
 
         <input
@@ -308,12 +308,12 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
           value={extraUnit}
           onChange={(e) => setExtraUnit(e.target.value)}
           placeholder="الوحدة"
-          className="w-20 p-2 text-xs rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-semibold"
+          className="w-20 p-2 text-xs rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-semibold"
         />
 
         <button
           type="submit"
-          className="px-4 py-2 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold"
+          className="px-4 py-2 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold"
         >
           {isArabic ? 'إضافة' : 'Add'}
         </button>
@@ -429,7 +429,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
 
       {/* Aisle Grouped Grocery Sections */}
       {groceryList.length === 0 ? (
-        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-amber-200/80 dark:border-stone-800 p-8 space-y-3">
+        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-hairline/80 dark:border-stone-800 p-8 space-y-3">
           <ShoppingBag className="mx-auto h-9 w-9 text-stone-400" aria-hidden="true" />
           <h3 className="text-base font-bold text-stone-800 dark:text-stone-200">
             {isArabic ? 'قائمة التسوق فارغة' : 'Your grocery list is empty'}
@@ -441,7 +441,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
           </p>
         </div>
       ) : filteredList.length === 0 ? (
-        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-amber-200/80 dark:border-stone-800 p-8 space-y-3">
+        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-hairline/80 dark:border-stone-800 p-8 space-y-3">
           <div className="text-4xl">🔍</div>
           <h3 className="text-base font-bold text-stone-800 dark:text-stone-200">
             {isArabic ? 'لا توجد نتائج تطابق بحثك وتصفياتك' : 'No items match your search or filters'}
@@ -454,7 +454,7 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
           <button
             type="button"
             onClick={handleResetFilters}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold transition-all cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold transition-all cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" />
             <span>{isArabic ? 'إعادة ضبط التصفية' : 'Reset All Filters'}</span>
@@ -471,11 +471,11 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
             return (
               <div
                 key={aisleKey}
-                className="bg-white dark:bg-stone-900 rounded-2xl border border-amber-200/80 dark:border-stone-800 overflow-hidden shadow-xs"
+                className="bg-white dark:bg-stone-900 rounded-2xl border border-hairline/80 dark:border-stone-800 overflow-hidden shadow-xs"
               >
                 {/* Aisle Header */}
-                <div className="bg-amber-50/80 dark:bg-stone-800/80 px-4 py-2.5 border-b border-amber-200/60 dark:border-stone-700 flex items-center justify-between">
-                  <h3 className="text-xs font-extrabold text-amber-950 dark:text-amber-200 flex items-center gap-2">
+                <div className="bg-soft/80 dark:bg-stone-800/80 px-4 py-2.5 border-b border-hairline/60 dark:border-stone-700 flex items-center justify-between">
+                  <h3 className="text-xs font-extrabold text-ink dark:text-stone-100 flex items-center gap-2">
                     <span className="text-base">{labelInfo.icon}</span>
                     <span>{isArabic ? labelInfo.ar : labelInfo.en}</span>
                   </h3>
@@ -493,12 +493,12 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                       className={`p-2.5 rounded-xl transition-all cursor-pointer select-none ${
                         item.isChecked
                           ? 'bg-stone-100/60 dark:bg-stone-800/40 text-stone-400 line-through'
-                          : 'hover:bg-amber-50/60 dark:hover:bg-stone-800/60 text-stone-800 dark:text-stone-200'
+                          : 'hover:bg-soft dark:hover:bg-stone-800/60 text-stone-800 dark:text-stone-200'
                       }`}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                          <button type="button" disabled={item.isCovered} className="text-amber-700 disabled:cursor-default disabled:opacity-70 dark:text-amber-400" aria-label={item.isCovered ? (isArabic ? 'متوفر في المخزن' : 'Covered by pantry') : (isArabic ? 'تبديل حالة الشراء' : 'Toggle purchased')}>
+                          <button type="button" disabled={item.isCovered} className="text-coral-deep disabled:cursor-default disabled:opacity-70 dark:text-coral" aria-label={item.isCovered ? (isArabic ? 'متوفر في المخزن' : 'Covered by pantry') : (isArabic ? 'تبديل حالة الشراء' : 'Toggle purchased')}>
                             {item.isChecked ? (
                               <CheckSquare className="w-5 h-5 text-emerald-600 fill-emerald-100 dark:fill-emerald-950" />
                             ) : (
@@ -525,12 +525,12 @@ export const GroceryListView: React.FC<GroceryListViewProps> = ({
                                 </p>
                               );
                             })()}
-                            {item.isCovered ? <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-300">{isArabic ? 'متوفر بالكامل في المخزن' : 'Fully covered by pantry'}</p> : item.pantryAmount && item.pantryAmount > 0 ? <p className="text-[10px] font-bold text-amber-700 dark:text-amber-300">{isArabic ? `متوفر من المخزن: ${item.pantryAmount}` : `Pantry covers: ${item.pantryAmount}`}</p> : null}
+                            {item.isCovered ? <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-300">{isArabic ? 'متوفر بالكامل في المخزن' : 'Fully covered by pantry'}</p> : item.pantryAmount && item.pantryAmount > 0 ? <p className="text-[10px] font-bold text-coral-deep dark:text-coral">{isArabic ? `متوفر من المخزن: ${item.pantryAmount}` : `Pantry covers: ${item.pantryAmount}`}</p> : null}
                           </div>
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <span className="text-xs font-bold font-mono text-amber-900 dark:text-amber-300">
+                          <span className="text-xs font-bold font-mono text-ink dark:text-coral">
                             {item.amount} {isArabic ? item.unitAr : item.unitEn}
                           </span>
 

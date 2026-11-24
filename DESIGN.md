@@ -2,7 +2,7 @@
 
 ## 1. Atmosphere & Identity
 
-Wajba is a warm, practical kitchen companion: calm enough for planning, rich enough to make food feel inviting. Its signature is the contrast between dark charcoal navigation surfaces and amber/coral actions over soft paper-like backgrounds.
+Wajba is a warm, practical kitchen companion: calm enough for planning, rich enough to make food feel inviting. Its signature is the contrast between dark charcoal controls and coral accents over soft paper-like backgrounds. Every dashboard view (Plan, Recipes, Grocery, In Season, Pantry, Settings) and its modals use this one language; amber and yellow are not part of it.
 
 ## 2. Color
 
@@ -20,6 +20,24 @@ Wajba is a warm, practical kitchen companion: calm enough for planning, rich eno
 | Pure Black | `--cohere-black` | `#000000` | Deep contrast accents |
 
 Accent colors are reserved for actions, status, and meaningful food/planning emphasis.
+
+### Tailwind tokens
+
+Use these classes instead of arbitrary `[#hex]` values (defined in `src/index.css` under `@theme`):
+
+| Class suffix | Value | Use |
+|---|---|---|
+| `ink` | `#17171c` | Primary buttons and chrome (`bg-ink text-white dark:bg-white dark:text-ink`) |
+| `soft` | `#eeece7` | Panels, chips, quiet fills |
+| `hairline` | `#d9d9dd` | Borders and dividers on light surfaces |
+| `paper` | `#f8f7f4` | Page background (light) |
+| `line` | `#e2e0d8` | Header and card borders (light) |
+| `coral` | `#ff7759` | Accents and icons; text only on dark surfaces |
+| `coral-deep` | `#b9401f` | Coral text and focus on light surfaces (5.1:1 on paper) |
+| `night`, `night-card`, `night-line` | `#0c1220`, `#162032`, `#2b3a54` | Dark-mode page, card and border |
+| `navy` | `#071829` | Experimental chip |
+
+Emerald stays for success states and the checked state; rose for errors and destructive actions. Meal-slot emoji stay in data, not in labels.
 
 ## 3. Typography
 
