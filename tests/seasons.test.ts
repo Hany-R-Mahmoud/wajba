@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { PRODUCE, getMonthList, DATASET_VERSION, DATASET_DATE } from '../src/data/seasons';
 import { INITIAL_RECIPES } from '../src/data/recipes';
-import { cairoMonth, isInSeason, isPeak, isSeasonalRecipe, matchProduce, recipeSeasonality, recipesUsing } from '../src/utils/season';
+import { cairoMonth, isInSeason, isPeak, isSeasonalRecipe, matchProduce, recipeSeasonality, recipesUsing, seasonRanges } from '../src/utils/season';
 import { Ingredient, Recipe } from '../src/types';
 
 const byAr = (name: string) => PRODUCE.find((p) => p.nameAr === name)!;
@@ -196,4 +196,12 @@ test('catalog-wide: seasonal recipes exist in every month and never include out-
     assert.ok(seasonal.length > 0, `month ${m} has at least one seasonal recipe`);
     for (const r of seasonal) assert.equal(recipeSeasonality(r, m).outOfSeason, 0);
   }
+});
+
+test('seasonRanges wraps over the new year and keeps discontinuous seasons apart', () => {
+  assert.deepEqual(seasonRanges(byAr('بسلة').seasonMonths), [[11, 3]]);
+  assert.deepEqual(seasonRanges(byAr('فاصوليا خضراء').seasonMonths), [[3, 5], [9, 11]]);
+  assert.deepEqual(seasonRanges(byAr('طماطم').seasonMonths), [[1, 12]]);
+  assert.deepEqual(seasonRanges(byAr('مشمش').seasonMonths), [[5, 7]]);
+  assert.deepEqual(seasonRanges([]), []);
 });

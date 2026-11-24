@@ -3,6 +3,7 @@ import {
   BookOpen,
   CalendarDays,
   ChevronDown,
+  Leaf,
   MoreHorizontal,
   Settings,
   ShoppingBag,
@@ -18,6 +19,7 @@ export type NavigationTab =
   | 'recipes'
   | 'planner'
   | 'grocery'
+  | 'seasons'
   | 'pantry'
   | 'leaderboard'
   | 'family'
@@ -33,6 +35,7 @@ const primaryItems = [
   { id: 'planner' as const, labelAr: 'الجدول', labelEn: 'Plan', icon: CalendarDays },
   { id: 'recipes' as const, labelAr: 'الوصفات', labelEn: 'Recipes', icon: BookOpen },
   { id: 'grocery' as const, labelAr: 'التسوق', labelEn: 'Grocery', icon: ShoppingBag },
+  { id: 'seasons' as const, labelAr: 'في موسمه', labelEn: 'Season', icon: Leaf },
   { id: 'pantry' as const, labelAr: 'المخزن', labelEn: 'Pantry', icon: Warehouse },
 ];
 

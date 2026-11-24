@@ -2,7 +2,9 @@ import React, { useState, useMemo } from 'react';
 import { DIETARY_TAGS, DietaryTag, Language, Recipe, Region } from '../types';
 import { DIETARY_LABELS, filterRecipesByDietaryTag } from '../utils/recipes';
 import { RecipeCard } from './RecipeCard';
-import { Search, Plus, Filter, Bookmark, RotateCcw, ChevronDown } from 'lucide-react';
+import { cairoMonth, isSeasonalRecipe, recipeSeasonality } from '../utils/season';
+import { SEASON_MONTHS_AR, SEASON_MONTHS_EN } from '../data/seasons';
+import { Search, Plus, Filter, Bookmark, RotateCcw, ChevronDown, Leaf } from 'lucide-react';
 
 interface RecipeExplorerProps {
   recipes: Recipe[];
@@ -14,6 +16,8 @@ interface RecipeExplorerProps {
   onSelectRecipe: (recipe: Recipe) => void;
   onQuickAddToPlanner: (recipe: Recipe) => void;
   onOpenCreateRecipeModal: () => void;
+  /** Start with the "seasonal this month" filter on (opened from the In Season view). */
+  initialSeasonalOnly?: boolean;
 }
 
 export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
@@ -26,6 +30,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
   onSelectRecipe,
   onQuickAddToPlanner,
   onOpenCreateRecipeModal,
+  initialSeasonalOnly = false,
 }) => {
   const isArabic = language === 'ar';
 
@@ -34,11 +39,17 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
   const [selectedRegion, setSelectedRegion] = useState<Region | 'all'>('all');
   const [selectedDietaryTag, setSelectedDietaryTag] = useState<DietaryTag | 'all'>('all');
   const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const [onlySeasonal, setOnlySeasonal] = useState(initialSeasonalOnly);
+  const month = useMemo(() => cairoMonth(), []);
+  const monthName = (isArabic ? SEASON_MONTHS_AR : SEASON_MONTHS_EN)[month - 1];
 
   const filteredRecipes = useMemo(() => {
-    return filterRecipesByDietaryTag(recipes, selectedDietaryTag).filter((recipe) => {
+    const matches = filterRecipesByDietaryTag(recipes, selectedDietaryTag).filter((recipe) => {
       // Favorites filter
       if (onlyFavorites && !favorites.includes(recipe.id)) return false;
+
+      // Seasonal filter: limited-season produce in season now, nothing out of season
+      if (onlySeasonal && !isSeasonalRecipe(recipe, month)) return false;
 
       // Category filter (Meals vs Sweets / Desserts)
       if (selectedCategory === 'meals' && recipe.mealType.includes('dessert')) return false;
@@ -66,14 +77,23 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
 
       return true;
     });
-  }, [recipes, searchQuery, selectedCategory, selectedRegion, selectedDietaryTag, onlyFavorites, favorites]);
+
+    if (!onlySeasonal) return matches;
+    // Most seasonal first: more peak items, then more in-season items (stable otherwise).
+    const rank = (recipe: Recipe) => {
+      const s = recipeSeasonality(recipe, month);
+      return s.peak.length * 100 + s.seasonal.length;
+    };
+    return [...matches].sort((a, b) => rank(b) - rank(a));
+  }, [recipes, searchQuery, selectedCategory, selectedRegion, selectedDietaryTag, onlyFavorites, onlySeasonal, month, favorites]);
 
   const isFiltered =
     searchQuery.trim().length > 0 ||
     selectedCategory !== 'all' ||
     selectedRegion !== 'all' ||
     selectedDietaryTag !== 'all' ||
-    onlyFavorites;
+    onlyFavorites ||
+    onlySeasonal;
 
   const handleResetFilters = () => {
     setSearchQuery('');
@@ -81,6 +101,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
     setSelectedRegion('all');
     setSelectedDietaryTag('all');
     setOnlyFavorites(false);
+    setOnlySeasonal(false);
   };
 
   const categoryOptions = [
@@ -216,6 +237,26 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             <Bookmark className={`h-3.5 w-3.5 ${onlyFavorites ? 'fill-white' : ''}`} aria-hidden="true" />
             <span>{isArabic ? 'المفضلة فقط' : 'Favorites only'}</span>
           </button>
+          <button
+            type="button"
+            aria-pressed={onlySeasonal}
+            onClick={() => setOnlySeasonal(!onlySeasonal)}
+            className={`mt-3 ms-2 inline-flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-xs font-bold transition-colors ${
+              onlySeasonal
+                ? 'bg-[#ff7759] text-white'
+                : 'border border-[#d9d9dd] bg-[#eeece7] text-[#212121] hover:border-[#ff7759] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+            }`}
+          >
+            <Leaf className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>{isArabic ? `في موسمه هذا الشهر (${monthName})` : `Seasonal this month (${monthName})`}</span>
+          </button>
+          {onlySeasonal && (
+            <p className="mt-2 text-xs text-stone-600 dark:text-stone-400">
+              {isArabic
+                ? 'وصفات تستخدم خضارًا أو فاكهة في موسمها الآن ولا تتضمن صنفًا خارج موسمه، مرتبة بالأكثر موسمية. التقدير مبني على مكونات الخضار والفواكه فقط.'
+                : 'Recipes that use produce in season now and none that is out of season, most seasonal first. Based on fresh-produce ingredients only.'}
+            </p>
+          )}
         </div>
       </div>
 

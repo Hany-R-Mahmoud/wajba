@@ -3,6 +3,7 @@ import { ActiveTimer, Language } from '../types';
 import {
   BookOpen,
   CalendarDays,
+  Leaf,
   ShoppingBag,
   Trophy,
   Users,
@@ -71,6 +72,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       labelAr: 'قائمة التسوق',
       labelEn: 'Grocery List',
       icon: ShoppingBag,
+    },
+    {
+      id: 'seasons' as const,
+      labelAr: 'في موسمه',
+      labelEn: 'In Season',
+      icon: Leaf,
     },
   ];
 

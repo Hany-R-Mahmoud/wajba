@@ -52,6 +52,7 @@ import { CreateRecipeModal } from './components/CreateRecipeModal';
 import { FamilySyncModal } from './components/FamilySyncModal';
 import { CookingTimerBar } from './components/CookingTimerBar';
 import { PantryView } from './components/PantryView';
+import { SeasonalView } from './components/SeasonalView';
 import { SettingsView } from './components/SettingsView';
 import { PublicRecipeNotFound, PublicRecipePage } from './components/PublicRecipePage';
 import { getPublicRecipeRoute, updateSeo } from './utils/seo';
@@ -61,12 +62,13 @@ import {PwaStatusBar} from './components/PwaStatusBar';
 import { MobileBottomNav } from './components/MobileBottomNav';
 import { FEATURE_FLAGS } from './config/features';
 
-type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'pantry' | 'leaderboard' | 'settings';
+type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'seasons' | 'pantry' | 'leaderboard' | 'settings';
 
 const DASHBOARD_PATHS: Record<DashboardTab, string> = {
   planner: '/dashboard',
   recipes: '/dashboard/recipes',
   grocery: '/dashboard/grocery',
+  seasons: '/dashboard/seasons',
   pantry: '/dashboard/pantry',
   leaderboard: '/dashboard/leaderboard',
   settings: '/dashboard/settings',
@@ -74,7 +76,7 @@ const DASHBOARD_PATHS: Record<DashboardTab, string> = {
 
 function getDashboardTab(pathname: string): DashboardTab | null {
   if (pathname === '/dashboard' || pathname === '/dashboard/') return 'planner';
-  const tab = pathname.match(/^\/dashboard\/(recipes|planner|grocery|pantry|leaderboard|settings)\/?$/)?.[1];
+  const tab = pathname.match(/^\/dashboard\/(recipes|planner|grocery|seasons|pantry|leaderboard|settings)\/?$/)?.[1];
   if (tab === 'leaderboard' && !FEATURE_FLAGS.leaderboard) return null;
   return (tab as DashboardTab | undefined) ?? null;
 }
@@ -152,6 +154,8 @@ export default function App() {
   const [userVotes, setUserVotes] = useState<{ [recipeId: string]: 'like' | 'dislike' }>(loadVotes());
   const [weeklyPlan, setWeeklyPlan] = useState<WeeklyPlan>(loadWeeklyPlan);
   const [monthlyPlan, setMonthlyPlan] = useState<MonthlyPlan>(() => loadMonthlyPlan());
+  // One-shot: the In Season view opens recipes with the seasonal filter on.
+  const [openRecipesSeasonal, setOpenRecipesSeasonal] = useState(false);
   const [plannerMode, setPlannerMode] = useState<'weekly' | 'monthly'>('weekly');
 
   const [groceryCheckedIds, setGroceryCheckedIds] = useState<string[]>(loadGroceryCheckedIds());
@@ -429,6 +433,7 @@ export default function App() {
           if (tab === 'family') {
             setFamilySyncModalOpen(true);
           } else {
+            setOpenRecipesSeasonal(false);
             navigateToTab(tab);
           }
         }}
@@ -445,6 +450,7 @@ export default function App() {
           if (tab === 'family') {
             setFamilySyncModalOpen(true);
           } else {
+            setOpenRecipesSeasonal(false);
             navigateToTab(tab);
           }
         }}
@@ -470,6 +476,7 @@ export default function App() {
             onSelectRecipe={(recipe) => setSelectedDetailRecipe(recipe)}
             onQuickAddToPlanner={(recipe) => setSelectedDetailRecipe(recipe)}
             onOpenCreateRecipeModal={handleOpenCreateRecipeModal}
+            initialSeasonalOnly={openRecipesSeasonal}
           />
         )}
 
@@ -554,6 +561,20 @@ export default function App() {
             onAddCustomExtra={handleAddGroceryExtra}
             onRemoveCustomExtra={handleRemoveGroceryExtra}
             onClearChecked={handleClearGroceryChecked}
+          />
+        )}
+
+        {currentTab === 'seasons' && (
+          <SeasonalView
+            recipes={allRecipes}
+            language={language}
+            groceryExtraIds={groceryExtras.map((item) => item.id)}
+            onAddToGrocery={handleAddGroceryExtra}
+            onSelectRecipe={(recipe) => setSelectedDetailRecipe(recipe)}
+            onOpenSeasonalRecipes={() => {
+              setOpenRecipesSeasonal(true);
+              navigateToTab('recipes');
+            }}
           />
         )}
 

@@ -261,3 +261,22 @@ export function recipesUsing<R extends Pick<Recipe, 'ingredients'>>(produceId: s
     ),
   );
 }
+
+/**
+ * Contiguous month runs for display, wrapping over the new year:
+ * [11,12,1,2,3] -> [[11,3]]; green beans [3,4,5,9,10,11] -> [[3,5],[9,11]].
+ * A full year returns [[1,12]].
+ */
+export function seasonRanges(months: SeasonMonth[]): Array<[SeasonMonth, SeasonMonth]> {
+  const set = new Set<number>(months);
+  if (set.size === 12) return [[1, 12]];
+  const ranges: Array<[SeasonMonth, SeasonMonth]> = [];
+  for (let m = 1; m <= 12; m++) {
+    const prev = m === 1 ? 12 : m - 1;
+    if (!set.has(m) || set.has(prev)) continue; // not the start of a run
+    let end = m;
+    while (set.has(end === 12 ? 1 : end + 1)) end = end === 12 ? 1 : end + 1;
+    ranges.push([m as SeasonMonth, end as SeasonMonth]);
+  }
+  return ranges;
+}
