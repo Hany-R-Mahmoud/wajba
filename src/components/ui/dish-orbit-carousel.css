@@ -68,8 +68,8 @@
 .landing-actions__google { color: #fff; background: #17171c; }
 .landing-actions__google:hover { background: #36363d; }
 .landing-actions__google:disabled { opacity: .6; cursor: wait; }
-.landing-actions__guest { color: #17171c; background: #edbd9d; }
-.landing-actions__guest:hover { background: #e3ab86; }
+.landing-actions__guest { color: #fff; background: #b9401f; }
+.landing-actions__guest:hover { background: #8f2f14; }
 .dark .landing-actions__google { color: #17171c; background: #f8f7f4; }
 .dark .landing-actions__google:hover { background: #e5e1d8; }
 .landing-actions p { max-width: 44ch; margin-top: 8px; color: #a33122; line-height: 1.7; }
@@ -78,8 +78,9 @@
 .landing-final .landing-actions__google { color: #17171c; background: #f8f7f4; }
 .landing-final .landing-actions__google:hover { background: #e5e1d8; }
 .landing-final .landing-actions p { color: #ffb4a7; margin-inline: auto; }
-.dish-orbit :is(a, button):focus-visible, .landing-actions button:focus-visible { outline: 3px solid #b45309; outline-offset: 5px; }
-.dish-orbit__stage:focus-visible { outline: 3px solid #b45309; outline-offset: -3px; }
+.dish-orbit :is(a, button):focus-visible, .landing-actions button:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 5px; }
+.dish-orbit__stage:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: -3px; }
+.dark .dish-orbit :is(a, button):focus-visible, .dark .landing-actions button:focus-visible, .dark .dish-orbit__stage:focus-visible { outline-color: var(--cohere-coral); }
 #wajba-features { scroll-margin-top: 88px; }
 @keyframes dish-copy-in { from { opacity: .2; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @media (min-width: 1101px) and (min-height: 700px), (min-width: 360px) and (max-width: 767px) and (min-height: 780px) {

@@ -93,7 +93,7 @@ export function AccountBackupCard({ language }: { language: Language }) {
 
   const buttonClass = 'inline-flex min-h-11 items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold disabled:opacity-50';
   const primary = `${buttonClass} bg-ink text-white dark:bg-white dark:text-ink`;
-  const secondary = `${buttonClass} bg-soft text-ink dark:bg-stone-800 dark:text-stone-100`;
+  const secondary = `${buttonClass} bg-soft text-ink dark:bg-night-soft dark:text-stone-100`;
 
   const savedLine = savedAt === undefined
     ? (ar ? 'جارٍ التحقق من آخر حفظ…' : 'Checking last save…')
@@ -111,6 +111,7 @@ export function AccountBackupCard({ language }: { language: Language }) {
       </div>
     </> : <>
       <p className="text-sm text-stone-600 dark:text-stone-300">{ar ? 'سجّل الدخول لحفظ نسخة من خططك في حسابك واستعادتها على أي جهاز. يمكنك المتابعة بدون حساب.' : 'Sign in to keep a copy of your plans in your account and restore it on any device. You can also keep using Wajba without an account.'}</p>
+      <p className="text-xs"><a href="/privacy.html" className="underline">{ar ? 'سياسة الخصوصية' : 'Privacy policy'}</a></p>
       <button type="button" className={primary} disabled={busy} onClick={signIn}><LogIn className="h-4 w-4 text-coral" aria-hidden="true" />{busy ? (ar ? 'جارٍ الاتصال…' : 'Connecting…') : (ar ? 'تسجيل الدخول باستخدام Google' : 'Sign in with Google')}</button>
     </>}
     {notice && <p role="status" className="text-sm font-bold text-emerald-700 dark:text-emerald-300">{notice}</p>}

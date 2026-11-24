@@ -171,20 +171,20 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
           {/* Ramadan Mode Switcher */}
           <button
             onClick={toggleRamadanMode}
-            className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all ${
+            className={`flex min-h-11 items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all ${
               plan.isRamadanMode
                 ? 'bg-ink text-stone-100 border-ink dark:border-white dark:bg-night-line'
-                : 'bg-soft dark:bg-stone-800 text-stone-800 dark:text-stone-200 border-hairline dark:border-stone-700'
+                : 'bg-soft dark:bg-night-soft text-stone-800 dark:text-stone-200 border-hairline dark:border-night-line'
             }`}
           >
-            {plan.isRamadanMode ? <Moon className="w-4 h-4 text-coral" /> : <Sun className="w-4 h-4 text-coral-deep" />}
+            {plan.isRamadanMode ? <Moon className="w-4 h-4 text-coral-deep dark:text-coral" /> : <Sun className="w-4 h-4 text-coral-deep" />}
             <span>{plan.isRamadanMode ? (isArabic ? 'وضع رمضان' : 'Ramadan Mode') : (isArabic ? 'وضع عادي' : 'Standard')}</span>
           </button>
 
           {/* Randomize Arab Plan */}
           <button
             onClick={handleRandomizeArabPlan}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-soft dark:bg-stone-800 text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft transition-colors"
+            className="flex min-h-11 items-center gap-1.5 px-3 py-2 rounded-xl bg-soft dark:bg-night-soft text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft transition-colors"
             title={isArabic ? 'اقتراح جدول عربي متنوع تلقائياً' : 'Randomize Arab Plan'}
           >
             <Sparkles className="w-3.5 h-3.5" />
@@ -194,7 +194,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
           {/* Family Share Link */}
           <button
             onClick={onOpenFamilySync}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-bold hover:bg-stone-300 transition-colors"
+            className="flex min-h-11 items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-200 dark:bg-night-soft text-stone-800 dark:text-stone-200 text-xs font-bold hover:bg-stone-300 transition-colors"
           >
             <Share2 className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">{isArabic ? 'مشاركة العائلة' : 'Share'}</span>
@@ -203,7 +203,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
           {/* Generate Smart Grocery */}
           <button
             onClick={onGoToGrocery}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold shadow-md transition-all"
+            className="flex min-h-11 items-center gap-2 px-4 py-2 rounded-xl bg-ink dark:bg-white hover:bg-stone-800 dark:hover:bg-stone-200 text-white dark:text-ink text-xs font-bold shadow-md transition-all"
           >
             <ShoppingBag className="w-4 h-4" />
             <span>{isArabic ? 'توليد قائمة التسوق' : 'Generate Grocery List'}</span>
@@ -235,7 +235,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
             className="bg-white dark:bg-night-card rounded-2xl border border-hairline dark:border-night-line shadow-xs flex flex-col overflow-hidden"
           >
             {/* Day Header */}
-            <div className="bg-soft/70 dark:bg-stone-800/80 px-3 py-2.5 text-center border-b border-hairline/60 dark:border-stone-700">
+            <div className="bg-soft/70 dark:bg-night-soft/80 px-3 py-2.5 text-center border-b border-hairline/60 dark:border-night-line">
               <h3 className="text-sm font-extrabold text-ink dark:text-stone-100">
                 {isArabic ? day.dayNameAr : day.dayNameEn}
               </h3>
@@ -252,11 +252,11 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
                     key={slotInfo.key}
                     className={`p-2.5 rounded-xl border text-xs transition-all ${
                       recipe
-                        ? 'bg-soft/80 dark:bg-stone-800/90 border-hairline dark:border-stone-700'
-                        : 'bg-stone-50/50 dark:bg-stone-950/40 border-dashed border-hairline dark:border-stone-800'
+                        ? 'bg-soft/80 dark:bg-night-soft/90 border-hairline dark:border-night-line'
+                        : 'bg-stone-50/50 dark:bg-night/40 border-dashed border-hairline dark:border-night-line'
                     }`}
                   >
-                    <div className="flex items-center justify-between text-[11px] font-bold text-stone-500 mb-1">
+                    <div className="flex items-center justify-between text-[11px] font-bold text-stone-600 dark:text-stone-300 mb-1">
                       <span>
                         {isArabic ? slotInfo.labelAr : slotInfo.labelEn}
                       </span>
@@ -296,7 +296,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
                     ) : (
                       <button
                         onClick={() => handleOpenAssign(day.dayId, slotInfo.key)}
-                        className="w-full py-3 rounded-lg bg-soft/40 hover:bg-soft dark:hover:bg-stone-800 text-ink dark:text-stone-100 font-bold flex items-center justify-center gap-1 transition-colors"
+                        className="w-full py-3 rounded-lg bg-soft/40 hover:bg-soft dark:hover:bg-night-soft text-ink dark:text-stone-100 font-bold flex items-center justify-center gap-1 transition-colors"
                       >
                         <Plus className="w-3.5 h-3.5 text-coral-deep" />
                         <span>{isArabic ? 'إضافة وجبة' : 'Add Meal'}</span>
@@ -313,17 +313,17 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
       {/* Assign Recipe Modal */}
       {assignModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-sm">
-          <div className="relative w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-hairline/80 dark:border-stone-800 p-6 max-h-[85vh] flex flex-col text-stone-800 dark:text-stone-100">
-            <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-stone-800 mb-3">
+          <div className="relative w-full max-w-xl bg-white dark:bg-night-card rounded-3xl shadow-2xl border border-hairline/80 dark:border-night-line p-6 max-h-[85vh] flex flex-col text-stone-800 dark:text-stone-100">
+            <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-night-line mb-3">
               <div>
                 <h3 className="text-base font-bold text-ink dark:text-stone-100">
                   {isArabic ? 'اختر وجبة للجدول الأسبوعي:' : 'Select Recipe for Slot:'}
                 </h3>
-                <p className="text-[11px] text-stone-500">
+                <p className="text-[11px] text-stone-600 dark:text-stone-300">
                   {isArabic ? 'اختر من الوصفات المتاحة أو أضف وجبتك الخاصة' : 'Select from recipes or add a new custom meal'}
                 </p>
               </div>
-              <button onClick={() => setAssignModalOpen(false)} className="p-2 rounded-full hover:bg-soft dark:hover:bg-stone-800">
+              <button onClick={() => setAssignModalOpen(false)} className="flex min-h-11 min-w-11 items-center justify-center rounded-full hover:bg-soft dark:hover:bg-night-soft">
                 ✕
               </button>
             </div>
@@ -348,7 +348,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
                 <div
                   key={r.id}
                   onClick={() => handleSelectRecipeForSlot(r.id)}
-                  className="flex items-center justify-between p-3 rounded-xl bg-soft/50 dark:bg-stone-800/60 hover:bg-soft dark:hover:bg-stone-800 border border-hairline/60 dark:border-stone-700 cursor-pointer transition-colors"
+                  className="flex items-center justify-between p-3 rounded-xl bg-soft/50 dark:bg-night-soft/60 hover:bg-soft dark:hover:bg-night-soft border border-hairline/60 dark:border-night-line cursor-pointer transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <img
@@ -364,7 +364,7 @@ export const WeeklyPlannerView: React.FC<WeeklyPlannerViewProps> = ({
                       <p className="text-xs font-extrabold text-stone-800 dark:text-stone-100">
                         {isArabic ? r.titleAr : r.titleEn}
                       </p>
-                      <p className="text-[11px] text-stone-500">
+                      <p className="text-[11px] text-stone-600 dark:text-stone-300">
                         {isArabic ? r.descriptionAr : r.descriptionEn}
                       </p>
                     </div>

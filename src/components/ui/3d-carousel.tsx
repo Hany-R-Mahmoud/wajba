@@ -185,7 +185,7 @@ const Carousel = memo(
             return (
               <motion.div
                 key={`key-${dish.id}-${i}`}
-                className="absolute flex flex-col rounded-2xl bg-white dark:bg-[#212e47] text-stone-900 dark:text-white p-2.5 border border-stone-300 dark:border-[#384966] shadow-2xl group transition-all duration-300"
+                className="absolute flex flex-col rounded-2xl bg-white dark:bg-night-soft text-stone-900 dark:text-white p-2.5 border border-stone-300 dark:border-night-line shadow-2xl group transition-all duration-300"
                 style={{
                   width: `${cardWidth}px`,
                   height: `${isScreenSizeSm ? 250 : 285}px`,
@@ -228,11 +228,11 @@ const Carousel = memo(
                   </h4>
                   <div className="flex items-center justify-center gap-2 text-[10px] text-stone-600 dark:text-stone-300">
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-coral" />
+                      <Clock className="w-3 h-3 text-coral-deep dark:text-coral" />
                       {dish.prepTime + dish.cookTime} {isArabic ? "د" : "m"}
                     </span>
                     <span>•</span>
-                    <span className="text-coral font-bold">
+                    <span className="text-coral-deep dark:text-coral font-bold">
                       {isArabic ? "وصفة موثوقة" : "Heritage"}
                     </span>
                   </div>
@@ -292,7 +292,7 @@ export function ThreeDPhotoCarousel({
             >
               <button
                 onClick={handleClose}
-                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-stone-200/90 hover:bg-stone-300 dark:bg-stone-800/80 dark:hover:bg-stone-700 text-stone-800 dark:text-white border border-stone-300 dark:border-white/10 transition-colors cursor-pointer shadow-md"
+                className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-stone-200/90 hover:bg-stone-300 dark:bg-night-soft/80 dark:hover:bg-night-soft text-stone-800 dark:text-white border border-stone-300 dark:border-white/10 transition-colors cursor-pointer shadow-md"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -309,20 +309,20 @@ export function ThreeDPhotoCarousel({
               </div>
 
               <div className="space-y-2 font-mono">
-                <span className="px-3 py-1 rounded-full bg-stone-200/80 dark:bg-stone-800 text-coral text-xs font-bold inline-block border border-stone-300 dark:border-white/10">
+                <span className="px-3 py-1 rounded-full bg-stone-200/80 dark:bg-night-soft text-coral-deep dark:text-coral text-xs font-bold inline-block border border-stone-300 dark:border-white/10">
                   {isArabic ? activeDish.regionAr : activeDish.regionEn}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-stone-900 dark:text-white">
                   {isArabic ? activeDish.titleAr : activeDish.titleEn}
                 </h3>
-                <div className="flex items-center gap-4 text-xs text-stone-600 dark:text-stone-300 pt-2 border-t border-stone-300/80 dark:border-stone-800">
+                <div className="flex items-center gap-4 text-xs text-stone-600 dark:text-stone-300 pt-2 border-t border-stone-300/80 dark:border-night-line">
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4 text-coral" />
+                    <Clock className="w-4 h-4 text-coral-deep dark:text-coral" />
                     {activeDish.prepTime + activeDish.cookTime}{" "}
                     {isArabic ? "دقيقة" : "mins"}
                   </span>
                   <span className="flex items-center gap-1">
-                    <Flame className="w-4 h-4 text-coral" />
+                    <Flame className="w-4 h-4 text-coral-deep dark:text-coral" />
                     {isArabic ? "وصفة موثوقة" : "Verified Recipe"}
                   </span>
                 </div>
@@ -334,7 +334,7 @@ export function ThreeDPhotoCarousel({
                     handleClose();
                     if (onSelectDish) onSelectDish(activeDish);
                   }}
-                  className="flex-1 py-3 px-5 rounded-full bg-coral hover:bg-[#ff552e] text-white font-mono font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  className="flex-1 py-3 px-5 rounded-full bg-coral-deep hover:bg-ink text-white font-mono font-bold text-xs transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                 >
                   <CalendarPlus className="w-4 h-4" />
                   <span>

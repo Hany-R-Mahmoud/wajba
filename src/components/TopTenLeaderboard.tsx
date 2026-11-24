@@ -33,7 +33,7 @@ export const TopTenLeaderboard: React.FC<TopTenLeaderboardProps> = ({
     if (index === 0) return { icon: '🏆', bg: 'bg-coral text-stone-950 font-black', text: '#1' };
     if (index === 1) return { icon: '🥈', bg: 'bg-stone-300 text-stone-900 font-bold', text: '#2' };
     if (index === 2) return { icon: '🥉', bg: 'bg-ink dark:bg-white text-white dark:text-ink font-bold', text: '#3' };
-    return { icon: '', bg: 'bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 font-bold', text: `#${index + 1}` };
+    return { icon: '', bg: 'bg-stone-100 dark:bg-night-soft text-stone-700 dark:text-stone-300 font-bold', text: `#${index + 1}` };
   };
 
   return (
@@ -41,8 +41,8 @@ export const TopTenLeaderboard: React.FC<TopTenLeaderboardProps> = ({
       {/* Header Banner */}
       <div className="bg-ink dark:bg-night-line text-white p-6 rounded-3xl shadow-xl flex items-center justify-between gap-4">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-coral/20 text-coral text-xs font-bold border border-coral/30">
-            <Trophy className="w-4 h-4 text-coral" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-coral/20 text-coral-deep dark:text-coral text-xs font-bold border border-coral/30">
+            <Trophy className="w-4 h-4 text-coral-deep dark:text-coral" />
             <span>{isArabic ? 'قائمة الشرف والمحبة العائلية' : 'Top 10 Authentic Leaderboard'}</span>
           </div>
           <h1 className="text-2xl font-black">
@@ -98,7 +98,7 @@ export const TopTenLeaderboard: React.FC<TopTenLeaderboardProps> = ({
                       {isArabic ? regionInfo.ar : regionInfo.en}
                     </span>
                     <span className="text-[11px] font-bold text-coral-deep dark:text-coral flex items-center gap-0.5">
-                      <Star className="w-3 h-3 fill-coral text-coral" />
+                      <Star className="w-3 h-3 fill-coral text-coral-deep dark:text-coral" />
                       {recipe.rating}
                     </span>
                   </div>
@@ -109,15 +109,15 @@ export const TopTenLeaderboard: React.FC<TopTenLeaderboardProps> = ({
                   >
                     {isArabic ? recipe.titleAr : recipe.titleEn}
                   </h3>
-                  <p className="text-xs text-stone-500 line-clamp-1">
+                  <p className="text-xs text-stone-600 dark:text-stone-300 line-clamp-1">
                     {isArabic ? recipe.descriptionAr : recipe.descriptionEn}
                   </p>
                 </div>
               </div>
 
               {/* Voting & View Action */}
-              <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-stone-100 dark:border-stone-800">
-                <div className="flex items-center gap-1.5 bg-soft dark:bg-stone-800 p-1 rounded-xl border border-hairline dark:border-stone-700">
+              <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-2 sm:pt-0 border-t sm:border-t-0 border-stone-100 dark:border-night-line">
+                <div className="flex items-center gap-1.5 bg-soft dark:bg-night-soft p-1 rounded-xl border border-hairline dark:border-night-line">
                   <button
                     onClick={() => onVote(recipe.id, 'like')}
                     className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-colors ${

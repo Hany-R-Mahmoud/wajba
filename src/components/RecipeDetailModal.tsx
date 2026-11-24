@@ -99,7 +99,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="recipe-detail-title"
-        className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-hairline/80 dark:border-stone-800 my-8 overflow-hidden flex flex-col max-h-[90vh] cursor-default"
+        className="relative w-full max-w-3xl bg-white dark:bg-night-card rounded-3xl shadow-2xl border border-hairline/80 dark:border-night-line my-8 overflow-hidden flex flex-col max-h-[90vh] cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         
@@ -137,14 +137,14 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
             <p className="text-xs text-stone-100/90 font-medium">
               {isArabic ? recipe.titleEn : recipe.titleAr}
             </p>
-            {recipe.dietaryTags && recipe.dietaryTags.length > 0 && <div className="mt-2 flex flex-wrap gap-1.5">{recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-emerald-500/80 px-2 py-1 text-[10px] font-bold text-white">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}</div>}
+            {recipe.dietaryTags && recipe.dietaryTags.length > 0 && <div className="mt-2 flex flex-wrap gap-1.5">{recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-white/20 px-2 py-1 text-[10px] font-bold text-white">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}</div>}
           </div>
         </div>
 
         {/* Modal Scrollable Body */}
         <div className="p-6 overflow-y-auto flex-1 space-y-6 text-stone-800 dark:text-stone-100">
           {/* Quick Stats Bar & Servings Scaler */}
-          <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-soft/80 dark:bg-stone-800/80 border border-hairline/60 dark:border-stone-700">
+          <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-soft/80 dark:bg-night-soft/80 border border-hairline/60 dark:border-night-line">
             <div className="flex items-center gap-4 text-xs font-bold text-stone-700 dark:text-stone-300">
               <div className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-coral-deep dark:text-coral" />
@@ -159,14 +159,14 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
             </div>
 
             {/* Servings Scaler */}
-            <div className="flex items-center gap-3 bg-white dark:bg-stone-900 px-3 py-1.5 rounded-xl border border-hairline dark:border-stone-700 shadow-xs">
+            <div className="flex items-center gap-3 bg-white dark:bg-night-card px-3 py-1.5 rounded-xl border border-hairline dark:border-night-line shadow-xs">
               <span className="text-xs font-bold text-stone-600 dark:text-stone-300">
                 <Users className="w-4 h-4 inline me-1 text-coral-deep" />
                 {isArabic ? 'عدد الأشخاص:' : 'Servings:'}
               </span>
               <button
                 onClick={() => setCurrentServings(Math.max(1, currentServings - 1))}
-                className="p-1 rounded-lg bg-soft dark:bg-stone-800 text-ink dark:text-stone-100 hover:bg-soft"
+                className="p-1 rounded-lg bg-soft dark:bg-night-soft text-ink dark:text-stone-100 hover:bg-soft"
               >
                 <Minus className="w-3.5 h-3.5" />
               </button>
@@ -175,7 +175,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
               </span>
               <button
                 onClick={() => setCurrentServings(currentServings + 1)}
-                className="p-1 rounded-lg bg-soft dark:bg-stone-800 text-ink dark:text-stone-100 hover:bg-soft"
+                className="p-1 rounded-lg bg-soft dark:bg-night-soft text-ink dark:text-stone-100 hover:bg-soft"
               >
                 <Plus className="w-3.5 h-3.5" />
               </button>
@@ -184,7 +184,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 
           {/* Dish Heritage / Story */}
           {(recipe.storyAr || recipe.storyEn) && (
-            <div className="p-4 rounded-2xl bg-soft/50 dark:bg-stone-800/40 border-s-4 border-coral dark:border-coral">
+            <div className="p-4 rounded-2xl bg-soft/50 dark:bg-night-soft/40 border-s-4 border-coral dark:border-coral">
               <h4 className="text-xs font-bold text-ink dark:text-coral flex items-center gap-1.5 mb-1">
                 <BookOpen className="w-4 h-4" />
                 <span>{isArabic ? 'قصة وأصل الطبخة' : 'Recipe Heritage & Origin'}</span>
@@ -207,7 +207,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   addedGrocery
                     ? 'bg-ink text-white'
-                    : 'bg-soft dark:bg-stone-800 text-ink dark:text-stone-100 hover:bg-soft'
+                    : 'bg-soft dark:bg-night-soft text-ink dark:text-stone-100 hover:bg-soft'
                 }`}
               >
                 {addedGrocery ? <Check className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
@@ -229,7 +229,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                 return (
                   <div
                     key={ing.id}
-                    className="flex items-center justify-between p-2.5 rounded-xl bg-stone-50 dark:bg-stone-800/60 border border-stone-200/80 dark:border-stone-700/60 text-xs"
+                    className="flex items-center justify-between p-2.5 rounded-xl bg-stone-50 dark:bg-night-soft/60 border border-stone-200/80 dark:border-night-line/60 text-xs"
                   >
                     <span className="font-semibold text-stone-800 dark:text-stone-200">
                       {isArabic ? ing.nameAr : ing.nameEn}
@@ -258,7 +258,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                 return (
                   <div
                     key={idx}
-                    className="p-3.5 rounded-2xl bg-soft/40 dark:bg-stone-800/40 border border-hairline/40 dark:border-stone-800 flex items-start gap-3"
+                    className="p-3.5 rounded-2xl bg-soft/40 dark:bg-night-soft/40 border border-hairline/40 dark:border-night-line flex items-start gap-3"
                   >
                     <span className="w-6 h-6 rounded-full bg-ink dark:bg-white text-white dark:text-ink flex items-center justify-center text-xs font-extrabold flex-shrink-0 mt-0.5">
                       {idx + 1}
@@ -284,7 +284,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                               isRunning: true,
                             });
                           }}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-coral hover:bg-stone-800 dark:hover:bg-stone-200 text-white text-xs font-bold shadow-sm transition-all animate-pulse"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-coral-deep hover:bg-ink dark:hover:bg-night-soft text-white text-xs font-bold shadow-sm transition-all animate-pulse"
                         >
                           <Timer className="w-3.5 h-3.5" />
                           <span>
@@ -303,7 +303,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 
           {/* Slot Assignment Drawer Form */}
           {plannerOpen && (
-            <div ref={pickerRef} tabIndex={-1} className="p-4 rounded-2xl bg-soft dark:bg-stone-800 border border-hairline dark:border-stone-700 space-y-3 outline-none">
+            <div ref={pickerRef} tabIndex={-1} className="p-4 rounded-2xl bg-soft dark:bg-night-soft border border-hairline dark:border-night-line space-y-3 outline-none">
               <h4 className="text-xs font-extrabold text-ink dark:text-stone-100">
                 {isArabic ? 'اختر اليوم والوجبة في الجدول:' : 'Assign Day & Meal Slot:'}
               </h4>
@@ -315,7 +315,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                   <select
                     value={selectedDay}
                     onChange={(e) => setSelectedDay(e.target.value)}
-                    className="w-full text-xs p-2 rounded-xl bg-white dark:bg-stone-900 border border-hairline dark:border-stone-700 font-bold"
+                    className="w-full text-xs p-2 rounded-xl bg-white dark:bg-night-card border border-hairline dark:border-night-line font-bold"
                   >
                     <option value="sat">{isArabic ? 'السبت' : 'Saturday'}</option>
                     <option value="sun">{isArabic ? 'الأحد' : 'Sunday'}</option>
@@ -334,7 +334,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
                   <select
                     value={selectedSlot}
                     onChange={(e) => setSelectedSlot(e.target.value as MealSlot)}
-                    className="w-full text-xs p-2 rounded-xl bg-white dark:bg-stone-900 border border-hairline dark:border-stone-700 font-bold"
+                    className="w-full text-xs p-2 rounded-xl bg-white dark:bg-night-card border border-hairline dark:border-night-line font-bold"
                   >
                     <option value="breakfast">{isArabic ? 'الإفطار الصباحي' : 'Breakfast'}</option>
                     <option value="lunch">{isArabic ? 'الغداء الرئيسي' : 'Lunch'}</option>
@@ -357,9 +357,9 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
         </div>
 
         {/* Modal Action Footer */}
-        <div className="p-4 bg-soft dark:bg-stone-900 border-t border-hairline/60 dark:border-stone-800 flex flex-wrap items-center justify-between gap-3 flex-shrink-0">
+        <div className="p-4 bg-soft dark:bg-night-card border-t border-hairline/60 dark:border-night-line flex flex-wrap items-center justify-between gap-3 flex-shrink-0">
           <div className="flex items-center gap-2">
-            {onEditRecipe && <button type="button" onClick={onEditRecipe} className="inline-flex items-center gap-1.5 rounded-xl bg-stone-200 px-3.5 py-2 text-xs font-bold text-stone-800 dark:bg-stone-800 dark:text-stone-200"><Pencil className="h-3.5 w-3.5" />{isArabic ? 'تعديل' : 'Edit'}</button>}
+            {onEditRecipe && <button type="button" onClick={onEditRecipe} className="inline-flex items-center gap-1.5 rounded-xl bg-stone-200 px-3.5 py-2 text-xs font-bold text-stone-800 dark:bg-night-soft dark:text-stone-200"><Pencil className="h-3.5 w-3.5" />{isArabic ? 'تعديل' : 'Edit'}</button>}
             {onDeleteRecipe && <button type="button" onClick={() => { if (window.confirm(isArabic ? 'حذف هذه الوصفة؟' : 'Delete this recipe?')) onDeleteRecipe(); }} className="inline-flex items-center gap-1.5 rounded-xl bg-rose-100 px-3.5 py-2 text-xs font-bold text-rose-800 dark:bg-rose-950 dark:text-rose-200"><Trash2 className="h-3.5 w-3.5" />{isArabic ? 'حذف' : 'Delete'}</button>}
             <button
               onClick={handleShareWhatsApp}
@@ -371,7 +371,7 @@ export const RecipeDetailModal: React.FC<RecipeDetailModalProps> = ({
 
             <button
               onClick={handleCopyLink}
-              className="px-3 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5"
+              className="px-3 py-2 rounded-xl bg-stone-200 dark:bg-night-soft text-stone-800 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5"
             >
               {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5" />}
               <span>{copiedLink ? (isArabic ? 'تم النسخ!' : 'Copied!') : copyFailed ? (isArabic ? 'تعذر النسخ' : 'Copy failed') : (isArabic ? 'نسخ الرابط' : 'Copy Link')}</span>

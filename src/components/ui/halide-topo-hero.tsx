@@ -236,7 +236,7 @@ export const HalideLanding: React.FC<HalideLandingProps> = ({
                 onClick={onToggleRamadanMode}
                 className={`px-4 py-2 rounded-full text-xs font-mono border transition-all cursor-pointer ${
                   isRamadanMode
-                    ? 'bg-coral text-white border-coral'
+                    ? 'bg-coral-deep text-white border-coral'
                     : 'bg-white/10 text-white border-white/30 hover:bg-white/20'
                 }`}
               >
@@ -247,7 +247,7 @@ export const HalideLanding: React.FC<HalideLandingProps> = ({
 
             <button
               onClick={onEnterDashboard}
-              className="px-6 py-2.5 rounded-full bg-coral hover:bg-[#ff552e] text-white text-xs font-mono font-bold tracking-wider transition-all shadow-lg hover:translate-y-[-2px] cursor-pointer flex items-center gap-2"
+              className="px-6 py-2.5 rounded-full bg-coral-deep hover:bg-ink text-white text-xs font-mono font-bold tracking-wider transition-all shadow-lg hover:translate-y-[-2px] cursor-pointer flex items-center gap-2"
               style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 90% 100%, 0 100%)' }}
             >
               <span>{isArabic ? 'استكشف الجدول ➔' : 'EXPLORE PLANNER ➔'}</span>

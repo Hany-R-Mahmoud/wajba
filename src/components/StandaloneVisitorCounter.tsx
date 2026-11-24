@@ -29,10 +29,10 @@ export default function StandaloneVisitorCounter() {
     return () => { active = false; };
   }, []);
   return (
-    <div className="mx-auto flex w-full max-w-6xl justify-center border-t border-amber-200/70 bg-[#fffaf0] px-4 py-3 text-xs text-stone-600">
+    <div className="mx-auto flex w-full max-w-6xl justify-center border-t border-line bg-soft dark:border-night-line dark:bg-night-card dark:text-stone-300 px-4 py-3 text-xs text-stone-600">
       <span className="inline-flex items-center gap-2 whitespace-nowrap" title={`Wajjba visitors: ${count ?? '…'}`}>
-        <svg className="h-3.5 w-3.5 text-amber-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" /><circle cx="12" cy="12" r="2.5" /></svg>
-        <span className="font-semibold uppercase tracking-[0.14em]">Wajjba visitors</span>
+        <svg className="h-3.5 w-3.5 text-coral-deep dark:text-coral" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" /><circle cx="12" cy="12" r="2.5" /></svg>
+        <span className="font-semibold">Wajjba visitors</span>
         <span className="font-mono font-bold tabular-nums" aria-live="polite">{count ?? '—'}</span>
       </span>
     </div>

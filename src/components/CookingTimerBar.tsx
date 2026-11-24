@@ -140,7 +140,7 @@ export const CookingTimerBar: React.FC<CookingTimerBarProps> = ({
                       ? 'bg-emerald-500 text-stone-950 animate-bounce'
                       : timer.isRunning
                       ? 'bg-coral/20 text-coral'
-                      : 'bg-stone-800 text-stone-400'
+                      : 'bg-night-soft text-stone-300'
                   }`}
                 >
                   {isDone ? (
@@ -156,7 +156,7 @@ export const CookingTimerBar: React.FC<CookingTimerBarProps> = ({
                 {!isDone && (
                   <button
                     onClick={() => togglePause(timer.id)}
-                    className="p-1.5 rounded-lg bg-white/10 hover:bg-coral text-stone-100 transition-colors"
+                    className="flex min-h-11 min-w-11 items-center justify-center rounded-lg bg-white/10 hover:bg-coral-deep text-stone-100 transition-colors"
                     title={timer.isRunning ? (isArabic ? 'إيقاف مؤقت' : 'Pause') : (isArabic ? 'تشغيل' : 'Start')}
                   >
                     {timer.isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}

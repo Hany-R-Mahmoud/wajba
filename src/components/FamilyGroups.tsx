@@ -85,10 +85,10 @@ function ConnectedGroups({ language, plan, customRecipes, onApply }: Props) {
     finally { setBusy(false); }
   }
   const button = 'rounded-xl border border-hairline px-3 py-2 text-xs font-bold disabled:opacity-50 dark:border-stone-600';
-  const input = 'min-w-0 flex-1 rounded-xl border border-stone-300 bg-white p-2 text-sm dark:bg-stone-900 dark:border-stone-600';
+  const input = 'min-w-0 flex-1 rounded-xl border border-stone-300 bg-white p-2 text-sm dark:bg-night-card dark:border-stone-600';
   const invite = details?.invite?.invite_code;
   const inviteUrl = invite ? `${window.location.origin}/dashboard#join=${invite}` : '';
-  return <section className="space-y-3 rounded-2xl border border-hairline bg-soft/60 p-4 dark:bg-stone-800" aria-label={t('Connected family groups', 'مجموعات العائلة المتصلة')}>
+  return <section className="space-y-3 rounded-2xl border border-hairline bg-soft/60 p-4 dark:bg-night-soft" aria-label={t('Connected family groups', 'مجموعات العائلة المتصلة')}>
     <h3 className="font-bold">{t('Connected family groups', 'مجموعات العائلة المتصلة')}</h3>
     <p className="text-xs">{t('Members stay connected. Publish your week, then others can apply it. Local changes are never uploaded automatically.', 'تظل العضوية متصلة. انشر أسبوعك ليطبقه الآخرون. لا تُرفع التغييرات المحلية تلقائياً.')}</p>
     {isPending ? <LoadingState language={language} label={t('Loading account…', 'جارٍ تحميل الحساب…')} /> : !userId ? <button className={button} disabled={busy} onClick={async () => {

@@ -112,7 +112,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
                 className={`flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2 text-start text-xs font-mono font-medium transition-colors ${
                   isActive
                     ? 'bg-ink text-white dark:bg-white dark:text-ink'
-                    : 'text-ink hover:bg-[#f0eee8] hover:text-coral dark:text-stone-300 dark:hover:bg-night'
+                    : 'text-ink hover:bg-[#f0eee8] hover:text-coral-deep dark:hover:text-coral dark:text-stone-300 dark:hover:bg-night'
                 }`}
               >
                 <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -136,7 +136,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
               className={`flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-mono font-medium transition-colors ${
                 isActive
                   ? 'bg-ink text-white shadow-xs dark:bg-white dark:text-ink'
-                  : 'text-[#616161] hover:bg-[#f0eee8] hover:text-coral dark:text-stone-400 dark:hover:bg-night dark:hover:text-stone-200'
+                  : 'text-[#616161] hover:bg-[#f0eee8] hover:text-coral-deep dark:hover:text-coral dark:text-stone-400 dark:hover:bg-night dark:hover:text-stone-200'
               }`}
             >
               <Icon className="h-[18px] w-[18px] shrink-0" aria-hidden="true" />
@@ -154,7 +154,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
           className={`flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl px-1 py-1 text-[10px] font-mono font-medium transition-colors ${
             isSecondaryActive || isMoreOpen
               ? 'bg-ink text-white shadow-xs dark:bg-white dark:text-ink'
-              : 'text-[#616161] hover:bg-[#f0eee8] hover:text-coral dark:text-stone-400 dark:hover:bg-night dark:hover:text-stone-200'
+              : 'text-[#616161] hover:bg-[#f0eee8] hover:text-coral-deep dark:hover:text-coral dark:text-stone-400 dark:hover:bg-night dark:hover:text-stone-200'
           }`}
         >
           {isMoreOpen ? <ChevronDown className="h-[18px] w-[18px]" aria-hidden="true" /> : <MoreHorizontal className="h-[18px] w-[18px]" aria-hidden="true" />}

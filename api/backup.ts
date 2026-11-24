@@ -1,6 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { neon } from '@neondatabase/serverless';
 import { authenticatedUser } from '../server/auth.js';
+import { rateLimitHit } from '../server/rateLimit.js';
 import { parseWajbaBackup } from '../src/utils/storage.js';
 
 export default async function handler(req: IncomingMessage & { body?: unknown }, res: ServerResponse) {
@@ -29,6 +30,8 @@ export default async function handler(req: IncomingMessage & { body?: unknown },
       const rows = await sql`SELECT backup, updated_at FROM public.wajba_backups WHERE user_id = ${userId}`;
       return reply(200, rows[0] ?? { backup: null });
     }
+    const retryAfter = await rateLimitHit(sql, userId, 'backup_put');
+    if (retryAfter) { res.setHeader('Retry-After', String(retryAfter)); return reply(429, { error: 'Too many backups. Try again later.' }); }
     let body = req.body;
     if (typeof body === 'string') {
       if (Buffer.byteLength(body) > 1_000_000) return reply(413, { error: 'Backup is too large' });

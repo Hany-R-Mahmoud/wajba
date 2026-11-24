@@ -18,6 +18,7 @@
   --color-night: #0c1220;
   --color-night-card: #162032;
   --color-night-line: #2b3a54;
+  --color-night-soft: #1f2c42;
 }
 
 @layer base {
@@ -118,6 +119,22 @@
 /* #ff7759 is 6.8:1 on dark surfaces; #b9401f is 5.3:1 on white */
 .dark :focus-visible {
   outline-color: var(--cohere-coral);
+}
+
+/* Arabic never uses monospace, tracking or uppercase: those are for Latin and numbers only. */
+:lang(ar) .font-mono,
+.font-mono:lang(ar) {
+  font-family: var(--font-almarai) !important;
+}
+
+:lang(ar) [class*="tracking-"],
+[class*="tracking-"]:lang(ar) {
+  letter-spacing: normal !important;
+}
+
+:lang(ar) .uppercase,
+.uppercase:lang(ar) {
+  text-transform: none !important;
 }
 
 html {

@@ -141,7 +141,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
         <select
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className="min-h-11 w-full appearance-none rounded-xl border border-hairline bg-soft px-3 text-xs font-mono text-body transition-colors hover:border-coral focus:border-coral focus:outline-none dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200"
+          className="min-h-11 w-full appearance-none rounded-xl border border-hairline bg-soft px-3 text-xs font-mono text-body transition-colors hover:border-coral focus:border-coral focus:outline-none dark:border-night-line dark:bg-night-soft dark:text-stone-200"
         >
           {options.map((option) => (
             <option key={option.id} value={option.id}>
@@ -149,7 +149,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             </option>
           ))}
         </select>
-        <ChevronDown className="pointer-events-none absolute top-1/2 -translate-y-1/2 end-3 h-4 w-4 text-stone-500" aria-hidden="true" />
+        <ChevronDown className="pointer-events-none absolute top-1/2 -translate-y-1/2 end-3 h-4 w-4 text-stone-600 dark:text-stone-300" aria-hidden="true" />
       </span>
     </label>
   );
@@ -171,7 +171,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
                   ? 'ابحث باسم الوصفة، المكونات (بشاميل، كنافة، لحم)...'
                   : 'Search by recipe name or ingredient...'
               }
-              className="w-full py-2.5 px-10 rounded-full bg-soft dark:bg-stone-800 border border-hairline dark:border-stone-700 text-sm font-mono focus:outline-none focus:border-ink"
+              className="w-full py-2.5 px-10 rounded-full bg-soft dark:bg-night-soft border border-hairline dark:border-night-line text-sm font-mono focus:outline-none focus:border-ink"
             />
           </div>
 
@@ -179,13 +179,13 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             onClick={onOpenCreateRecipeModal}
             className="flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-ink hover:bg-body dark:bg-white dark:text-ink text-white text-xs sm:text-sm font-mono font-bold transition-all flex-shrink-0 cursor-pointer"
           >
-            <Plus className="w-4 h-4 text-coral" />
+            <Plus className="w-4 h-4 text-coral dark:text-coral-deep" />
             <span>{isArabic ? 'إضافة وصفة خاصة' : 'Add Custom Recipe'}</span>
           </button>
         </div>
 
         {/* Compact filter controls */}
-        <div className="border-t border-hairline pt-4 dark:border-stone-800">
+        <div className="border-t border-hairline pt-4 dark:border-night-line">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2 text-xs font-bold text-stone-500 dark:text-stone-400">
               <Filter className="h-4 w-4" aria-hidden="true" />
@@ -228,8 +228,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             onClick={() => setOnlyFavorites(!onlyFavorites)}
             className={`mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-xs font-bold transition-colors ${
               onlyFavorites
-                ? 'bg-coral text-white'
-                : 'border border-hairline bg-soft text-body hover:border-coral dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+                ? 'bg-coral-deep text-white'
+                : 'border border-hairline bg-soft text-body hover:border-coral dark:border-night-line dark:bg-night-soft dark:text-stone-300'
             }`}
           >
             <Bookmark className={`h-3.5 w-3.5 ${onlyFavorites ? 'fill-white' : ''}`} aria-hidden="true" />
@@ -241,8 +241,8 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
             onClick={() => setOnlySeasonal(!onlySeasonal)}
             className={`mt-3 ms-2 inline-flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-xs font-bold transition-colors ${
               onlySeasonal
-                ? 'bg-coral text-white'
-                : 'border border-hairline bg-soft text-body hover:border-coral dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300'
+                ? 'bg-coral-deep text-white'
+                : 'border border-hairline bg-soft text-body hover:border-coral dark:border-night-line dark:bg-night-soft dark:text-stone-300'
             }`}
           >
             <Leaf className="h-3.5 w-3.5" aria-hidden="true" />
@@ -268,7 +268,7 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
         {isFiltered && (
           <button
             onClick={handleResetFilters}
-            className="inline-flex min-h-11 items-center rounded-lg px-2.5 text-coral hover:underline cursor-pointer"
+            className="inline-flex min-h-11 items-center rounded-lg px-2.5 text-coral-deep dark:text-coral hover:underline cursor-pointer"
           >
             {isArabic ? 'إلغاء البحث والفلاتر' : 'Clear search & filters'}
           </button>
@@ -277,12 +277,12 @@ export const RecipeExplorer: React.FC<RecipeExplorerProps> = ({
 
       {/* Recipes Grid */}
       {filteredRecipes.length === 0 ? (
-        <div className="text-center py-12 bg-white dark:bg-stone-900 rounded-3xl border border-hairline dark:border-night-line p-8 space-y-3">
+        <div className="text-center py-12 bg-white dark:bg-night-card rounded-3xl border border-hairline dark:border-night-line p-8 space-y-3">
           <div className="text-4xl">🔍</div>
           <h3 className="text-base font-bold text-stone-800 dark:text-stone-200">
             {isArabic ? 'لم نجد وصفات تطابق بحثك' : 'No recipes matched your search'}
           </h3>
-          <p className="text-xs text-stone-500 max-w-sm mx-auto">
+          <p className="text-xs text-stone-600 dark:text-stone-300 max-w-sm mx-auto">
             {isArabic
               ? 'جرب البحث عن كلمات أخرى أو قم بإعادة ضبط الفلاتر لعرض جميع الأطباق.'
               : 'Try searching for other terms or reset your filters to view all recipes.'}

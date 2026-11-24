@@ -1,5 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import {createHash} from 'node:crypto';
 import {existsSync, readFileSync} from 'node:fs';
 import path from 'path';
 import {defineConfig} from 'vite';
@@ -16,7 +17,9 @@ function pwaServiceWorkerPlugin() {
         if (existsSync(path.resolve(__dirname, 'public', publicFile))) precacheEntries.add(`/${publicFile}`);
       }
       const source = readFileSync(path.resolve(__dirname, 'src/pwa/service-worker.js'), 'utf8')
-        .replace('__PRECACHE_ENTRIES__', JSON.stringify([...precacheEntries]));
+        .replace('__PRECACHE_ENTRIES__', JSON.stringify([...precacheEntries]))
+        // Hashed chunk names change every build, so the cache name changes too and activate drops old caches.
+        .replace('__CACHE_VERSION__', createHash('sha256').update([...precacheEntries].sort().join('\n')).digest('hex').slice(0, 10));
       this.emitFile({type: 'asset', fileName: 'sw.js', source});
     },
   };

@@ -45,7 +45,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   const isArabic = language === 'ar';
 
   return (
-    <div className="min-h-screen bg-paper dark:bg-night text-[#18181b] dark:text-[#f8fafc] font-sans transition-colors flex flex-col justify-between selection:bg-coral selection:text-white">
+    <div className="min-h-screen bg-paper dark:bg-night text-[#18181b] dark:text-[#f8fafc] font-sans transition-colors flex flex-col justify-between selection:bg-coral-deep selection:text-white">
       {/* Top Navigation Bar */}
       <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-night-card/95 backdrop-blur-md border-b border-line dark:border-night-line transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,20 +57,20 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               {/* Language Switcher */}
               <button
                 onClick={() => onLanguageChange(isArabic ? 'en' : 'ar')}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-soft dark:bg-stone-800 text-ink dark:text-stone-200 text-xs font-mono hover:border-ink transition-colors border border-hairline dark:border-stone-700 cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-soft dark:bg-night-soft text-ink dark:text-stone-200 text-xs font-mono hover:border-ink transition-colors border border-hairline dark:border-night-line cursor-pointer"
                 title={isArabic ? 'Switch to English' : 'التحويل للغة العربية'}
               >
-                <Globe className="w-3.5 h-3.5 text-coral" />
+                <Globe className="w-3.5 h-3.5 text-coral-deep dark:text-coral" />
                 <span>{isArabic ? 'EN' : 'عربي'}</span>
               </button>
 
               {/* Theme Toggle */}
               <button
                 onClick={onThemeToggle}
-                className="p-2 rounded-full bg-soft dark:bg-stone-800 text-ink dark:text-stone-200 hover:border-ink transition-colors border border-hairline dark:border-stone-700 cursor-pointer"
+                className="p-2 rounded-full bg-soft dark:bg-night-soft text-ink dark:text-stone-200 hover:border-ink transition-colors border border-hairline dark:border-night-line cursor-pointer"
                 title={isArabic ? 'تغيير المظهر' : 'Toggle theme'}
               >
-                {theme === 'light' ? <Moon className="w-4 h-4 text-ink" /> : <Sun className="w-4 h-4 text-amber-400" />}
+                {theme === 'light' ? <Moon className="w-4 h-4 text-ink" /> : <Sun className="w-4 h-4 text-coral" />}
               </button>
             </div>
           </div>
@@ -88,7 +88,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-ink dark:bg-white text-white dark:text-ink text-xs font-mono font-bold">
-                <BookOpen className="w-3.5 h-3.5 text-coral" />
+                <BookOpen className="w-3.5 h-3.5 text-coral dark:text-coral-deep" />
                 <span>{isArabic ? 'الوصفات' : 'Recipes'}</span>
               </div>
 
@@ -105,12 +105,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               </p>
 
               <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono">
-                <div className="p-3 rounded-2xl bg-paper dark:bg-[#212e47] border border-line dark:border-[#384966] flex items-center gap-2">
-                  <Flame className="w-4 h-4 text-coral" />
+                <div className="p-3 rounded-2xl bg-paper dark:bg-night-soft border border-line dark:border-night-line flex items-center gap-2">
+                  <Flame className="w-4 h-4 text-coral-deep dark:text-coral" />
                   <span className="font-bold">{isArabic ? 'مؤقتات الطبخ' : 'Cooking timers'}</span>
                 </div>
-                <div className="p-3 rounded-2xl bg-paper dark:bg-[#212e47] border border-line dark:border-[#384966] flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-coral" />
+                <div className="p-3 rounded-2xl bg-paper dark:bg-night-soft border border-line dark:border-night-line flex items-center gap-2">
+                  <Trophy className="w-4 h-4 text-coral-deep dark:text-coral" />
                   <span className="font-bold">{isArabic ? 'أفضل ١٠ وصفات للعائلة' : 'Family top 10'}</span>
                 </div>
               </div>
@@ -118,7 +118,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
             {/* Interactive Preview Card */}
             <div className="lg:col-span-5">
-              <div className="bg-paper dark:bg-[#212e47] rounded-2xl p-6 border border-line dark:border-[#384966] shadow-xl space-y-4">
+              <div className="bg-paper dark:bg-night-soft rounded-2xl p-6 border border-line dark:border-night-line shadow-xl space-y-4">
                 <div className="relative h-56 rounded-xl overflow-hidden bg-stone-900">
                   <img
                     src="/recipe-images/wajba-egypt-macarona-beamel.webp"
@@ -137,14 +137,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <span className="font-bold text-ink dark:text-white">
                     {isArabic ? 'المكرونة البشاميل المصرية باللحم المفروم' : 'Egyptian Macarona Béchamel'}
                   </span>
-                  <span className="text-coral font-bold flex items-center gap-1">
+                  <span className="text-coral-deep dark:text-coral font-bold flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> 70 {isArabic ? 'دقيقة' : 'mins'}
                   </span>
                 </div>
 
                 <div className="p-3 rounded-xl bg-white dark:bg-night-card text-[11px] font-mono text-stone-600 dark:text-stone-300 flex items-center justify-between border border-line dark:border-night-line">
                   <span>{isArabic ? 'مؤقت طبقة البشاميل الذهبية:' : 'Velvet Béchamel Crust Timer:'}</span>
-                  <span className="px-2 py-0.5 rounded-md bg-coral text-white font-bold">12:00 ⏱️</span>
+                  <span className="px-2 py-0.5 rounded-md bg-coral-deep text-white font-bold">12:00 ⏱️</span>
                 </div>
               </div>
             </div>
@@ -156,15 +156,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Visual Fasting Widget */}
             <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="bg-paper dark:bg-[#212e47] rounded-2xl p-6 border border-line dark:border-[#384966] shadow-xl space-y-4">
-                <div className="flex items-center justify-between border-b border-line dark:border-[#384966] pb-3">
+              <div className="bg-paper dark:bg-night-soft rounded-2xl p-6 border border-line dark:border-night-line shadow-xl space-y-4">
+                <div className="flex items-center justify-between border-b border-line dark:border-night-line pb-3">
                   <div className="flex items-center gap-2">
-                    <Moon className="w-5 h-5 text-coral fill-coral" />
+                    <Moon className="w-5 h-5 text-coral-deep dark:text-coral fill-coral" />
                     <span className="font-mono text-xs font-bold uppercase tracking-wider text-ink dark:text-white">
                       {isArabic ? 'رمضان' : 'RAMADAN'}
                     </span>
                   </div>
-                  <span className="px-2.5 py-0.5 rounded-full bg-coral text-[10px] font-mono text-white font-bold">
+                  <span className="px-2.5 py-0.5 rounded-full bg-coral-deep text-[10px] font-mono text-white font-bold">
                     {isArabic ? 'وضع رمضان' : 'Ramadan mode'}
                   </span>
                 </div>
@@ -173,7 +173,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   <span className="text-[10px] font-mono text-stone-500 dark:text-stone-300 block mb-1">
                     {isArabic ? 'الوقت المتبقي على أذان المغرب (الإفطار)' : 'Time left until iftar'}
                   </span>
-                  <span className="text-3xl sm:text-4xl font-mono font-bold text-coral tracking-widest">
+                  <span className="text-3xl sm:text-4xl font-mono font-bold text-coral-deep dark:text-coral tracking-widest">
                     04 : 28 : 15
                   </span>
                 </div>
@@ -181,7 +181,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                 <div className="space-y-2 text-xs font-mono">
                   <div className="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-night-card border border-line dark:border-night-line">
                     <span>{isArabic ? '🌙 وجبة السحور:' : '🌙 Suhoor Meal:'}</span>
-                    <span className="text-coral font-bold">{isArabic ? 'فول مدمس وزبادي' : 'Foul & Yogurt'}</span>
+                    <span className="text-coral-deep dark:text-coral font-bold">{isArabic ? 'فول مدمس وزبادي' : 'Foul & Yogurt'}</span>
                   </div>
                   <div className="flex items-center justify-between p-2.5 rounded-xl bg-white dark:bg-night-card border border-line dark:border-night-line">
                     <span>{isArabic ? '🕌 وجبة الإفطار الرئيسية:' : '🕌 Iftar Main Meal:'}</span>
@@ -193,7 +193,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
             <div className="lg:col-span-7 space-y-5 order-1 lg:order-2">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-ink dark:bg-white text-white dark:text-ink text-xs font-mono font-bold">
-                <Moon className="w-3.5 h-3.5 text-coral" />
+                <Moon className="w-3.5 h-3.5 text-coral dark:text-coral-deep" />
                 <span>{isArabic ? 'رمضان' : 'Ramadan'}</span>
               </div>
 
@@ -218,7 +218,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-ink dark:bg-white text-white dark:text-ink text-xs font-mono font-bold">
-                <CalendarDays className="w-3.5 h-3.5 text-coral" />
+                <CalendarDays className="w-3.5 h-3.5 text-coral dark:text-coral-deep" />
                 <span>{isArabic ? 'الجدول' : 'Plan'}</span>
               </div>
 
@@ -236,15 +236,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
               <div className="space-y-2 pt-2 text-xs font-mono text-ink dark:text-stone-200">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-coral" />
+                  <CheckCircle2 className="w-4 h-4 text-coral-deep dark:text-coral" />
                   <span>{isArabic ? 'عرض الأسبوع (٧ أيام)' : 'Week view (7 days)'}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-coral" />
+                  <CheckCircle2 className="w-4 h-4 text-coral-deep dark:text-coral" />
                   <span>{isArabic ? 'عرض الشهر (٣٠ يوماً)' : 'Month view (30 days)'}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-coral" />
+                  <CheckCircle2 className="w-4 h-4 text-coral-deep dark:text-coral" />
                   <span>{isArabic ? 'الكميات تتغير مع عدد الأفراد' : 'Quantities follow family size'}</span>
                 </div>
               </div>
@@ -252,8 +252,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
             {/* Calendar Preview Mockup */}
             <div className="lg:col-span-5">
-              <div className="bg-paper dark:bg-[#212e47] rounded-2xl p-6 border border-line dark:border-[#384966] shadow-xl space-y-3 font-mono">
-                <div className="flex items-center justify-between pb-2 border-b border-line dark:border-[#384966] text-xs">
+              <div className="bg-paper dark:bg-night-soft rounded-2xl p-6 border border-line dark:border-night-line shadow-xl space-y-3 font-mono">
+                <div className="flex items-center justify-between pb-2 border-b border-line dark:border-night-line text-xs">
                   <span className="font-bold text-ink dark:text-white">
                     {isArabic ? 'جدول الأسبوع (الجمعة - الخميس)' : 'Weekly plan (Fri - Thu)'}
                   </span>
@@ -286,10 +286,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Grocery Checklist Mockup */}
             <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="bg-paper dark:bg-[#212e47] text-ink dark:text-white rounded-2xl p-6 border border-line dark:border-[#384966] shadow-xl space-y-4 font-mono">
-                <div className="flex items-center justify-between border-b border-line dark:border-[#384966] pb-3">
+              <div className="bg-paper dark:bg-night-soft text-ink dark:text-white rounded-2xl p-6 border border-line dark:border-night-line shadow-xl space-y-4 font-mono">
+                <div className="flex items-center justify-between border-b border-line dark:border-night-line pb-3">
                   <div className="flex items-center gap-2">
-                    <ShoppingBag className="w-5 h-5 text-coral" />
+                    <ShoppingBag className="w-5 h-5 text-coral-deep dark:text-coral" />
                     <span className="font-bold text-xs uppercase tracking-wider">
                       {isArabic ? 'قائمة التسوق' : 'GROCERY LIST'}
                     </span>
@@ -323,10 +323,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-2 flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-300 border-t border-line dark:border-[#384966]">
+                <div className="pt-2 flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-300 border-t border-line dark:border-night-line">
                   <span>{isArabic ? 'مشاركة بنقرة واحدة:' : 'Share in one tap:'}</span>
                   <span className="text-ink dark:text-white font-bold flex items-center gap-1">
-                    <Share2 className="w-3.5 h-3.5 text-coral" /> {isArabic ? 'واتساب' : 'WhatsApp'}
+                    <Share2 className="w-3.5 h-3.5 text-coral-deep dark:text-coral" /> {isArabic ? 'واتساب' : 'WhatsApp'}
                   </span>
                 </div>
               </div>
@@ -334,7 +334,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
             <div className="lg:col-span-7 space-y-5 order-1 lg:order-2">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-ink dark:bg-white text-white dark:text-ink text-xs font-mono font-bold">
-                <ShoppingBag className="w-3.5 h-3.5 text-coral" />
+                <ShoppingBag className="w-3.5 h-3.5 text-coral dark:text-coral-deep" />
                 <span>{isArabic ? 'قائمة التسوق' : 'Grocery list'}</span>
               </div>
 
@@ -352,11 +352,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
 
               <div className="pt-2 flex items-center gap-4 text-xs font-mono text-ink dark:text-white">
                 <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-coral" />
+                  <ShieldCheck className="w-4 h-4 text-coral-deep dark:text-coral" />
                   {isArabic ? 'نسخة احتياطية JSON/CSV' : 'JSON and CSV backup'}
                 </span>
                 <span className="flex items-center gap-1.5">
-                  <Share2 className="w-4 h-4 text-coral" />
+                  <Share2 className="w-4 h-4 text-coral-deep dark:text-coral" />
                   {isArabic ? 'إرسال عبر واتساب' : 'Send to WhatsApp'}
                 </span>
               </div>
@@ -385,15 +385,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       </main>
 
       {/* FOOTER */}
-      <footer className="w-full bg-[#f0eee8] dark:bg-night-card border-t border-line dark:border-night-line py-6 px-4 text-center text-[11px] font-mono text-stone-500 dark:text-stone-300">
+      <footer className="w-full bg-[#f0eee8] dark:bg-night-card border-t border-line dark:border-night-line py-6 px-4 text-center text-[11px] font-mono text-stone-600 dark:text-stone-300">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[#f8f6f0] border border-line dark:border-[#384966] flex items-center justify-center p-1">
+            <div className="w-8 h-8 rounded-lg bg-[#f8f6f0] border border-line dark:border-night-line flex items-center justify-center p-1">
               <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
             </div>
             <span className="font-extrabold text-ink dark:text-white font-mono">WAJBA</span>
           </div>
-          <a href="/seasons" className="underline hover:text-coral">{isArabic ? 'دليل المواسم: ماذا في موسمه في مصر' : 'Seasonal produce guide'}</a>
+          <a href="/seasons" className="underline hover:text-coral-deep dark:hover:text-coral">{isArabic ? 'دليل المواسم: ماذا في موسمه في مصر' : 'Seasonal produce guide'}</a>
+          <a href="/privacy.html" className="inline-flex min-h-11 items-center underline hover:text-coral-deep dark:hover:text-coral">{isArabic ? 'سياسة الخصوصية' : 'Privacy policy'}</a>
           <p>
             {isArabic
               ? '© 2026 وجبة'

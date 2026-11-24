@@ -236,34 +236,34 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="recipe-modal-title"
-        className="relative w-full max-w-3xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-hairline/80 dark:border-stone-800 p-5 sm:p-7 my-6 max-h-[92vh] overflow-y-auto text-stone-800 dark:text-stone-100 cursor-default"
+        className="relative w-full max-w-3xl bg-white dark:bg-night-card rounded-3xl shadow-2xl border border-hairline/80 dark:border-night-line p-5 sm:p-7 my-6 max-h-[92vh] overflow-y-auto text-stone-800 dark:text-stone-100 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between pb-4 border-b border-hairline dark:border-stone-800 mb-5">
+        <div className="flex items-center justify-between pb-4 border-b border-hairline dark:border-night-line mb-5">
           <div className="flex items-center gap-2.5">
-            <div className="p-2.5 rounded-2xl bg-soft dark:bg-stone-800 text-ink dark:text-coral font-black">
+            <div className="p-2.5 rounded-2xl bg-soft dark:bg-night-soft text-ink dark:text-coral font-black">
               🍲
             </div>
             <div>
               <h2 id="recipe-modal-title" className="text-base sm:text-lg font-extrabold text-ink dark:text-stone-100">
                 {initialRecipe ? (isArabic ? 'تعديل الوصفة الخاصة' : 'Edit Custom Recipe') : (isArabic ? 'إضافة وجبة أو وصفة خاصة جديدة' : 'Add New Custom Meal & Recipe')}
               </h2>
-              <p className="text-[11px] text-stone-500">
+              <p className="text-[11px] text-stone-600 dark:text-stone-300">
                 {isArabic
                   ? 'قم بإدخال تفاصيل الوجبة والمكونات لتظهر في الاستكشاف والجدول وقائمة التسوق تلقائياً.'
                   : 'Enter dish details, ingredients & timers to integrate with your planner & grocery list.'}
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 rounded-full hover:bg-soft dark:hover:bg-stone-800">
-            <X className="w-5 h-5 text-stone-500" />
+          <button onClick={onClose} className="p-2 rounded-full hover:bg-soft dark:hover:bg-night-soft">
+            <X className="w-5 h-5 text-stone-600 dark:text-stone-300" />
           </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6 text-xs font-semibold">
           {/* Section 1: Titles & Descriptions */}
-          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-stone-800/50 border border-hairline/80 dark:border-stone-700/80">
+          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-night-soft/50 border border-hairline/80 dark:border-night-line/80">
             <h3 className="text-xs font-black text-ink dark:text-coral flex items-center gap-1.5">
               <Sparkles className="w-4 h-4 text-coral-deep" />
               <span>{isArabic ? '1. العنوان والوصف الرئيسي:' : '1. Title & Description:'}</span>
@@ -280,7 +280,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   aria-invalid={Boolean(validationError && !titleAr.trim())}
                   aria-describedby={validationError ? 'recipe-validation-error' : undefined}
                   placeholder={isArabic ? 'مثال: صينية كفتة بالبطاطس' : 'e.g. Kofta with Potatoes'}
-                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-bold text-ink dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-coral-deep"
+                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-bold text-ink dark:text-stone-100 focus:outline-none focus:ring-2 focus:ring-coral-deep"
                 />
               </div>
               <div>
@@ -293,7 +293,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   aria-invalid={Boolean(validationError && !titleEn.trim())}
                   aria-describedby={validationError ? 'recipe-validation-error' : undefined}
                   placeholder="Kofta with Baked Potatoes"
-                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-coral-deep"
+                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card focus:outline-none focus:ring-2 focus:ring-coral-deep"
                 />
               </div>
             </div>
@@ -306,7 +306,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   value={descriptionAr}
                   onChange={(e) => setDescriptionAr(e.target.value)}
                   placeholder={isArabic ? 'وصف مشهي للطبق وعناصره النكهية...' : 'Short appetizing description...'}
-                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-coral-deep"
+                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card focus:outline-none focus:ring-2 focus:ring-coral-deep"
                 />
               </div>
               <div>
@@ -316,14 +316,14 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   value={descriptionEn}
                   onChange={(e) => setDescriptionEn(e.target.value)}
                   placeholder="Savory spiced meat patties baked with tomato slice and garlic..."
-                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-coral-deep"
+                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card focus:outline-none focus:ring-2 focus:ring-coral-deep"
                 />
               </div>
             </div>
           </div>
 
           {/* Section 2: Meal Slots, Region, Servings & Times */}
-          <div className="space-y-4 p-4 rounded-2xl bg-soft/60 dark:bg-stone-800/50 border border-hairline/80 dark:border-stone-700/80">
+          <div className="space-y-4 p-4 rounded-2xl bg-soft/60 dark:bg-night-soft/50 border border-hairline/80 dark:border-night-line/80">
             <h3 className="text-xs font-black text-ink dark:text-coral flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-coral-deep" />
               <span>{isArabic ? '2. نوع الوجبة والمنطقة والأوقات:' : '2. Meal Type, Region & Timings:'}</span>
@@ -343,12 +343,12 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       className={`px-3 py-1.5 rounded-xl font-extrabold text-xs flex items-center gap-1.5 transition-all ${
                         isSelected
                           ? 'bg-ink text-white shadow-xs'
-                          : 'bg-white dark:bg-stone-900 border border-hairline dark:border-stone-700 text-stone-700 dark:text-stone-300 hover:bg-soft'
+                          : 'bg-white dark:bg-night-card border border-hairline dark:border-night-line text-stone-700 dark:text-stone-300 hover:bg-soft'
                       }`}
                     >
                       <span>{slot.icon}</span>
                       <span>{isArabic ? slot.labelAr : slot.labelEn}</span>
-                      {isSelected && <Check className="w-3.5 h-3.5 text-coral ms-1" />}
+                      {isSelected && <Check className="w-3.5 h-3.5 text-coral-deep dark:text-coral ms-1" />}
                     </button>
                   );
                 })}
@@ -361,7 +361,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                 <select
                   value={region}
                   onChange={(e) => setRegion(e.target.value as Region)}
-                  className="w-full p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-bold"
+                  className="w-full p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-bold"
                 >
                   <option value="egypt">مصر 🇪🇬</option>
                   <option value="levant">بلاد الشام 🇱🇧</option>
@@ -378,7 +378,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   min="5"
                   value={prepTime}
                   onChange={(e) => setPrepTime(Number(e.target.value))}
-                  className="w-full p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono"
+                  className="w-full p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-mono"
                 />
               </div>
 
@@ -389,7 +389,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   min="0"
                   value={cookTime}
                   onChange={(e) => setCookTime(Number(e.target.value))}
-                  className="w-full p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono"
+                  className="w-full p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-mono"
                 />
               </div>
 
@@ -400,7 +400,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   min="1"
                   value={servings}
                   onChange={(e) => setServings(Number(e.target.value))}
-                  className="w-full p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono"
+                  className="w-full p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-mono"
                 />
               </div>
 
@@ -409,7 +409,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                 <select
                   value={difficulty}
                   onChange={(e) => setDifficulty(e.target.value as 'easy' | 'medium' | 'hard')}
-                  className="w-full p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-bold"
+                  className="w-full p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-bold"
                 >
                   <option value="easy">{isArabic ? 'سهل' : 'Easy'}</option>
                   <option value="medium">{isArabic ? 'متوسط' : 'Medium'}</option>
@@ -418,7 +418,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-hairline/60 dark:border-stone-700/60">
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-hairline/60 dark:border-night-line/60">
               <label className="flex items-center gap-2 cursor-pointer font-extrabold text-ink dark:text-stone-100">
                 <input
                   type="checkbox"
@@ -436,11 +436,11 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   value={tagsInput}
                   onChange={(e) => setTagsInput(e.target.value)}
                   placeholder="وصفة خاصة, عائلية, سريع"
-                  className="w-full p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900"
+                  className="w-full p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card"
                 />
               </div>
             </div>
-            <div className="border-t border-hairline/60 pt-3 dark:border-stone-700/60">
+            <div className="border-t border-hairline/60 pt-3 dark:border-night-line/60">
               <p className="mb-2 font-bold">{isArabic ? 'الوسوم الغذائية الإرشادية:' : 'Informational dietary tags:'}</p>
               <div className="flex flex-wrap gap-2">
                 {DIETARY_TAGS.map((tag) => {
@@ -452,15 +452,15 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                     'nut-free': { ar: 'خالٍ من المكسرات', en: 'Nut-free' },
                     spicy: { ar: 'حار', en: 'Spicy' },
                   };
-                  return <label key={tag} className="flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 dark:bg-stone-900"><input type="checkbox" checked={dietaryTags.includes(tag)} onChange={(event) => setDietaryTags(event.target.checked ? [...dietaryTags, tag] : dietaryTags.filter((candidate) => candidate !== tag))} />{isArabic ? labels[tag].ar : labels[tag].en}</label>;
+                  return <label key={tag} className="flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 dark:bg-night-card"><input type="checkbox" checked={dietaryTags.includes(tag)} onChange={(event) => setDietaryTags(event.target.checked ? [...dietaryTags, tag] : dietaryTags.filter((candidate) => candidate !== tag))} />{isArabic ? labels[tag].ar : labels[tag].en}</label>;
                 })}
               </div>
-              <p className="mt-2 text-[11px] text-stone-500">{isArabic ? 'تحقق دائماً من المكونات والحساسيات.' : 'Always verify ingredients and allergens.'}</p>
+              <p className="mt-2 text-[11px] text-stone-600 dark:text-stone-300">{isArabic ? 'تحقق دائماً من المكونات والحساسيات.' : 'Always verify ingredients and allergens.'}</p>
             </div>
           </div>
 
           {/* Section 3: Photo & Media */}
-          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-stone-800/50 border border-hairline/80 dark:border-stone-700/80">
+          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-night-soft/50 border border-hairline/80 dark:border-night-line/80">
             <h3 className="text-xs font-black text-ink dark:text-coral flex items-center gap-1.5">
               <ImageIcon className="w-4 h-4 text-coral-deep" />
               <span>{isArabic ? '3. صورة الوجبة (اختر من الصور الجاهزة أو ادخل رابطك الخاص):' : '3. Recipe Cover Photo (Select Preset or Custom URL):'}</span>
@@ -503,12 +503,12 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
                 placeholder="https://images.unsplash.com/..."
-                className="w-full p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-coral-deep font-mono text-[11px]"
+                className="w-full p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card focus:outline-none focus:ring-2 focus:ring-coral-deep font-mono text-[11px]"
               />
             </div>
 
             {/* Extra Catalog Images */}
-            <div className="pt-2 border-t border-hairline/60 dark:border-stone-700/60">
+            <div className="pt-2 border-t border-hairline/60 dark:border-night-line/60">
               <label className="block mb-1 font-bold text-ink dark:text-stone-100">
                 {isArabic ? 'إضافة صور إضافية لكتالوج الوجبة (اختياري - حتى 3 صور إضافية):' : 'Additional Catalog Images (Optional - up to 3 extra images):'}
               </label>
@@ -518,28 +518,28 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   value={extraImage1}
                   onChange={(e) => setExtraImage1(e.target.value)}
                   placeholder={isArabic ? 'رابط صورة إضافية 1' : 'Extra Image 1 URL'}
-                  className="p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-[10px]"
+                  className="p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-mono text-[10px]"
                 />
                 <input
                   type="text"
                   value={extraImage2}
                   onChange={(e) => setExtraImage2(e.target.value)}
                   placeholder={isArabic ? 'رابط صورة إضافية 2' : 'Extra Image 2 URL'}
-                  className="p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-[10px]"
+                  className="p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-mono text-[10px]"
                 />
                 <input
                   type="text"
                   value={extraImage3}
                   onChange={(e) => setExtraImage3(e.target.value)}
                   placeholder={isArabic ? 'رابط صورة إضافية 3' : 'Extra Image 3 URL'}
-                  className="p-2 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-[10px]"
+                  className="p-2 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-mono text-[10px]"
                 />
               </div>
             </div>
           </div>
 
           {/* Section 4: Cultural Story / Heritage */}
-          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-stone-800/50 border border-hairline/80 dark:border-stone-700/80">
+          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-night-soft/50 border border-hairline/80 dark:border-night-line/80">
             <h3 className="text-xs font-black text-ink dark:text-coral flex items-center gap-1.5">
               <BookOpen className="w-4 h-4 text-coral-deep" />
               <span>{isArabic ? '4. قصة وتراث الوجبة (اختياري):' : '4. Dish Heritage & Story (Optional):'}</span>
@@ -553,7 +553,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   value={storyAr}
                   onChange={(e) => setStoryAr(e.target.value)}
                   placeholder="سر الوصفة العائلية أو تاريخ وأصل الطبق..."
-                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-coral-deep"
+                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card focus:outline-none focus:ring-2 focus:ring-coral-deep"
                 />
               </div>
               <div>
@@ -563,14 +563,14 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                   value={storyEn}
                   onChange={(e) => setStoryEn(e.target.value)}
                   placeholder="Family secret heritage or origin story of the meal..."
-                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 focus:outline-none focus:ring-2 focus:ring-coral-deep"
+                  className="w-full p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card focus:outline-none focus:ring-2 focus:ring-coral-deep"
                 />
               </div>
             </div>
           </div>
 
           {/* Section 5: Ingredients with Aisle Classification */}
-          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-stone-800/50 border border-hairline/80 dark:border-stone-700/80">
+          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-night-soft/50 border border-hairline/80 dark:border-night-line/80">
             <div className="flex items-center justify-between">
               <h3 className="text-xs font-black text-ink dark:text-coral flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-coral-deep" />
@@ -588,7 +588,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
 
             <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
               {ingredients.map((ing, idx) => (
-                <div key={idx} className="p-2 rounded-xl bg-white dark:bg-stone-900 border border-hairline dark:border-stone-700 grid grid-cols-12 gap-1.5 items-center">
+                <div key={idx} className="p-2 rounded-xl bg-white dark:bg-night-card border border-hairline dark:border-night-line grid grid-cols-12 gap-1.5 items-center">
                   <input
                     type="text"
                     value={ing.nameAr}
@@ -599,7 +599,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       setIngredients(updated);
                     }}
                     placeholder={isArabic ? 'المكون (مثال: لحم ضأن)' : 'Ingredient name'}
-                    className="col-span-5 p-2 rounded-lg border border-hairline dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-xs font-bold"
+                    className="col-span-5 p-2 rounded-lg border border-hairline dark:border-night-line bg-stone-50 dark:bg-night-soft text-xs font-bold"
                   />
 
                   <input
@@ -610,7 +610,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       updated[idx].amount = Number(e.target.value);
                       setIngredients(updated);
                     }}
-                    className="col-span-2 p-2 rounded-lg border border-hairline dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-xs font-mono font-bold"
+                    className="col-span-2 p-2 rounded-lg border border-hairline dark:border-night-line bg-stone-50 dark:bg-night-soft text-xs font-mono font-bold"
                   />
 
                   <select
@@ -621,7 +621,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       updated[idx].unitEn = e.target.value;
                       setIngredients(updated);
                     }}
-                    className="col-span-2 p-2 rounded-lg border border-hairline dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-[11px] font-bold"
+                    className="col-span-2 p-2 rounded-lg border border-hairline dark:border-night-line bg-stone-50 dark:bg-night-soft text-[11px] font-bold"
                   >
                     <option value="جرام">جرام</option>
                     <option value="كجم">كجم</option>
@@ -641,7 +641,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       updated[idx].aisle = e.target.value as IngredientAisle;
                       setIngredients(updated);
                     }}
-                    className="col-span-2 p-2 rounded-lg border border-hairline dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-[10px] font-bold"
+                    className="col-span-2 p-2 rounded-lg border border-hairline dark:border-night-line bg-stone-50 dark:bg-night-soft text-[10px] font-bold"
                   >
                     <option value="produce">خضار وفواكه 🥦</option>
                     <option value="meat">لحوم وطيور 🥩</option>
@@ -665,7 +665,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
           </div>
 
           {/* Section 6: Instructions / Preparation Steps */}
-          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-stone-800/50 border border-hairline/80 dark:border-stone-700/80">
+          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-night-soft/50 border border-hairline/80 dark:border-night-line/80">
             <div className="flex items-center justify-between">
               <h3 className="text-xs font-black text-ink dark:text-coral">
                 {isArabic ? '6. خطوات التحضير والطهي (خطوة بخطوة):' : '6. Cooking Instructions (Step-by-Step):'}
@@ -683,7 +683,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
             <div className="space-y-2">
               {instructionsAr.map((inst, idx) => (
                 <div key={idx} className="flex items-center gap-2">
-                  <span className="w-6 h-6 rounded-full bg-hairline dark:bg-stone-700 text-ink dark:text-stone-100 font-extrabold flex items-center justify-center text-xs flex-shrink-0">
+                  <span className="w-6 h-6 rounded-full bg-hairline dark:bg-night-soft text-ink dark:text-stone-100 font-extrabold flex items-center justify-center text-xs flex-shrink-0">
                     {idx + 1}
                   </span>
                   <input
@@ -701,7 +701,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       }
                     }}
                     placeholder={isArabic ? `اكتب تفاصيل الخطوة رقم ${idx + 1}...` : `Step ${idx + 1} description...`}
-                    className="flex-1 p-2.5 rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 text-xs font-semibold"
+                    className="flex-1 p-2.5 rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card text-xs font-semibold"
                   />
                   {instructionsAr.length > 1 && (
                     <button
@@ -718,7 +718,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
           </div>
 
           {/* Section 7: Interactive Cooking Timers */}
-          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-stone-800/50 border border-hairline/80 dark:border-stone-700/80">
+          <div className="space-y-3 p-4 rounded-2xl bg-soft/60 dark:bg-night-soft/50 border border-hairline/80 dark:border-night-line/80">
             <div className="flex items-center justify-between">
               <h3 className="text-xs font-black text-ink dark:text-coral flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-coral-deep" />
@@ -736,7 +736,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
 
             <div className="space-y-2">
               {timerSteps.map((ts, idx) => (
-                <div key={idx} className="flex items-center gap-2 p-2 bg-white dark:bg-stone-900 rounded-xl border border-hairline dark:border-stone-700">
+                <div key={idx} className="flex items-center gap-2 p-2 bg-white dark:bg-night-card rounded-xl border border-hairline dark:border-night-line">
                   <span className="text-xs font-bold text-ink dark:text-coral min-w-[60px]">
                     {isArabic ? `مؤقت ${idx + 1}` : `Timer ${idx + 1}`}
                   </span>
@@ -750,7 +750,7 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                       setTimerSteps(updated);
                     }}
                     placeholder={isArabic ? 'اسم الخطوة المؤقتة (مثال: سلق الأرز)' : 'Timer Step Name'}
-                    className="flex-1 p-2 rounded-lg border border-hairline dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-xs font-bold"
+                    className="flex-1 p-2 rounded-lg border border-hairline dark:border-night-line bg-stone-50 dark:bg-night-soft text-xs font-bold"
                   />
                   <div className="flex items-center gap-1">
                     <input
@@ -762,9 +762,9 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
                         updated[idx].durationMinutes = Number(e.target.value);
                         setTimerSteps(updated);
                       }}
-                      className="w-16 p-2 rounded-lg border border-hairline dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-xs font-mono font-bold"
+                      className="w-16 p-2 rounded-lg border border-hairline dark:border-night-line bg-stone-50 dark:bg-night-soft text-xs font-mono font-bold"
                     />
-                    <span className="text-stone-500 text-[11px] font-bold me-1">{isArabic ? 'دقيقة' : 'm'}</span>
+                    <span className="text-stone-600 dark:text-stone-300 text-[11px] font-bold me-1">{isArabic ? 'دقيقة' : 'm'}</span>
                   </div>
                   <button
                     type="button"
@@ -779,12 +779,12 @@ export const CreateRecipeModal: React.FC<CreateRecipeModalProps> = ({
           </div>
 
           {/* Form Actions */}
-          <div className="pt-4 border-t border-hairline dark:border-stone-800 flex items-center justify-between">
+          <div className="pt-4 border-t border-hairline dark:border-night-line flex items-center justify-between">
             {validationError && <p id="recipe-validation-error" role="alert" className="max-w-sm text-rose-700 dark:text-rose-300">{validationError}</p>}
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2.5 rounded-xl bg-stone-200 dark:bg-stone-800 font-bold hover:bg-stone-300 text-stone-800 dark:text-stone-200"
+              className="px-5 py-2.5 rounded-xl bg-stone-200 dark:bg-night-soft font-bold hover:bg-stone-300 text-stone-800 dark:text-stone-200"
             >
               {isArabic ? 'إلغاء' : 'Cancel'}
             </button>

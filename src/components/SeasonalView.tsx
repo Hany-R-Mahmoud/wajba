@@ -121,7 +121,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
     <div className="space-y-6">
       <section className="space-y-4 rounded-3xl border border-hairline bg-white p-4 shadow-xs dark:border-night-line dark:bg-night-card sm:p-5">
         <div className="flex items-start gap-3">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-ink text-coral dark:bg-white">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-ink text-coral dark:text-coral-deep dark:bg-white">
             <Leaf className="h-6 w-6" aria-hidden="true" />
           </div>
           <div className="min-w-0">
@@ -207,7 +207,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
               onClick={onOpenSeasonalRecipes}
               className="inline-flex min-h-11 items-center gap-2 rounded-full bg-ink px-4 text-xs font-mono font-bold text-white hover:bg-body dark:bg-white dark:text-ink"
             >
-              <Leaf className="h-4 w-4 text-coral" aria-hidden="true" />
+              <Leaf className="h-4 w-4 text-coral dark:text-coral-deep" aria-hidden="true" />
               <span>{isArabic ? 'وصفات هذا الشهر' : 'Recipes for this month'}</span>
             </button>
           )}
@@ -319,7 +319,7 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
                       : 'bg-ink text-white hover:bg-body dark:bg-white dark:text-ink'
                   }`}
                 >
-                  {added ? <ShoppingBag className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4 text-coral" aria-hidden="true" />}
+                  {added ? <ShoppingBag className="h-4 w-4" aria-hidden="true" /> : <Plus className="h-4 w-4 text-coral dark:text-coral-deep" aria-hidden="true" />}
                   <span>
                     {added
                       ? isArabic ? 'في قائمة التسوق' : 'In your grocery list'

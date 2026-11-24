@@ -33,8 +33,8 @@ Use these classes instead of arbitrary `[#hex]` values (defined in `src/index.cs
 | `paper` | `#f8f7f4` | Page background (light) |
 | `line` | `#e2e0d8` | Header and card borders (light) |
 | `coral` | `#ff7759` | Accents and icons; text only on dark surfaces |
-| `coral-deep` | `#b9401f` | Coral text and focus on light surfaces (5.1:1 on paper) |
-| `night`, `night-card`, `night-line` | `#0c1220`, `#162032`, `#2b3a54` | Dark-mode page, card and border |
+| `coral-deep` | `#b9401f` | Coral text and focus on light surfaces (5.1:1 on paper); filled coral controls use `bg-coral-deep text-white` (or `bg-coral text-ink`), never `bg-coral text-white` |
+| `night`, `night-card`, `night-soft`, `night-line` | `#0c1220`, `#162032`, `#1f2c42`, `#2b3a54` | Dark-mode page, card, field/button fill and border; the only dark family (no stone-800/900/950 surfaces) |
 | `navy` | `#071829` | Experimental chip |
 
 Emerald stays for success states and the checked state; rose for errors and destructive actions. Meal-slot emoji stay in data, not in labels.
@@ -53,7 +53,7 @@ The existing app uses the system sans stack for readable Arabic/English body cop
 | Body/sm | 14px | 400 | Supporting copy |
 | Caption | 12px | 500 | Metadata and compact controls |
 
-Primary: `ui-sans-serif, system-ui, sans-serif`. Metadata: `ui-monospace, SFMono-Regular, monospace`.
+Primary: `ui-sans-serif, system-ui, sans-serif`. Metadata: `ui-monospace, SFMono-Regular, monospace`, for Latin text and numbers only: Arabic never uses monospace, letter-spacing or uppercase.
 
 ## 4. Spacing & Layout
 

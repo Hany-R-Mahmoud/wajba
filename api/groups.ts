@@ -2,6 +2,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import { randomInt, randomUUID } from 'node:crypto';
 import { neon } from '@neondatabase/serverless';
 import { authenticatedUser } from '../server/auth.js';
+import { rateLimitHit, type LimitBucket } from '../server/rateLimit.js';
 import { parseFamilyPlan } from '../src/utils/family.js';
 
 const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -40,6 +41,10 @@ export default async function handler(req: IncomingMessage & { body?: unknown },
     if (typeof body === 'string') { try { body = JSON.parse(body); } catch { return reply(400, { error: 'Invalid JSON' }); } }
     if (!body || typeof body !== 'object') return reply(400, { error: 'Invalid request' });
     const data = body as Record<string, unknown>;
+    const bucket: LimitBucket | null = data.action === 'create' ? 'group_create'
+      : ['join', 'publish', 'rotate', 'revoke', 'leave', 'remove'].includes(data.action as string) ? 'group_write' : null;
+    const retryAfter = bucket ? await rateLimitHit(sql, user, bucket) : null;
+    if (retryAfter) { res.setHeader('Retry-After', String(retryAfter)); return reply(429, { error: 'Too many requests. Try again later.' }); }
     if (data.action === 'create') {
       const name = typeof data.name === 'string' ? data.name.trim() : '';
       if (!name || name.length > 80) return reply(400, { error: 'Invalid group name' });

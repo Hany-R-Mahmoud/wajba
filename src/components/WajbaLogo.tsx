@@ -27,7 +27,7 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
     return (
       <div
         onClick={onClick}
-        className={`relative rounded-xl bg-[#f8f6f0] border border-line dark:border-[#384966] p-1 flex items-center justify-center shadow-xs overflow-hidden ${symbolSizes} ${
+        className={`relative rounded-xl bg-[#f8f6f0] border border-line dark:border-night-line p-1 flex items-center justify-center shadow-xs overflow-hidden ${symbolSizes} ${
           onClick ? 'cursor-pointer hover:scale-105 transition-transform' : ''
         } ${className}`}
       >
@@ -44,7 +44,7 @@ export const WajbaLogo: React.FC<WajbaLogoProps> = ({
           onClick ? 'cursor-pointer group' : ''
         } ${className}`}
       >
-        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#f8f6f0] border border-line dark:border-[#384966] flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
+        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#f8f6f0] border border-line dark:border-night-line flex items-center justify-center p-1 shadow-sm group-hover:scale-105 transition-transform">
           <img src="/wajba-logo.png" alt="شعار وجبة Wajba" className="w-full h-full object-contain" />
         </div>
         <div>

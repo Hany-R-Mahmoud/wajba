@@ -29,7 +29,7 @@ export const PublicSeasonsPage: React.FC<{ language: Language }> = ({ language }
   }, []);
 
   return (
-    <main className="min-h-screen bg-paper px-4 py-8 text-stone-900 dark:bg-navy dark:text-slate-100 sm:px-8">
+    <main className="min-h-screen bg-paper px-4 py-8 text-stone-900 dark:bg-night dark:text-slate-100 sm:px-8">
       <article className="mx-auto max-w-4xl space-y-8">
         <nav aria-label={isArabic ? 'مسار التنقل' : 'Breadcrumb'} className="text-sm">
           <a href="/" className="font-bold text-coral-deep hover:underline dark:text-coral">Wajba</a>
@@ -55,7 +55,7 @@ export const PublicSeasonsPage: React.FC<{ language: Language }> = ({ language }
           <ul className="flex flex-wrap gap-2">
             {months.map((name, index) => (
               <li key={name}>
-                <a href={`#month-${index + 1}`} className={`inline-flex min-h-11 items-center gap-1.5 rounded-xl border px-3 text-sm font-bold hover:border-coral-deep dark:border-night-line dark:bg-night-card dark:hover:border-coral ${nowMonth === index + 1 ? 'border-coral-deep bg-white' : 'border-stone-300 bg-white'}`}>
+                <a href={`#month-${index + 1}`} className={`inline-flex min-h-11 items-center gap-1.5 rounded-xl border px-3 text-sm font-bold hover:border-coral-deep dark:bg-night-card dark:hover:border-coral ${nowMonth === index + 1 ? 'border-coral-deep bg-white dark:border-coral' : 'border-stone-300 bg-white dark:border-night-line'}`}>
                   {name}
                   {nowMonth === index + 1 && <span className="text-xs font-medium">{isArabic ? 'الآن' : 'Now'}</span>}
                 </a>
@@ -79,8 +79,8 @@ export const PublicSeasonsPage: React.FC<{ language: Language }> = ({ language }
                   return (
                     <li key={item.id} className="rounded-xl border border-stone-200 bg-white p-3 dark:border-night-line dark:bg-night-card">
                       <strong>{isArabic ? item.nameAr : item.nameEn}</strong>
-                      {peak && <span className="ms-2 rounded-full border border-coral/60 px-2 py-0.5 text-xs font-bold text-[#8f2f14] dark:text-[#ff9a82]">{isArabic ? 'في عز موسمه' : 'Peak season'}</span>}
-                      {showEnglish && isArabic && <span lang="en" className="block text-sm text-stone-600 dark:text-stone-300">{item.nameEn}</span>}
+                      {peak && <span className="ms-2 rounded-full border border-coral/60 px-2 py-0.5 text-xs font-bold text-coral-deep dark:text-coral">{isArabic ? 'في عز موسمه' : 'Peak season'}</span>}
+                      {showEnglish && isArabic && <span lang="en" dir="ltr" className="block text-start text-sm text-stone-600 dark:text-stone-300">{item.nameEn}</span>}
                       <span className="mt-1 block text-sm leading-7 text-stone-700 dark:text-stone-300">{isArabic ? item.cookHintAr : item.cookHintEn}</span>
                     </li>
                   );
@@ -92,7 +92,7 @@ export const PublicSeasonsPage: React.FC<{ language: Language }> = ({ language }
 
         <footer className="space-y-3 border-t border-stone-200 pt-6 text-sm dark:border-night-line">
           <div className="flex flex-wrap gap-3">
-            <a href="/dashboard/seasons" className="rounded-lg bg-ink px-4 py-2 font-bold text-white hover:bg-stone-700">{isArabic ? 'افتح الدليل التفاعلي' : 'Open the interactive guide'}</a>
+            <a href="/dashboard/seasons" className="rounded-lg bg-ink px-4 py-2 font-bold text-white hover:bg-stone-700 dark:bg-white dark:text-ink dark:hover:bg-stone-200">{isArabic ? 'افتح الدليل التفاعلي' : 'Open the interactive guide'}</a>
             <a href="/" className="rounded-lg border border-stone-300 px-4 py-2 font-bold hover:border-coral-deep">{isArabic ? 'الصفحة الرئيسية' : 'Home'}</a>
           </div>
         </footer>

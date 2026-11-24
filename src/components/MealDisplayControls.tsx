@@ -29,7 +29,7 @@ export const MealDisplayControls: React.FC<MealDisplayControlsProps> = ({
   const isArabic = language === 'ar';
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-hairline/80 bg-soft/70 px-4 py-3 dark:border-stone-800 dark:bg-stone-900/70">
+    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-hairline/80 bg-soft/70 px-4 py-3 dark:border-night-line dark:bg-night-card/70">
       <div className="flex items-center gap-2 text-xs font-black text-ink dark:text-stone-100">
         <Eye className="h-4 w-4 text-coral-deep dark:text-coral" />
         <span>{isArabic ? 'عرض الوجبات' : 'Meal display'}</span>
@@ -47,7 +47,7 @@ export const MealDisplayControls: React.FC<MealDisplayControlsProps> = ({
 
       {!showAllMeals && (
         <div
-          className="flex flex-wrap items-center gap-x-3 gap-y-2 border-s border-hairline ps-3 dark:border-stone-700"
+          className="flex flex-wrap items-center gap-x-3 gap-y-2 border-s border-hairline ps-3 dark:border-night-line"
           role="group"
           aria-label={isArabic ? 'اختر الوجبات الظاهرة' : 'Select visible meals'}
         >

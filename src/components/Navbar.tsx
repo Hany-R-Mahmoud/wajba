@@ -140,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition-all cursor-pointer whitespace-nowrap ${
                     isActive
                       ? 'bg-ink text-white shadow-xs dark:bg-white dark:text-ink'
-                      : 'text-ink dark:text-stone-300 hover:text-coral dark:hover:text-coral'
+                      : 'text-ink dark:text-stone-300 hover:text-coral-deep dark:hover:text-coral dark:hover:text-coral'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5 shrink-0" />
@@ -156,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium transition-all cursor-pointer whitespace-nowrap ${
                   isSecondaryActive
                     ? 'bg-ink text-white shadow-xs dark:bg-white dark:text-ink'
-                    : 'text-ink dark:text-stone-300 hover:text-coral dark:hover:text-coral'
+                    : 'text-ink dark:text-stone-300 hover:text-coral-deep dark:hover:text-coral dark:hover:text-coral'
                 }`}
               >
                 {isSecondaryActive && activeSecondaryItem ? (
@@ -195,7 +195,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-mono font-medium transition-colors cursor-pointer ${
                           isActive
                             ? 'bg-ink text-white dark:bg-white dark:text-ink'
-                            : 'text-ink dark:text-stone-300 hover:bg-[#f0eee8] dark:hover:bg-night hover:text-coral'
+                            : 'text-ink dark:text-stone-300 hover:bg-[#f0eee8] dark:hover:bg-night hover:text-coral-deep dark:hover:text-coral'
                         }`}
                       >
                         <Icon className="w-4 h-4 shrink-0" />
@@ -212,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-1 sm:gap-2">
             {/* Active Timers Badge if any */}
             {activeTimers.length > 0 && (
-              <div className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-coral text-white text-xs font-mono font-bold animate-pulse cursor-pointer shadow-xs">
+              <div className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-coral-deep text-white text-xs font-mono font-bold animate-pulse cursor-pointer shadow-xs">
                 <Timer className="w-3.5 h-3.5" />
                 <span>{activeTimers.length}</span>
               </div>
@@ -223,20 +223,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Language Switcher */}
             <button
               onClick={() => onLanguageChange(isArabic ? 'en' : 'ar')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-soft dark:bg-stone-800 text-ink dark:text-stone-200 text-xs font-mono hover:border-ink transition-colors border border-hairline dark:border-stone-700 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 min-h-11 rounded-full bg-soft dark:bg-night-soft text-ink dark:text-stone-200 text-xs font-mono hover:border-ink transition-colors border border-hairline dark:border-night-line cursor-pointer"
               title={isArabic ? 'Switch to English' : 'التحويل للغة العربية'}
             >
-              <Globe className="w-3.5 h-3.5 text-coral" />
+              <Globe className="w-3.5 h-3.5 text-coral-deep dark:text-coral" />
               <span>{isArabic ? 'EN' : 'عربي'}</span>
             </button>
 
             {/* Theme Toggle */}
             <button
               onClick={onThemeToggle}
-              className="p-2 rounded-full bg-soft dark:bg-stone-800 text-ink dark:text-stone-200 hover:border-ink transition-colors border border-hairline dark:border-stone-700 cursor-pointer"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-soft dark:bg-night-soft text-ink dark:text-stone-200 hover:border-ink transition-colors border border-hairline dark:border-night-line cursor-pointer"
               title={isArabic ? 'تغيير المظهر' : 'Toggle Theme'}
             >
-              {theme === 'light' ? <Moon className="w-4 h-4 text-ink" /> : <Sun className="w-4 h-4 text-amber-400" />}
+              {theme === 'light' ? <Moon className="w-4 h-4 text-ink" /> : <Sun className="w-4 h-4 text-coral" />}
             </button>
 
             <AccountEntry language={language} onOpen={onOpenAccount} />

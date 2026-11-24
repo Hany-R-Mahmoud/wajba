@@ -11,6 +11,7 @@ interface FamilySyncModalProps {
   plan: WeeklyPlan;
   groceryList: GroceryItem[];
   onClose: () => void;
+  onOpenSettings: () => void;
   language: Language;
   onImportPlan: (plan: WeeklyPlan) => void;
   customRecipes: Recipe[];
@@ -21,6 +22,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
   plan,
   groceryList,
   onClose,
+  onOpenSettings,
   language,
   onImportPlan,
   customRecipes,
@@ -104,11 +106,11 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="family-sync-title"
-        className="relative w-full max-w-xl max-h-[90dvh] overflow-y-auto bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-hairline/80 dark:border-stone-800 p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5 cursor-default"
+        className="relative w-full max-w-xl max-h-[90dvh] overflow-y-auto bg-white dark:bg-night-card rounded-3xl shadow-2xl border border-hairline/80 dark:border-night-line p-6 my-8 text-stone-800 dark:text-stone-100 space-y-5 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-stone-800">
+        <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-night-line">
           <div className="flex items-center gap-2">
             <Users className="w-5 h-5 text-coral-deep" />
             <h2 id="family-sync-title" className="text-base font-extrabold text-ink dark:text-stone-100">
@@ -121,7 +123,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         </div>
 
         {/* URL Link Sharing Option */}
-        <div className="p-4 rounded-2xl bg-soft/80 dark:bg-stone-800/80 border border-hairline dark:border-stone-700 space-y-2">
+        <div className="p-4 rounded-2xl bg-soft/80 dark:bg-night-soft/80 border border-hairline dark:border-night-line space-y-2">
           <h3 className="text-xs font-bold text-ink dark:text-stone-100 flex items-center gap-1.5">
             <LinkIcon className="w-4 h-4 text-coral-deep" />
             <span>{isArabic ? 'رابط الخطة المباشر للعائلة:' : 'Direct Family Share URL:'}</span>
@@ -137,7 +139,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
               readOnly
               type="text"
               value={sharedUrl}
-              className="flex-1 min-w-[200px] p-2.5 text-xs rounded-xl border border-hairline dark:border-stone-700 bg-white dark:bg-stone-900 font-mono text-stone-600 dark:text-stone-300 select-all"
+              className="flex-1 min-w-[200px] p-2.5 text-xs rounded-xl border border-hairline dark:border-night-line bg-white dark:bg-night-card font-mono text-stone-600 dark:text-stone-300 select-all"
             />
             <button
               onClick={handleCopyLink}
@@ -164,7 +166,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
 
         {/* Google Sheets Remote Sync Option */}
         {FEATURE_FLAGS.appsScriptSync && (
-        <div className="p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700 space-y-2">
+        <div className="p-4 rounded-2xl bg-stone-50 dark:bg-night-soft/50 border border-stone-200 dark:border-night-line space-y-2">
           <h3 className="text-xs font-bold text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
             <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
             <span>{isArabic ? 'مزامنة Google Sheets (اختياري):' : 'Google Sheets Sync (Optional):'}</span>
@@ -181,7 +183,7 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
               value={sheetsUrl}
               onChange={(e) => setSheetsUrl(e.target.value)}
               placeholder="https://script.google.com/macros/s/..."
-              className="flex-1 p-2 text-xs rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 font-mono"
+              className="flex-1 p-2 text-xs rounded-xl border border-stone-300 dark:border-night-line bg-white dark:bg-night-card font-mono"
             />
             <button
               disabled={syncing}
@@ -200,17 +202,17 @@ export const FamilySyncModal: React.FC<FamilySyncModalProps> = ({
         )}
 
         {/* Plan CSV (full-data backup lives in Settings) */}
-        <div className="p-4 rounded-2xl bg-stone-50 dark:bg-stone-800/50 border border-stone-200 dark:border-stone-700 space-y-2">
+        <div className="p-4 rounded-2xl bg-stone-50 dark:bg-night-soft/50 border border-stone-200 dark:border-night-line space-y-2">
           <h3 className="text-xs font-bold text-stone-900 dark:text-stone-100 flex items-center gap-1.5">
             <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
             <span>{isArabic ? 'تصدير الخطة وقائمة التسوق (CSV):' : 'Export plan and grocery list (CSV):'}</span>
           </h3>
-          <p className="text-[11px] text-stone-600 dark:text-stone-400">
+          <button type="button" onClick={onOpenSettings} className="min-h-11 text-start text-[11px] text-stone-600 underline dark:text-stone-400">
             {isArabic ? 'للنسخة الاحتياطية الكاملة افتح الإعدادات.' : 'For a full data backup, open Settings.'}
-          </p>
+          </button>
           <button
             onClick={handleDownloadCSV}
-            className="px-3.5 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5 hover:bg-stone-300 transition-colors"
+            className="px-3.5 py-2 rounded-xl bg-stone-200 dark:bg-night-soft text-stone-800 dark:text-stone-200 text-xs font-bold flex items-center gap-1.5 hover:bg-stone-300 transition-colors"
           >
             <Download className="w-3.5 h-3.5" />
             <span>{isArabic ? 'تحميل جدول CSV' : 'Export CSV File'}</span>

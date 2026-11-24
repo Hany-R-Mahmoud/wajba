@@ -54,7 +54,13 @@ import { FEATURE_FLAGS } from './config/features';
 
 // Dashboard views and modals load on first use, so the landing page and public pages do not pay for them.
 const lazyNamed = <T extends React.ComponentType<any>>(load: () => Promise<Record<string, unknown>>, name: string) =>
-  lazy(async () => ({ default: (await load())[name] as T }));
+  lazy(async () => {
+    try { return { default: (await load())[name] as T }; }
+    catch { // one quiet retry covers a flaky connection; React caches a rejected lazy, so a second failure needs a reload
+      await new Promise(resolve => setTimeout(resolve, 400));
+      return { default: (await load())[name] as T };
+    }
+  });
 const RecipeExplorer = lazyNamed(() => import('./components/RecipeExplorer'), 'RecipeExplorer');
 const WeeklyPlannerView = lazyNamed(() => import('./components/WeeklyPlannerView'), 'WeeklyPlannerView');
 const MonthlyCalendarView = lazyNamed(() => import('./components/MonthlyCalendarView'), 'MonthlyCalendarView');
@@ -68,8 +74,13 @@ const SeasonalView = lazyNamed(() => import('./components/SeasonalView'), 'Seaso
 const SettingsView = lazyNamed(() => import('./components/SettingsView'), 'SettingsView');
 
 /** Lazy modal host: a failed chunk load shows the standard error card instead of breaking the app. */
-function LazyModal({ language, children }: { language: Language; children: React.ReactNode }) {
-  return <ErrorBoundary language={language}><Suspense fallback={null}>{children}</Suspense></ErrorBoundary>;
+function LazyModal({ language, onClose, children }: { language: Language; onClose: () => void; children: React.ReactNode }) {
+  const loading = (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+      <div className="rounded-2xl bg-white px-5 py-4 dark:bg-night-card"><LoadingState language={language} /></div>
+    </div>
+  );
+  return <ErrorBoundary language={language} onDismiss={onClose}><Suspense fallback={loading}>{children}</Suspense></ErrorBoundary>;
 }
 
 type DashboardTab = 'recipes' | 'planner' | 'grocery' | 'seasons' | 'pantry' | 'leaderboard' | 'settings';
@@ -692,7 +703,7 @@ export default function App() {
 
       {/* Recipe Detail View Modal */}
       {selectedDetailRecipe && (
-        <LazyModal language={language}>
+        <LazyModal language={language} onClose={() => setSelectedDetailRecipe(null)}>
         <RecipeDetailModal
           recipe={selectedDetailRecipe}
           onClose={() => setSelectedDetailRecipe(null)}
@@ -712,7 +723,7 @@ export default function App() {
 
       {/* Create Custom Recipe Modal */}
       {createRecipeModalOpen && (
-        <LazyModal language={language}>
+        <LazyModal language={language} onClose={() => { setCreateRecipeModalOpen(false); setRecipeBeingEdited(null); }}>
         <CreateRecipeModal
           onClose={() => {
             setCreateRecipeModalOpen(false);
@@ -727,11 +738,12 @@ export default function App() {
 
       {/* Family Sync Modal */}
       {familySyncModalOpen && (
-        <LazyModal language={language}>
+        <LazyModal language={language} onClose={() => setFamilySyncModalOpen(false)}>
         <FamilySyncModal
           plan={weeklyPlan}
           groceryList={groceryList}
           onClose={() => setFamilySyncModalOpen(false)}
+          onOpenSettings={() => { setFamilySyncModalOpen(false); setOpenRecipesSeasonal(false); navigateToTab('settings'); }}
           language={language}
           onImportPlan={handleUpdateWeeklyPlan}
           customRecipes={customRecipes}

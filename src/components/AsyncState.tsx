@@ -29,7 +29,7 @@ export function ErrorState({ language, message, onRetry }: { language: Language;
   );
 }
 
-interface BoundaryProps { children: ReactNode; language?: Language; onError?: (error: Error, info: ErrorInfo) => void }
+interface BoundaryProps { children: ReactNode; language?: Language; onDismiss?: () => void; onError?: (error: Error, info: ErrorInfo) => void }
 interface BoundaryState { error: Error | null }
 
 /**
@@ -48,16 +48,23 @@ export class ErrorBoundary extends Component<BoundaryProps, BoundaryState> {
   render() {
     if (!this.state.error) return this.props.children;
     const ar = (this.props.language ?? (document.documentElement.lang === 'ar' ? 'ar' : 'en')) === 'ar';
-    return (
+    // React caches a rejected lazy import, so re-rendering cannot fetch the chunk again: only a reload can.
+    const chunkFailure = /dynamically imported module|importing a module script|loading chunk|failed to fetch/i.test(this.state.error.message);
+    const { onDismiss } = this.props;
+    const card = (
       <div role="alert" className="mx-auto my-10 max-w-md space-y-3 rounded-3xl border border-rose-300 bg-rose-50 p-6 text-center text-rose-900 dark:border-rose-800 dark:bg-rose-950 dark:text-rose-100">
         <AlertTriangle className="mx-auto h-8 w-8" aria-hidden="true" />
         <h2 className="text-lg font-bold">{ar ? 'حدث خطأ غير متوقع' : 'Something went wrong'}</h2>
         <p className="text-sm">{ar ? 'بياناتك المحلية محفوظة. حاول مرة أخرى أو أعد تحميل الصفحة.' : 'Your local data is safe. Try again or reload the page.'}</p>
         <div className="flex flex-wrap justify-center gap-2">
-          <button type="button" onClick={this.reset} className="min-h-11 rounded-xl border border-current px-4 text-xs font-bold">{ar ? 'حاول مجدداً' : 'Try again'}</button>
+          {onDismiss && <button type="button" onClick={onDismiss} className="min-h-11 rounded-xl border border-current px-4 text-xs font-bold">{ar ? 'إغلاق' : 'Close'}</button>}
+          <button type="button" onClick={chunkFailure ? () => window.location.reload() : this.reset} className="min-h-11 rounded-xl border border-current px-4 text-xs font-bold">{ar ? 'حاول مجدداً' : 'Try again'}</button>
           <button type="button" onClick={() => window.location.reload()} className="min-h-11 rounded-xl bg-ink px-4 text-xs font-bold text-white dark:bg-white dark:text-ink">{ar ? 'إعادة التحميل' : 'Reload'}</button>
         </div>
       </div>
     );
+    return onDismiss
+      ? <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/40 p-4">{card}</div>
+      : card;
   }
 }

@@ -16,7 +16,7 @@ interface RecipeCardProps {
 
 export const REGION_BADGES: { [key in Recipe['region']]: { ar: string; en: string; flag: string; bg: string } } = {
   egypt: { ar: 'مصر 🇪🇬', en: 'Egypt 🇪🇬', flag: '🇪🇬', bg: 'bg-red-900/10 text-red-900 dark:text-red-300 border-red-200' },
-  levant: { ar: 'بلاد الشام 🇱🇧', en: 'Levant 🇱🇧', flag: '🇱🇧', bg: 'bg-emerald-900/10 text-emerald-900 dark:text-emerald-300 border-emerald-200' },
+  levant: { ar: 'بلاد الشام 🇱🇧', en: 'Levant 🇱🇧', flag: '🇱🇧', bg: 'bg-night-soft/10 text-ink dark:text-stone-200 border-hairline' },
   gulf: { ar: 'الخليج العربي 🇸🇦', en: 'Arab Gulf 🇸🇦', flag: '🇸🇦', bg: 'bg-ink/10 text-ink dark:text-coral border-hairline' },
   maghreb: { ar: 'المغرب العربي 🇲🇦', en: 'Maghreb 🇲🇦', flag: '🇲🇦', bg: 'bg-rose-900/10 text-rose-900 dark:text-rose-300 border-rose-200' },
   general: { ar: 'عربي عام 🌍', en: 'Arab World 🌍', flag: '🌍', bg: 'bg-stone-900/10 text-stone-800 dark:text-stone-300 border-stone-200' },
@@ -65,7 +65,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
               e.stopPropagation();
               onToggleFavorite(recipe.id);
             }}
-            className="p-2 rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md text-white transition-colors cursor-pointer"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-full bg-black/50 hover:bg-black/80 backdrop-blur-md text-white transition-colors cursor-pointer"
             title={isArabic ? 'إضافة للمفضلة' : 'Favorite'}
           >
             <Star className={`w-4 h-4 ${isFavorite ? 'fill-coral text-coral' : 'text-stone-300'}`} />
@@ -78,12 +78,12 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
             <a
               href={`/recipes/${encodeURIComponent(recipe.id)}`}
               onClick={(event) => event.stopPropagation()}
-              className="hover:underline"
+              className="inline-flex min-h-11 items-center hover:underline"
             >
               {isArabic ? recipe.titleAr : recipe.titleEn}
             </a>
           </h3>
-          <p className="text-sm font-medium text-stone-200/90 font-mono line-clamp-1">
+          <p lang={isArabic ? 'en' : 'ar'} className="text-sm font-medium text-stone-200/90 font-mono line-clamp-1">
             {isArabic ? recipe.titleEn : recipe.titleAr}
           </p>
         </div>
@@ -98,19 +98,19 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
 
         {recipe.dietaryTags && recipe.dietaryTags.length > 0 && (
           <div className="flex flex-wrap gap-1.5" aria-label={isArabic ? 'الوسوم الغذائية' : 'Dietary tags'}>
-            {recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-200">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}
+            {recipe.dietaryTags.map((tag) => <span key={tag} className="rounded-full bg-soft px-2.5 py-1 text-xs font-bold text-ink dark:bg-night-soft dark:text-stone-200">{isArabic ? DIETARY_LABELS[tag].ar : DIETARY_LABELS[tag].en}</span>)}
           </div>
         )}
 
         {/* Info Pills (Time, Difficulty, Ramadan tag) */}
         <div className="flex items-center justify-between gap-2 text-xs sm:text-sm font-mono font-medium text-[#616161] dark:text-stone-300 pt-2 border-t border-hairline dark:border-night-line">
           <div className="flex items-center gap-1">
-            <Clock className="w-4 h-4 text-coral" />
+            <Clock className="w-4 h-4 text-coral-deep dark:text-coral" />
             <span>{totalTime} {isArabic ? 'دقيقة' : 'min'}</span>
           </div>
 
           <div className="flex items-center gap-1">
-            <Flame className="w-4 h-4 text-coral" />
+            <Flame className="w-4 h-4 text-coral-deep dark:text-coral" />
             <span>
               {recipe.difficulty === 'easy'
                 ? isArabic ? 'سهل' : 'Easy'
@@ -121,7 +121,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           </div>
 
           {recipe.isRamadanSpecial && (
-            <span className="text-coral font-bold bg-ink text-white px-2.5 py-0.5 rounded-full text-xs font-mono border border-white/10">
+            <span className="text-coral font-bold bg-ink px-2.5 py-0.5 rounded-full text-xs font-mono border border-white/10">
               🌙 {isArabic ? 'رمضاني' : 'Ramadan'}
             </span>
           )}
@@ -130,13 +130,13 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         {/* Interactive Likes/Dislikes & Quick Add */}
         <div className="flex items-center justify-between gap-2 pt-1">
           {/* Voting Controls */}
-          <div className="flex items-center gap-1 bg-soft dark:bg-stone-800 p-1 rounded-full border border-hairline dark:border-stone-700">
+          <div className="flex items-center gap-1 bg-soft dark:bg-night-soft p-1 rounded-full border border-hairline dark:border-night-line">
             <button
               onClick={() => onVote(recipe.id, 'like')}
-              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
+              className={`flex min-h-11 min-w-11 items-center justify-center gap-1 px-3 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
                 userVote === 'like'
                   ? 'bg-ink text-white shadow-xs'
-                  : 'text-body dark:text-stone-300 hover:text-coral'
+                  : 'text-body dark:text-stone-300 hover:text-coral-deep dark:hover:text-coral'
               }`}
               title={isArabic ? 'أعجبني' : 'Like'}
             >
@@ -146,7 +146,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
 
             <button
               onClick={() => onVote(recipe.id, 'dislike')}
-              className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
+              className={`flex min-h-11 min-w-11 items-center justify-center gap-1 px-3 rounded-full text-xs sm:text-sm font-mono font-bold transition-colors cursor-pointer ${
                 userVote === 'dislike'
                   ? 'bg-rose-700 text-white shadow-xs'
                   : 'text-body dark:text-stone-300 hover:text-rose-700'
@@ -160,9 +160,9 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
           {/* Quick Add to Planner */}
           <button
             onClick={() => onQuickAddToPlanner(recipe)}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-ink hover:bg-body dark:bg-white dark:text-ink text-white text-xs sm:text-sm font-mono font-bold shadow-xs transition-all cursor-pointer"
+            className="flex min-h-11 items-center gap-1.5 px-4 rounded-full bg-ink hover:bg-body dark:bg-white dark:text-ink text-white text-xs sm:text-sm font-mono font-bold shadow-xs transition-all cursor-pointer"
           >
-            <BookOpen className="w-4 h-4 text-coral" />
+            <BookOpen className="w-4 h-4 text-coral dark:text-coral-deep" />
             <span>{isArabic ? 'التفاصيل' : 'Details'}</span>
           </button>
         </div>

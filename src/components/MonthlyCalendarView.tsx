@@ -322,7 +322,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
               <div className="flex items-center gap-2">
                 <button
                   onClick={handlePrevMonth}
-                  className="p-1.5 rounded-xl hover:bg-soft dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 transition-colors"
+                  className="p-1.5 rounded-xl hover:bg-soft dark:hover:bg-night-soft text-stone-700 dark:text-stone-300 transition-colors"
                   title={isArabic ? 'الشهر السابق' : 'Previous Month'}
                 >
                   {isArabic ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
@@ -334,7 +334,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
 
                 <button
                   onClick={handleNextMonth}
-                  className="p-1.5 rounded-xl hover:bg-soft dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 transition-colors"
+                  className="p-1.5 rounded-xl hover:bg-soft dark:hover:bg-night-soft text-stone-700 dark:text-stone-300 transition-colors"
                   title={isArabic ? 'الشهر التالي' : 'Next Month'}
                 >
                   {isArabic ? <ChevronLeft className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
@@ -342,12 +342,12 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
 
                 <button
                   onClick={handleGoToday}
-                  className="ms-2 px-3 py-1 rounded-xl bg-soft dark:bg-stone-800 text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft transition-colors"
+                  className="ms-2 px-3 py-1 rounded-xl bg-soft dark:bg-night-soft text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft transition-colors"
                 >
                   {isArabic ? 'اليوم' : 'Today'}
                 </button>
               </div>
-              <p className="text-xs text-stone-500 mt-1">
+              <p className="text-xs text-stone-600 dark:text-stone-300 mt-1">
                 {isArabic
                   ? 'خطط وجبات الشهر كاملاً وتصفح جدول العائلة بالتفصيل.'
                   : 'Plan your entire month of meals with smart family synchronization.'}
@@ -363,11 +363,11 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
               className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all ${
                 monthlyPlan.isRamadanMode
                   ? 'bg-ink text-stone-100 border-ink dark:border-white dark:bg-night-line'
-                  : 'bg-soft dark:bg-stone-800 text-stone-800 dark:text-stone-200 border-hairline dark:border-stone-700'
+                  : 'bg-soft dark:bg-night-soft text-stone-800 dark:text-stone-200 border-hairline dark:border-night-line'
               }`}
             >
               {monthlyPlan.isRamadanMode ? (
-                <Moon className="w-4 h-4 text-coral" />
+                <Moon className="w-4 h-4 text-coral-deep dark:text-coral" />
               ) : (
                 <Sun className="w-4 h-4 text-coral-deep" />
               )}
@@ -385,7 +385,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
             {/* Auto Fill Month */}
             <button
               onClick={handleAutoFillMonth}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-soft dark:bg-stone-800 text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-soft dark:bg-night-soft text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft transition-colors"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>{isArabic ? 'اقتراح شهري' : 'Auto Fill Month'}</span>
@@ -394,7 +394,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
             {/* Family Sync */}
             <button
               onClick={onOpenFamilySync}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-200 dark:bg-stone-800 text-stone-800 dark:text-stone-200 text-xs font-bold hover:bg-stone-300 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-200 dark:bg-night-soft text-stone-800 dark:text-stone-200 text-xs font-bold hover:bg-stone-300 transition-colors"
             >
               <Share2 className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">{isArabic ? 'مشاركة' : 'Share'}</span>
@@ -435,7 +435,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
           {(isArabic ? WEEKDAY_NAMES.ar : WEEKDAY_NAMES.en).map((dayName, idx) => (
             <div
               key={idx}
-              className="py-2 text-xs sm:text-sm font-extrabold text-ink dark:text-coral bg-soft/60 dark:bg-stone-800/60 rounded-xl"
+              className="py-2 text-xs sm:text-sm font-extrabold text-ink dark:text-coral bg-soft/60 dark:bg-night-soft/60 rounded-xl"
             >
               {dayName}
             </div>
@@ -456,12 +456,12 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                 onClick={() => setSelectedDateKey(cell.dateKey)}
                 className={`min-h-[90px] sm:min-h-[115px] p-1.5 sm:p-2 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between group relative overflow-hidden ${
                   !cell.isCurrentMonth
-                    ? 'opacity-40 bg-stone-50 dark:bg-stone-950/20 border-stone-100 dark:border-stone-800/40'
+                    ? 'opacity-40 bg-stone-50 dark:bg-night/20 border-stone-100 dark:border-night-line/40'
                     : cell.isToday
                     ? 'bg-coral/10 dark:bg-coral/20 border-coral ring-2 ring-coral/30'
                     : slotCount > 0
-                    ? 'bg-soft/70 dark:bg-stone-800/60 border-hairline dark:border-stone-700 hover:border-coral'
-                    : 'bg-white dark:bg-stone-900 border-hairline dark:border-stone-800 hover:bg-soft dark:hover:bg-stone-800/40'
+                    ? 'bg-soft/70 dark:bg-night-soft/60 border-hairline dark:border-night-line hover:border-coral'
+                    : 'bg-white dark:bg-night-card border-hairline dark:border-night-line hover:bg-soft dark:hover:bg-night-soft/40'
                 }`}
               >
                 {/* Date Number Header */}
@@ -469,7 +469,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                   <span
                     className={`text-xs sm:text-sm font-black w-6 h-6 rounded-full flex items-center justify-center ${
                       cell.isToday
-                        ? 'bg-coral text-white shadow-xs'
+                        ? 'bg-coral-deep text-white shadow-xs'
                         : cell.isCurrentMonth
                         ? 'text-stone-800 dark:text-stone-200'
                         : 'text-stone-400'
@@ -479,7 +479,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                   </span>
 
                   {slotCount > 0 && (
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-hairline dark:bg-stone-700 text-ink dark:text-stone-100">
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-hairline dark:bg-night-soft text-ink dark:text-stone-100">
                       {slotCount} {isArabic ? 'وجبات' : 'meals'}
                     </span>
                   )}
@@ -497,7 +497,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                       return (
                         <div
                           key={slotInfo.key}
-                          className="flex items-center gap-1 text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-white/90 dark:bg-stone-800/90 border border-hairline/80 dark:border-stone-700 truncate text-stone-800 dark:text-stone-200 shadow-2xs"
+                          className="flex items-center gap-1 text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-white/90 dark:bg-night-soft/90 border border-hairline/80 dark:border-night-line truncate text-stone-800 dark:text-stone-200 shadow-2xs"
                         >
                           <span className="flex-shrink-0">{slotInfo.icon}</span>
                           <span className="truncate">{isArabic ? recipe.titleAr : recipe.titleEn}</span>
@@ -521,9 +521,9 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
       {/* Selected Day Meal Manager Drawer/Modal */}
       {selectedDateKey && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-950/70 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-hairline/80 dark:border-stone-800 p-6 max-h-[85vh] flex flex-col text-stone-800 dark:text-stone-100 space-y-4">
+          <div className="relative w-full max-w-2xl bg-white dark:bg-night-card rounded-3xl shadow-2xl border border-hairline/80 dark:border-night-line p-6 max-h-[85vh] flex flex-col text-stone-800 dark:text-stone-100 space-y-4">
             {/* Modal Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-stone-800">
+            <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-night-line">
               <div className="flex items-center gap-2">
                 <Utensils className="w-5 h-5 text-coral-deep" />
                 <h3 className="text-base font-black text-ink dark:text-stone-100">
@@ -532,7 +532,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
               </div>
               <button
                 onClick={() => setSelectedDateKey(null)}
-                className="p-2 rounded-full hover:bg-soft dark:hover:bg-stone-800"
+                className="p-2 rounded-full hover:bg-soft dark:hover:bg-night-soft"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -547,7 +547,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                 return (
                   <div
                     key={slotInfo.key}
-                    className="p-4 rounded-2xl border border-hairline dark:border-stone-800 bg-soft/40 dark:bg-stone-800/40 space-y-2"
+                    className="p-4 rounded-2xl border border-hairline dark:border-night-line bg-soft/40 dark:bg-night-soft/40 space-y-2"
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-black text-ink dark:text-stone-100 flex items-center gap-1.5">
@@ -567,7 +567,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                     </div>
 
                     {recipe ? (
-                      <div className="flex items-center justify-between bg-white dark:bg-stone-900 p-3 rounded-xl border border-hairline/80 dark:border-stone-700">
+                      <div className="flex items-center justify-between bg-white dark:bg-night-card p-3 rounded-xl border border-hairline/80 dark:border-night-line">
                         <div
                           className="flex items-center gap-3 cursor-pointer"
                           onClick={() => onOpenRecipeDetail(recipe)}
@@ -585,7 +585,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                             <p className="text-xs font-black text-stone-900 dark:text-stone-100">
                               {isArabic ? recipe.titleAr : recipe.titleEn}
                             </p>
-                            <p className="text-[11px] text-stone-500">
+                            <p className="text-[11px] text-stone-600 dark:text-stone-300">
                               {assignment?.servings} {isArabic ? 'أفراد' : 'servings'} •{' '}
                               {recipe.prepTimeMinutes + recipe.cookTimeMinutes}{' '}
                               {isArabic ? 'دقيقة' : 'mins'}
@@ -595,7 +595,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
 
                         <button
                           onClick={() => setAssignModalSlot(slotInfo.key)}
-                          className="px-3 py-1.5 rounded-xl bg-soft dark:bg-stone-800 text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft"
+                          className="px-3 py-1.5 rounded-xl bg-soft dark:bg-night-soft text-ink dark:text-stone-100 text-xs font-bold hover:bg-soft"
                         >
                           {isArabic ? 'تغيير' : 'Change'}
                         </button>
@@ -603,7 +603,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                     ) : (
                       <button
                         onClick={() => setAssignModalSlot(slotInfo.key)}
-                        className="w-full py-3 rounded-xl border-2 border-dashed border-hairline dark:border-stone-700 hover:bg-soft dark:hover:bg-stone-800 text-ink dark:text-stone-100 font-extrabold text-xs flex items-center justify-center gap-2 transition-colors"
+                        className="w-full py-3 rounded-xl border-2 border-dashed border-hairline dark:border-night-line hover:bg-soft dark:hover:bg-night-soft text-ink dark:text-stone-100 font-extrabold text-xs flex items-center justify-center gap-2 transition-colors"
                       >
                         <Plus className="w-4 h-4 text-coral-deep" />
                         <span>{isArabic ? 'اختر وجبة لهذا الموعد' : 'Select Recipe for Slot'}</span>
@@ -629,14 +629,14 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
       {/* Select Recipe Sub-Modal */}
       {assignModalSlot && (
         <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-stone-950/80 backdrop-blur-sm">
-          <div className="relative w-full max-w-lg bg-white dark:bg-stone-900 rounded-3xl shadow-2xl border border-hairline dark:border-stone-800 p-6 max-h-[80vh] flex flex-col text-stone-800 dark:text-stone-100 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-stone-800">
+          <div className="relative w-full max-w-lg bg-white dark:bg-night-card rounded-3xl shadow-2xl border border-hairline dark:border-night-line p-6 max-h-[80vh] flex flex-col text-stone-800 dark:text-stone-100 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-hairline dark:border-night-line">
               <h3 className="text-sm font-black text-ink dark:text-stone-100">
                 {isArabic ? 'اختر وصفة للجدول الشهرى:' : 'Select Recipe for Monthly Slot:'}
               </h3>
               <button
                 onClick={() => setAssignModalSlot(null)}
-                className="p-1.5 rounded-full hover:bg-soft dark:hover:bg-stone-800"
+                className="p-1.5 rounded-full hover:bg-soft dark:hover:bg-night-soft"
               >
                 ✕
               </button>
@@ -663,7 +663,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                 <div
                   key={r.id}
                   onClick={() => handleAssignRecipeToDateSlot(r.id)}
-                  className="flex items-center justify-between p-3 rounded-xl bg-soft/60 dark:bg-stone-800/60 hover:bg-soft dark:hover:bg-stone-800 border border-hairline/60 dark:border-stone-700 cursor-pointer transition-colors"
+                  className="flex items-center justify-between p-3 rounded-xl bg-soft/60 dark:bg-night-soft/60 hover:bg-soft dark:hover:bg-night-soft border border-hairline/60 dark:border-night-line cursor-pointer transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <img
@@ -679,7 +679,7 @@ export const MonthlyCalendarView: React.FC<MonthlyCalendarViewProps> = ({
                       <p className="text-xs font-extrabold text-stone-900 dark:text-stone-100">
                         {isArabic ? r.titleAr : r.titleEn}
                       </p>
-                      <p className="text-[11px] text-stone-500">
+                      <p className="text-[11px] text-stone-600 dark:text-stone-300">
                         {isArabic ? r.descriptionAr : r.descriptionEn}
                       </p>
                     </div>
