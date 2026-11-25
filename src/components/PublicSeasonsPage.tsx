@@ -9,6 +9,7 @@ import {
   SEASON_MONTHS_AR,
   SEASON_MONTHS_EN,
   getMonthList,
+  produceImage,
 } from '../data/seasons';
 import { cairoMonth } from '../utils/season';
 
@@ -77,11 +78,14 @@ export const PublicSeasonsPage: React.FC<{ language: Language }> = ({ language }
                 {items.map((item) => {
                   const peak = item.peakMonths.includes(month as never);
                   return (
-                    <li key={item.id} className="rounded-xl border border-stone-200 bg-white p-3 dark:border-night-line dark:bg-night-card">
+                    <li key={item.id} className="flex gap-3 rounded-xl border border-stone-200 bg-white p-3 dark:border-night-line dark:bg-night-card">
+                      <img src={produceImage(item.id, true)} alt="" width={96} height={64} loading="lazy" decoding="async" className="h-16 w-24 shrink-0 rounded-lg bg-night object-cover" />
+                      <div className="min-w-0">
                       <strong>{isArabic ? item.nameAr : item.nameEn}</strong>
                       {peak && <span className="ms-2 rounded-full border border-coral/60 px-2 py-0.5 text-xs font-bold text-coral-deep dark:text-coral">{isArabic ? 'في عز موسمه' : 'Peak season'}</span>}
                       {showEnglish && isArabic && <span lang="en" dir="ltr" className="block text-start text-sm text-stone-600 dark:text-stone-300">{item.nameEn}</span>}
                       <span className="mt-1 block text-sm leading-7 text-stone-700 dark:text-stone-300">{isArabic ? item.cookHintAr : item.cookHintEn}</span>
+                      </div>
                     </li>
                   );
                 })}

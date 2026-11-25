@@ -110,6 +110,10 @@ export const PRODUCE: ProduceItem[] = rows.map(
   }),
 );
 
+/** Style B photo for a produce item, in public/produce-images/ (1024x683, or a 192x128 thumbnail). */
+export const produceImage = (id: string, thumb = false) =>
+  `/produce-images/produce-${id}${thumb ? '-thumb' : ''}.webp`;
+
 const CATEGORY_ORDER: Record<ProduceCategory, number> = { vegetable: 0, fruit: 1, herbs: 2 };
 
 /** Items in season for a month: peak first, then category, then Arabic name. */

@@ -8,6 +8,7 @@ import {
   SOURCE_NOTE_EN,
   PRODUCE,
   PRODUCE_CATEGORY_LABELS,
+  produceImage,
   SEASON_MONTHS_AR,
   SEASON_MONTHS_EN,
   getMonthList,
@@ -236,8 +237,20 @@ export const SeasonalView: React.FC<SeasonalViewProps> = ({
             return (
               <li
                 key={item.id}
-                className="flex min-w-0 flex-col gap-3 rounded-3xl border border-hairline bg-white p-4 shadow-xs dark:border-night-line dark:bg-night-card"
+                className="flex min-w-0 flex-col gap-3 overflow-hidden rounded-3xl border border-hairline bg-white p-4 shadow-xs dark:border-night-line dark:bg-night-card"
               >
+                <img
+                  src={produceImage(item.id)}
+                  alt=""
+                  width={1024}
+                  height={683}
+                  loading="lazy"
+                  decoding="async"
+                  className="-mx-4 -mt-4 aspect-[3/2] w-[calc(100%+2rem)] max-w-none bg-night object-cover"
+                  onError={(e) => {
+                    e.currentTarget.hidden = true;
+                  }}
+                />
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
                     <h2 className="text-lg font-bold text-ink dark:text-white">
